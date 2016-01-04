@@ -1,16 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6724" systemVersion="14A389" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--NearestDeparture-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller identifier="NearestDeparture" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="HSL_Nearest_Departures_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label width="131.5" height="20" alignment="center" text="-" textAlignment="center" id="zuU-O5-6aW">
+                            <fontDescription key="font" type="system" pointSize="12"/>
+                        </label>
+                        <separator width="119" alignment="center" id="wmZ-91-N85">
+                            <color key="color" red="0.49001736111111116" green="0.49001736111111116" blue="0.49001736111111116" alpha="1" colorSpace="calibratedRGB"/>
+                        </separator>
+                        <label width="129.5" height="42.5" alignment="center" text="-" textAlignment="center" id="fuQ-kc-FOg">
+                            <color key="textColor" red="0.32914668748637599" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="system" pointSize="42"/>
+                        </label>
+                        <label width="149" height="47.5" alignment="center" text="-" textAlignment="center" numberOfLines="3" id="bX6-Wp-NHu">
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                        <label width="132.5" alignment="center" text="00:00" textAlignment="center" id="Hb4-yN-2Rl">
+                            <color key="textColor" red="1" green="0.094197500092421449" blue="0.084066852040315942" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                        </label>
+                    </items>
+                    <menu key="menu" id="U2e-y4-dEm">
+                        <items>
+                            <menuItem title="Refresh" icon="accept" id="3MY-aO-z62">
+                                <connections>
+                                    <action selector="refreshClick" destination="AgC-eL-Hgc" id="laZ-hk-dJS"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="departureTime" destination="Hb4-yN-2Rl" id="0Yu-dw-bEb"/>
+                        <outlet property="destination" destination="bX6-Wp-NHu" id="Lxx-an-pqX"/>
+                        <outlet property="lineNumber" destination="fuQ-kc-FOg" id="5OA-hi-Na9"/>
+                        <outlet property="nearestStop" destination="zuU-O5-6aW" id="p3u-nh-0V0"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="220" y="349.25"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -31,7 +66,7 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="HSL_Nearest_Departures_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		535D39741C38140E008D59C3 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* InterfaceController.swift */; };
+		53B284B41C315E01003C8877 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B284B31C315E01003C8877 /* Util.swift */; };
+		53B284B51C315E01003C8877 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B284B31C315E01003C8877 /* Util.swift */; };
+		53B284B71C33D5FB003C8877 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 53B284B61C33D5FB003C8877 /* default.gpx */; };
+		53B284B81C33D5FB003C8877 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 53B284B61C33D5FB003C8877 /* default.gpx */; };
+		53B284B91C33D5FB003C8877 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 53B284B61C33D5FB003C8877 /* default.gpx */; };
 		53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */; };
 		53E4ECB51C2C06EC002F0107 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB41C2C06EC002F0107 /* ViewController.swift */; };
 		53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB61C2C06EC002F0107 /* Main.storyboard */; };
@@ -18,7 +24,6 @@
 		53E4ECDE1C2C06EC002F0107 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDC1C2C06EC002F0107 /* Interface.storyboard */; };
 		53E4ECE01C2C06EC002F0107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDF1C2C06EC002F0107 /* Assets.xcassets */; };
 		53E4ECE71C2C06EC002F0107 /* HSL Nearest Departures WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 53E4ECE61C2C06EC002F0107 /* HSL Nearest Departures WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		53E4ECEE1C2C06EC002F0107 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECED1C2C06EC002F0107 /* InterfaceController.swift */; };
 		53E4ECF01C2C06EC002F0107 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECEF1C2C06EC002F0107 /* ExtensionDelegate.swift */; };
 		53E4ECF21C2C06EC002F0107 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECF11C2C06EC002F0107 /* NotificationController.swift */; };
 		53E4ECF41C2C06EC002F0107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECF31C2C06EC002F0107 /* Assets.xcassets */; };
@@ -81,6 +86,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		535D39731C38140E008D59C3 /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
+		53B284B31C315E01003C8877 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		53B284B61C33D5FB003C8877 /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
 		53E4ECAF1C2C06EC002F0107 /* HSL Nearest Departures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HSL Nearest Departures.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53E4ECB41C2C06EC002F0107 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +109,6 @@
 		53E4ECE11C2C06EC002F0107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53E4ECE61C2C06EC002F0107 /* HSL Nearest Departures WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "HSL Nearest Departures WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E4ECEC1C2C06EC002F0107 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		53E4ECED1C2C06EC002F0107 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		53E4ECEF1C2C06EC002F0107 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		53E4ECF11C2C06EC002F0107 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		53E4ECF31C2C06EC002F0107 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,6 +150,7 @@
 		53E4ECA61C2C06EC002F0107 = {
 			isa = PBXGroup;
 			children = (
+				53B284B61C33D5FB003C8877 /* default.gpx */,
 				53E4ECB11C2C06EC002F0107 /* HSL Nearest Departures */,
 				53E4ECC61C2C06EC002F0107 /* HSL Nearest DeparturesTests */,
 				53E4ECD11C2C06EC002F0107 /* HSL Nearest DeparturesUITests */,
@@ -207,12 +216,14 @@
 		53E4ECEA1C2C06EC002F0107 /* HSL Nearest Departures WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				53E4ECED1C2C06EC002F0107 /* InterfaceController.swift */,
+				535D39731C38140E008D59C3 /* InterfaceController.swift */,
 				53E4ECEF1C2C06EC002F0107 /* ExtensionDelegate.swift */,
 				53E4ECF11C2C06EC002F0107 /* NotificationController.swift */,
 				53E4ECF31C2C06EC002F0107 /* Assets.xcassets */,
 				53E4ECF51C2C06EC002F0107 /* Info.plist */,
 				53E4ECEB1C2C06EC002F0107 /* Supporting Files */,
+				53B284B31C315E01003C8877 /* Util.swift */,
+				53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */,
 			);
 			path = "HSL Nearest Departures WatchKit Extension";
 			sourceTree = "<group>";
@@ -329,6 +340,7 @@
 				TargetAttributes = {
 					53E4ECAE1C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 82V9P5RDKE;
 					};
 					53E4ECC21C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
@@ -340,9 +352,11 @@
 					};
 					53E4ECD61C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 82V9P5RDKE;
 					};
 					53E4ECE51C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 82V9P5RDKE;
 					};
 				};
 			};
@@ -374,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E4ECBD1C2C06EC002F0107 /* LaunchScreen.storyboard in Resources */,
+				53B284B71C33D5FB003C8877 /* default.gpx in Resources */,
 				53E4ECBA1C2C06EC002F0107 /* Assets.xcassets in Resources */,
 				53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */,
 			);
@@ -399,6 +414,7 @@
 			files = (
 				53E4ECE01C2C06EC002F0107 /* Assets.xcassets in Resources */,
 				53E4ECDE1C2C06EC002F0107 /* Interface.storyboard in Resources */,
+				53B284B81C33D5FB003C8877 /* default.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E4ECF41C2C06EC002F0107 /* Assets.xcassets in Resources */,
+				53B284B91C33D5FB003C8877 /* default.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E4ECB51C2C06EC002F0107 /* ViewController.swift in Sources */,
+				53B284B41C315E01003C8877 /* Util.swift in Sources */,
 				53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,8 +461,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E4ECF21C2C06EC002F0107 /* NotificationController.swift in Sources */,
+				535D39741C38140E008D59C3 /* InterfaceController.swift in Sources */,
 				53E4ECF01C2C06EC002F0107 /* ExtensionDelegate.swift in Sources */,
-				53E4ECEE1C2C06EC002F0107 /* InterfaceController.swift in Sources */,
+				53B284B51C315E01003C8877 /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,10 +606,13 @@
 		53E4ECF91C2C06EC002F0107 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "HSL Nearest Departures WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -601,10 +623,13 @@
 		53E4ECFA1C2C06EC002F0107 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "HSL Nearest Departures WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -616,13 +641,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = HSL_Nearest_Departures_WatchKit_Extension;
 				INFOPLIST_FILE = "HSL Nearest Departures WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures WatchKit Extension/HSL Nearest Departures WatchKit App-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.1;
 			};
@@ -632,13 +664,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = HSL_Nearest_Departures_WatchKit_Extension;
 				INFOPLIST_FILE = "HSL Nearest Departures WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures WatchKit Extension/HSL Nearest Departures WatchKit App-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.1;
 			};
@@ -648,10 +686,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "HSL Nearest Departures/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -659,10 +701,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "HSL Nearest Departures/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -733,6 +779,7 @@
 				53E4ECFA1C2C06EC002F0107 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		53E4ECFC1C2C06EC002F0107 /* Build configuration list for PBXNativeTarget "HSL Nearest Departures WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -741,6 +788,7 @@
 				53E4ECFE1C2C06EC002F0107 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		53E4ED001C2C06EC002F0107 /* Build configuration list for PBXNativeTarget "HSL Nearest Departures" */ = {
 			isa = XCConfigurationList;
@@ -749,6 +797,7 @@
 				53E4ED021C2C06EC002F0107 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		53E4ED031C2C06EC002F0107 /* Build configuration list for PBXNativeTarget "HSL Nearest DeparturesTests" */ = {
 			isa = XCConfigurationList;
@@ -757,6 +806,7 @@
 				53E4ED051C2C06EC002F0107 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		53E4ED061C2C06EC002F0107 /* Build configuration list for PBXNativeTarget "HSL Nearest DeparturesUITests" */ = {
 			isa = XCConfigurationList;
@@ -765,6 +815,7 @@
 				53E4ED081C2C06EC002F0107 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
