@@ -1,23 +1,24 @@
-//
-//  AppDelegate.swift
-//  HSL Nearest Departures
-//
-//  Created by Toni Suominen on 24/12/15.
-//  Copyright © 2015 Toni Suominen. All rights reserved.
-//
-
 import UIKit
+import WatchConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
+        let session:WCSession
+        if (WCSession.isSupported()) {
+            session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
         // Override point for customization after application launch.
         return true
+    }
+
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        replyHandler(["foo2": "bar2"])
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -27,7 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
+       // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -45,3 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+//extension AppDelegate: WCSessionDelegate {
+//    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+//        print("MESSAGE")
+//        replyHandler(["foo": "bar"])
+//    }
+//}

@@ -1,16 +1,18 @@
-//
-//  ExtensionDelegate.swift
-//  HSL Nearest Departures WatchKit Extension
-//
-//  Created by Toni Suominen on 24/12/15.
-//  Copyright © 2015 Toni Suominen. All rights reserved.
-//
-
 import WatchKit
+import WatchConnectivity
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
+class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidFinishLaunching() {
+
+        let session:WCSession
+        if (WCSession.isSupported()) {
+            session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+            session.sendMessage(["foo": "bar"], replyHandler: {d in print(d)}, errorHandler: nil)
+        }
+
         // Perform any final initialization of your application.
     }
 
