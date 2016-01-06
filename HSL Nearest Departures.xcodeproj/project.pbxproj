@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		535D39741C38140E008D59C3 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* InterfaceController.swift */; };
-		53B284B41C315E01003C8877 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B284B31C315E01003C8877 /* Util.swift */; };
-		53B284B51C315E01003C8877 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B284B31C315E01003C8877 /* Util.swift */; };
 		53B284B71C33D5FB003C8877 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 53B284B61C33D5FB003C8877 /* default.gpx */; };
 		53B284B81C33D5FB003C8877 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 53B284B61C33D5FB003C8877 /* default.gpx */; };
 		53B284B91C33D5FB003C8877 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 53B284B61C33D5FB003C8877 /* default.gpx */; };
@@ -27,6 +25,7 @@
 		53E4ECF01C2C06EC002F0107 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECEF1C2C06EC002F0107 /* ExtensionDelegate.swift */; };
 		53E4ECF21C2C06EC002F0107 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECF11C2C06EC002F0107 /* NotificationController.swift */; };
 		53E4ECF41C2C06EC002F0107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECF31C2C06EC002F0107 /* Assets.xcassets */; };
+		53ED7E351C3BF38E00BAE367 /* HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED7E341C3BF38E00BAE367 /* HSL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +87,6 @@
 /* Begin PBXFileReference section */
 		535D39731C38140E008D59C3 /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
-		53B284B31C315E01003C8877 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		53B284B61C33D5FB003C8877 /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
 		53E4ECAF1C2C06EC002F0107 /* HSL Nearest Departures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HSL Nearest Departures.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +111,7 @@
 		53E4ECF11C2C06EC002F0107 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		53E4ECF31C2C06EC002F0107 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53E4ECF51C2C06EC002F0107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53ED7E341C3BF38E00BAE367 /* HSL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +180,7 @@
 				53E4ECB91C2C06EC002F0107 /* Assets.xcassets */,
 				53E4ECBB1C2C06EC002F0107 /* LaunchScreen.storyboard */,
 				53E4ECBE1C2C06EC002F0107 /* Info.plist */,
+				53ED7E341C3BF38E00BAE367 /* HSL.swift */,
 			);
 			path = "HSL Nearest Departures";
 			sourceTree = "<group>";
@@ -222,7 +222,6 @@
 				53E4ECF31C2C06EC002F0107 /* Assets.xcassets */,
 				53E4ECF51C2C06EC002F0107 /* Info.plist */,
 				53E4ECEB1C2C06EC002F0107 /* Supporting Files */,
-				53B284B31C315E01003C8877 /* Util.swift */,
 				53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */,
 			);
 			path = "HSL Nearest Departures WatchKit Extension";
@@ -435,7 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E4ECB51C2C06EC002F0107 /* ViewController.swift in Sources */,
-				53B284B41C315E01003C8877 /* Util.swift in Sources */,
+				53ED7E351C3BF38E00BAE367 /* HSL.swift in Sources */,
 				53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,7 +462,6 @@
 				53E4ECF21C2C06EC002F0107 /* NotificationController.swift in Sources */,
 				535D39741C38140E008D59C3 /* InterfaceController.swift in Sources */,
 				53E4ECF01C2C06EC002F0107 /* ExtensionDelegate.swift in Sources */,
-				53B284B51C315E01003C8877 /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
