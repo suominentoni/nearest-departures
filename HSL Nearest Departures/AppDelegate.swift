@@ -43,6 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
 
         NSLog("Got new location data")
 
+        getDepartureInfo(sendDepartureInfoToWatch)
+    }
+
+    private func getDepartureInfo(successCallback: (departureInfo: Dictionary<String, AnyObject>) -> Void) {
         var stopName = ""
         var departureTime = ""
         var lineNumber = ""
@@ -58,19 +62,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
                     lineNumber = lineInfo["code"]!
                     destination = lineInfo["name"]!
 
-                    NSLog("Sending departure information to Apple Watch")
-                    self.session!.sendMessage([
+                    let departureInfo = [
                         "stopName": stopName,
                         "departureTime": departureTime,
                         "lineNumber": lineNumber,
                         "destination": destination
-                        ],
-                        replyHandler: {r in NSLog("Got reply")},
-                        errorHandler: { error in
-                            NSLog("Error sending departure information to Apple Watch: " + error.description)
-                        })
+                    ]
+
+                    successCallback(departureInfo: departureInfo)
                 })
             })
+        }
+    }
+
+    private func sendDepartureInfoToWatch(departureInfo: Dictionary<String, AnyObject>) {
+        NSLog("Sending departure information to Apple Watch")
+        self.session!.sendMessage(departureInfo,
+            replyHandler: {r in NSLog("Got reply")},
+            errorHandler: { error in
+                NSLog("Error sending departure information to Apple Watch: " + error.description)
+        })
+    }
+
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+        if let _ = message["refresh"] as? Bool {
+            getDepartureInfo(sendDepartureInfoToWatch)
         }
     }
 
