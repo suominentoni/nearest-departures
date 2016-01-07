@@ -2,6 +2,41 @@ import Foundation
 
 public class HSL {
 
+    static func getDepartureInfo(lat: Double, lon: Double, successCallback: (departureInfo: Dictionary<String, AnyObject>) -> Void) {
+        var stopName = ""
+        var departureTime = ""
+        var lineNumber = ""
+        var destination = ""
+
+        self.getNearestStopInfo(String(lat), lon: String(lon)) {
+        (stopInfo:Dictionary) -> Void in
+            stopName = (stopInfo["name"])!
+            self.getNextDepartureForStop(stopInfo["code"]!, callback: {departureInfo in
+
+                departureTime = formatTimeString(departureInfo["time"]!)
+
+                self.getLineInfo(departureInfo["code"]!, callback: {lineInfo in
+                    lineNumber = lineInfo["code"]!
+                    destination = lineInfo["name"]!
+
+                    let departureInfo = [
+                        "stopName": stopName,
+                        "departureTime": departureTime,
+                        "lineNumber": lineNumber,
+                        "destination": destination
+                    ]
+
+                    successCallback(departureInfo: departureInfo)
+                })
+            })
+        }
+    }
+
+    private static func formatTimeString(var time:String) -> String {
+        time.insert(":", atIndex: time.endIndex.predecessor().predecessor())
+        return time
+    }
+
     static func getNearestStopInfo(lat:String, lon:String, callback: (Dictionary<String, String>) -> Void) {
         HTTPGetJSONArray(
             "http://api.reittiopas.fi/hsl/prod/" +
