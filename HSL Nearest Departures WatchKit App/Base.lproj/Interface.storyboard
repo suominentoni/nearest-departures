@@ -17,7 +17,7 @@
                             <color key="color" red="0.49001736111111116" green="0.49001736111111116" blue="0.49001736111111116" alpha="1" colorSpace="calibratedRGB"/>
                         </separator>
                         <label width="129.5" height="42.5" alignment="center" text="-" textAlignment="center" id="fuQ-kc-FOg">
-                            <color key="textColor" red="0.32914668748637599" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" type="system" pointSize="42"/>
                         </label>
                         <label width="149" height="47.5" alignment="center" text="-" textAlignment="center" numberOfLines="3" id="bX6-Wp-NHu">

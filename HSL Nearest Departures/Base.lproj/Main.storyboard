@@ -16,11 +16,50 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TeQ-bt-eE2">
+                                <rect key="frame" x="240" y="50" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.97050508725524465" blue="0.96964112498103894" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myH-p9-JUh">
+                                <rect key="frame" x="174" y="97" width="252" height="111"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="51"/>
+                                <color key="textColor" red="0.80438149903656875" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spk-mf-CLh">
+                                <rect key="frame" x="223" y="335" width="154" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Katajanokka - Munkkiniemi - Rautatieasema - Espoon Keskus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCp-xb-i4g">
+                                <rect key="frame" x="187" y="200" width="227" height="138"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="fCp-xb-i4g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HWJ-gu-Rgj"/>
+                            <constraint firstItem="TeQ-bt-eE2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="K8q-WX-Na5"/>
+                            <constraint firstItem="spk-mf-CLh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QjO-e1-6Yd"/>
+                            <constraint firstItem="myH-p9-JUh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dbf-NK-OzQ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="departureTime" destination="spk-mf-CLh" id="aAL-uJ-Ziz"/>
+                        <outlet property="destination" destination="fCp-xb-i4g" id="OI9-xa-fKX"/>
+                        <outlet property="lineNumber" destination="myH-p9-JUh" id="cGG-Bt-fCL"/>
+                        <outlet property="nearestStop" destination="TeQ-bt-eE2" id="emj-11-SvZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="330" y="263"/>
         </scene>
     </scenes>
 </document>

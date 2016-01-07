@@ -43,35 +43,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
 
         NSLog("Got new location data")
 
-        getDepartureInfo(sendDepartureInfoToWatch)
+        HSL.getDepartureInfo(lat, lon: lon, successCallback: updateViews)
     }
 
-    private func getDepartureInfo(successCallback: (departureInfo: Dictionary<String, AnyObject>) -> Void) {
-        var stopName = ""
-        var departureTime = ""
-        var lineNumber = ""
-        var destination = ""
-
-        HSL.getNearestStopInfo(String(lat), lon: String(lon)) {
-        (stopInfo:Dictionary) -> Void in
-            stopName = (stopInfo["name"])!
-            HSL.getNextDepartureForStop(stopInfo["code"]!, callback: {departureInfo in
-                departureTime = self.formatTimeString(departureInfo["time"]!)
-
-                HSL.getLineInfo(departureInfo["code"]!, callback: {lineInfo in
-                    lineNumber = lineInfo["code"]!
-                    destination = lineInfo["name"]!
-
-                    let departureInfo = [
-                        "stopName": stopName,
-                        "departureTime": departureTime,
-                        "lineNumber": lineNumber,
-                        "destination": destination
-                    ]
-
-                    successCallback(departureInfo: departureInfo)
-                })
+    private func updateViews(departureInfo: Dictionary<String, AnyObject>) {
+        if let viewController = self.window!.rootViewController! as? ViewController {
+            dispatch_async(dispatch_get_main_queue(), {
+                viewController.updateView(departureInfo)
             })
+        }
+
+        if (session!.reachable) {
+            sendDepartureInfoToWatch(departureInfo)
         }
     }
 
@@ -86,13 +69,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
 
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         if let _ = message["refresh"] as? Bool {
-            getDepartureInfo(sendDepartureInfoToWatch)
+            HSL.getDepartureInfo(lat, lon: lon, successCallback: sendDepartureInfoToWatch)
         }
-    }
-
-    private func formatTimeString(var time:String) -> String {
-        time.insert(":", atIndex: time.endIndex.predecessor().predecessor())
-        return time
     }
 
     func applicationWillResignActive(application: UIApplication) {
