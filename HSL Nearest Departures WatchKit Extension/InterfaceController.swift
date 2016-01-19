@@ -5,10 +5,9 @@ import WatchConnectivity
 
 public class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
-    @IBOutlet var nearestStop: WKInterfaceLabel!
-    @IBOutlet var lineNumber: WKInterfaceLabel!
-    @IBOutlet var destination: WKInterfaceLabel!
-    @IBOutlet var departureTime: WKInterfaceLabel!
+    @IBOutlet var nearestStopsTable: WKInterfaceTable!
+
+    var nearestStops = [String: String]()
 
     var lat: Double = 0
     var lon: Double = 0
@@ -22,6 +21,12 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
 
+    override public func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+        let row = table.rowControllerAtIndex(rowIndex) as! NearestStopsRow
+
+        self.pushControllerWithName("NextDeparturesInterfaceController", context: ["stopCode": row.code])
+    }
+    
     override public func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
 
@@ -42,23 +47,31 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
     public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         NSLog("Received departure information from iOS companion app")
-        self.updateInterface(message)
+        nearestStops = message["nearestStops"] as! [String: String]
+        self.updateInterface(nearestStops)
     }
 
     @IBAction func refreshClick() {
         session!.sendMessage(["refresh": true],
-            replyHandler: {departureInfo in
-                self.updateInterface(departureInfo)
+            replyHandler: {message in
+                self.updateInterface(message["nearestStops"] as! [String: String])
             },
             errorHandler: {error in
                 NSLog("Error sending refresh message to iOS companion app: " + error.description)
-            })
+            }
+        )
     }
 
-    private func updateInterface(departureInfo: Dictionary<String, AnyObject>) {
-        self.nearestStop.setText(String(departureInfo["stopName"]!))
-        self.departureTime.setText(String(departureInfo["departureTime"]!))
-        self.lineNumber.setText(String(departureInfo["lineNumber"]!))
-        self.destination.setText(String(departureInfo["destination"]!))
+    private func updateInterface(nearestStops: [String: String]) {
+        nearestStopsTable.setNumberOfRows(nearestStops.count, withRowType: "nearestStopsRow")
+        var i: Int = 0
+        for (code, name) in nearestStops {
+            let row: AnyObject? = nearestStopsTable.rowControllerAtIndex(i)
+            let nearestStopRow = row as! NearestStopsRow
+            nearestStopRow.code = code
+            nearestStopRow.stopName.setText(name)
+            nearestStopRow.stopCode.setText(code)
+            i++
+        }
     }
 }

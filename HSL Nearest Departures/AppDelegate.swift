@@ -43,24 +43,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
 
         NSLog("Got new location data")
 
-        HSL.getDepartureInfo(lat, lon: lon, successCallback: updateViews)
+        HSL.getNearestStops(lat, lon: lon, successCallback: updateViews)
     }
 
-    private func updateViews(departureInfo: Dictionary<String, AnyObject>) {
+    private func updateViews(nearestStops: [String: String]) {
         if let viewController = self.window!.rootViewController! as? ViewController {
             dispatch_async(dispatch_get_main_queue(), {
-                viewController.updateView(departureInfo)
+                viewController.updateView(nearestStops)
             })
         }
 
         if (session!.reachable) {
-            sendDepartureInfoToWatch(departureInfo)
+            sendNearestStopsToWatch(nearestStops)
         }
     }
 
-    private func sendDepartureInfoToWatch(departureInfo: Dictionary<String, AnyObject>) {
+    private func sendNearestStopsToWatch(nearestStops: [String: String]) {
         NSLog("Sending departure information to Apple Watch")
-        self.session!.sendMessage(departureInfo,
+        self.session!.sendMessage(["nearestStops": nearestStops],
             replyHandler: {r in NSLog("Got reply")},
             errorHandler: { error in
                 NSLog("Error sending departure information to Apple Watch: " + error.description)
@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
 
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         if let _ = message["refresh"] as? Bool {
-            HSL.getDepartureInfo(lat, lon: lon, successCallback: sendDepartureInfoToWatch)
+            HSL.getNearestStops(lat, lon: lon, successCallback: sendNearestStopsToWatch)
         }
     }
 

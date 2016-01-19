@@ -10,23 +10,26 @@
             <objects>
                 <controller identifier="NearestDeparture" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="HSL_Nearest_Departures_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label width="131.5" height="20" alignment="center" text="-" textAlignment="center" id="zuU-O5-6aW">
-                            <fontDescription key="font" type="system" pointSize="12"/>
-                        </label>
-                        <separator width="119" alignment="center" id="wmZ-91-N85">
-                            <color key="color" red="0.49001736111111116" green="0.49001736111111116" blue="0.49001736111111116" alpha="1" colorSpace="calibratedRGB"/>
-                        </separator>
-                        <label width="129.5" height="42.5" alignment="center" text="-" textAlignment="center" id="fuQ-kc-FOg">
-                            <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="font" type="system" pointSize="42"/>
-                        </label>
-                        <label width="149" height="47.5" alignment="center" text="-" textAlignment="center" numberOfLines="3" id="bX6-Wp-NHu">
-                            <fontDescription key="font" type="system" pointSize="13"/>
-                        </label>
-                        <label width="132.5" alignment="center" text="00:00" textAlignment="center" id="Hb4-yN-2Rl">
-                            <color key="textColor" red="1" green="0.094197500092421449" blue="0.084066852040315942" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
-                        </label>
+                        <table alignment="left" id="ozD-8f-EWu">
+                            <items>
+                                <tableRow identifier="nearestStopsRow" id="BHl-j5-Xp9" customClass="NearestStopsRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" layout="vertical" id="c57-EP-iHN">
+                                        <items>
+                                            <label alignment="left" text="Senaatintori, Helsinki" id="MqK-Dm-MjV">
+                                                <fontDescription key="font" type="system" pointSize="11"/>
+                                            </label>
+                                            <label alignment="left" verticalAlignment="bottom" text="Label" id="vsB-Pc-TgV">
+                                                <fontDescription key="font" type="system" pointSize="12"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="stopCode" destination="vsB-Pc-TgV" id="Q6N-3K-9Tr"/>
+                                        <outlet property="stopName" destination="MqK-Dm-MjV" id="pLz-56-doz"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
                     <menu key="menu" id="U2e-y4-dEm">
                         <items>
@@ -38,14 +41,22 @@
                         </items>
                     </menu>
                     <connections>
-                        <outlet property="departureTime" destination="Hb4-yN-2Rl" id="0Yu-dw-bEb"/>
-                        <outlet property="destination" destination="bX6-Wp-NHu" id="Lxx-an-pqX"/>
-                        <outlet property="lineNumber" destination="fuQ-kc-FOg" id="5OA-hi-Na9"/>
-                        <outlet property="nearestStop" destination="zuU-O5-6aW" id="p3u-nh-0V0"/>
+                        <outlet property="nearestStopsTable" destination="ozD-8f-EWu" id="HqA-dv-pen"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="349.25"/>
+        </scene>
+        <!--NextDeparturesInterfaceController-->
+        <scene sceneID="Tj8-do-g3U">
+            <objects>
+                <controller identifier="NextDeparturesInterfaceController" id="nCh-Ep-WhF" customClass="NextDeparturesInterfaceController" customModule="HSL_Nearest_Departures_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Label" id="vUV-vD-xc0"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="502" y="349"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
