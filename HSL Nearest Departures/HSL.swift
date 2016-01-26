@@ -49,7 +49,6 @@ public class HSL {
         }
     }
 
-
     static func getNextDeparturesForStop(stopCode: String, callback: (NSArray) -> Void) {
         HTTPGetJSONArray(
             "http://api.reittiopas.fi/hsl/prod/" +
@@ -57,20 +56,50 @@ public class HSL {
                 "&pass=***REMOVED***" +
                 "&request=stop" +
                 "&code=" + stopCode
-            ) {
-                (data: NSArray, error: String?) -> Void in
-                if error != nil {
-                    print("Error getting JSON")
-                    print(error)
-                } else {
-                    if let feed = data.firstObject as! NSDictionary!,
-                        let departures = feed["departures"] as? NSArray?{
-                            callback(departures!)
+        ) {
+            (data: NSArray, error: String?) -> Void in
+            if error != nil {
+                print("Error getting JSON")
+                print(error)
+            } else {
+                if let feed = data.firstObject as? NSDictionary,
+                let departures = feed["departures"] as? NSArray{
+                    var nextDepartures = [[String: String]]()
+
+                    var counter = 0
+                    for departure in departures{
+                        if let lineCode = departure["code"] as? String,
+                        let time = departure["time"] as? Int{
+                            var nextDeparture = [String: String]()
+                            nextDeparture["time"] = formatTimeString(String(time))
+                            nextDeparture["code"] = lineCode
+
+                            nextDepartures.append(nextDeparture)
+//                            getLineInfo(lineCode) {
+//                                (data: NSDictionary) -> Void in
+//                                if let shortCode = data["code_short"] as? String,
+//                                let name = data["name"] as? String{
+//                                    nextDeparture["code"] = shortCode
+//                                    nextDeparture["name"] = name
+//                                    nextDepartures.append(nextDeparture)
+//                                    counter++
+//                                    if(counter == departures.count) {
+//                                        callback(nextDepartures)
+//                                    }
+//                                }
+//                            }
+                        }
                     }
+                    callback(nextDepartures)
                 }
+            }
         }
     }
 
+//                        let nextDeparture = departures.firstObject as! NSDictionary!,
+//                        let time = nextDeparture["time"] as! NSNumber!,
+//                        let code = nextDeparture["code"] as! String!{
+//                            let departureInfo: [String: String] = ["code": code, "time": String(time)]
 
     static func getLineInfo(lineCode: String, callback: (NSDictionary) -> Void) {
         HTTPGetJSONArray(
@@ -183,3 +212,26 @@ public class HSL {
     }
 }
 
+//                self.getNextDeparturesForStop(stopInfo["details"]!!["code"] as! String, callback: {nextDepartures in
+//
+//                    var departures = [NSDictionary]()
+//
+//                    for departure in nextDepartures {
+//                        departureTime = formatTimeString(String(departure["time"]))
+//
+//                        self.getLineInfo(departure["code"] as! String, callback: {lineInfo in
+//                            lineNumber = lineInfo["code"]! as! String
+//                            destination = lineInfo["name"]! as! String
+//
+//                            let departureInfo = [
+//                                "stopName": stopName,
+//                                "departureTime": departureTime,
+//                                "lineNumber": lineNumber,
+//                                "destination": destination
+//                            ]
+//
+//                            departures.append(departureInfo)
+//                        })
+//                        successCallback(departureInfo: departures)
+//                    }
+//                })

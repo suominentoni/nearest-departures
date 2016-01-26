@@ -24,18 +24,34 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
     override public func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
         let row = table.rowControllerAtIndex(rowIndex) as! NearestStopsRow
 
-        self.pushControllerWithName("NextDeparturesInterfaceController", context: ["stopCode": row.code])
+        session!.sendMessage(
+            ["stopCode": row.code],
+            replyHandler: {message in
+                let nextDepartures = message["nextDepartures"] as! NSArray
+                self.pushControllerWithName("NextDeparturesInterfaceController", context: ["nextDepartures": nextDepartures])
+            },
+            errorHandler: {m in NSLog("Error getting next departures from companion app")})
+
     }
     
     override public func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
 
         if (WCSession.isSupported()) {
+            if(WCSession.defaultSession().reachable) {
+                NSLog("session IS reachable")
+            }
             session = WCSession.defaultSession()
             session!.sendMessage(
                 ["wakeUp": "wakeUp"],
-                replyHandler: {m in NSLog("iOS companion app running")},
-                errorHandler: {m in NSLog("Error waking up iOS companion app")})
+                replyHandler: {
+                    m in
+                        NSLog("iOS companion app running")
+                },
+                errorHandler: {
+                    m in
+                        NSLog("Error waking up iOS companion app: " + m.description)
+            })
         }
     }
 
@@ -47,8 +63,9 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
     public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         NSLog("Received departure information from iOS companion app")
-        nearestStops = message["nearestStops"] as! [String: String]
-        self.updateInterface(nearestStops)
+        if let nearestStops = message["nearestStops"] as? [String: String] {
+            self.updateInterface(nearestStops)
+        }
     }
 
     @IBAction func refreshClick() {

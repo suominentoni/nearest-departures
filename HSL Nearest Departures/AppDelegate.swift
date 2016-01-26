@@ -58,19 +58,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
         }
     }
 
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String: AnyObject]) -> Void) {
+        if let _ = message["refresh"] as? Bool {
+            HSL.getNearestStops(lat, lon: lon, successCallback: sendNearestStopsToWatch)
+        }
+        else if let stopCode = message["stopCode"] as? String {
+            HSL.getNextDeparturesForStop(stopCode, callback: {(nextDepartures: NSArray) -> Void in
+                NSLog("Replying to watch message with next departures for stop " + stopCode)
+                replyHandler(["nextDepartures": nextDepartures])
+            })
+        }
+    }
+
     private func sendNearestStopsToWatch(nearestStops: [String: String]) {
-        NSLog("Sending departure information to Apple Watch")
+        NSLog("Sending nearest stops to Apple Watch")
         self.session!.sendMessage(["nearestStops": nearestStops],
             replyHandler: {r in NSLog("Got reply")},
             errorHandler: { error in
                 NSLog("Error sending departure information to Apple Watch: " + error.description)
         })
-    }
-
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
-        if let _ = message["refresh"] as? Bool {
-            HSL.getNearestStops(lat, lon: lon, successCallback: sendNearestStopsToWatch)
-        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

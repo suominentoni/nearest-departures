@@ -29,6 +29,7 @@
 		53E4ECF41C2C06EC002F0107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECF31C2C06EC002F0107 /* Assets.xcassets */; };
 		53ED7E351C3BF38E00BAE367 /* HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED7E341C3BF38E00BAE367 /* HSL.swift */; };
 		53F198551C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F198541C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift */; };
+		53F536BB1C576A1C009C7039 /* NextDeparturesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F536BA1C576A1C009C7039 /* NextDeparturesRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		53E4ECF51C2C06EC002F0107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53ED7E341C3BF38E00BAE367 /* HSL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSL.swift; sourceTree = "<group>"; };
 		53F198541C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDeparturesInterfaceController.swift; sourceTree = "<group>"; };
+		53F536BA1C576A1C009C7039 /* NextDeparturesRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDeparturesRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 				53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */,
 				533E1C4D1C512963001EA50B /* NearestStopsRow.swift */,
 				53F198541C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift */,
+				53F536BA1C576A1C009C7039 /* NextDeparturesRow.swift */,
 			);
 			path = "HSL Nearest Departures WatchKit Extension";
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53F536BB1C576A1C009C7039 /* NextDeparturesRow.swift in Sources */,
 				53E4ECF21C2C06EC002F0107 /* NotificationController.swift in Sources */,
 				53F198551C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift in Sources */,
 				535D39741C38140E008D59C3 /* InterfaceController.swift in Sources */,

@@ -1,22 +1,35 @@
-//
-//  NextDeparturesInterfaceController.swift
-//  HSL Nearest Departures
-//
-//  Created by Toni Suominen on 22/01/16.
-//  Copyright © 2016 Toni Suominen. All rights reserved.
-//
-
 import WatchKit
 import Foundation
 
 
 class NextDeparturesInterfaceController: WKInterfaceController {
 
+    @IBOutlet var nextDeparturesTable: WKInterfaceTable!
+
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+        if let nextDepartures = context!["nextDepartures"] as? NSArray {
+            updateView(nextDepartures)
+        }
 
-        NSLog("AWAKE" + (context!["foo"] as! String))
         // Configure interface objects here.
+    }
+
+    private func updateView(nextDepartures: NSArray) {
+        NSLog("Update view")
+        nextDeparturesTable.setNumberOfRows(nextDepartures.count, withRowType: "nextDepartureRow")
+
+        var i: Int = 0
+        for departure in nextDepartures {
+            if let time = departure["time"] as? String,
+            let code = departure["code"] as? String {
+                let row: AnyObject? = nextDeparturesTable.rowControllerAtIndex(i)
+                let nextDepartureRow = row as! NextDeparturesRow
+                nextDepartureRow.time.setText(time)
+                nextDepartureRow.code.setText(code)
+                i++
+            }
+        }
     }
 
     override func willActivate() {

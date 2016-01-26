@@ -52,8 +52,26 @@
             <objects>
                 <controller identifier="NextDeparturesInterfaceController" id="nCh-Ep-WhF" customClass="NextDeparturesInterfaceController" customModule="HSL_Nearest_Departures_WatchKit_Extension">
                     <items>
-                        <label alignment="left" text="Label" id="vUV-vD-xc0"/>
+                        <table alignment="left" id="0ff-cT-m2o">
+                            <items>
+                                <tableRow identifier="nextDepartureRow" id="gtV-XY-C6Y" customClass="NextDeparturesRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="EY1-Mj-J9e">
+                                        <items>
+                                            <label alignment="left" text="Label" id="GXy-H5-Hpq"/>
+                                            <label alignment="left" text="Label" id="jWL-FK-o7Q"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="code" destination="jWL-FK-o7Q" id="jRd-WM-huH"/>
+                                        <outlet property="time" destination="GXy-H5-Hpq" id="efm-KO-PUY"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
+                    <connections>
+                        <outlet property="nextDeparturesTable" destination="0ff-cT-m2o" id="s0Y-ZO-3zF"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="502" y="349"/>
