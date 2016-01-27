@@ -59,10 +59,12 @@
                                         <items>
                                             <label alignment="left" text="Label" id="GXy-H5-Hpq"/>
                                             <label alignment="left" text="Label" id="jWL-FK-o7Q"/>
+                                            <label alignment="left" text="Label" id="M9B-fm-1kt"/>
                                         </items>
                                     </group>
                                     <connections>
                                         <outlet property="code" destination="jWL-FK-o7Q" id="jRd-WM-huH"/>
+                                        <outlet property="name" destination="M9B-fm-1kt" id="p6s-Ry-o53"/>
                                         <outlet property="time" destination="GXy-H5-Hpq" id="efm-KO-PUY"/>
                                     </connections>
                                 </tableRow>

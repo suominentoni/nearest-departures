@@ -68,6 +68,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
                 replyHandler(["nextDepartures": nextDepartures])
             })
         }
+        else if let longCode = message["longCode"] as? String {
+            HSL.getLineInfo(longCode, callback: {(lineInfo: NSDictionary) -> Void in
+                replyHandler(["lineInfo": lineInfo])
+            })
+        }
     }
 
     private func sendNearestStopsToWatch(nearestStops: [String: String]) {

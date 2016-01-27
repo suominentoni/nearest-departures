@@ -1,18 +1,25 @@
 import WatchKit
 import Foundation
-
+import WatchConnectivity
 
 class NextDeparturesInterfaceController: WKInterfaceController {
+
+    var connectivitySession: WCSession?
 
     @IBOutlet var nextDeparturesTable: WKInterfaceTable!
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+
+
+        if let rootInterfaceController = WKExtension.sharedExtension().rootInterfaceController as? InterfaceController,
+        let session = rootInterfaceController.session {
+            connectivitySession = session
+        }
+
         if let nextDepartures = context!["nextDepartures"] as? NSArray {
             updateView(nextDepartures)
         }
-
-        // Configure interface objects here.
     }
 
     private func updateView(nextDepartures: NSArray) {
@@ -27,6 +34,21 @@ class NextDeparturesInterfaceController: WKInterfaceController {
                 let nextDepartureRow = row as! NextDeparturesRow
                 nextDepartureRow.time.setText(time)
                 nextDepartureRow.code.setText(code)
+                if (connectivitySession != nil) {
+                    connectivitySession!.sendMessage(["longCode": code],
+                        replyHandler: {(message: [String: AnyObject]) -> Void in
+                            if let lineInfo = message["lineInfo"] as? NSDictionary,
+                            let shortCode = lineInfo["code"] as? String,
+                            let name = lineInfo["name"] as? String {
+                                nextDepartureRow.code.setText(shortCode)
+                                nextDepartureRow.name.setText(name)
+                            }
+                        },
+                        errorHandler: {(error: NSError) -> Void in
+                            NSLog("Error sending long code message to companion app")
+                        }
+                    )
+                }
                 i++
             }
         }
@@ -41,5 +63,4 @@ class NextDeparturesInterfaceController: WKInterfaceController {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-
 }
