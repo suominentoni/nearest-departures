@@ -11,7 +11,6 @@ class NextDeparturesInterfaceController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
 
-
         if let rootInterfaceController = WKExtension.sharedExtension().rootInterfaceController as? InterfaceController,
         let session = rootInterfaceController.session {
             connectivitySession = session
