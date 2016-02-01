@@ -2,17 +2,26 @@ import Foundation
 
 public class HSL {
 
-    static func getNearestStops(lat: Double, lon: Double, successCallback: (departureInfo: [String: String]) -> Void) {
+    static func getNearestStops(lat: Double, lon: Double, successCallback: (departureInfo: [NSDictionary]) -> Void) {
 
-        self.getNearestStopsInfo(String(lat), lon: String(lon), limit: 10) {
+        self.getNearestStopsInfo(String(lat), lon: String(lon)) {
         (stopInfos:NSArray) -> Void in
-            var nearestStops = [String: String]()
+            var nearestStops = [NSDictionary]()
 
-            for stopInfo in stopInfos {
-                if let stopName = stopInfo["name"] as! String?,
-                let details = stopInfo["details"] as! NSDictionary?,
-                let code = details["code"] as! String? {
-                    nearestStops[code] = stopName
+            for item in stopInfos {
+                var stopInfo = [String: String]()
+
+                if let name = item["name"] as? String,
+                let codeShort = item["codeShort"] as? String,
+                let distance = item["dist"] as? Int,
+                let code = item["code"] as? String {
+                    stopInfo = [
+                        "name": name,
+                        "distance": String(distance),
+                        "code": code,
+                        "codeShort": codeShort
+                    ]
+                    nearestStops.append(stopInfo)
                 }
 
             }
@@ -25,7 +34,28 @@ public class HSL {
         return time
     }
 
-    static func getNearestStopsInfo(lat:String, lon:String, limit: Int, callback: (NSArray) -> Void) {
+    static func getNearestStopsInfo(lat:String, lon:String, callback: (NSArray) -> Void) {
+        let query = "http://api.reittiopas.fi/hsl/prod/" +
+        "?user=suominentoni" +
+        "&pass=***REMOVED***" +
+        "&request=stops_area&" +
+        "&epsg_in=wgs84" +
+        "&center_coordinate=" +
+        String(lon) + "," +
+        String(lat) +
+        "&diameter=500"
+
+        HTTPGetJSONArray(query) {
+                (data: NSArray, error: String?) -> Void in
+                if error != nil {
+                    print("Error getting JSON")
+                    print(error)
+                } else {
+                    callback(data)
+                }
+        }
+    }
+    static func getNearestStopsInfoByReverseGeocoding(lat:String, lon:String, limit: Int, callback: (NSArray) -> Void) {
         let query = "http://api.reittiopas.fi/hsl/prod/" +
             "?user=suominentoni" +
             "&pass=***REMOVED***" +
@@ -114,9 +144,9 @@ public class HSL {
                     print("Error getting JSON")
                     print(error)
                 } else {
-                    if let feed = data.firstObject as! NSDictionary!,
-                        let code = feed["code_short"] as! String!,
-                        let name = feed["name"] as! String!{
+                    if let feed = data.firstObject as? NSDictionary,
+                        let code = feed["code_short"] as? String,
+                        let name = feed["name"] as? String{
                             let lineInfo: [String: String] = ["code": code, "name": name]
                             callback(lineInfo)
                     }

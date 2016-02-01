@@ -37,24 +37,23 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
     override public func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         if (WCSession.isSupported()) {
+            session = WCSession.defaultSession()
+
             if(!WCSession.defaultSession().reachable) {
                 NSLog("Watch connectivity session is not reachable")
             }
             if(session!.iOSDeviceNeedsUnlockAfterRebootForReachability){
                 NSLog("iOS device needs unlock for reachability")
             }
-            session = WCSession.defaultSession()
 
 
             session!.sendMessage(
                 ["wakeUp": "wakeUp"],
                 replyHandler: {
-                    m in
-                        NSLog("iOS companion app running")
+                    m in NSLog("iOS companion app running")
                 },
                 errorHandler: {
-                    m in
-                        NSLog("Error waking up iOS companion app: " + m.description)
+                    m in NSLog("Error waking up iOS companion app: " + m.description)
             })
         }
     }
@@ -67,7 +66,7 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
     public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         NSLog("Received departure information from iOS companion app")
-        if let nearestStops = message["nearestStops"] as? [String: String] {
+        if let nearestStops = message["nearestStops"] as? [NSDictionary] {
             self.updateInterface(nearestStops)
         }
     }
@@ -75,7 +74,7 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBAction func refreshInterface() {
         session!.sendMessage(["refresh": true],
             replyHandler: {message in
-                self.updateInterface(message["nearestStops"] as! [String: String])
+                self.updateInterface(message["nearestStops"] as! [NSDictionary])
             },
             errorHandler: {error in
                 NSLog("Error sending refresh message to iOS companion app: " + error.description)
@@ -83,16 +82,23 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
         )
     }
 
-    private func updateInterface(nearestStops: [String: String]) {
+    private func updateInterface(nearestStops: [NSDictionary]) {
         nearestStopsTable.setNumberOfRows(nearestStops.count, withRowType: "nearestStopsRow")
         var i: Int = 0
-        for (code, name) in nearestStops {
+        for info in nearestStops {
             let row: AnyObject? = nearestStopsTable.rowControllerAtIndex(i)
             let nearestStopRow = row as! NearestStopsRow
-            nearestStopRow.code = code
-            nearestStopRow.stopName.setText(name)
-            nearestStopRow.stopCode.setText(code)
-            i++
+
+            if let name = info["name"] as? String,
+            let code = info["code"] as? String,
+            let codeShort = info["codeShort"] as? String,
+            let distance = info["distance"] as? String {
+                nearestStopRow.code = code
+                nearestStopRow.stopName.setText(name)
+                nearestStopRow.stopCode.setText(codeShort)
+                nearestStopRow.distance.setText(distance + " m")
+                i++
+            }
         }
     }
 

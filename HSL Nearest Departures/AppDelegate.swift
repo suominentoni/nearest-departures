@@ -46,10 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
         HSL.getNearestStops(lat, lon: lon, successCallback: updateViews)
     }
 
-    private func updateViews(nearestStops: [String: String]) {
-        if let viewController = self.window!.rootViewController! as? ViewController {
+    private func updateViews(nearestStops: [NSDictionary]) {
+        if let viewController = self.window!.rootViewController! as? NearestStopsTableViewController {
             dispatch_async(dispatch_get_main_queue(), {
-                viewController.updateView(nearestStops)
+                viewController.reloadWithNewData(nearestStops)
             })
         }
 
@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
         }
     }
 
-    private func sendNearestStopsToWatch(nearestStops: [String: String]) {
+    private func sendNearestStopsToWatch(nearestStops: [NSDictionary]) {
         NSLog("Sending nearest stops to Apple Watch")
         self.session!.sendMessage(["nearestStops": nearestStops],
             replyHandler: {r in NSLog("Got reply")},
