@@ -36,12 +36,16 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     override public func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-
         if (WCSession.isSupported()) {
-            if(WCSession.defaultSession().reachable) {
-                NSLog("session IS reachable")
+            if(!WCSession.defaultSession().reachable) {
+                NSLog("Watch connectivity session is not reachable")
+            }
+            if(session!.iOSDeviceNeedsUnlockAfterRebootForReachability){
+                NSLog("iOS device needs unlock for reachability")
             }
             session = WCSession.defaultSession()
+
+
             session!.sendMessage(
                 ["wakeUp": "wakeUp"],
                 replyHandler: {
@@ -68,7 +72,7 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
 
-    @IBAction func refreshClick() {
+    @IBAction func refreshInterface() {
         session!.sendMessage(["refresh": true],
             replyHandler: {message in
                 self.updateInterface(message["nearestStops"] as! [String: String])
@@ -90,5 +94,9 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
             nearestStopRow.stopCode.setText(code)
             i++
         }
+    }
+
+    override public func willActivate() {
+        refreshInterface()
     }
 }
