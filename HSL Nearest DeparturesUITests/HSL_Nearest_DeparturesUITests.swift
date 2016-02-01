@@ -1,11 +1,3 @@
-//
-//  HSL_Nearest_DeparturesUITests.swift
-//  HSL Nearest DeparturesUITests
-//
-//  Created by Toni Suominen on 24/12/15.
-//  Copyright © 2015 Toni Suominen. All rights reserved.
-//
-
 import XCTest
 
 class HSL_Nearest_DeparturesUITests: XCTestCase {

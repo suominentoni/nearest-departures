@@ -1,11 +1,3 @@
-//
-//  HSL_Nearest_DeparturesTests.swift
-//  HSL Nearest DeparturesTests
-//
-//  Created by Toni Suominen on 24/12/15.
-//  Copyright © 2015 Toni Suominen. All rights reserved.
-//
-
 import XCTest
 @testable import HSL_Nearest_Departures
 
@@ -22,6 +14,9 @@ class HSL_Nearest_DeparturesTests: XCTestCase {
     }
     
     func testExample() {
+        class MockHSL: HSL {
+
+        }
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
