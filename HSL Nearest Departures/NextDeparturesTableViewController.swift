@@ -12,6 +12,7 @@ class NextDeparturesTableViewController: UITableViewController {
             self.tableView.reloadData()
         })
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,9 +44,20 @@ class NextDeparturesTableViewController: UITableViewController {
         let departure = self.nextDepartures[indexPath.row]
 
         if let code = departure["code"] as? String,
-            let name = departure["time"] as? String {
-            cell.code.text = code
-            cell.name.text = name
+            let time = departure["time"] as? String {
+            dispatch_async(dispatch_get_main_queue(), {
+                cell.code.text = code
+                cell.time.text = time
+            })
+            HSL.getLineInfo(code, callback: {(lineInfo: NSDictionary) -> Void in
+                if let shortCode = lineInfo["code"] as? String,
+                let name = lineInfo["name"] as? String {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        cell.code.text = shortCode
+                        cell.name.text = name
+                    })
+                }
+            })
         }
 
         return cell

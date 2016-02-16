@@ -98,14 +98,11 @@ class NearestStopsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let nextDeparturesViewController = segue.destinationViewController as! NextDeparturesTableViewController
-
 
         if let stopCode = self.nearestStops[self.tableView.indexPathForSelectedRow!.row]["code"] as? String {
+            let nextDeparturesViewController = segue.destinationViewController as! NextDeparturesTableViewController
             nextDeparturesViewController.stopCode = stopCode
         }
 
     }
-
-
 }
