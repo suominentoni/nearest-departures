@@ -72,7 +72,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Title" id="U2w-Ae-zDM">
-                                    <barButtonItem key="leftBarButtonItem" title="Back" id="ONh-P4-rAJ"/>
+                                    <barButtonItem key="leftBarButtonItem" title="Back" id="ONh-P4-rAJ">
+                                        <connections>
+                                            <action selector="back:" destination="Eb7-bQ-n14" id="alN-nz-exQ"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -116,6 +120,9 @@
                             <outlet property="delegate" destination="Eb7-bQ-n14" id="cMN-Er-0pE"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="backButton" destination="ONh-P4-rAJ" id="IDh-nY-J74"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yL-Hn-Omh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

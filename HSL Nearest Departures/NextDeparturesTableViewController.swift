@@ -5,6 +5,7 @@ class NextDeparturesTableViewController: UITableViewController {
 
     var nextDepartures: [NSDictionary] = [NSDictionary]()
     var stopCode: String = String()
+    @IBOutlet weak var backButton: UIBarButtonItem!
 
     override func viewWillAppear(animated: Bool) {
         HSL.getNextDeparturesForStop(self.stopCode, callback: {(nextDepartures: NSArray) -> Void in
@@ -63,6 +64,9 @@ class NextDeparturesTableViewController: UITableViewController {
         return cell
     }
 
+    @IBAction func back(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -98,14 +102,5 @@ class NextDeparturesTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
