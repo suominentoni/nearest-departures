@@ -8,15 +8,17 @@ class NextDeparturesTableViewController: UITableViewController {
     @IBOutlet weak var backButton: UIBarButtonItem!
 
     override func viewWillAppear(animated: Bool) {
-        HSL.getNextDeparturesForStop(self.stopCode, callback: {(nextDepartures: NSArray) -> Void in
-            self.nextDepartures = nextDepartures as! [NSDictionary]
-            self.tableView.reloadData()
-        })
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        HSL.getNextDeparturesForStop(self.stopCode, callback: {(nextDepartures: NSArray) -> Void in
+            self.nextDepartures = nextDepartures as! [NSDictionary]
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+            })
+        })
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,8 +31,6 @@ class NextDeparturesTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -40,6 +40,7 @@ class NextDeparturesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCellWithIdentifier("NextDepartureCell", forIndexPath: indexPath) as! NextDepartureCell
 
         let departure = self.nextDepartures[indexPath.row]
