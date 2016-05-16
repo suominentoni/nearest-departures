@@ -12,6 +12,7 @@ class NextDeparturesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.edgesForExtendedLayout = UIRectEdge.Top
 
         HSL.getNextDeparturesForStop(self.stopCode, callback: {(nextDepartures: NSArray) -> Void in
             self.nextDepartures = nextDepartures as! [NSDictionary]
