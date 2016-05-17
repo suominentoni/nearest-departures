@@ -7,9 +7,6 @@ class NextDeparturesTableViewController: UITableViewController {
     var stopCode: String = String()
     @IBOutlet weak var backButton: UIBarButtonItem!
 
-    override func viewWillAppear(animated: Bool) {
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.Top
