@@ -47,10 +47,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
     }
 
     private func updateViews(nearestStops: [NSDictionary]) {
-        if let viewController = self.window!.rootViewController! as? NearestStopsTableViewController {
-            dispatch_async(dispatch_get_main_queue(), {
-                viewController.reloadWithNewData(nearestStops)
-            })
+        if let navController = self.window!.rootViewController! as? UINavigationController {
+            if let viewController = navController.viewControllers[0] as? NearestStopsTableViewController {
+                dispatch_async(dispatch_get_main_queue(), {
+                    viewController.reloadWithNewData(nearestStops)
+                })
+            }
         }
 
         if session != nil && session!.reachable {
