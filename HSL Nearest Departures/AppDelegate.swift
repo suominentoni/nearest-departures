@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
             })
         }
 
-        if (session!.reachable) {
+        if session != nil && session!.reachable {
             sendNearestStopsToWatch(nearestStops)
         }
     }
