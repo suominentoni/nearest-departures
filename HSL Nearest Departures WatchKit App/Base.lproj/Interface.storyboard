@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="10032"/>
     </dependencies>
     <scenes>
         <!--NearestDeparture-->
@@ -17,17 +17,17 @@
                                         <items>
                                             <group width="1" height="30" alignment="left" id="HwZ-Gq-rVB">
                                                 <items>
-                                                    <label alignment="left" verticalAlignment="center" text="Senaatintori Lauttasaari, Helsinki" textAlignment="left" numberOfLines="2" id="MqK-Dm-MjV">
+                                                    <label alignment="left" verticalAlignment="center" text="-" textAlignment="left" numberOfLines="2" id="MqK-Dm-MjV">
                                                         <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
                                                     </label>
                                                 </items>
                                             </group>
                                             <group width="1" alignment="left" id="2pM-Yu-2N9">
                                                 <items>
-                                                    <label alignment="left" verticalAlignment="bottom" text="10023" textAlignment="left" id="vsB-Pc-TgV">
+                                                    <label alignment="left" verticalAlignment="bottom" text="-" textAlignment="left" id="vsB-Pc-TgV">
                                                         <fontDescription key="font" type="system" pointSize="14"/>
                                                     </label>
-                                                    <label alignment="right" text="121 m" id="v1g-ie-YRu">
+                                                    <label alignment="right" text="0 m" id="v1g-ie-YRu">
                                                         <fontDescription key="font" type="system" pointSize="14"/>
                                                     </label>
                                                 </items>
@@ -72,7 +72,7 @@
                                         <items>
                                             <group width="1" alignment="left" id="q2W-2t-Xr6">
                                                 <items>
-                                                    <label alignment="left" text="6A" id="jWL-FK-o7Q">
+                                                    <label alignment="left" text="-" id="jWL-FK-o7Q">
                                                         <color key="textColor" red="0.00040824659794813645" green="1" blue="0.016464297960415597" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="font" type="system" weight="semibold" pointSize="16"/>
                                                     </label>
@@ -84,7 +84,7 @@
                                             </group>
                                             <group width="1" height="41" alignment="center" verticalAlignment="center" id="7dF-0S-esJ">
                                                 <items>
-                                                    <label alignment="center" verticalAlignment="center" text="Rautatieasema - Espoon Keskus - Lauttasaari" textAlignment="center" numberOfLines="3" id="M9B-fm-1kt">
+                                                    <label alignment="center" verticalAlignment="center" text="-" textAlignment="center" numberOfLines="3" id="M9B-fm-1kt">
                                                         <fontDescription key="font" type="system" pointSize="11"/>
                                                     </label>
                                                 </items>
