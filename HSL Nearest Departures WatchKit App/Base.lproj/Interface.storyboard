@@ -25,6 +25,7 @@
                                             <group width="1" alignment="left" id="2pM-Yu-2N9">
                                                 <items>
                                                     <label alignment="left" verticalAlignment="bottom" text="-" textAlignment="left" id="vsB-Pc-TgV">
+                                                        <color key="textColor" red="0.687042236328125" green="0.687042236328125" blue="0.687042236328125" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="font" type="system" pointSize="14"/>
                                                     </label>
                                                     <label alignment="right" text="0 m" id="v1g-ie-YRu">
