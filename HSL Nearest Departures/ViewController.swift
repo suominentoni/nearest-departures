@@ -13,9 +13,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func updateView(departures: [String: String]) {
-        for departureInfo in departures {
-        }
+    func updateView(departures: [NSDictionary]) {
     }
 }
 

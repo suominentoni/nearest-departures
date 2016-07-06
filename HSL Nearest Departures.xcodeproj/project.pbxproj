@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5329C5901C70CCCC000E24F9 /* NearestStopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C58F1C70CCCC000E24F9 /* NearestStopsTableViewController.swift */; };
+		5329C5921C70D448000E24F9 /* NearestStopsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5911C70D448000E24F9 /* NearestStopsCell.swift */; };
+		5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */; };
+		5329C5961C70DFC9000E24F9 /* NextDepartureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */; };
 		533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E1C4D1C512963001EA50B /* NearestStopsRow.swift */; };
 		533E1C511C527B42001EA50B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDC1C2C06EC002F0107 /* Interface.storyboard */; };
 		535D39741C38140E008D59C3 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* InterfaceController.swift */; };
@@ -15,7 +19,7 @@
 		53B284B91C33D5FB003C8877 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 53B284B61C33D5FB003C8877 /* default.gpx */; };
 		53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */; };
 		53E4ECB51C2C06EC002F0107 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB41C2C06EC002F0107 /* ViewController.swift */; };
-		53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB61C2C06EC002F0107 /* Main.storyboard */; };
+		53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB61C2C06EC002F0107 /* Main.storyboard */; settings = {ASSET_TAGS = (stopCode, ); }; };
 		53E4ECBA1C2C06EC002F0107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB91C2C06EC002F0107 /* Assets.xcassets */; };
 		53E4ECBD1C2C06EC002F0107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECBB1C2C06EC002F0107 /* LaunchScreen.storyboard */; };
 		53E4ECC81C2C06EC002F0107 /* HSL_Nearest_DeparturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECC71C2C06EC002F0107 /* HSL_Nearest_DeparturesTests.swift */; };
@@ -89,6 +93,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5329C58F1C70CCCC000E24F9 /* NearestStopsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsTableViewController.swift; sourceTree = "<group>"; };
+		5329C5911C70D448000E24F9 /* NearestStopsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsCell.swift; sourceTree = "<group>"; };
+		5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDeparturesTableViewController.swift; sourceTree = "<group>"; };
+		5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDepartureCell.swift; sourceTree = "<group>"; };
 		533E1C4D1C512963001EA50B /* NearestStopsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsRow.swift; sourceTree = "<group>"; };
 		535D39731C38140E008D59C3 /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -188,6 +196,10 @@
 				53E4ECBB1C2C06EC002F0107 /* LaunchScreen.storyboard */,
 				53E4ECBE1C2C06EC002F0107 /* Info.plist */,
 				53ED7E341C3BF38E00BAE367 /* HSL.swift */,
+				5329C58F1C70CCCC000E24F9 /* NearestStopsTableViewController.swift */,
+				5329C5911C70D448000E24F9 /* NearestStopsCell.swift */,
+				5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */,
+				5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */,
 			);
 			path = "HSL Nearest Departures";
 			sourceTree = "<group>";
@@ -343,6 +355,9 @@
 		53E4ECA71C2C06EC002F0107 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					stopCode,
+				);
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Toni Suominen";
@@ -445,7 +460,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E4ECB51C2C06EC002F0107 /* ViewController.swift in Sources */,
+				5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */,
 				53ED7E351C3BF38E00BAE367 /* HSL.swift in Sources */,
+				5329C5961C70DFC9000E24F9 /* NextDepartureCell.swift in Sources */,
+				5329C5901C70CCCC000E24F9 /* NearestStopsTableViewController.swift in Sources */,
+				5329C5921C70D448000E24F9 /* NearestStopsCell.swift in Sources */,
 				53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

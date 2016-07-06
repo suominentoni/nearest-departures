@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "NearestStopsTableViewController.prepareForSegue(UIStoryboardSegue, sender : AnyObject?) -&gt; ():NearestStopsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.tableView.indexPathForSelectedRow!.row">
+            </PersistentString>
+            <PersistentString
+               value = "self.nearestStops">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
