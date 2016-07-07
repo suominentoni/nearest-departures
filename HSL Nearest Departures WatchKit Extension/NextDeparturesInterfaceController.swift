@@ -64,7 +64,7 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
                         }
                     )
                 }
-                i++
+                i = i + 1
             }
         }
     }

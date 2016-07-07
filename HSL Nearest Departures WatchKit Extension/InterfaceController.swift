@@ -90,7 +90,7 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 nearestStopRow.stopName.setText(name)
                 nearestStopRow.stopCode.setText(codeShort)
                 nearestStopRow.distance.setText(distance + " m")
-                i++
+                i += 1
             }
         }
     }

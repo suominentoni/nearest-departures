@@ -10,3 +10,4 @@ TODO:
 * ND: get each short stop name only once
 * favourite/frequently used stop
 * alert user if no network connection or network problem
+* refactor HSL.swift
