@@ -2,22 +2,38 @@ import WatchKit
 import Foundation
 import WatchConnectivity
 
-class NextDeparturesInterfaceController: WKInterfaceController {
+class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegate {
 
     var connectivitySession: WCSession?
 
     @IBOutlet var nextDeparturesTable: WKInterfaceTable!
 
+    var session: WCSession? {
+        didSet {
+            if let session = session {
+                session.delegate = self
+                session.activateSession()
+            }
+        }
+    }
+
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
 
+        session = WCSession.defaultSession()
         if let rootInterfaceController = WKExtension.sharedExtension().rootInterfaceController as? InterfaceController,
         let session = rootInterfaceController.session {
             connectivitySession = session
         }
 
-        if let nextDepartures = context!["nextDepartures"] as? NSArray {
-            updateView(nextDepartures)
+        if let code = context!["stopCode"] as? String {
+            session!.sendMessage(
+                ["stopCode": code],
+                replyHandler: {message in
+                    let nextDepartures = message["nextDepartures"] as! NSArray
+                    self.updateView(nextDepartures)
+                },
+                errorHandler: {m in NSLog("Error getting next departures from companion app")})
         }
     }
 
