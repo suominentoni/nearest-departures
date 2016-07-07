@@ -9,7 +9,7 @@
         <!--Lähimmät pysäkkisi-->
         <scene sceneID="2Py-lS-yZr">
             <objects>
-                <tableViewController id="LR4-Mp-m1r" customClass="NearestStopsTableViewController" customModule="HSL_Nearest_Departures" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LR4-Mp-m1r" customClass="NearestStopsTableViewController" customModule="Lähimmät_Lähdöt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="PjI-ra-BXE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NearestStopCell" id="BS0-eY-cJt" customClass="NearestStopsCell" customModule="HSL_Nearest_Departures" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NearestStopCell" id="BS0-eY-cJt" customClass="NearestStopsCell" customModule="Lähimmät_Lähdöt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="114.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BS0-eY-cJt" id="GT0-LJ-X3x">
@@ -99,7 +99,7 @@
         <!--Next Departures Table View Controller-->
         <scene sceneID="UtE-Aa-pwX">
             <objects>
-                <tableViewController id="Eb7-bQ-n14" customClass="NextDeparturesTableViewController" customModule="HSL_Nearest_Departures" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Eb7-bQ-n14" customClass="NextDeparturesTableViewController" customModule="Lähimmät_Lähdöt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="84" sectionHeaderHeight="18" sectionFooterHeight="18" id="vV1-S9-bZG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,7 +112,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NextDepartureCell" id="nvl-sb-piI" customClass="NextDepartureCell" customModule="HSL_Nearest_Departures" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NextDepartureCell" id="nvl-sb-piI" customClass="NextDepartureCell" customModule="Lähimmät_Lähdöt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="114.5" width="600" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nvl-sb-piI" id="Hzi-2G-Bm9">

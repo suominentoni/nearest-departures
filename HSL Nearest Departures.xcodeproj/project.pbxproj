@@ -101,7 +101,7 @@
 		535D39731C38140E008D59C3 /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
 		53B284B61C33D5FB003C8877 /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
-		53E4ECAF1C2C06EC002F0107 /* HSL Nearest Departures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HSL Nearest Departures.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		53E4ECAF1C2C06EC002F0107 /* Lähimmät Lähdöt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lähimmät Lähdöt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53E4ECB41C2C06EC002F0107 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		53E4ECB71C2C06EC002F0107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		53E4ECB01C2C06EC002F0107 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				53E4ECAF1C2C06EC002F0107 /* HSL Nearest Departures.app */,
+				53E4ECAF1C2C06EC002F0107 /* Lähimmät Lähdöt.app */,
 				53E4ECC31C2C06EC002F0107 /* HSL Nearest DeparturesTests.xctest */,
 				53E4ECCE1C2C06EC002F0107 /* HSL Nearest DeparturesUITests.xctest */,
 				53E4ECD71C2C06EC002F0107 /* HSL Nearest Departures WatchKit App.app */,
@@ -276,7 +276,7 @@
 			);
 			name = "HSL Nearest Departures";
 			productName = "HSL Nearest Departures";
-			productReference = 53E4ECAF1C2C06EC002F0107 /* HSL Nearest Departures.app */;
+			productReference = 53E4ECAF1C2C06EC002F0107 /* Lähimmät Lähdöt.app */;
 			productType = "com.apple.product-type.application";
 		};
 		53E4ECC21C2C06EC002F0107 /* HSL Nearest DeparturesTests */ = {
@@ -723,7 +723,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -738,7 +738,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;

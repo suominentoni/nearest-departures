@@ -9,3 +9,4 @@ TODO:
 * iOS: better ND UI
 * ND: get each short stop name only once
 * favourite/frequently used stop
+* alert user if no network connection or network problem
