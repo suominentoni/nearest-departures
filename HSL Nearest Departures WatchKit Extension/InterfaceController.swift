@@ -24,14 +24,7 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
     override public func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
         let row = table.rowControllerAtIndex(rowIndex) as! NearestStopsRow
 
-        session!.sendMessage(
-            ["stopCode": row.code],
-            replyHandler: {message in
-                let nextDepartures = message["nextDepartures"] as! NSArray
-                self.pushControllerWithName("NextDeparturesInterfaceController", context: ["nextDepartures": nextDepartures])
-            },
-            errorHandler: {m in NSLog("Error getting next departures from companion app")})
-
+        self.pushControllerWithName("NextDeparturesInterfaceController", context: ["stopCode": row.code])
     }
     
     override public func awakeWithContext(context: AnyObject?) {
@@ -72,7 +65,7 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
 
     @IBAction func refreshInterface() {
-        session!.sendMessage(["refresh": true],
+        session?.sendMessage(["refresh": true],
             replyHandler: {message in
                 self.updateInterface(message["nearestStops"] as! [NSDictionary])
             },
@@ -97,7 +90,7 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 nearestStopRow.stopName.setText(name)
                 nearestStopRow.stopCode.setText(codeShort)
                 nearestStopRow.distance.setText(distance + " m")
-                i++
+                i += 1
             }
         }
     }

@@ -29,9 +29,10 @@ public class HSL {
         }
     }
 
-    private static func formatTimeString(var time:String) -> String {
-        time.insert(":", atIndex: time.endIndex.predecessor().predecessor())
-        return time
+    private static func formatTimeString(time:String) -> String {
+        var result = time
+        result.insert(":", atIndex: time.endIndex.predecessor().predecessor())
+        return result
     }
 
     static func getNearestStopsInfo(lat:String, lon:String, callback: (NSArray) -> Void) {
@@ -48,8 +49,8 @@ public class HSL {
         HTTPGetJSONArray(query) {
                 (data: NSArray, error: String?) -> Void in
                 if error != nil {
-                    print("Error getting JSON")
-                    print(error)
+                    NSLog("Error getting JSON")
+                    NSLog(error!)
                 } else {
                     callback(data)
                 }
@@ -71,8 +72,8 @@ public class HSL {
         HTTPGetJSONArray(query) {
                 (data: NSArray, error: String?) -> Void in
                 if error != nil {
-                    print("Error getting JSON")
-                    print(error)
+                    NSLog("Error getting JSON")
+                    NSLog(error!)
                 } else {
                     callback(data)
                 }
@@ -89,14 +90,13 @@ public class HSL {
         ) {
             (data: NSArray, error: String?) -> Void in
             if error != nil {
-                print("Error getting JSON")
-                print(error)
+                NSLog("Error getting JSON")
+                NSLog(error!)
             } else {
                 if let feed = data.firstObject as? NSDictionary,
                 let departures = feed["departures"] as? NSArray{
                     var nextDepartures = [[String: String]]()
 
-                    var counter = 0
                     for departure in departures{
                         if let lineCode = departure["code"] as? String,
                         let time = departure["time"] as? Int{
@@ -105,19 +105,6 @@ public class HSL {
                             nextDeparture["code"] = lineCode
 
                             nextDepartures.append(nextDeparture)
-//                            getLineInfo(lineCode) {
-//                                (data: NSDictionary) -> Void in
-//                                if let shortCode = data["code_short"] as? String,
-//                                let name = data["name"] as? String{
-//                                    nextDeparture["code"] = shortCode
-//                                    nextDeparture["name"] = name
-//                                    nextDepartures.append(nextDeparture)
-//                                    counter++
-//                                    if(counter == departures.count) {
-//                                        callback(nextDepartures)
-//                                    }
-//                                }
-//                            }
                         }
                     }
                     callback(nextDepartures)
@@ -125,11 +112,6 @@ public class HSL {
             }
         }
     }
-
-//                        let nextDeparture = departures.firstObject as! NSDictionary!,
-//                        let time = nextDeparture["time"] as! NSNumber!,
-//                        let code = nextDeparture["code"] as! String!{
-//                            let departureInfo: [String: String] = ["code": code, "time": String(time)]
 
     static func getLineInfo(lineCode: String, callback: (NSDictionary) -> Void) {
         HTTPGetJSONArray(
@@ -141,8 +123,8 @@ public class HSL {
             ) {
                 (data: NSArray, error: String?) -> Void in
                 if error != nil {
-                    print("Error getting JSON")
-                    print(error)
+                    NSLog("Error getting JSON")
+                    NSLog(error!)
                 } else {
                     if let feed = data.firstObject as? NSDictionary,
                         let code = feed["code_short"] as? String,
@@ -200,7 +182,7 @@ public class HSL {
                             return jsonObj
                     }
                 }catch{
-                    print("Error parsing JSON")
+                    NSLog("Error parsing JSON")
                 }
         }
         return NSArray()
@@ -217,7 +199,7 @@ public class HSL {
                             return jsonObj
                     }
                 }catch{
-                    print("Error parsing JSON")
+                    NSLog("Error parsing JSON")
                 }
         }
         return NSDictionary()
@@ -241,27 +223,3 @@ public class HSL {
             task.resume()
     }
 }
-
-//                self.getNextDeparturesForStop(stopInfo["details"]!!["code"] as! String, callback: {nextDepartures in
-//
-//                    var departures = [NSDictionary]()
-//
-//                    for departure in nextDepartures {
-//                        departureTime = formatTimeString(String(departure["time"]))
-//
-//                        self.getLineInfo(departure["code"] as! String, callback: {lineInfo in
-//                            lineNumber = lineInfo["code"]! as! String
-//                            destination = lineInfo["name"]! as! String
-//
-//                            let departureInfo = [
-//                                "stopName": stopName,
-//                                "departureTime": departureTime,
-//                                "lineNumber": lineNumber,
-//                                "destination": destination
-//                            ]
-//
-//                            departures.append(departureInfo)
-//                        })
-//                        successCallback(departureInfo: departures)
-//                    }
-//                })

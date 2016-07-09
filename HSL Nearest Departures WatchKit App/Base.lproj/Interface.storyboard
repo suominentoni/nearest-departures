@@ -15,7 +15,7 @@
                                 <tableRow identifier="nearestStopsRow" id="BHl-j5-Xp9" customClass="NearestStopsRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
                                     <group key="rootItem" width="1" height="55" alignment="left" layout="vertical" id="c57-EP-iHN">
                                         <items>
-                                            <group width="1" height="30" alignment="left" id="HwZ-Gq-rVB">
+                                            <group width="1" height="25" alignment="left" id="HwZ-Gq-rVB">
                                                 <items>
                                                     <label alignment="left" verticalAlignment="center" text="-" textAlignment="left" numberOfLines="2" id="MqK-Dm-MjV">
                                                         <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
