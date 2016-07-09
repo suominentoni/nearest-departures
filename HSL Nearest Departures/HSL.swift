@@ -30,6 +30,16 @@ public class HSL {
     }
 
     private static func formatTimeString(time:String) -> String {
+        // Converts time from "2515" (which is how the API presents times past midnight) to "01:15"
+        if let timeInt = Int(time) {
+            if timeInt >= 2400 {
+                let hours = time.substringWithRange(time.startIndex..<time.startIndex.advancedBy(2))
+                let hoursCorrected = Int(hours)! - 24
+                let minutes = time.substringWithRange(time.startIndex.advancedBy(2)..<time.endIndex)
+                return String(hoursCorrected) + ":" + minutes
+            }
+        }
+
         var result = time
         result.insert(":", atIndex: time.endIndex.predecessor().predecessor())
         return result
