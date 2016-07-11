@@ -45,11 +45,9 @@ class NextDeparturesTableViewController: UITableViewController {
                 cell.time.text = time
             })
             HSL.getLineInfo(code, callback: {(lineInfo: NSDictionary) -> Void in
-                if let shortCode = lineInfo["code"] as? String,
-                let name = lineInfo["name"] as? String {
+                if let shortCode = lineInfo["code"] as? String {
                     dispatch_async(dispatch_get_main_queue(), {
                         cell.code.text = shortCode
-                        cell.name.text = name
                     })
                 }
             })
