@@ -53,10 +53,8 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
                     connectivitySession!.sendMessage(["longCode": code],
                         replyHandler: {(message: [String: AnyObject]) -> Void in
                             if let lineInfo = message["lineInfo"] as? NSDictionary,
-                            let shortCode = lineInfo["code"] as? String,
-                            let name = lineInfo["name"] as? String {
+                                let shortCode = lineInfo["code"] as? String {
                                 nextDepartureRow.code.setText(shortCode)
-                                nextDepartureRow.name.setText(name)
                             }
                         },
                         errorHandler: {(error: NSError) -> Void in
@@ -64,7 +62,7 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
                         }
                     )
                 }
-                i = i + 1
+                i += 1
             }
         }
     }

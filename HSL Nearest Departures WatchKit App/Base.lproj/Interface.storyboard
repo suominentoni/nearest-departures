@@ -69,32 +69,19 @@
                         <table alignment="left" id="0ff-cT-m2o">
                             <items>
                                 <tableRow identifier="nextDepartureRow" id="gtV-XY-C6Y" customClass="NextDeparturesRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="66" alignment="left" layout="vertical" id="EY1-Mj-J9e">
+                                    <group key="rootItem" width="1" alignment="left" id="EY1-Mj-J9e">
                                         <items>
-                                            <group width="1" alignment="left" id="q2W-2t-Xr6">
-                                                <items>
-                                                    <label alignment="left" text="-" id="jWL-FK-o7Q">
-                                                        <color key="textColor" red="0.00040824659794813645" green="1" blue="0.016464297960415597" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="16"/>
-                                                    </label>
-                                                    <label alignment="right" text="00:00" id="GXy-H5-Hpq">
-                                                        <fontDescription key="font" type="system" weight="thin" pointSize="16"/>
-                                                    </label>
-                                                </items>
-                                                <edgeInsets key="margins" left="5" right="5" top="0.0" bottom="0.0"/>
-                                            </group>
-                                            <group width="1" height="41" alignment="center" verticalAlignment="center" id="7dF-0S-esJ">
-                                                <items>
-                                                    <label alignment="center" verticalAlignment="center" text="-" textAlignment="center" numberOfLines="3" id="M9B-fm-1kt">
-                                                        <fontDescription key="font" type="system" pointSize="11"/>
-                                                    </label>
-                                                </items>
-                                            </group>
+                                            <label alignment="left" verticalAlignment="center" text="-" id="jWL-FK-o7Q">
+                                                <color key="textColor" red="0.00040824659794813645" green="1" blue="0.016464297960415597" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="font" type="system" weight="semibold" pointSize="16"/>
+                                            </label>
+                                            <label alignment="right" verticalAlignment="center" text="00:00" textAlignment="right" id="GXy-H5-Hpq">
+                                                <fontDescription key="font" type="system" weight="thin" pointSize="16"/>
+                                            </label>
                                         </items>
                                     </group>
                                     <connections>
                                         <outlet property="code" destination="jWL-FK-o7Q" id="jRd-WM-huH"/>
-                                        <outlet property="name" destination="M9B-fm-1kt" id="p6s-Ry-o53"/>
                                         <outlet property="time" destination="GXy-H5-Hpq" id="efm-KO-PUY"/>
                                     </connections>
                                 </tableRow>
