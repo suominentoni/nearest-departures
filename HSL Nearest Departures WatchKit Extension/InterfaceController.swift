@@ -76,21 +76,27 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
 
     private func updateInterface(nearestStops: [NSDictionary]) {
-        nearestStopsTable.setNumberOfRows(nearestStops.count, withRowType: "nearestStopsRow")
-        var i: Int = 0
-        for info in nearestStops {
-            let row: AnyObject? = nearestStopsTable.rowControllerAtIndex(i)
-            let nearestStopRow = row as! NearestStopsRow
+        if(nearestStops.count == 0) {
+            let alertAction = WKAlertAction(title: "OK", style: WKAlertActionStyle.Default, handler: {() in })
+            self.presentAlertControllerWithTitle("Ei Pysäkkejä", message: "Ei pysäkkejä lähistöllä", preferredStyle: WKAlertControllerStyle.Alert, actions: [alertAction])
+            nearestStopsTable.setNumberOfRows(0, withRowType: "nearestStopsRow")
+        } else {
+            nearestStopsTable.setNumberOfRows(nearestStops.count, withRowType: "nearestStopsRow")
+            var i: Int = 0
+            for info in nearestStops {
+                let row: AnyObject? = nearestStopsTable.rowControllerAtIndex(i)
+                let nearestStopRow = row as! NearestStopsRow
 
-            if let name = info["name"] as? String,
-            let code = info["code"] as? String,
-            let codeShort = info["codeShort"] as? String,
-            let distance = info["distance"] as? String {
-                nearestStopRow.code = code
-                nearestStopRow.stopName.setText(name)
-                nearestStopRow.stopCode.setText(codeShort)
-                nearestStopRow.distance.setText(distance + " m")
-                i += 1
+                if let name = info["name"] as? String,
+                    let code = info["code"] as? String,
+                    let codeShort = info["codeShort"] as? String,
+                    let distance = info["distance"] as? String {
+                    nearestStopRow.code = code
+                    nearestStopRow.stopName.setText(name)
+                    nearestStopRow.stopCode.setText(codeShort)
+                    nearestStopRow.distance.setText(distance + " m")
+                    i += 1
+                }
             }
         }
     }

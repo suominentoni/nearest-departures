@@ -18,6 +18,15 @@ class NearestStopsTableViewController: UITableViewController {
 
     func reloadWithNewData(nearestStops: [NSDictionary]) {
         self.nearestStops = nearestStops
+
+        if(self.nearestStops.count == 0 ) {
+            let alert = UIAlertController(title: "Ei pysäkkejä", message: "Ei pysäkkejä lähistöllä", preferredStyle: UIAlertControllerStyle.Alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+
+            alert.addAction(alertAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+
         self.tableView.reloadData()
     }
 
