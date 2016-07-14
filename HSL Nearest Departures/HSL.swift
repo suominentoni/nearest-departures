@@ -2,6 +2,8 @@ import Foundation
 
 public class HSL {
 
+    static let baseQuery = "http://api.reittiopas.fi/hsl/prod/?user=suominentoni&pass=***REMOVED***"
+
     static func getNearestStops(lat: Double, lon: Double, successCallback: (departureInfo: [NSDictionary]) -> Void) {
 
         self.getNearestStopsInfo(String(lat), lon: String(lon)) {
@@ -46,9 +48,7 @@ public class HSL {
     }
 
     static func getNearestStopsInfo(lat:String, lon:String, callback: (NSArray) -> Void) {
-        let query = "http://api.reittiopas.fi/hsl/prod/" +
-        "?user=suominentoni" +
-        "&pass=***REMOVED***" +
+        let query = baseQuery +
         "&request=stops_area&" +
         "&epsg_in=wgs84" +
         "&center_coordinate=" +
@@ -67,9 +67,8 @@ public class HSL {
         }
     }
     static func getNearestStopsInfoByReverseGeocoding(lat:String, lon:String, limit: Int, callback: (NSArray) -> Void) {
-        let query = "http://api.reittiopas.fi/hsl/prod/" +
-            "?user=suominentoni" +
-            "&pass=***REMOVED***" +
+        let query = baseQuery +
+            "&request=stops_area&" +
             "&request=reverse_geocode" +
             "&epsg_in=wgs84" +
             "&coordinate=" +
@@ -92,11 +91,9 @@ public class HSL {
 
     static func getNextDeparturesForStop(stopCode: String, callback: (NSArray) -> Void) {
         HTTPGetJSONArray(
-            "http://api.reittiopas.fi/hsl/prod/" +
-                "?user=suominentoni" +
-                "&pass=***REMOVED***" +
-                "&request=stop" +
-                "&code=" + stopCode
+            baseQuery +
+            "&request=stop" +
+            "&code=" + stopCode
         ) {
             (data: NSArray, error: String?) -> Void in
             if error != nil {
@@ -125,10 +122,8 @@ public class HSL {
 
     static func getLineInfo(lineCode: String, callback: (NSDictionary) -> Void) {
         HTTPGetJSONArray(
-            "http://api.reittiopas.fi/hsl/prod/" +
-                "?user=suominentoni" +
-                "&pass=***REMOVED***" +
-                "&query=" + lineCode +
+            baseQuery +
+            "&query=" + lineCode +
             "&request=lines"
             ) {
                 (data: NSArray, error: String?) -> Void in
