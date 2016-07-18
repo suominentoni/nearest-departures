@@ -4,46 +4,38 @@ public class HSL {
 
     static let baseQuery = "http://api.reittiopas.fi/hsl/prod/?user=suominentoni&pass=***REMOVED***"
 
-    static func getNearestStops(lat: Double, lon: Double, successCallback: (departureInfo: [NSDictionary]) -> Void) {
+    static func getNearestStops(lat: Double, lon: Double, successCallback: (stops: [Stop]) -> Void) {
 
         self.getNearestStopsInfo(String(lat), lon: String(lon)) {
         (stopInfos:NSArray) -> Void in
-            var nearestStops = [NSDictionary]()
+            var nearestStops = [Stop]()
 
             for item in stopInfos {
-                var stopInfo = [String: String]()
-
                 if let name = item["name"] as? String,
                 let codeShort = item["codeShort"] as? String,
                 let distance = item["dist"] as? Int,
                 let code = item["code"] as? String {
-                    stopInfo = [
-                        "name": name,
-                        "distance": String(distance),
-                        "code": code,
-                        "codeShort": codeShort
-                    ]
-                    nearestStops.append(stopInfo)
+                    let stop = Stop(name: name, distance: distance, codeLong: code, codeShort: codeShort)
+                    nearestStops.append(stop)
                 }
 
             }
-            successCallback(departureInfo: nearestStops)
+            successCallback(stops: nearestStops)
         }
     }
 
-    private static func formatTimeString(time:String) -> String {
-        // Converts time from "2515" (which is how the API presents times past midnight) to "01:15"
-        if let timeInt = Int(time) {
-            if timeInt >= 2400 {
-                let hours = time.substringWithRange(time.startIndex..<time.startIndex.advancedBy(2))
+    private static func formatTime(time:Int) -> String {
+        // Converts time from 2515 (which is how the API presents times past midnight) to "01:15"
+            if time >= 2400 {
+                let timeString = String(time)
+                let hours = timeString.substringWithRange(timeString.startIndex..<timeString.startIndex.advancedBy(2))
                 let hoursCorrected = Int(hours)! - 24
-                let minutes = time.substringWithRange(time.startIndex.advancedBy(2)..<time.endIndex)
+                let minutes = timeString.substringWithRange(timeString.startIndex.advancedBy(2)..<timeString.endIndex)
                 return String(hoursCorrected) + ":" + minutes
             }
-        }
 
-        var result = time
-        result.insert(":", atIndex: time.endIndex.predecessor().predecessor())
+        var result = String(time)
+        result.insert(":", atIndex: String(time).endIndex.predecessor().predecessor())
         return result
     }
 
@@ -89,7 +81,7 @@ public class HSL {
         }
     }
 
-    static func getNextDeparturesForStop(stopCode: String, callback: (NSArray) -> Void) {
+    static func getNextDeparturesForStop(stopCode: String, callback: ([Departure]) -> Void) {
         HTTPGetJSONArray(
             baseQuery +
             "&request=stop" +
@@ -102,16 +94,12 @@ public class HSL {
             } else {
                 if let feed = data.firstObject as? NSDictionary,
                 let departures = feed["departures"] as? NSArray{
-                    var nextDepartures = [[String: String]]()
+                    var nextDepartures: [Departure] = []
 
                     for departure in departures{
                         if let lineCode = departure["code"] as? String,
-                        let time = departure["time"] as? Int{
-                            var nextDeparture = [String: String]()
-                            nextDeparture["time"] = formatTimeString(String(time))
-                            nextDeparture["code"] = lineCode
-
-                            nextDepartures.append(nextDeparture)
+                        let time = departure["time"] as? Int {
+                            nextDepartures.append(Departure(line: lineCode, time: formatTime(time)))
                         }
                     }
                     callback(nextDepartures)

@@ -3,7 +3,7 @@ import UIKit
 
 class NextDeparturesTableViewController: UITableViewController {
 
-    var nextDepartures: [NSDictionary] = [NSDictionary]()
+    var nextDepartures: [Departure] = []
     var stopCode: String = String()
     @IBOutlet weak var backButton: UIBarButtonItem!
 
@@ -11,8 +11,8 @@ class NextDeparturesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.Top
 
-        HSL.getNextDeparturesForStop(self.stopCode, callback: {(nextDepartures: NSArray) -> Void in
-            self.nextDepartures = nextDepartures as! [NSDictionary]
+        HSL.getNextDeparturesForStop(self.stopCode, callback: {(nextDepartures: [Departure]) -> Void in
+            self.nextDepartures = nextDepartures
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
             })
@@ -33,25 +33,21 @@ class NextDeparturesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCellWithIdentifier("NextDepartureCell", forIndexPath: indexPath) as! NextDepartureCell
 
         let departure = self.nextDepartures[indexPath.row]
 
-        if let code = departure["code"] as? String,
-            let time = departure["time"] as? String {
-            dispatch_async(dispatch_get_main_queue(), {
-                cell.code.text = code
-                cell.time.text = time
-            })
-            HSL.getLineInfo(code, callback: {(lineInfo: NSDictionary) -> Void in
-                if let shortCode = lineInfo["code"] as? String {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        cell.code.text = shortCode
-                    })
-                }
-            })
-        }
+        dispatch_async(dispatch_get_main_queue(), {
+            cell.code.text = departure.line
+            cell.time.text = departure.time
+        })
+        HSL.getLineInfo(departure.line, callback: {(lineInfo: NSDictionary) -> Void in
+            if let shortCode = lineInfo["code"] as? String {
+                dispatch_async(dispatch_get_main_queue(), {
+                    cell.code.text = shortCode
+                })
+            }
+        })
 
         return cell
     }
