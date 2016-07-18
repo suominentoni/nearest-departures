@@ -10,17 +10,17 @@ import UIKit
 
 class NearestStopsTableViewController: UITableViewController {
 
-    private  var nearestStops: [NSDictionary] = [NSDictionary()]
+    private  var nearestStops: [Stop] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    func reloadWithNewData(nearestStops: [NSDictionary]) {
+    func reloadWithNewData(nearestStops: [Stop]) {
         self.nearestStops = nearestStops
 
         if(self.nearestStops.count == 0 ) {
-            let alert = UIAlertController(title: "Ei pysäkkejä", message: "Ei pysäkkejä lähistöllä", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Ei pysäkkejä", message: "Lähistöltä ei löytynyt pysäkkejä", preferredStyle: UIAlertControllerStyle.Alert)
             let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
 
             alert.addAction(alertAction)
@@ -46,28 +46,17 @@ class NearestStopsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NearestStopCell", forIndexPath: indexPath) as! NearestStopsCell
-
         let stop = self.nearestStops[indexPath.row]
 
-        if let code = stop["codeShort"] as? String,
-           let name = stop["name"] as? String,
-           let distance = stop["distance"] as? String {
-            cell.code.text = code
-            cell.name.text = name
-            cell.distance.text = distance + " m"
-        }
+        cell.code.text = stop.codeShort
+        cell.name.text = stop.name
+        cell.distance.text = String(stop.distance) + " m"
 
         return cell
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-
-        if let stopCode = self.nearestStops[self.tableView.indexPathForSelectedRow!.row]["code"] as? String {
-            let nextDeparturesViewController = segue.destinationViewController as! NextDeparturesTableViewController
-            nextDeparturesViewController.stopCode = stopCode
-        }
-
+        let nextDeparturesViewController = segue.destinationViewController as! NextDeparturesTableViewController
+        nextDeparturesViewController.stopCode = self.nearestStops[self.tableView.indexPathForSelectedRow!.row].codeLong
     }
 }

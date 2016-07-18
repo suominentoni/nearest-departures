@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
         HSL.getNearestStops(lat, lon: lon, successCallback: updateViews)
     }
 
-    private func updateViews(nearestStops: [NSDictionary]) {
+    private func updateViews(nearestStops: [Stop]) {
         if let navController = self.window!.rootViewController! as? UINavigationController {
             if let viewController = navController.viewControllers[0] as? NearestStopsTableViewController {
                 dispatch_async(dispatch_get_main_queue(), {
@@ -60,14 +60,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
         }
     }
 
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String: AnyObject]) -> Void) {
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: [String: AnyObject] -> Void) {
         if let _ = message["refresh"] as? Bool {
             HSL.getNearestStops(lat, lon: lon, successCallback: sendNearestStopsToWatch)
         }
         else if let stopCode = message["stopCode"] as? String {
-            HSL.getNextDeparturesForStop(stopCode, callback: {(nextDepartures: NSArray) -> Void in
+            HSL.getNextDeparturesForStop(stopCode, callback: {(nextDepartures: [Departure]) -> Void in
                 NSLog("Replying to watch message with next departures for stop " + stopCode)
-                replyHandler(["nextDepartures": nextDepartures])
+                let depsDict = nextDepartures.map({ dep in return dep.toDict() })
+                replyHandler(["nextDepartures": depsDict])
             })
         }
         else if let longCode = message["longCode"] as? String {
@@ -77,9 +78,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
         }
     }
 
-    private func sendNearestStopsToWatch(nearestStops: [NSDictionary]) {
+    private func sendNearestStopsToWatch(nearestStops: [Stop]) {
         NSLog("Sending nearest stops to Apple Watch")
-        self.session!.sendMessage(["nearestStops": nearestStops],
+        let stopDicts = nearestStops.map({stop in return stop.toDict()})
+        self.session!.sendMessage(["nearestStops": stopDicts],
             replyHandler: {r in NSLog("Got reply")},
             errorHandler: { error in
                 NSLog("Error sending departure information to Apple Watch: " + error.description)

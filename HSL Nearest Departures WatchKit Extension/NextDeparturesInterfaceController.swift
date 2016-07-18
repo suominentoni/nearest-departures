@@ -27,43 +27,59 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
         }
 
         if let code = context!["stopCode"] as? String {
-            session!.sendMessage(
+            session?.sendMessage(
                 ["stopCode": code],
                 replyHandler: {message in
-                    let nextDepartures = message["nextDepartures"] as! NSArray
-                    self.updateView(nextDepartures)
+                    self.updateView(self.nextDeparturesFromWatchConnectivityMessage(message))
                 },
                 errorHandler: {m in NSLog("Error getting next departures from companion app")})
         }
     }
 
-    private func updateView(nextDepartures: NSArray) {
+    private func nextDeparturesFromWatchConnectivityMessage(message: [String: AnyObject]) -> [Departure] {
+        if let depsDict = message["nextDepartures"] as? [[String: AnyObject]] {
+            var deps: [Departure] = []
+
+            depsDict.forEach({dict in
+                if let line = dict["line"] as? String,
+                let time = dict["time"] as? String {
+                    let dep = Departure(
+                        line: line,
+                        time: time
+                    )
+                    deps.append(dep)
+                }
+            })
+            return deps
+        } else {
+            return []
+        }
+    }
+
+    private func updateView(nextDepartures: [Departure]) -> Void {
         NSLog("Update view")
         nextDeparturesTable.setNumberOfRows(nextDepartures.count, withRowType: "nextDepartureRow")
 
         var i: Int = 0
         for departure in nextDepartures {
-            if let time = departure["time"] as? String,
-            let code = departure["code"] as? String {
-                let row: AnyObject? = nextDeparturesTable.rowControllerAtIndex(i)
-                let nextDepartureRow = row as! NextDeparturesRow
-                nextDepartureRow.time.setText(time)
-                nextDepartureRow.code.setText(code)
-                if (connectivitySession != nil) {
-                    connectivitySession!.sendMessage(["longCode": code],
-                        replyHandler: {(message: [String: AnyObject]) -> Void in
-                            if let lineInfo = message["lineInfo"] as? NSDictionary,
-                                let shortCode = lineInfo["code"] as? String {
-                                nextDepartureRow.code.setText(shortCode)
-                            }
-                        },
-                        errorHandler: {(error: NSError) -> Void in
-                            NSLog("Error sending long code message to companion app")
+            let row: AnyObject? = nextDeparturesTable.rowControllerAtIndex(i)
+            let nextDepartureRow = row as! NextDeparturesRow
+            nextDepartureRow.time.setText(departure.time)
+            nextDepartureRow.code.setText(departure.line)
+            if (connectivitySession != nil) {
+                connectivitySession!.sendMessage(["longCode": departure.line],
+                    replyHandler: {(message: [String: AnyObject]) -> Void in
+                        if let lineInfo = message["lineInfo"] as? NSDictionary,
+                            let shortCode = lineInfo["code"] as? String {
+                            nextDepartureRow.code.setText(shortCode)
                         }
-                    )
-                }
-                i += 1
+                    },
+                    errorHandler: {(error: NSError) -> Void in
+                        NSLog("Error sending long code message to companion app")
+                    }
+                )
             }
+            i += 1
         }
     }
 

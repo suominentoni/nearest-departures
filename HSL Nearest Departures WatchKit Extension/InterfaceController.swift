@@ -39,8 +39,7 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 NSLog("iOS device needs unlock for reachability")
             }
 
-
-            session!.sendMessage(
+            session?.sendMessage(
                 ["wakeUp": "wakeUp"],
                 replyHandler: {
                     m in NSLog("iOS companion app running")
@@ -59,15 +58,13 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
     public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         NSLog("Received departure information from iOS companion app")
-        if let nearestStops = message["nearestStops"] as? [NSDictionary] {
-            self.updateInterface(nearestStops)
-        }
+        self.updateInterface(nearestStopsFromWatchConnectivityMessage(message))
     }
 
-    @IBAction func refreshInterface() {
+    @IBAction func refreshInterface() -> Void {
         session?.sendMessage(["refresh": true],
             replyHandler: {message in
-                self.updateInterface(message["nearestStops"] as! [NSDictionary])
+                self.updateInterface(self.nearestStopsFromWatchConnectivityMessage(message))
             },
             errorHandler: {error in
                 NSLog("Error sending refresh message to iOS companion app: " + error.description)
@@ -75,28 +72,47 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
         )
     }
 
-    private func updateInterface(nearestStops: [NSDictionary]) {
+    private func nearestStopsFromWatchConnectivityMessage(message: [String: AnyObject]) -> [Stop] {
+        if let stopsDict = message["nearestStops"] as? [[String: AnyObject]] {
+            var stops: [Stop] = []
+
+            stopsDict.forEach({dict in
+                if let name = dict["name"] as? String,
+                let distance = dict["distance"] as? Int,
+                let codeLong = dict["codeLong"] as? String,
+                let codeShort = dict["codeShort"] as? String {
+                    let stop = Stop(
+                        name: name,
+                        distance: distance,
+                        codeLong: codeLong,
+                        codeShort: codeShort
+                    )
+                    stops.append(stop)
+                }
+            })
+            return stops
+        } else {
+            return []
+        }
+    }
+
+    private func updateInterface(nearestStops: [Stop]) -> Void {
         if(nearestStops.count == 0) {
             let alertAction = WKAlertAction(title: "OK", style: WKAlertActionStyle.Default, handler: {() in })
-            self.presentAlertControllerWithTitle("Ei Pysäkkejä", message: "Ei pysäkkejä lähistöllä", preferredStyle: WKAlertControllerStyle.Alert, actions: [alertAction])
+            self.presentAlertControllerWithTitle("Ei Pysäkkejä", message: "Lähistöltä ei löytynyt pysäkkejä", preferredStyle: WKAlertControllerStyle.Alert, actions: [alertAction])
             nearestStopsTable.setNumberOfRows(0, withRowType: "nearestStopsRow")
         } else {
             nearestStopsTable.setNumberOfRows(nearestStops.count, withRowType: "nearestStopsRow")
             var i: Int = 0
-            for info in nearestStops {
+            for stop in nearestStops {
                 let row: AnyObject? = nearestStopsTable.rowControllerAtIndex(i)
                 let nearestStopRow = row as! NearestStopsRow
 
-                if let name = info["name"] as? String,
-                    let code = info["code"] as? String,
-                    let codeShort = info["codeShort"] as? String,
-                    let distance = info["distance"] as? String {
-                    nearestStopRow.code = code
-                    nearestStopRow.stopName.setText(name)
-                    nearestStopRow.stopCode.setText(codeShort)
-                    nearestStopRow.distance.setText(distance + " m")
-                    i += 1
-                }
+                nearestStopRow.code = stop.codeLong
+                nearestStopRow.stopName.setText(stop.name)
+                nearestStopRow.stopCode.setText(stop.codeShort)
+                nearestStopRow.distance.setText(String(stop.distance) + " m")
+                i += 1
             }
         }
     }
