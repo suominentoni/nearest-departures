@@ -118,6 +118,7 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
 
     override public func willActivate() {
+        session = WCSession.defaultSession()
         refreshInterface()
     }
 }
