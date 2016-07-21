@@ -38,15 +38,8 @@ class NextDeparturesTableViewController: UITableViewController {
         let departure = self.nextDepartures[indexPath.row]
 
         dispatch_async(dispatch_get_main_queue(), {
-            cell.code.text = departure.line
+            cell.code.text = departure.lineShort != nil ? departure.lineShort : departure.line
             cell.time.text = departure.time
-        })
-        HSL.getLineInfo(departure.line, callback: {(lineInfo: NSDictionary) -> Void in
-            if let shortCode = lineInfo["code"] as? String {
-                dispatch_async(dispatch_get_main_queue(), {
-                    cell.code.text = shortCode
-                })
-            }
         })
 
         return cell

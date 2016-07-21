@@ -27,11 +27,13 @@ public struct Stop {
 public struct Departure {
     let line: String
     let time: String
+    let lineShort: String?
 
     public func toDict() -> [String: AnyObject] {
         return [
             "line": self.line,
-            "time": self.time
+            "time": self.time,
+            "lineShort": (self.lineShort != nil) ? self.lineShort! : ""
         ]
     }
 }

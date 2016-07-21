@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
     private func sendNearestStopsToWatch(nearestStops: [Stop]) {
         NSLog("Sending nearest stops to Apple Watch")
         let stopDicts = nearestStops.map({stop in return stop.toDict()})
-        self.session!.sendMessage(["nearestStops": stopDicts],
+        self.session?.sendMessage(["nearestStops": stopDicts],
             replyHandler: {r in NSLog("Got reply")},
             errorHandler: { error in
                 NSLog("Error sending departure information to Apple Watch: " + error.description)

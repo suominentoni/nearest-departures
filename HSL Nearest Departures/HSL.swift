@@ -99,10 +99,46 @@ public class HSL {
                     for departure in departures{
                         if let lineCode = departure["code"] as? String,
                         let time = departure["time"] as? Int {
-                            nextDepartures.append(Departure(line: lineCode, time: formatTime(time)))
+                            nextDepartures.append(Departure(line: lineCode, time: formatTime(time), lineShort: nil))
                         }
                     }
-                    callback(nextDepartures)
+
+                    // get distinct long line codes
+                    let longLineCodes = nextDepartures.reduce([], combine: {(current: Array, dep: Departure) -> [String] in
+                        if(current.contains(dep.line)) {
+                            return current
+                        } else {
+                            return current + [dep.line]
+                        }
+                    })
+
+                    // get short code for each distinct long line code
+                    let lineInfoGroup = dispatch_group_create()
+                    var shortLineCodes = [String: String]()
+
+                    for code in longLineCodes {
+                        dispatch_group_enter(lineInfoGroup)
+                        getLineInfo(code, callback: {lineInfo in
+                            shortLineCodes[code] = (lineInfo["code"] as! String)
+                            dispatch_group_leave(lineInfoGroup)
+                        })
+                    }
+
+                    // populate next departures with short line codes
+                    dispatch_group_notify(lineInfoGroup,dispatch_get_main_queue(), { _ in
+                        print(shortLineCodes)
+                        let nextDeparturesWithShortLineCodes = nextDepartures.map({departure -> Departure in
+                            if(shortLineCodes[departure.line] != nil) {
+                                return Departure(
+                                    line: departure.line,
+                                    time: departure.time,
+                                    lineShort: shortLineCodes[departure.line])
+                            } else {
+                                return departure
+                            }
+                        })
+                        callback(nextDeparturesWithShortLineCodes)
+                    });
                 }
             }
         }
