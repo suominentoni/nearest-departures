@@ -16,9 +16,6 @@
 		533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E1C4D1C512963001EA50B /* NearestStopsRow.swift */; };
 		533E1C511C527B42001EA50B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDC1C2C06EC002F0107 /* Interface.storyboard */; };
 		535D39741C38140E008D59C3 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* InterfaceController.swift */; };
-		53B284B71C33D5FB003C8877 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 53B284B61C33D5FB003C8877 /* default.gpx */; };
-		53B284B81C33D5FB003C8877 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 53B284B61C33D5FB003C8877 /* default.gpx */; };
-		53B284B91C33D5FB003C8877 /* default.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 53B284B61C33D5FB003C8877 /* default.gpx */; };
 		53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */; };
 		53E4ECB51C2C06EC002F0107 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB41C2C06EC002F0107 /* ViewController.swift */; };
 		53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB61C2C06EC002F0107 /* Main.storyboard */; settings = {ASSET_TAGS = (stopCode, ); }; };
@@ -103,7 +100,6 @@
 		533E1C4D1C512963001EA50B /* NearestStopsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsRow.swift; sourceTree = "<group>"; };
 		535D39731C38140E008D59C3 /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
-		53B284B61C33D5FB003C8877 /* default.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
 		53E4ECAF1C2C06EC002F0107 /* Lähimmät Lähdöt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lähimmät Lähdöt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53E4ECB41C2C06EC002F0107 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -176,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				53123A391D3823AB00D9E646 /* Shared */,
-				53B284B61C33D5FB003C8877 /* default.gpx */,
 				53E4ECB11C2C06EC002F0107 /* HSL Nearest Departures */,
 				53E4ECC61C2C06EC002F0107 /* HSL Nearest DeparturesTests */,
 				53E4ECD11C2C06EC002F0107 /* HSL Nearest DeparturesUITests */,
@@ -424,7 +419,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E4ECBD1C2C06EC002F0107 /* LaunchScreen.storyboard in Resources */,
-				53B284B71C33D5FB003C8877 /* default.gpx in Resources */,
 				53E4ECBA1C2C06EC002F0107 /* Assets.xcassets in Resources */,
 				53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */,
 			);
@@ -450,7 +444,6 @@
 			files = (
 				53E4ECE01C2C06EC002F0107 /* Assets.xcassets in Resources */,
 				53E4ECDE1C2C06EC002F0107 /* Interface.storyboard in Resources */,
-				53B284B81C33D5FB003C8877 /* default.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +453,6 @@
 			files = (
 				53E4ECF41C2C06EC002F0107 /* Assets.xcassets in Resources */,
 				533E1C511C527B42001EA50B /* Interface.storyboard in Resources */,
-				53B284B91C33D5FB003C8877 /* default.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
