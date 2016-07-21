@@ -62,7 +62,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
 
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: [String: AnyObject] -> Void) {
         if let _ = message["refresh"] as? Bool {
-            HSL.getNearestStops(lat, lon: lon, successCallback: sendNearestStopsToWatch)
+            HSL.getNearestStops(lat, lon: lon, successCallback: {(nearestStops: [Stop]) in
+                let stopsDict = nearestStops.map({stop in stop.toDict()})
+                replyHandler(["nearestStops": stopsDict])
+            })
         }
         else if let stopCode = message["stopCode"] as? String {
             HSL.getNextDeparturesForStop(stopCode, callback: {(nextDepartures: [Departure]) -> Void in
