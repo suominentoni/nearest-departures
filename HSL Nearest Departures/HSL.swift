@@ -99,16 +99,16 @@ public class HSL {
                     for departure in departures{
                         if let lineCode = departure["code"] as? String,
                         let time = departure["time"] as? Int {
-                            nextDepartures.append(Departure(line: lineCode, time: formatTime(time), lineShort: nil))
+                            nextDepartures.append(Departure(line: Line(codeLong: lineCode, codeShort: nil), time: formatTime(time)))
                         }
                     }
 
                     // get distinct long line codes
                     let longLineCodes = nextDepartures.reduce([], combine: {(current: Array, dep: Departure) -> [String] in
-                        if(current.contains(dep.line)) {
+                        if(current.contains(dep.line.codeLong)) {
                             return current
                         } else {
-                            return current + [dep.line]
+                            return current + [dep.line.codeLong]
                         }
                     })
 
@@ -128,11 +128,12 @@ public class HSL {
                     dispatch_group_notify(lineInfoGroup,dispatch_get_main_queue(), { _ in
                         print(shortLineCodes)
                         let nextDeparturesWithShortLineCodes = nextDepartures.map({departure -> Departure in
-                            if(shortLineCodes[departure.line] != nil) {
+                            if(shortLineCodes[departure.line.codeLong] != nil) {
                                 return Departure(
-                                    line: departure.line,
-                                    time: departure.time,
-                                    lineShort: shortLineCodes[departure.line])
+                                    line: Line(
+                                        codeLong: departure.line.codeLong,
+                                        codeShort: shortLineCodes[departure.line.codeLong]),
+                                    time: departure.time)
                             } else {
                                 return departure
                             }

@@ -38,7 +38,7 @@ class NextDeparturesTableViewController: UITableViewController {
         let departure = self.nextDepartures[indexPath.row]
 
         dispatch_async(dispatch_get_main_queue(), {
-            cell.code.text = departure.lineShort != nil ? departure.lineShort : departure.line
+            cell.code.text = departure.line.codeShort != nil ? departure.line.codeShort : departure.line.codeLong
             cell.time.text = departure.time
         })
 

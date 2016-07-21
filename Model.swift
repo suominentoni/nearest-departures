@@ -25,15 +25,25 @@ public struct Stop {
 }
 
 public struct Departure {
-    let line: String
+    let line: Line
     let time: String
-    let lineShort: String?
 
     public func toDict() -> [String: AnyObject] {
         return [
-            "line": self.line,
+            "line": self.line.toDict(),
             "time": self.time,
-            "lineShort": (self.lineShort != nil) ? self.lineShort! : ""
+        ]
+    }
+}
+
+public struct Line {
+    let codeLong: String
+    let codeShort: String?
+
+    public func toDict() -> [String: AnyObject] {
+        return [
+            "codeLong": self.codeLong,
+            "codeShort": (self.codeShort != nil) ? self.codeShort! : ""
         ]
     }
 }

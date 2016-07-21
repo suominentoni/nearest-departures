@@ -41,13 +41,13 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
             var deps: [Departure] = []
 
             depsDict.forEach({dict in
-                if let line = dict["line"] as? String,
-                let time = dict["time"] as? String,
-                let lineShort = dict["lineShort"] as? String {
+                if let line = dict["line"] as? [String: AnyObject],
+                let lineCodeLong = line["codeLong"] as? String,
+                let lineCodeShort = line["codeShort"] as? String,
+                let time = dict["time"] as? String {
                     let dep = Departure(
-                        line: line,
-                        time: time,
-                        lineShort: (lineShort == "") ? nil : lineShort
+                        line: Line(codeLong: lineCodeLong, codeShort: lineCodeShort),
+                        time: time
                     )
                     deps.append(dep)
                 }
@@ -67,7 +67,7 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
             let row: AnyObject? = nextDeparturesTable.rowControllerAtIndex(i)
             let nextDepartureRow = row as! NextDeparturesRow
             nextDepartureRow.time.setText(departure.time)
-            nextDepartureRow.code.setText(departure.lineShort != nil ? departure.lineShort : departure.line)
+            nextDepartureRow.code.setText(departure.line.codeShort != nil ? departure.line.codeShort : departure.line.codeLong)
             i += 1
         }
     }
