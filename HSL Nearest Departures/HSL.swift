@@ -4,7 +4,7 @@ public class HSL {
 
     static let baseQuery = "http://api.reittiopas.fi/hsl/prod/?user=suominentoni&pass=***REMOVED***"
 
-    static func getNearestStops(lat: Double, lon: Double, successCallback: (stops: [Stop]) -> Void) {
+    static func getNearestStops(lat: Double, lon: Double, successCallback: (stops: [Stop]) -> Void) -> Void {
 
         self.getNearestStopsInfo(String(lat), lon: String(lon)) {
         (stopInfos:[AnyObject]) -> Void in
@@ -24,7 +24,7 @@ public class HSL {
         }
     }
 
-    static func getNearestStopsInfo(lat:String, lon:String, callback: ([AnyObject]) -> Void) {
+    static func getNearestStopsInfo(lat:String, lon:String, callback: ([AnyObject]) -> Void) -> Void {
         let query = baseQuery +
         "&request=stops_area&" +
         "&epsg_in=wgs84" +
@@ -43,7 +43,7 @@ public class HSL {
                 }
         }
     }
-    static func getNearestStopsInfoByReverseGeocoding(lat:String, lon:String, limit: Int, callback: ([AnyObject]) -> Void) {
+    static func getNearestStopsInfoByReverseGeocoding(lat:String, lon:String, limit: Int, callback: ([AnyObject]) -> Void) -> Void {
         let query = baseQuery +
             "&request=stops_area&" +
             "&request=reverse_geocode" +
@@ -66,7 +66,7 @@ public class HSL {
         }
     }
 
-    static func getNextDeparturesForStop(stopCode: String, callback: ([Departure]) -> Void) {
+    static func getNextDeparturesForStop(stopCode: String, callback: ([Departure]) -> Void) -> Void {
         HTTPGetJSONArray(
             baseQuery +
             "&request=stop" +
@@ -145,7 +145,7 @@ public class HSL {
         return result
     }
 
-    static func getLineInfo(lineCode: String, callback: ([String: AnyObject]) -> Void) {
+    static func getLineInfo(lineCode: String, callback: ([String: AnyObject]) -> Void) -> Void {
         HTTPGetJSONArray(
             baseQuery +
             "&query=" + lineCode +
@@ -168,7 +168,7 @@ public class HSL {
 
     static func HTTPGetJSONObject(
         url: String,
-        callback: ([String: AnyObject], String?) -> Void) {
+        callback: ([String: AnyObject], String?) -> Void) -> Void {
             NSLog("Sending HTTP GET request: " + url)
             let request = NSMutableURLRequest(URL: NSURL(string: url.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!)!)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -186,7 +186,7 @@ public class HSL {
 
     static func HTTPGetJSONArray(
         url: String,
-        callback: ([AnyObject], String?) -> Void) {
+        callback: ([AnyObject], String?) -> Void) -> Void {
             print(url)
             let request = NSMutableURLRequest(URL: NSURL(string: url.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!)!)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -236,7 +236,7 @@ public class HSL {
     }
 
     static private func HTTPsendRequest(request: NSMutableURLRequest,
-        callback: (String, String?) -> Void) {
+        callback: (String, String?) -> Void) -> Void {
             let task = NSURLSession.sharedSession().dataTaskWithRequest(
                 request, completionHandler :
                 {
