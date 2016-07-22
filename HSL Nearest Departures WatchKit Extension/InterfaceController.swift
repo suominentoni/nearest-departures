@@ -57,7 +57,7 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
 
     public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
-        NSLog("Received departure information from iOS companion app")
+        NSLog("Received message from iOS companion app")
         let stops: [Stop] = nearestStopsFromWatchConnectivityMessage(message)
 
         if(stops.count == 0) {
@@ -97,15 +97,19 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
                         codeShort: codeShort
                     )
                     stops.append(stop)
+                } else {
+                    NSLog("Could not parse nearest stops from Watch Connectivity message")
                 }
             })
             return stops
         } else {
+            NSLog("No nearest stops dictionary found in Watch Connectivity message")
             return []
         }
     }
 
     private func updateInterface(nearestStops: [Stop]) -> Void {
+        NSLog("Updating Nearest Stops interface")
         nearestStopsTable.setNumberOfRows(nearestStops.count, withRowType: "nearestStopsRow")
         var i: Int = 0
         for stop in nearestStops {

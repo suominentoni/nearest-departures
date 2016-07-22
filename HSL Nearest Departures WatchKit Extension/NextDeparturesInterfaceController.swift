@@ -27,10 +27,11 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
         }
 
         if let code = context!["stopCode"] as? String {
+            NSLog("Sending Stop Code message to iOS companion app")
             session?.sendMessage(
                 ["stopCode": code],
                 replyHandler: {message in
-                    self.updateView(self.nextDeparturesFromWatchConnectivityMessage(message))
+                    self.updateInterface(self.nextDeparturesFromWatchConnectivityMessage(message))
                 },
                 errorHandler: {m in NSLog("Error getting next departures from companion app")})
         }
@@ -50,16 +51,19 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
                         time: time
                     )
                     deps.append(dep)
+                } else {
+                    NSLog("Could not next departures from Watch Connectivity message")
                 }
             })
             return deps
         } else {
+            NSLog("No next departures dictionary found in Watch Connectivity message")
             return []
         }
     }
 
-    private func updateView(nextDepartures: [Departure]) -> Void {
-        NSLog("Update view")
+    private func updateInterface(nextDepartures: [Departure]) -> Void {
+        NSLog("Updating Next Departures interface")
         nextDeparturesTable.setNumberOfRows(nextDepartures.count, withRowType: "nextDepartureRow")
 
         var i: Int = 0
