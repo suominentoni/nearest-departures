@@ -16,6 +16,7 @@
 		533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E1C4D1C512963001EA50B /* NearestStopsRow.swift */; };
 		533E1C511C527B42001EA50B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDC1C2C06EC002F0107 /* Interface.storyboard */; };
 		535D39741C38140E008D59C3 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* InterfaceController.swift */; };
+		536C435B1D42328700045CEF /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C435A1D42328700045CEF /* Util.swift */; };
 		53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */; };
 		53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB61C2C06EC002F0107 /* Main.storyboard */; settings = {ASSET_TAGS = (stopCode, ); }; };
 		53E4ECBA1C2C06EC002F0107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB91C2C06EC002F0107 /* Assets.xcassets */; };
@@ -98,6 +99,7 @@
 		5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDepartureCell.swift; sourceTree = "<group>"; };
 		533E1C4D1C512963001EA50B /* NearestStopsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsRow.swift; sourceTree = "<group>"; };
 		535D39731C38140E008D59C3 /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		536C435A1D42328700045CEF /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
 		53E4ECAF1C2C06EC002F0107 /* Lähimmät Lähdöt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lähimmät Lähdöt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				533E1C4D1C512963001EA50B /* NearestStopsRow.swift */,
 				53F198541C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift */,
 				53F536BA1C576A1C009C7039 /* NextDeparturesRow.swift */,
+				536C435A1D42328700045CEF /* Util.swift */,
 			);
 			path = "HSL Nearest Departures WatchKit Extension";
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				53123A3C1D38253000D9E646 /* Model.swift in Sources */,
 				53F536BB1C576A1C009C7039 /* NextDeparturesRow.swift in Sources */,
 				53E4ECF21C2C06EC002F0107 /* NotificationController.swift in Sources */,
+				536C435B1D42328700045CEF /* Util.swift in Sources */,
 				53F198551C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift in Sources */,
 				535D39741C38140E008D59C3 /* InterfaceController.swift in Sources */,
 				53E4ECF01C2C06EC002F0107 /* ExtensionDelegate.swift in Sources */,

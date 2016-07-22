@@ -20,7 +20,7 @@ class NearestStopsTableViewController: UITableViewController {
         self.nearestStops = nearestStops
 
         if(self.nearestStops.count == 0 ) {
-            let alert = UIAlertController(title: "Ei pysäkkejä", message: "Lähistöltä ei löytynyt pysäkkejä", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: Const.NO_STOPS_TITLE, message: Const.NO_STOPS_MSG, preferredStyle: UIAlertControllerStyle.Alert)
             let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
 
             alert.addAction(alertAction)

@@ -1,6 +1,5 @@
 import WatchKit
 import Foundation
-import CoreLocation
 import WatchConnectivity
 
 public class InterfaceController: WKInterfaceController, WCSessionDelegate {
@@ -37,6 +36,7 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }
             if(session!.iOSDeviceNeedsUnlockAfterRebootForReachability){
                 NSLog("iOS device needs unlock for reachability")
+                self.presentAlert(Const.UNLOCK_IPHONE_TITLE, message: Const.UNLOCK_IPHONE_MSG)
             }
 
             session?.sendMessage(
@@ -50,19 +50,12 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
 
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status != .AuthorizedAlways {
-            NSLog("App is not authorized to use location services")
-        }
-    }
-
     public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         NSLog("Received message from iOS companion app")
         let stops: [Stop] = nearestStopsFromWatchConnectivityMessage(message)
 
         if(stops.count == 0) {
-            let alertAction = WKAlertAction(title: "OK", style: WKAlertActionStyle.Default, handler: {() in })
-            self.presentAlertControllerWithTitle("Ei pysäkkejä", message: "Lähistöltä ei löytynyt pysäkkejä", preferredStyle: WKAlertControllerStyle.Alert, actions: [alertAction])
+            self.presentAlert(Const.NO_STOPS_TITLE, message: Const.NO_STOPS_MSG)
             nearestStopsTable.setNumberOfRows(0, withRowType: "nearestStopsRow")
         } else {
             self.updateInterface(stops)
