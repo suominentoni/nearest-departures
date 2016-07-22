@@ -7,7 +7,7 @@ public class HSL {
     static func getNearestStops(lat: Double, lon: Double, successCallback: (stops: [Stop]) -> Void) {
 
         self.getNearestStopsInfo(String(lat), lon: String(lon)) {
-        (stopInfos:NSArray) -> Void in
+        (stopInfos:[AnyObject]) -> Void in
             var nearestStops = [Stop]()
 
             for item in stopInfos {
@@ -24,22 +24,7 @@ public class HSL {
         }
     }
 
-    private static func formatTime(time:Int) -> String {
-        // Converts time from 2515 (which is how the API presents times past midnight) to "01:15"
-            if time >= 2400 {
-                let timeString = String(time)
-                let hours = timeString.substringWithRange(timeString.startIndex..<timeString.startIndex.advancedBy(2))
-                let hoursCorrected = Int(hours)! - 24
-                let minutes = timeString.substringWithRange(timeString.startIndex.advancedBy(2)..<timeString.endIndex)
-                return String(hoursCorrected) + ":" + minutes
-            }
-
-        var result = String(time)
-        result.insert(":", atIndex: String(time).endIndex.predecessor().predecessor())
-        return result
-    }
-
-    static func getNearestStopsInfo(lat:String, lon:String, callback: (NSArray) -> Void) {
+    static func getNearestStopsInfo(lat:String, lon:String, callback: ([AnyObject]) -> Void) {
         let query = baseQuery +
         "&request=stops_area&" +
         "&epsg_in=wgs84" +
@@ -49,7 +34,7 @@ public class HSL {
         "&diameter=500"
 
         HTTPGetJSONArray(query) {
-                (data: NSArray, error: String?) -> Void in
+                (data: [AnyObject], error: String?) -> Void in
                 if error != nil {
                     NSLog("Error getting JSON")
                     NSLog(error!)
@@ -58,7 +43,7 @@ public class HSL {
                 }
         }
     }
-    static func getNearestStopsInfoByReverseGeocoding(lat:String, lon:String, limit: Int, callback: (NSArray) -> Void) {
+    static func getNearestStopsInfoByReverseGeocoding(lat:String, lon:String, limit: Int, callback: ([AnyObject]) -> Void) {
         let query = baseQuery +
             "&request=stops_area&" +
             "&request=reverse_geocode" +
@@ -71,7 +56,7 @@ public class HSL {
             "&result_contains=stop"
 
         HTTPGetJSONArray(query) {
-                (data: NSArray, error: String?) -> Void in
+                (data: [AnyObject], error: String?) -> Void in
                 if error != nil {
                     NSLog("Error getting JSON")
                     NSLog(error!)
@@ -87,13 +72,13 @@ public class HSL {
             "&request=stop" +
             "&code=" + stopCode
         ) {
-            (data: NSArray, error: String?) -> Void in
+            (data: [AnyObject], error: String?) -> Void in
             if error != nil {
                 NSLog("Error getting JSON")
                 NSLog(error!)
             } else {
-                if let feed = data.firstObject as? NSDictionary,
-                let departures = feed["departures"] as? NSArray{
+                if let feed = data.first as? [String: AnyObject],
+                let departures = feed["departures"] as? [AnyObject]{
                     var nextDepartures: [Departure] = []
 
                     for departure in departures{
@@ -145,18 +130,33 @@ public class HSL {
         }
     }
 
-    static func getLineInfo(lineCode: String, callback: (NSDictionary) -> Void) {
+    private static func formatTime(time:Int) -> String {
+        // Converts time from 2515 (which is how the API presents times past midnight) to "01:15"
+            if time >= 2400 {
+                let timeString = String(time)
+                let hours = timeString.substringWithRange(timeString.startIndex..<timeString.startIndex.advancedBy(2))
+                let hoursCorrected = Int(hours)! - 24
+                let minutes = timeString.substringWithRange(timeString.startIndex.advancedBy(2)..<timeString.endIndex)
+                return String(hoursCorrected) + ":" + minutes
+            }
+
+        var result = String(time)
+        result.insert(":", atIndex: String(time).endIndex.predecessor().predecessor())
+        return result
+    }
+
+    static func getLineInfo(lineCode: String, callback: ([String: AnyObject]) -> Void) {
         HTTPGetJSONArray(
             baseQuery +
             "&query=" + lineCode +
             "&request=lines"
             ) {
-                (data: NSArray, error: String?) -> Void in
+                (data: [AnyObject], error: String?) -> Void in
                 if error != nil {
                     NSLog("Error getting JSON")
                     NSLog(error!)
                 } else {
-                    if let feed = data.firstObject as? NSDictionary,
+                    if let feed = data.first as? [String: AnyObject],
                         let code = feed["code_short"] as? String,
                         let name = feed["name"] as? String{
                             let lineInfo: [String: String] = ["code": code, "name": name]
@@ -168,16 +168,16 @@ public class HSL {
 
     static func HTTPGetJSONObject(
         url: String,
-        callback: (NSDictionary, String?) -> Void) {
+        callback: ([String: AnyObject], String?) -> Void) {
             NSLog("Sending HTTP GET request: " + url)
             let request = NSMutableURLRequest(URL: NSURL(string: url.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!)!)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             HTTPsendRequest(request) {
                 (data: String, error: String?) -> Void in
                 if error != nil {
-                    callback(NSDictionary(), error)
+                    callback([String: AnyObject](), error)
                 } else {
-                    let jsonObj:NSDictionary
+                    let jsonObj: [String: AnyObject]
                     jsonObj = self.JSONParseDict(data)
                     callback(jsonObj, nil)
                 }
@@ -186,53 +186,53 @@ public class HSL {
 
     static func HTTPGetJSONArray(
         url: String,
-        callback: (NSArray, String?) -> Void) {
+        callback: ([AnyObject], String?) -> Void) {
             print(url)
             let request = NSMutableURLRequest(URL: NSURL(string: url.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!)!)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             HTTPsendRequest(request) {
                 (data: String, error: String?) -> Void in
                 if error != nil {
-                    callback(NSArray(), error)
+                    callback([AnyObject](), error)
                 } else {
-                    let jsonObj:NSArray
+                    let jsonObj:[AnyObject]
                     jsonObj = self.JSONParseArray(data)
                     callback(jsonObj, nil)
                 }
             }
     }
 
-    static private func JSONParseArray(jsonString:String) -> NSArray {
+    static private func JSONParseArray(jsonString:String) -> [AnyObject] {
         if let data: NSData = jsonString.dataUsingEncoding(
             NSUTF8StringEncoding){
                 do{
                     if let jsonObj = try NSJSONSerialization.JSONObjectWithData(
                         data,
-                        options: NSJSONReadingOptions(rawValue: 0)) as? NSArray{
+                        options: NSJSONReadingOptions(rawValue: 0)) as? [AnyObject]{
                             return jsonObj
                     }
                 }catch{
                     NSLog("Error parsing JSON")
                 }
         }
-        return NSArray()
+        return [AnyObject]()
     }
 
-    static private func JSONParseDict(jsonString:String) -> NSDictionary {
+    static private func JSONParseDict(jsonString:String) -> [String: AnyObject] {
         print(jsonString)
         if let data: NSData = jsonString.dataUsingEncoding(
             NSUTF8StringEncoding){
                 do{
                     if let jsonObj = try NSJSONSerialization.JSONObjectWithData(
                         data,
-                        options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary{
+                        options: NSJSONReadingOptions(rawValue: 0)) as? [String: AnyObject]{
                             return jsonObj
                     }
                 }catch{
                     NSLog("Error parsing JSON")
                 }
         }
-        return NSDictionary()
+        return [String: AnyObject]()
     }
 
     static private func HTTPsendRequest(request: NSMutableURLRequest,
