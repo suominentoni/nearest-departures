@@ -8,7 +8,7 @@
         <!--NearestDeparture-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="NearestDeparture" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="HSL_Nearest_Departures_WatchKit_App" customModuleProvider="target">
+                <controller identifier="NearestDeparture" id="AgC-eL-Hgc" customClass="NearestStopsInterfaceController" customModule="HSL_Nearest_Departures_WatchKit_Extension">
                     <items>
                         <table alignment="left" id="ozD-8f-EWu">
                             <items>
