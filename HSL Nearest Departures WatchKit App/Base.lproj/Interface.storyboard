@@ -49,7 +49,7 @@
                         <items>
                             <menuItem title="Refresh" icon="accept" id="3MY-aO-z62">
                                 <connections>
-                                    <action selector="refreshClick" destination="AgC-eL-Hgc" id="laZ-hk-dJS"/>
+                                    <action selector="refreshClick" destination="AgC-eL-Hgc" id="Uta-b6-UvN"/>
                                 </connections>
                             </menuItem>
                         </items>

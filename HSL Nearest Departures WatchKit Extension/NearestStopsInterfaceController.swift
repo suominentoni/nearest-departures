@@ -88,4 +88,8 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
         NSLog("Creating timer")
         timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(NearestStopsInterfaceController.requestLocation), userInfo: nil, repeats: true)
     }
+
+    @IBAction func refreshClick() {
+        requestLocation()
+    }
 }
