@@ -17,7 +17,6 @@
 		533E1C511C527B42001EA50B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDC1C2C06EC002F0107 /* Interface.storyboard */; };
 		535D39741C38140E008D59C3 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* InterfaceController.swift */; };
 		53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */; };
-		53E4ECB51C2C06EC002F0107 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB41C2C06EC002F0107 /* ViewController.swift */; };
 		53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB61C2C06EC002F0107 /* Main.storyboard */; settings = {ASSET_TAGS = (stopCode, ); }; };
 		53E4ECBA1C2C06EC002F0107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB91C2C06EC002F0107 /* Assets.xcassets */; };
 		53E4ECBD1C2C06EC002F0107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECBB1C2C06EC002F0107 /* LaunchScreen.storyboard */; };
@@ -102,7 +101,6 @@
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
 		53E4ECAF1C2C06EC002F0107 /* Lähimmät Lähdöt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lähimmät Lähdöt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		53E4ECB41C2C06EC002F0107 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		53E4ECB71C2C06EC002F0107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		53E4ECB91C2C06EC002F0107 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53E4ECBC1C2C06EC002F0107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */,
-				53E4ECB41C2C06EC002F0107 /* ViewController.swift */,
 				53E4ECB61C2C06EC002F0107 /* Main.storyboard */,
 				53E4ECB91C2C06EC002F0107 /* Assets.xcassets */,
 				53E4ECBB1C2C06EC002F0107 /* LaunchScreen.storyboard */,
@@ -463,7 +460,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53E4ECB51C2C06EC002F0107 /* ViewController.swift in Sources */,
 				5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */,
 				53ED7E351C3BF38E00BAE367 /* HSL.swift in Sources */,
 				5329C5961C70DFC9000E24F9 /* NextDepartureCell.swift in Sources */,
