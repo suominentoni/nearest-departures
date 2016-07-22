@@ -58,10 +58,19 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
     public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         NSLog("Received departure information from iOS companion app")
-        self.updateInterface(nearestStopsFromWatchConnectivityMessage(message))
+        let stops: [Stop] = nearestStopsFromWatchConnectivityMessage(message)
+
+        if(stops.count == 0) {
+            let alertAction = WKAlertAction(title: "OK", style: WKAlertActionStyle.Default, handler: {() in })
+            self.presentAlertControllerWithTitle("Ei pysäkkejä", message: "Lähistöltä ei löytynyt pysäkkejä", preferredStyle: WKAlertControllerStyle.Alert, actions: [alertAction])
+            nearestStopsTable.setNumberOfRows(0, withRowType: "nearestStopsRow")
+        } else {
+            self.updateInterface(stops)
+        }
     }
 
     @IBAction func refreshInterface() -> Void {
+        NSLog("Sending refresh message to iOS companion app")
         session?.sendMessage(["refresh": true],
             replyHandler: {message in
                 self.updateInterface(self.nearestStopsFromWatchConnectivityMessage(message))
@@ -97,23 +106,17 @@ public class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
 
     private func updateInterface(nearestStops: [Stop]) -> Void {
-        if(nearestStops.count == 0) {
-            let alertAction = WKAlertAction(title: "OK", style: WKAlertActionStyle.Default, handler: {() in })
-            self.presentAlertControllerWithTitle("Ei Pysäkkejä", message: "Lähistöltä ei löytynyt pysäkkejä", preferredStyle: WKAlertControllerStyle.Alert, actions: [alertAction])
-            nearestStopsTable.setNumberOfRows(0, withRowType: "nearestStopsRow")
-        } else {
-            nearestStopsTable.setNumberOfRows(nearestStops.count, withRowType: "nearestStopsRow")
-            var i: Int = 0
-            for stop in nearestStops {
-                let row: AnyObject? = nearestStopsTable.rowControllerAtIndex(i)
-                let nearestStopRow = row as! NearestStopsRow
+        nearestStopsTable.setNumberOfRows(nearestStops.count, withRowType: "nearestStopsRow")
+        var i: Int = 0
+        for stop in nearestStops {
+            let row: AnyObject? = nearestStopsTable.rowControllerAtIndex(i)
+            let nearestStopRow = row as! NearestStopsRow
 
-                nearestStopRow.code = stop.codeLong
-                nearestStopRow.stopName.setText(stop.name)
-                nearestStopRow.stopCode.setText(stop.codeShort)
-                nearestStopRow.distance.setText(String(stop.distance) + " m")
-                i += 1
-            }
+            nearestStopRow.code = stop.codeLong
+            nearestStopRow.stopName.setText(stop.name)
+            nearestStopRow.stopCode.setText(stop.codeShort)
+            nearestStopRow.distance.setText(String(stop.distance) + " m")
+            i += 1
         }
     }
 
