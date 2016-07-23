@@ -11,10 +11,18 @@ class NextDeparturesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.Top
 
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(NextDeparturesTableViewController.reloadTableData), forControlEvents: UIControlEvents.ValueChanged)
+
+        reloadTableData()
+    }
+
+    func reloadTableData() {
         HSL.getNextDeparturesForStop(self.stopCode, callback: {(nextDepartures: [Departure]) -> Void in
             self.nextDepartures = nextDepartures
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             })
         })
     }
