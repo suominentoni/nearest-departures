@@ -13,39 +13,16 @@ public struct Stop {
     let distance: String
     let codeLong: String
     let codeShort: String
-
-    public func toDict() -> [String: AnyObject] {
-        return [
-            "name": self.name,
-            "distance": self.distance,
-            "codeLong": self.codeLong,
-            "codeShort": self.codeShort
-        ]
-    }
 }
 
 public struct Departure {
     let line: Line
     let time: String
-
-    public func toDict() -> [String: AnyObject] {
-        return [
-            "line": self.line.toDict(),
-            "time": self.time,
-        ]
-    }
 }
 
 public struct Line {
     let codeLong: String
     let codeShort: String?
-
-    public func toDict() -> [String: AnyObject] {
-        return [
-            "codeLong": self.codeLong,
-            "codeShort": (self.codeShort != nil) ? self.codeShort! : ""
-        ]
-    }
 }
 
 public struct Const {
