@@ -14,6 +14,8 @@ class NearestStopsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 200
     }
 
     func reloadWithNewData(nearestStops: [Stop]) {
@@ -30,11 +32,14 @@ class NearestStopsTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
