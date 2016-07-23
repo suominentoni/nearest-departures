@@ -36,6 +36,7 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
 
     public func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         NSLog("Location Manager error: " + error.localizedDescription)
+        requestLocation()
     }
 
     public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
