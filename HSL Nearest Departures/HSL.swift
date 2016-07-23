@@ -111,7 +111,6 @@ public class HSL {
 
                     // populate next departures with short line codes
                     dispatch_group_notify(lineInfoGroup,dispatch_get_main_queue(), { _ in
-                        print(shortLineCodes)
                         let nextDeparturesWithShortLineCodes = nextDepartures.map({departure -> Departure in
                             if(shortLineCodes[departure.line.codeLong] != nil) {
                                 return Departure(
@@ -132,13 +131,13 @@ public class HSL {
 
     private static func formatTime(time:Int) -> String {
         // Converts time from 2515 (which is how the API presents times past midnight) to "01:15"
-            if time >= 2400 {
-                let timeString = String(time)
-                let hours = timeString.substringWithRange(timeString.startIndex..<timeString.startIndex.advancedBy(2))
-                let hoursCorrected = Int(hours)! - 24
-                let minutes = timeString.substringWithRange(timeString.startIndex.advancedBy(2)..<timeString.endIndex)
-                return String(hoursCorrected) + ":" + minutes
-            }
+        if time >= 2400 {
+            let timeString = String(time)
+            let hours = timeString.substringWithRange(timeString.startIndex..<timeString.startIndex.advancedBy(2))
+            let hoursCorrected = Int(hours)! - 24
+            let minutes = timeString.substringWithRange(timeString.startIndex.advancedBy(2)..<timeString.endIndex)
+            return String(hoursCorrected) + ":" + minutes
+        }
 
         var result = String(time)
         result.insert(":", atIndex: String(time).endIndex.predecessor().predecessor())

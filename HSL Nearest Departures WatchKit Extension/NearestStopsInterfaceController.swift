@@ -6,8 +6,6 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
 
     @IBOutlet var nearestStopsTable: WKInterfaceTable!
 
-    var timer: NSTimer?
-
     var nearestStops = [Stop]()
 
     var locationManager: CLLocationManager!
@@ -41,17 +39,11 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
     }
 
     public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let newLat = locations.last!.coordinate.latitude
-        let newLon = locations.last!.coordinate.longitude
+        NSLog("New location data received")
+        let lat = locations.last!.coordinate.latitude
+        let lon = locations.last!.coordinate.longitude
 
-        if(lat != newLat || lon != newLon) {
-            NSLog("Got new location data")
-            lat = newLat
-            lon = newLon
-            HSL.getNearestStops(lat, lon: lon, successCallback: updateInterface)
-        } else {
-            NSLog("Got same location data")
-        }
+        HSL.getNearestStops(lat, lon: lon, successCallback: updateInterface)
     }
 
     private func updateInterface(nearestStops: [Stop]) -> Void {
@@ -77,16 +69,8 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
         }
     }
 
-    public override func willDisappear() {
-        NSLog("Invalidating timer")
-        timer?.invalidate()
-        timer = nil
-    }
-
     override public func willActivate() {
         requestLocation()
-        NSLog("Creating timer")
-        timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(NearestStopsInterfaceController.requestLocation), userInfo: nil, repeats: true)
     }
 
     @IBAction func refreshClick() {
