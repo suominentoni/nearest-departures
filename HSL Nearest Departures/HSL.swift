@@ -15,7 +15,8 @@ public class HSL {
                 let codeShort = item["codeShort"] as? String,
                 let distance = item["dist"] as? Int,
                 let code = item["code"] as? String {
-                    let stop = Stop(name: name, distance: distance, codeLong: code, codeShort: codeShort)
+                    let distanceApproximation = distance < 50 ? "<50" : String(distance)
+                    let stop = Stop(name: name, distance: distanceApproximation, codeLong: code, codeShort: codeShort)
                     nearestStops.append(stop)
                 }
 

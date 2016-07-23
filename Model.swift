@@ -10,7 +10,7 @@ import Foundation
 
 public struct Stop {
     let name: String
-    let distance: Int
+    let distance: String
     let codeLong: String
     let codeShort: String
 
