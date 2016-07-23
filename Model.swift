@@ -50,7 +50,7 @@ public struct Line {
 
 public struct Const {
     static let NO_STOPS_TITLE = "Ei pysäkkejä"
-    static let NO_STOPS_MSG = "Lähistöltä ei löytynyt pysäkkejä. Sovellus toimii ainoastaan Helsingin Seudun Liikenteen (HSL) alueella."
+    static let NO_STOPS_MSG = "Lähistöltä ei löytynyt pysäkkejä. Sovellus etsii pysäkkejä noin 500 metrin säteellä."
 
     static let UNLOCK_IPHONE_TITLE = "Avaa iPhonen lukitus"
     static let UNLOCK_IPHONE_MSG = "iPhonen lukitus täytyy avata uudelleenkäynnistyksen jälkeen jotta Apple Watchin ja iPhonen välinen kommunikaatio on mahdollista."
