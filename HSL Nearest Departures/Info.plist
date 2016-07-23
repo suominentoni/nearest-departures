@@ -27,8 +27,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Ohjelma tarvitsee sijaintitietoja lähimpien pysäkkien hakemiseen</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Sovellus tarvitsee sijaintitietoja lähimpien pysäkkien etsimiseen.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

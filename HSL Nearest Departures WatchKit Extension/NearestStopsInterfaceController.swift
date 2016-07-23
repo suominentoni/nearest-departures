@@ -23,15 +23,25 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
 
         locationManager = CLLocationManager()
         locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 5
-        locationManager.requestLocation()
+
+        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined) {
+            locationManager.requestWhenInUseAuthorization()
+        } else {
+            requestLocation()
+        }
+    }
+
+    public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        requestLocation()
     }
 
     func requestLocation() {
-        NSLog("Requesting location")
-        locationManager.requestLocation()
+        if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Restricted || CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Denied) {
+            NSLog("Requesting location")
+            locationManager.requestLocation()
+        }
     }
 
     public func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {

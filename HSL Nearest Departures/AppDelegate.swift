@@ -15,12 +15,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLoca
 
         locationManager = CLLocationManager()
         locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 5
-        locationManager.startUpdatingLocation()
+
+        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined) {
+            locationManager.requestWhenInUseAuthorization()
+        }
+
+        if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Restricted || CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Denied) {
+            locationManager.startUpdatingLocation()
+        }
 
         return true
+    }
+
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if(status != CLAuthorizationStatus.Restricted || status != CLAuthorizationStatus.Denied) {
+            locationManager.startUpdatingLocation()
+        }
     }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
