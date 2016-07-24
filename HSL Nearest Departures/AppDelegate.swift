@@ -1,58 +1,13 @@
 import UIKit
 import WatchConnectivity
-import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, CLLocationManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     var window: UIWindow?
 
-    var locationManager: CLLocationManager!
-    var lat: Double = 0
-    var lon: Double = 0
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 5
-
-        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined) {
-            locationManager.requestWhenInUseAuthorization()
-        }
-
-        if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Restricted || CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Denied) {
-            locationManager.startUpdatingLocation()
-        }
-
         return true
-    }
-
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if(status != CLAuthorizationStatus.Restricted || status != CLAuthorizationStatus.Denied) {
-            locationManager.startUpdatingLocation()
-        }
-    }
-
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        lat = locations.last!.coordinate.latitude
-        lon = locations.last!.coordinate.longitude
-
-        NSLog("Got new location data")
-
-        HSL.getNearestStops(lat, lon: lon, successCallback: updateViews)
-    }
-
-    private func updateViews(nearestStops: [Stop]) {
-        NSLog("Updating nearest stops view")
-        if let navController = self.window!.rootViewController! as? UINavigationController {
-            if let viewController = navController.viewControllers[0] as? NearestStopsTableViewController {
-                dispatch_async(dispatch_get_main_queue(), {
-                    viewController.reloadWithNewData(nearestStops)
-                })
-            }
-        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

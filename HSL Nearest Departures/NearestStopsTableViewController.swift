@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
-class NearestStopsTableViewController: UITableViewController {
+class NearestStopsTableViewController: UITableViewController, CLLocationManagerDelegate {
+
+    var locationManager: CLLocationManager!
+    var lat: Double = 0
+    var lon: Double = 0
 
     private  var nearestStops: [Stop] = []
 
@@ -16,20 +21,54 @@ class NearestStopsTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 200
-    }
 
-    func reloadWithNewData(nearestStops: [Stop]) {
-        self.nearestStops = nearestStops
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 5
 
-        if(self.nearestStops.count == 0 ) {
-            let alert = UIAlertController(title: Const.NO_STOPS_TITLE, message: Const.NO_STOPS_MSG, preferredStyle: UIAlertControllerStyle.Alert)
-            let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
-
-            alert.addAction(alertAction)
-            self.presentViewController(alert, animated: true, completion: nil)
+        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined) {
+            locationManager.requestWhenInUseAuthorization()
         }
 
-        self.tableView.reloadData()
+        if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Restricted || CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Denied) {
+            locationManager.startUpdatingLocation()
+        }
+
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(NearestStopsTableViewController.reloadData), forControlEvents: UIControlEvents.ValueChanged)
+    }
+
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if(status != CLAuthorizationStatus.Restricted || status != CLAuthorizationStatus.Denied) {
+            locationManager.startUpdatingLocation()
+        }
+    }
+
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        lat = locations.last!.coordinate.latitude
+        lon = locations.last!.coordinate.longitude
+
+        NSLog("Got new location data")
+        reloadData()
+    }
+
+    @objc private func reloadData() {
+        HSL.getNearestStops(lat, lon: lon, successCallback: {(stops: [Stop]) in
+            self.nearestStops = stops
+            dispatch_async(dispatch_get_main_queue(), {
+                if(self.nearestStops.count == 0 ) {
+                    let alert = UIAlertController(title: Const.NO_STOPS_TITLE, message: Const.NO_STOPS_MSG, preferredStyle: UIAlertControllerStyle.Alert)
+                    let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+
+                    alert.addAction(alertAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+
+                self.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
+            })
+        })
     }
 
     override func viewDidAppear(animated: Bool) {
