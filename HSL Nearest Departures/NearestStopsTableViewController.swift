@@ -58,11 +58,14 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
             self.nearestStops = stops
             dispatch_async(dispatch_get_main_queue(), {
                 if(self.nearestStops.count == 0 ) {
-                    let alert = UIAlertController(title: Const.NO_STOPS_TITLE, message: Const.NO_STOPS_MSG, preferredStyle: UIAlertControllerStyle.Alert)
-                    let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+                    messageLabel.textAlignment = NSTextAlignment.Center
+                    messageLabel.numberOfLines = 0
+                    messageLabel.text = Const.NO_STOPS_MSG
+                    messageLabel.sizeToFit()
 
-                    alert.addAction(alertAction)
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.tableView.backgroundView = messageLabel
+                    self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
                 }
 
                 self.refreshControl?.endRefreshing()
