@@ -21,6 +21,16 @@ class NextDeparturesTableViewController: UITableViewController {
         HSL.getNextDeparturesForStop(self.stopCode, callback: {(nextDepartures: [Departure]) -> Void in
             self.nextDepartures = nextDepartures
             dispatch_async(dispatch_get_main_queue(), {
+                if(self.nextDepartures.count == 0) {
+                    let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+                    messageLabel.textAlignment = NSTextAlignment.Center
+                    messageLabel.numberOfLines = 0
+                    messageLabel.text = Const.NO_DEPARTURES_MSG
+                    messageLabel.sizeToFit()
+
+                    self.tableView.backgroundView = messageLabel
+                    self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+                }
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
             })

@@ -31,4 +31,7 @@ public struct Const {
 
     static let UNLOCK_IPHONE_TITLE = "Avaa iPhonen lukitus"
     static let UNLOCK_IPHONE_MSG = "iPhonen lukitus täytyy avata uudelleenkäynnistyksen jälkeen jotta Apple Watchin ja iPhonen välinen kommunikaatio on mahdollista."
+
+    static let NO_DEPARTURES_TITLE = "Ei lähtöjä"
+    static let NO_DEPARTURES_MSG = "Ei lähtöjä seuraavan kuuden tunnin aikana."
 }

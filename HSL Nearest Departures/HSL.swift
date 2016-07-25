@@ -2,7 +2,7 @@ import Foundation
 
 public class HSL {
 
-    static let baseQuery = "http://api.reittiopas.fi/hsl/prod/?user=suominentoni&pass=***REMOVED***"
+    static let baseQuery = "http://api.reittiopas.fi/hsl/prod/?user=hsllahlah&pass=hSlLaHlAh16"
 
     static func getNearestStops(lat: Double, lon: Double, successCallback: (stops: [Stop]) -> Void) -> Void {
 
@@ -71,7 +71,9 @@ public class HSL {
         HTTPGetJSONArray(
             baseQuery +
             "&request=stop" +
-            "&code=" + stopCode
+            "&code=" + stopCode +
+            "&time_limit=350" +
+            "&dep_limit=20"
         ) {
             (data: [AnyObject], error: String?) -> Void in
             if error != nil {
@@ -125,6 +127,9 @@ public class HSL {
                         })
                         callback(nextDeparturesWithShortLineCodes)
                     });
+                } else {
+                    // No departures within the next 6h
+                    callback([])
                 }
             }
         }

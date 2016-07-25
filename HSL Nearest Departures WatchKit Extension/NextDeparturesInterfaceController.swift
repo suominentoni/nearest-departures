@@ -18,13 +18,17 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
         NSLog("Updating Next Departures interface")
         nextDeparturesTable.setNumberOfRows(nextDepartures.count, withRowType: "nextDepartureRow")
 
-        var i: Int = 0
-        for departure in nextDepartures {
-            let row: AnyObject? = nextDeparturesTable.rowControllerAtIndex(i)
-            let nextDepartureRow = row as! NextDeparturesRow
-            nextDepartureRow.time.setText(departure.time)
-            nextDepartureRow.code.setText(departure.line.codeShort != nil ? departure.line.codeShort : departure.line.codeLong)
-            i += 1
+        if(nextDepartures.count == 0) {
+            self.presentAlert(Const.NO_DEPARTURES_TITLE, message: Const.NO_DEPARTURES_MSG)
+        } else {
+            var i: Int = 0
+            for departure in nextDepartures {
+                let row: AnyObject? = nextDeparturesTable.rowControllerAtIndex(i)
+                let nextDepartureRow = row as! NextDeparturesRow
+                nextDepartureRow.time.setText(departure.time)
+                nextDepartureRow.code.setText(departure.line.codeShort != nil ? departure.line.codeShort : departure.line.codeLong)
+                i += 1
+            }
         }
     }
 
