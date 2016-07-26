@@ -372,7 +372,7 @@
 				TargetAttributes = {
 					53E4ECAE1C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 82V9P5RDKE;
+						DevelopmentTeam = JV8CWWLSL8;
 					};
 					53E4ECC21C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
@@ -384,11 +384,11 @@
 					};
 					53E4ECD61C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 82V9P5RDKE;
+						DevelopmentTeam = JV8CWWLSL8;
 					};
 					53E4ECE51C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 82V9P5RDKE;
+						DevelopmentTeam = JV8CWWLSL8;
 					};
 				};
 			};
@@ -649,7 +649,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "HSL Nearest Departures WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.suominentoni.HSL-Nearest-Departures2.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
@@ -666,7 +666,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "HSL Nearest Departures WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.suominentoni.HSL-Nearest-Departures2.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
@@ -687,7 +687,7 @@
 				IBSC_MODULE = HSL_Nearest_Departures_WatchKit_Extension;
 				INFOPLIST_FILE = "HSL Nearest Departures WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.suominentoni.HSL-Nearest-Departures2.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
@@ -710,7 +710,7 @@
 				IBSC_MODULE = HSL_Nearest_Departures_WatchKit_Extension;
 				INFOPLIST_FILE = "HSL Nearest Departures WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.suominentoni.HSL-Nearest-Departures2.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
@@ -731,7 +731,7 @@
 				INFOPLIST_FILE = "HSL Nearest Departures/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.suominentoni.HSL-Nearest-Departures2";
 				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
 			};
@@ -747,7 +747,7 @@
 				INFOPLIST_FILE = "HSL Nearest Departures/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-Departures";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.suominentoni.HSL-Nearest-Departures2";
 				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
 			};
