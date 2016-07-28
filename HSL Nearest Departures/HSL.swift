@@ -32,7 +32,8 @@ public class HSL {
         "&center_coordinate=" +
         String(lon) + "," +
         String(lat) +
-        "&diameter=500"
+        "&diameter=500" +
+        "limit=50"
 
         HTTPGetJSONArray(query) {
                 (data: [AnyObject], error: String?) -> Void in
