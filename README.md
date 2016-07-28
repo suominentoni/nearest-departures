@@ -1,5 +1,10 @@
 
 TODO:
+* Map view:
+    * display all stops on map AND/OR
+    * dispay a stop on map (+ navigation instructions?)
+* Frequently used/favorite stops
+* Is there anyway to distinguish the stops with the same name?
 * Next deps: show stop name on top of list
 * Nearest stops: show next departure in list item
 * Next deps: alert if no deps today any more
