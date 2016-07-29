@@ -23,6 +23,7 @@ public struct Departure {
 public struct Line {
     let codeLong: String
     let codeShort: String?
+    let destination: String?
 }
 
 public struct Const {
