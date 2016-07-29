@@ -111,7 +111,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVQ-z0-gVB">
-                                            <rect key="frame" x="15" y="13" width="50" height="17.5"/>
+                                            <rect key="frame" x="21" y="13" width="50" height="17.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="k07-w5-FUv"/>
                                             </constraints>
@@ -129,7 +129,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOw-nK-Wua">
-                                            <rect key="frame" x="75" y="11" width="445" height="21.5"/>
+                                            <rect key="frame" x="81" y="11" width="439" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -137,7 +137,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Dz4-1M-djI" firstAttribute="leading" secondItem="LOw-nK-Wua" secondAttribute="trailing" constant="15" id="0ze-Pd-jne"/>
-                                        <constraint firstItem="dVQ-z0-gVB" firstAttribute="leading" secondItem="Hzi-2G-Bm9" secondAttribute="leading" constant="15" id="2Nc-ki-Lrl"/>
+                                        <constraint firstItem="dVQ-z0-gVB" firstAttribute="leading" secondItem="Hzi-2G-Bm9" secondAttribute="leading" constant="21" id="2Nc-ki-Lrl"/>
                                         <constraint firstAttribute="bottom" secondItem="Dz4-1M-djI" secondAttribute="bottom" constant="13" id="Djs-SU-V8Y"/>
                                         <constraint firstItem="LOw-nK-Wua" firstAttribute="leading" secondItem="dVQ-z0-gVB" secondAttribute="trailing" constant="10" id="HWl-fa-CyT"/>
                                         <constraint firstItem="dVQ-z0-gVB" firstAttribute="top" secondItem="Hzi-2G-Bm9" secondAttribute="top" constant="13" id="Jdm-xK-LuU"/>
