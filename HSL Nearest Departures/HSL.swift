@@ -88,7 +88,7 @@ public class HSL {
                     for departure in departures{
                         if let lineCode = departure["code"] as? String,
                         let time = departure["time"] as? Int {
-                            nextDepartures.append(Departure(line: Line(codeLong: lineCode, codeShort: nil), time: formatTime(time)))
+                            nextDepartures.append(Departure(line: Line(codeLong: lineCode, codeShort: nil, destination: nil), time: formatTime(time)))
                         }
                     }
 
@@ -103,12 +103,12 @@ public class HSL {
 
                     // get short code for each distinct long line code
                     let lineInfoGroup = dispatch_group_create()
-                    var shortLineCodes = [String: String]()
+                    var shortLineCodes = [String: Line]()
 
                     for code in longLineCodes {
                         dispatch_group_enter(lineInfoGroup)
-                        getLineInfo(code, callback: {lineInfo in
-                            shortLineCodes[code] = (lineInfo["code"] as! String)
+                        getLineInfo(code, callback: {(line: Line) in
+                            shortLineCodes[code] = line
                             dispatch_group_leave(lineInfoGroup)
                         })
                     }
@@ -116,11 +116,9 @@ public class HSL {
                     // populate next departures with short line codes
                     dispatch_group_notify(lineInfoGroup,dispatch_get_main_queue(), { _ in
                         let nextDeparturesWithShortLineCodes = nextDepartures.map({departure -> Departure in
-                            if(shortLineCodes[departure.line.codeLong] != nil) {
+                            if(shortLineCodes[departure.line.codeLong]?.codeShort != nil) {
                                 return Departure(
-                                    line: Line(
-                                        codeLong: departure.line.codeLong,
-                                        codeShort: shortLineCodes[departure.line.codeLong]),
+                                    line: shortLineCodes[departure.line.codeLong]!,
                                     time: departure.time)
                             } else {
                                 return departure
@@ -151,7 +149,7 @@ public class HSL {
         return result
     }
 
-    static func getLineInfo(lineCode: String, callback: ([String: AnyObject]) -> Void) -> Void {
+    static func getLineInfo(lineCode: String, callback: (Line) -> Void) -> Void {
         HTTPGetJSONArray(
             baseQuery +
             "&query=" + lineCode +
@@ -163,10 +161,10 @@ public class HSL {
                     NSLog(error!)
                 } else {
                     if let feed = data.first as? [String: AnyObject],
-                        let code = feed["code_short"] as? String,
-                        let name = feed["name"] as? String{
-                            let lineInfo: [String: String] = ["code": code, "name": name]
-                            callback(lineInfo)
+                        let codeLong = feed["code"] as? String,
+                        let codeShort = feed["code_short"] as? String,
+                        let destination = feed["line_end"] as? String {
+                            callback(Line(codeLong: codeLong, codeShort: codeShort, destination: destination))
                     }
                 }
         }
