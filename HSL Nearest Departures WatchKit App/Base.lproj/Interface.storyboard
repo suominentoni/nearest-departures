@@ -13,7 +13,7 @@
                         <table alignment="left" id="ozD-8f-EWu">
                             <items>
                                 <tableRow identifier="nearestStopsRow" id="BHl-j5-Xp9" customClass="NearestStopsRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="55" alignment="left" layout="vertical" id="c57-EP-iHN">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="c57-EP-iHN">
                                         <items>
                                             <group width="1" height="25" alignment="left" id="HwZ-Gq-rVB">
                                                 <items>
@@ -34,7 +34,7 @@
                                                 </items>
                                             </group>
                                         </items>
-                                        <edgeInsets key="margins" left="2" right="0.0" top="3" bottom="3"/>
+                                        <edgeInsets key="margins" left="3" right="3" top="3" bottom="3"/>
                                     </group>
                                     <connections>
                                         <outlet property="distance" destination="v1g-ie-YRu" id="PJI-cR-9iS"/>
@@ -69,19 +69,32 @@
                         <table alignment="left" id="0ff-cT-m2o">
                             <items>
                                 <tableRow identifier="nextDepartureRow" id="gtV-XY-C6Y" customClass="NextDeparturesRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
-                                    <group key="rootItem" width="1" alignment="left" id="EY1-Mj-J9e">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="EY1-Mj-J9e">
                                         <items>
-                                            <label alignment="left" verticalAlignment="center" text="-" id="jWL-FK-o7Q">
-                                                <color key="textColor" red="0.00040824659794813645" green="1" blue="0.016464297960415597" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="font" type="system" weight="semibold" pointSize="16"/>
-                                            </label>
-                                            <label alignment="right" verticalAlignment="center" text="00:00" textAlignment="right" id="GXy-H5-Hpq">
-                                                <fontDescription key="font" type="system" weight="thin" pointSize="16"/>
-                                            </label>
+                                            <group width="1" alignment="left" id="Bd6-Nv-eI5">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="-" id="jWL-FK-o7Q">
+                                                        <color key="textColor" red="0.00040824659794813645" green="1" blue="0.016464297960415597" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="16"/>
+                                                    </label>
+                                                    <label alignment="right" verticalAlignment="center" text="00:00" textAlignment="right" id="GXy-H5-Hpq">
+                                                        <fontDescription key="font" type="system" pointSize="14"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <group alignment="left" id="0DW-NS-0XU">
+                                                <items>
+                                                    <label alignment="left" text="-" numberOfLines="5" minimumScaleFactor="0.90000000000000002" id="lsO-Vo-R3V">
+                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                            </group>
                                         </items>
+                                        <edgeInsets key="margins" left="3" right="3" top="3" bottom="3"/>
                                     </group>
                                     <connections>
                                         <outlet property="code" destination="jWL-FK-o7Q" id="jRd-WM-huH"/>
+                                        <outlet property="destination" destination="lsO-Vo-R3V" id="P9g-Mp-5mq"/>
                                         <outlet property="time" destination="GXy-H5-Hpq" id="efm-KO-PUY"/>
                                     </connections>
                                 </tableRow>

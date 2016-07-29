@@ -27,6 +27,7 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
                 let nextDepartureRow = row as! NextDeparturesRow
                 nextDepartureRow.time.setText(departure.time)
                 nextDepartureRow.code.setText(departure.line.codeShort != nil ? departure.line.codeShort : departure.line.codeLong)
+                nextDepartureRow.destination.setText(departure.line.destination)
                 i += 1
             }
         }

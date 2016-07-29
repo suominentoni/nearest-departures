@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Lähimmät pysäkkisi-->
@@ -112,29 +111,48 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVQ-z0-gVB">
-                                            <rect key="frame" x="23" y="13" width="8" height="17.5"/>
+                                            <rect key="frame" x="15" y="13" width="50" height="17.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="k07-w5-FUv"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dz4-1M-djI">
-                                            <rect key="frame" x="536" y="13" width="46" height="17.5"/>
+                                            <rect key="frame" x="535" y="13" width="50" height="17.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="rC6-Vh-k4m"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOw-nK-Wua">
+                                            <rect key="frame" x="75" y="11" width="445" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Dz4-1M-djI" firstAttribute="top" secondItem="Hzi-2G-Bm9" secondAttribute="top" constant="13" id="0iL-WM-CkV"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Dz4-1M-djI" secondAttribute="bottom" constant="5" id="7Vr-CI-Lz4"/>
-                                        <constraint firstItem="dVQ-z0-gVB" firstAttribute="leading" secondItem="Hzi-2G-Bm9" secondAttribute="leading" constant="23" id="9GZ-yO-Kqr"/>
-                                        <constraint firstAttribute="trailing" secondItem="Dz4-1M-djI" secondAttribute="trailing" constant="18" id="BG7-ZQ-eKu"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="dVQ-z0-gVB" secondAttribute="bottom" constant="5" id="P1M-bS-YoD"/>
-                                        <constraint firstItem="dVQ-z0-gVB" firstAttribute="top" secondItem="Hzi-2G-Bm9" secondAttribute="top" constant="13" id="Zwx-oP-Gqm"/>
+                                        <constraint firstItem="Dz4-1M-djI" firstAttribute="leading" secondItem="LOw-nK-Wua" secondAttribute="trailing" constant="15" id="0ze-Pd-jne"/>
+                                        <constraint firstItem="dVQ-z0-gVB" firstAttribute="leading" secondItem="Hzi-2G-Bm9" secondAttribute="leading" constant="15" id="2Nc-ki-Lrl"/>
+                                        <constraint firstAttribute="bottom" secondItem="Dz4-1M-djI" secondAttribute="bottom" constant="13" id="Djs-SU-V8Y"/>
+                                        <constraint firstItem="LOw-nK-Wua" firstAttribute="leading" secondItem="dVQ-z0-gVB" secondAttribute="trailing" constant="10" id="HWl-fa-CyT"/>
+                                        <constraint firstItem="dVQ-z0-gVB" firstAttribute="top" secondItem="Hzi-2G-Bm9" secondAttribute="top" constant="13" id="Jdm-xK-LuU"/>
+                                        <constraint firstAttribute="bottom" secondItem="dVQ-z0-gVB" secondAttribute="bottom" constant="13" id="Jxf-PE-aQv"/>
+                                        <constraint firstAttribute="trailing" secondItem="Dz4-1M-djI" secondAttribute="trailing" constant="15" id="OLt-Ki-1ys"/>
+                                        <constraint firstItem="LOw-nK-Wua" firstAttribute="leading" secondItem="dVQ-z0-gVB" secondAttribute="trailing" constant="10" id="Tvv-up-58k"/>
+                                        <constraint firstItem="LOw-nK-Wua" firstAttribute="top" secondItem="Hzi-2G-Bm9" secondAttribute="top" constant="11" id="VrJ-Yb-syv"/>
+                                        <constraint firstAttribute="bottom" secondItem="LOw-nK-Wua" secondAttribute="bottom" constant="11" id="bCi-fa-M6b"/>
+                                        <constraint firstItem="Dz4-1M-djI" firstAttribute="top" secondItem="Hzi-2G-Bm9" secondAttribute="top" constant="13" id="wgt-Dy-NW2"/>
+                                        <constraint firstItem="Dz4-1M-djI" firstAttribute="leading" secondItem="LOw-nK-Wua" secondAttribute="trailing" constant="15" id="y7y-gW-3Op"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="code" destination="dVQ-z0-gVB" id="cZj-w0-Z2P"/>
+                                    <outlet property="destination" destination="LOw-nK-Wua" id="IdH-zb-slR"/>
                                     <outlet property="time" destination="Dz4-1M-djI" id="xU1-JW-iXC"/>
                                 </connections>
                             </tableViewCell>
