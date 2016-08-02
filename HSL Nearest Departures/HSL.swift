@@ -73,7 +73,7 @@ public class HSL {
             baseQuery +
             "&request=stop" +
             "&code=" + stopCode +
-            "&time_limit=350" +
+            "&time_limit=360" +
             "&dep_limit=20"
         ) {
             (data: [AnyObject], error: String?) -> Void in
