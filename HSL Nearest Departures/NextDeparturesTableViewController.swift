@@ -32,8 +32,10 @@ class NextDeparturesTableViewController: UITableViewController {
                     messageLabel.sizeToFit()
 
                     self.tableView.backgroundView = messageLabel
-                    self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+                } else {
+                    self.tableView.backgroundView = nil
                 }
+
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
             })

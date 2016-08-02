@@ -35,6 +35,7 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
             locationManager.startUpdatingLocation()
         }
 
+
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(NearestStopsTableViewController.reloadData), forControlEvents: UIControlEvents.ValueChanged)
     }
@@ -65,7 +66,8 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
                     messageLabel.sizeToFit()
 
                     self.tableView.backgroundView = messageLabel
-                    self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+                } else {
+                    self.tableView.backgroundView = nil
                 }
 
                 self.refreshControl?.endRefreshing()
