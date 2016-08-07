@@ -2,7 +2,7 @@ import Foundation
 
 public class HSL {
 
-    static let baseQuery = "http://api.reittiopas.fi/hsl/prod/?user=suominentoni&pass=***REMOVED***"
+    static let baseQuery = "http://api.reittiopas.fi/hsl/prod/?user=hsllahlah&pass=hSlLaHlAh16"
 
     static func getNearestStops(lat: Double, lon: Double, successCallback: (stops: [Stop]) -> Void) -> Void {
 
@@ -15,7 +15,8 @@ public class HSL {
                 let codeShort = item["codeShort"] as? String,
                 let distance = item["dist"] as? Int,
                 let code = item["code"] as? String {
-                    let stop = Stop(name: name, distance: distance, codeLong: code, codeShort: codeShort)
+                    let distanceApproximation = distance < 50 ? "<50" : String(distance)
+                    let stop = Stop(name: name, distance: distanceApproximation, codeLong: code, codeShort: codeShort)
                     nearestStops.append(stop)
                 }
 
@@ -31,7 +32,8 @@ public class HSL {
         "&center_coordinate=" +
         String(lon) + "," +
         String(lat) +
-        "&diameter=500"
+        "&diameter=500" +
+        "limit=50"
 
         HTTPGetJSONArray(query) {
                 (data: [AnyObject], error: String?) -> Void in
@@ -70,7 +72,9 @@ public class HSL {
         HTTPGetJSONArray(
             baseQuery +
             "&request=stop" +
-            "&code=" + stopCode
+            "&code=" + stopCode +
+            "&time_limit=360" +
+            "&dep_limit=20"
         ) {
             (data: [AnyObject], error: String?) -> Void in
             if error != nil {
@@ -84,7 +88,7 @@ public class HSL {
                     for departure in departures{
                         if let lineCode = departure["code"] as? String,
                         let time = departure["time"] as? Int {
-                            nextDepartures.append(Departure(line: Line(codeLong: lineCode, codeShort: nil), time: formatTime(time)))
+                            nextDepartures.append(Departure(line: Line(codeLong: lineCode, codeShort: nil, destination: nil), time: formatTime(time)))
                         }
                     }
 
@@ -99,25 +103,22 @@ public class HSL {
 
                     // get short code for each distinct long line code
                     let lineInfoGroup = dispatch_group_create()
-                    var shortLineCodes = [String: String]()
+                    var shortLineCodes = [String: Line]()
 
                     for code in longLineCodes {
                         dispatch_group_enter(lineInfoGroup)
-                        getLineInfo(code, callback: {lineInfo in
-                            shortLineCodes[code] = (lineInfo["code"] as! String)
+                        getLineInfo(code, callback: {(line: Line) in
+                            shortLineCodes[code] = line
                             dispatch_group_leave(lineInfoGroup)
                         })
                     }
 
                     // populate next departures with short line codes
                     dispatch_group_notify(lineInfoGroup,dispatch_get_main_queue(), { _ in
-                        print(shortLineCodes)
                         let nextDeparturesWithShortLineCodes = nextDepartures.map({departure -> Departure in
-                            if(shortLineCodes[departure.line.codeLong] != nil) {
+                            if(shortLineCodes[departure.line.codeLong]?.codeShort != nil) {
                                 return Departure(
-                                    line: Line(
-                                        codeLong: departure.line.codeLong,
-                                        codeShort: shortLineCodes[departure.line.codeLong]),
+                                    line: shortLineCodes[departure.line.codeLong]!,
                                     time: departure.time)
                             } else {
                                 return departure
@@ -125,6 +126,9 @@ public class HSL {
                         })
                         callback(nextDeparturesWithShortLineCodes)
                     });
+                } else {
+                    // No departures within the next 6h
+                    callback([])
                 }
             }
         }
@@ -132,20 +136,20 @@ public class HSL {
 
     private static func formatTime(time:Int) -> String {
         // Converts time from 2515 (which is how the API presents times past midnight) to "01:15"
-            if time >= 2400 {
-                let timeString = String(time)
-                let hours = timeString.substringWithRange(timeString.startIndex..<timeString.startIndex.advancedBy(2))
-                let hoursCorrected = Int(hours)! - 24
-                let minutes = timeString.substringWithRange(timeString.startIndex.advancedBy(2)..<timeString.endIndex)
-                return String(hoursCorrected) + ":" + minutes
-            }
+        if time >= 2400 {
+            let timeString = String(time)
+            let hours = timeString.substringWithRange(timeString.startIndex..<timeString.startIndex.advancedBy(2))
+            let hoursCorrected = Int(hours)! - 24
+            let minutes = timeString.substringWithRange(timeString.startIndex.advancedBy(2)..<timeString.endIndex)
+            return String(hoursCorrected) + ":" + minutes
+        }
 
         var result = String(time)
         result.insert(":", atIndex: String(time).endIndex.predecessor().predecessor())
         return result
     }
 
-    static func getLineInfo(lineCode: String, callback: ([String: AnyObject]) -> Void) -> Void {
+    static func getLineInfo(lineCode: String, callback: (Line) -> Void) -> Void {
         HTTPGetJSONArray(
             baseQuery +
             "&query=" + lineCode +
@@ -157,10 +161,10 @@ public class HSL {
                     NSLog(error!)
                 } else {
                     if let feed = data.first as? [String: AnyObject],
-                        let code = feed["code_short"] as? String,
-                        let name = feed["name"] as? String{
-                            let lineInfo: [String: String] = ["code": code, "name": name]
-                            callback(lineInfo)
+                        let codeLong = feed["code"] as? String,
+                        let codeShort = feed["code_short"] as? String,
+                        let destination = feed["line_end"] as? String {
+                            callback(Line(codeLong: codeLong, codeShort: codeShort, destination: destination))
                     }
                 }
         }

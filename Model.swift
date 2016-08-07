@@ -10,48 +10,29 @@ import Foundation
 
 public struct Stop {
     let name: String
-    let distance: Int
+    let distance: String
     let codeLong: String
     let codeShort: String
-
-    public func toDict() -> [String: AnyObject] {
-        return [
-            "name": self.name,
-            "distance": self.distance,
-            "codeLong": self.codeLong,
-            "codeShort": self.codeShort
-        ]
-    }
 }
 
 public struct Departure {
     let line: Line
     let time: String
-
-    public func toDict() -> [String: AnyObject] {
-        return [
-            "line": self.line.toDict(),
-            "time": self.time,
-        ]
-    }
 }
 
 public struct Line {
     let codeLong: String
     let codeShort: String?
-
-    public func toDict() -> [String: AnyObject] {
-        return [
-            "codeLong": self.codeLong,
-            "codeShort": (self.codeShort != nil) ? self.codeShort! : ""
-        ]
-    }
+    let destination: String?
 }
 
 public struct Const {
     static let NO_STOPS_TITLE = "Ei pysäkkejä"
-    static let NO_STOPS_MSG = "Lähistöltä ei löytynyt pysäkkejä. Sovellus toimii ainoastaan Helsingin Seudun Liikenteen (HSL) alueella."
+    static let NO_STOPS_MSG = "Lähistöltä ei löytynyt pysäkkejä. Sovellus etsii pysäkkejä noin 500 metrin säteellä."
 
     static let UNLOCK_IPHONE_TITLE = "Avaa iPhonen lukitus"
     static let UNLOCK_IPHONE_MSG = "iPhonen lukitus täytyy avata uudelleenkäynnistyksen jälkeen jotta Apple Watchin ja iPhonen välinen kommunikaatio on mahdollista."
+
+    static let NO_DEPARTURES_TITLE = "Ei lähtöjä"
+    static let NO_DEPARTURES_MSG = "Ei lähtöjä seuraavan kuuden tunnin aikana."
 }
