@@ -24,8 +24,6 @@ class NextDeparturesTableViewController: UITableViewController {
 
         stopName.text = "\(stop.name) (\(stop.codeShort))"
 
-        favoriteImageView.image = FavoriteStops.isFavoriteStop(stop) ? UIImage(named: "ic_favorite") : UIImage(named: "ic_favorite_border")
-
         favoriteImageView.userInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(NextDeparturesTableViewController.favoriteTap))
         favoriteImageView.addGestureRecognizer(tapRecognizer)
@@ -40,22 +38,41 @@ class NextDeparturesTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
-        setFavoriteImage()
+        setFavoriteImage(false)
     }
 
     func favoriteTap() {
         FavoriteStops.isFavoriteStop(self.stop) ? FavoriteStops.remove(stop) : FavoriteStops.add(stop)
-        setFavoriteImage()
+        setFavoriteImage(true)
     }
 
-    private func setFavoriteImage() {
-        if(FavoriteStops.isFavoriteStop(stop)) {
-            favoriteImageView.image = UIImage(named:"ic_favorite")
-            favoriteImageView.image = favoriteImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-            favoriteImageView.tintColor = UIColor.redColor()
+    private func setFavoriteImage(animated: Bool) {
+        if(animated) {
+            UIView.transitionWithView(favoriteImageView, duration: 0.07, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                FavoriteStops.isFavoriteStop(self.stop) ? self.setIsFavoriteImage() : self.setNotFavoriteImage()
+                var f = self.favoriteImageView.frame;
+                f.origin.y -= 7;
+                self.favoriteImageView.frame = f;
+            }, completion: { (finished: Bool) in
+                UIView.transitionWithView(self.favoriteImageView, duration: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                    var f = self.favoriteImageView.frame;
+                    f.origin.y += 7;
+                    self.favoriteImageView.frame = f;
+                    }, completion: nil)
+            })
         } else {
-            favoriteImageView.image = UIImage(named: "ic_favorite_border")
+            FavoriteStops.isFavoriteStop(self.stop) ? self.setIsFavoriteImage() : self.setNotFavoriteImage()
         }
+    }
+
+    private func setNotFavoriteImage() {
+        self.favoriteImageView.image = UIImage(named:"ic_favorite_border")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        self.favoriteImageView.tintColor = UIColor.blackColor()
+    }
+
+    private func setIsFavoriteImage() {
+        self.favoriteImageView.image = UIImage(named:"ic_favorite")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        self.favoriteImageView.tintColor = UIColor.redColor()
     }
 
     func reloadTableData() {
