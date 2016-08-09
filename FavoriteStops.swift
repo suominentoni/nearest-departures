@@ -14,7 +14,7 @@ class FavoriteStops {
     static func all() -> [Stop] {
         if let data = NSUserDefaults.standardUserDefaults().objectForKey(FAVORITE_STOPS_KEY) as? NSData,
         let stops = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Stop] {
-            return stops
+            return stops.sort {$0.name < $1.name}
         }
         return []
     }
