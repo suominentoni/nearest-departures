@@ -47,7 +47,6 @@ class FavoriteStops {
     static func remove(stop: Stop) {
         NSLog("Removing favorite stop: \(stop.name) \(stop.codeLong)")
         let stops = FavoriteStops.all().filter { $0 != stop }
-        print(stops)
         saveToUserDefaults(stops)
     }
 

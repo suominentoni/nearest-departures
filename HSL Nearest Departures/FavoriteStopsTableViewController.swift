@@ -29,8 +29,19 @@ class FavoriteStopsTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         self.favoriteStops = FavoriteStops.all()
+        if(self.favoriteStops.count == 0 ) {
+            let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+            messageLabel.textAlignment = NSTextAlignment.Center
+            messageLabel.numberOfLines = 0
+            messageLabel.text = Const.NO_FAVORITE_STOPS_MSG
+            messageLabel.sizeToFit()
+
+            self.tableView.backgroundView = messageLabel
+        } else {
+            self.tableView.backgroundView = nil
+        }
         self.tableView.reloadData()
     }
 
