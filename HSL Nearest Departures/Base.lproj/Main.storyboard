@@ -106,17 +106,23 @@
                                         <constraint firstAttribute="height" constant="30" id="jiO-j6-baX"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZm-A4-BJM">
-                                    <rect key="frame" x="22" y="11" width="520" height="29"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZm-A4-BJM">
+                                    <rect key="frame" x="20" y="11" width="510" height="29"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="l3e-UH-zHC" firstAttribute="leading" secondItem="PZm-A4-BJM" secondAttribute="trailing" constant="20" id="AHc-8H-GcX"/>
+                                <constraint firstItem="PZm-A4-BJM" firstAttribute="leading" secondItem="1gT-0C-RzL" secondAttribute="leading" constant="20" id="Imq-4U-TdU"/>
                                 <constraint firstAttribute="trailing" secondItem="l3e-UH-zHC" secondAttribute="trailing" constant="20" id="KgD-LF-0BD"/>
+                                <constraint firstItem="PZm-A4-BJM" firstAttribute="leading" secondItem="1gT-0C-RzL" secondAttribute="leading" constant="20" id="Lea-vM-ma7"/>
+                                <constraint firstItem="PZm-A4-BJM" firstAttribute="top" secondItem="1gT-0C-RzL" secondAttribute="top" constant="11" id="QnX-1u-iFa"/>
+                                <constraint firstAttribute="bottom" secondItem="PZm-A4-BJM" secondAttribute="bottom" constant="10" id="Sj1-mc-phr"/>
                                 <constraint firstItem="l3e-UH-zHC" firstAttribute="top" secondItem="1gT-0C-RzL" secondAttribute="top" constant="10" id="dq0-OQ-qzM"/>
                                 <constraint firstAttribute="bottom" secondItem="l3e-UH-zHC" secondAttribute="bottom" constant="10" id="qcY-a2-7FN"/>
+                                <constraint firstItem="l3e-UH-zHC" firstAttribute="leading" secondItem="PZm-A4-BJM" secondAttribute="trailing" constant="20" id="yU5-i2-U7U"/>
                             </constraints>
                         </view>
                         <prototypes>
