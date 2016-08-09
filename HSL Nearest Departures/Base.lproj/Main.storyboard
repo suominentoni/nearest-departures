@@ -100,25 +100,23 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l3e-UH-zHC">
-                                    <rect key="frame" x="15" y="10" width="30" height="30"/>
+                                    <rect key="frame" x="550" y="10" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="9pz-Z6-uav"/>
                                         <constraint firstAttribute="height" constant="30" id="jiO-j6-baX"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZm-A4-BJM">
-                                    <rect key="frame" x="65" y="25" width="520" height="0.0"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZm-A4-BJM">
+                                    <rect key="frame" x="22" y="11" width="520" height="29"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="PZm-A4-BJM" firstAttribute="leading" secondItem="l3e-UH-zHC" secondAttribute="trailing" constant="20" id="Jsl-jU-HHO"/>
-                                <constraint firstAttribute="trailing" secondItem="PZm-A4-BJM" secondAttribute="trailing" constant="15" id="jVW-HW-MCK"/>
-                                <constraint firstAttribute="centerY" secondItem="PZm-A4-BJM" secondAttribute="centerY" id="mgJ-tQ-uG8"/>
-                                <constraint firstItem="l3e-UH-zHC" firstAttribute="centerY" secondItem="1gT-0C-RzL" secondAttribute="centerY" id="mkC-4b-dQz"/>
-                                <constraint firstItem="l3e-UH-zHC" firstAttribute="leading" secondItem="1gT-0C-RzL" secondAttribute="leading" constant="15" id="z5x-uF-hXd"/>
+                                <constraint firstAttribute="trailing" secondItem="l3e-UH-zHC" secondAttribute="trailing" constant="20" id="KgD-LF-0BD"/>
+                                <constraint firstItem="l3e-UH-zHC" firstAttribute="top" secondItem="1gT-0C-RzL" secondAttribute="top" constant="10" id="dq0-OQ-qzM"/>
+                                <constraint firstAttribute="bottom" secondItem="l3e-UH-zHC" secondAttribute="bottom" constant="10" id="qcY-a2-7FN"/>
                             </constraints>
                         </view>
                         <prototypes>
