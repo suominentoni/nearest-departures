@@ -10,12 +10,14 @@ import UIKit
 
 class FavoriteStopsTableViewController: UITableViewController {
 
-    private var favoriteStops: [Stop] = [Stop(name: "foo", distance: "0", codeLong: "1401123", codeShort: "0013")]
+    private var favoriteStops: [Stop] = []
 
     override func viewDidLoad() {
+        self.navigationItem.title = "Suosikkipysäkkisi"
         super.viewDidLoad()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 200
+
 
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(FavoriteStopsTableViewController.reloadData), forControlEvents: UIControlEvents.ValueChanged)
@@ -28,6 +30,7 @@ class FavoriteStopsTableViewController: UITableViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
+        self.favoriteStops = FavoriteStops.all()
         self.tableView.reloadData()
     }
 
@@ -50,13 +53,12 @@ class FavoriteStopsTableViewController: UITableViewController {
 
         cell.code.text = stop.codeShort
         cell.name.text = stop.name
-        cell.distance.text = String(stop.distance) + " m"
 
         return cell
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nextDeparturesViewController = segue.destinationViewController as! NextDeparturesTableViewController
-        nextDeparturesViewController.stopCode = self.favoriteStops[self.tableView.indexPathForSelectedRow!.row].codeLong
+        nextDeparturesViewController.stop = self.favoriteStops[self.tableView.indexPathForSelectedRow!.row]
     }
 }

@@ -4,12 +4,31 @@ import UIKit
 class NextDeparturesTableViewController: UITableViewController {
 
     var nextDepartures: [Departure] = []
-    var stopCode: String = String()
+    var stop = Stop(name: "", distance: "", codeLong: "", codeShort: "")
+
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var favoriteImageView: UIImageView!
+    @IBOutlet weak var stopName: UILabel!
+
+    override init(style: UITableViewStyle) {
+        super.init(style: style)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.Top
+
+        stopName.text = "\(stop.name) (\(stop.codeShort))"
+
+        favoriteImageView.image = FavoriteStops.isFavoriteStop(stop) ? UIImage(named: "ic_favorite") : UIImage(named: "ic_favorite_border")
+
+        favoriteImageView.userInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(NextDeparturesTableViewController.favoriteTap))
+        favoriteImageView.addGestureRecognizer(tapRecognizer)
 
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 200
@@ -20,8 +39,27 @@ class NextDeparturesTableViewController: UITableViewController {
         reloadTableData()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        setFavoriteImage()
+    }
+
+    func favoriteTap() {
+        FavoriteStops.isFavoriteStop(self.stop) ? FavoriteStops.remove(stop) : FavoriteStops.add(stop)
+        setFavoriteImage()
+    }
+
+    private func setFavoriteImage() {
+        if(FavoriteStops.isFavoriteStop(stop)) {
+            favoriteImageView.image = UIImage(named:"ic_favorite")
+            favoriteImageView.image = favoriteImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            favoriteImageView.tintColor = UIColor.redColor()
+        } else {
+            favoriteImageView.image = UIImage(named: "ic_favorite_border")
+        }
+    }
+
     func reloadTableData() {
-        HSL.getNextDeparturesForStop(self.stopCode, callback: {(nextDepartures: [Departure]) -> Void in
+        HSL.getNextDeparturesForStop(self.stop.codeLong, callback: {(nextDepartures: [Departure]) -> Void in
             self.nextDepartures = nextDepartures
             dispatch_async(dispatch_get_main_queue(), {
                 if(self.nextDepartures.count == 0) {
