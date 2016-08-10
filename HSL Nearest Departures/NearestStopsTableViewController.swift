@@ -35,7 +35,6 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
             locationManager.startUpdatingLocation()
         }
 
-
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(NearestStopsTableViewController.reloadData), forControlEvents: UIControlEvents.ValueChanged)
     }
@@ -106,6 +105,6 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nextDeparturesViewController = segue.destinationViewController as! NextDeparturesTableViewController
-        nextDeparturesViewController.stopCode = self.nearestStops[self.tableView.indexPathForSelectedRow!.row].codeLong
+        nextDeparturesViewController.stop = self.nearestStops[self.tableView.indexPathForSelectedRow!.row]
     }
 }

@@ -18,6 +18,8 @@
 		535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */; };
 		536C435B1D42328700045CEF /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C435A1D42328700045CEF /* Util.swift */; };
 		536C435C1D42469D00045CEF /* HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED7E341C3BF38E00BAE367 /* HSL.swift */; };
+		53CC56941D57B8CD007828C8 /* FavoriteStopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC56931D57B8CD007828C8 /* FavoriteStopsTableViewController.swift */; };
+		53CC56961D590F45007828C8 /* FavoriteStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC56951D590F45007828C8 /* FavoriteStops.swift */; };
 		53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */; };
 		53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB61C2C06EC002F0107 /* Main.storyboard */; settings = {ASSET_TAGS = (stopCode, ); }; };
 		53E4ECBA1C2C06EC002F0107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB91C2C06EC002F0107 /* Assets.xcassets */; };
@@ -102,6 +104,8 @@
 		535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsInterfaceController.swift; sourceTree = "<group>"; };
 		536C435A1D42328700045CEF /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
+		53CC56931D57B8CD007828C8 /* FavoriteStopsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStopsTableViewController.swift; sourceTree = "<group>"; };
+		53CC56951D590F45007828C8 /* FavoriteStops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStops.swift; sourceTree = "<group>"; };
 		53E4ECAF1C2C06EC002F0107 /* Lähimmät Lähdöt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lähimmät Lähdöt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53E4ECB71C2C06EC002F0107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 			children = (
 				53ED7E341C3BF38E00BAE367 /* HSL.swift */,
 				53123A3A1D3823DB00D9E646 /* Model.swift */,
+				53CC56951D590F45007828C8 /* FavoriteStops.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 		53E4ECB11C2C06EC002F0107 /* HSL Nearest Departures */ = {
 			isa = PBXGroup;
 			children = (
+				53CC56931D57B8CD007828C8 /* FavoriteStopsTableViewController.swift */,
 				53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */,
 				53E4ECB61C2C06EC002F0107 /* Main.storyboard */,
 				53E4ECB91C2C06EC002F0107 /* Assets.xcassets */,
@@ -465,12 +471,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */,
+				53CC56941D57B8CD007828C8 /* FavoriteStopsTableViewController.swift in Sources */,
 				53ED7E351C3BF38E00BAE367 /* HSL.swift in Sources */,
 				5329C5961C70DFC9000E24F9 /* NextDepartureCell.swift in Sources */,
 				5329C5901C70CCCC000E24F9 /* NearestStopsTableViewController.swift in Sources */,
 				5329C5921C70D448000E24F9 /* NearestStopsCell.swift in Sources */,
 				53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */,
 				53123A3B1D3823DB00D9E646 /* Model.swift in Sources */,
+				53CC56961D590F45007828C8 /* FavoriteStops.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
