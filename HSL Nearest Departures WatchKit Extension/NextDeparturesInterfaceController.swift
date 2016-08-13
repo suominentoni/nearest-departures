@@ -5,18 +5,21 @@ import WatchConnectivity
 class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegate {
 
     @IBOutlet var nextDeparturesTable: WKInterfaceTable!
+    @IBOutlet var loadingIndicatorLabel: WKInterfaceLabel!
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+        self.initLoadingIndicatorTimer()
 
         if let code = context!["stopCode"] as? String {
+            showLoadingIndicator()
             HSL.getNextDeparturesForStop(code, callback: updateInterface)
         }
     }
 
     private func updateInterface(nextDepartures: [Departure]) -> Void {
         NSLog("Updating Next Departures interface")
-        removeLoadingIndicator()
+        hideLoadingIndicator()
         nextDeparturesTable.setNumberOfRows(nextDepartures.count, withRowType: "nextDepartureRow")
 
         if(nextDepartures.count == 0) {
@@ -34,19 +37,38 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
         }
     }
 
-    override func willActivate() {
-        nextDeparturesTable.insertRowsAtIndexes(NSIndexSet(index: 0), withRowType: "loadingIndicatorRow")
-        super.willActivate()
-    }
-
     override func willDisappear() {
-        removeLoadingIndicator()
+        invalidateTimer()
     }
 
-    private func removeLoadingIndicator() {
-        if let loadingIndicatorRow = nextDeparturesTable.rowControllerAtIndex(0) as? LoadingIndicatorRow {
-            loadingIndicatorRow.deinitTimer() // timer not invalidated automatically on row removal
-            nextDeparturesTable.removeRowsAtIndexes(NSIndexSet(index: 0))
+    private func showLoadingIndicator() {
+        loadingIndicatorLabel.setHidden(false)
+    }
+
+    private func hideLoadingIndicator() {
+        self.loadingIndicatorLabel.setHidden(true)
+    }
+
+    var counter = 1
+    var timer: NSTimer? = NSTimer()
+
+    func initLoadingIndicatorTimer() {
+        invalidateTimer()
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(NextDeparturesInterfaceController.updateLoadingIndicatorText), userInfo: nil, repeats: true)
+        self.timer?.fire()
+    }
+
+    func invalidateTimer() {
+        self.timer?.invalidate()
+        self.timer = nil
+    }
+
+    @objc private func updateLoadingIndicatorText() {
+        self.counter == 3 ? (self.counter = 1) : (self.counter = self.counter + 1)
+        var dots = ""
+        for _ in 1...counter {
+            dots.append(Character("."))
         }
+        self.loadingIndicatorLabel.setText(dots)
     }
 }
