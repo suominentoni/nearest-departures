@@ -54,6 +54,9 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
     }
 
     @objc private func reloadData() {
+        let x = self.tableView.center.x
+        let y = self.tableView.center.y
+        self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
         HSL.getNearestStops(lat, lon: lon, successCallback: {(stops: [Stop]) in
             self.nearestStops = stops
             dispatch_async(dispatch_get_main_queue(), {

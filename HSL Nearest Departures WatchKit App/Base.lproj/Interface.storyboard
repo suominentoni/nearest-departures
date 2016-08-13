@@ -42,6 +42,23 @@
                                         <outlet property="stopName" destination="MqK-Dm-MjV" id="pLz-56-doz"/>
                                     </connections>
                                 </tableRow>
+                                <tableRow identifier="loadingIndicatorRow" selectable="NO" id="Lse-uN-OQ5" userLabel="loadingIndicatorRow" customClass="LoadingIndicatorRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="MBF-U7-HEb">
+                                        <items>
+                                            <group width="1" height="25" alignment="left" id="D8z-tb-2iC">
+                                                <items>
+                                                    <label width="1" alignment="left" verticalAlignment="center" text="." textAlignment="center" numberOfLines="2" id="AJ9-zW-rea" userLabel="Label">
+                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <edgeInsets key="margins" left="3" right="3" top="3" bottom="3"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="loadingIndicatorLabel" destination="AJ9-zW-rea" id="AWf-A0-Eq5"/>
+                                    </connections>
+                                </tableRow>
                             </items>
                         </table>
                     </items>
@@ -59,7 +76,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="349.25"/>
+            <point key="canvasLocation" x="220" y="349"/>
         </scene>
         <!--NextDeparturesInterfaceController-->
         <scene sceneID="Tj8-do-g3U">
@@ -96,6 +113,23 @@
                                         <outlet property="code" destination="jWL-FK-o7Q" id="jRd-WM-huH"/>
                                         <outlet property="destination" destination="lsO-Vo-R3V" id="P9g-Mp-5mq"/>
                                         <outlet property="time" destination="GXy-H5-Hpq" id="efm-KO-PUY"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="loadingIndicatorRow" selectable="NO" id="XTN-YD-raQ" userLabel="loadingIndicatorRow" customClass="LoadingIndicatorRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="q4G-BY-ndO">
+                                        <items>
+                                            <group width="1" height="25" alignment="left" id="m1E-Jj-aPF">
+                                                <items>
+                                                    <label width="1" alignment="left" verticalAlignment="center" text="." textAlignment="center" numberOfLines="2" id="CMA-g3-eBK" userLabel="Label">
+                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <edgeInsets key="margins" left="3" right="3" top="3" bottom="3"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="loadingIndicatorLabel" destination="CMA-g3-eBK" id="a2z-nb-31D"/>
                                     </connections>
                                 </tableRow>
                             </items>

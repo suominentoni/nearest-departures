@@ -16,6 +16,7 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
 
     private func updateInterface(nextDepartures: [Departure]) -> Void {
         NSLog("Updating Next Departures interface")
+        removeLoadingIndicator()
         nextDeparturesTable.setNumberOfRows(nextDepartures.count, withRowType: "nextDepartureRow")
 
         if(nextDepartures.count == 0) {
@@ -34,12 +35,18 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
     }
 
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
+        nextDeparturesTable.insertRowsAtIndexes(NSIndexSet(index: 0), withRowType: "loadingIndicatorRow")
         super.willActivate()
     }
 
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
+    override func willDisappear() {
+        removeLoadingIndicator()
+    }
+
+    private func removeLoadingIndicator() {
+        if let loadingIndicatorRow = nextDeparturesTable.rowControllerAtIndex(0) as? LoadingIndicatorRow {
+            loadingIndicatorRow.deinitTimer() // timer not invalidated automatically on row removal
+            nextDeparturesTable.removeRowsAtIndexes(NSIndexSet(index: 0))
+        }
     }
 }

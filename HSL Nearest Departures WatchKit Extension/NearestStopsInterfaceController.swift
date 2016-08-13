@@ -60,6 +60,7 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
     private func updateInterface(nearestStops: [Stop]) -> Void {
         NSLog("Updating Nearest Stops interface")
 
+        removeLoadingIndicator()
         self.nearestStops = nearestStops
         nearestStopsTable.setNumberOfRows(nearestStops.count, withRowType: "nearestStopsRow")
 
@@ -81,7 +82,19 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
     }
 
     override public func willActivate() {
+        nearestStopsTable.insertRowsAtIndexes(NSIndexSet(index: 0), withRowType: "loadingIndicatorRow")
         requestLocation()
+    }
+
+    public override func willDisappear() {
+        removeLoadingIndicator()
+    }
+
+    private func removeLoadingIndicator() {
+        if let loadingIndicatorRow = nearestStopsTable.rowControllerAtIndex(0) as? LoadingIndicatorRow {
+            loadingIndicatorRow.deinitTimer() // timer not invalidated automatically on row removal
+            nearestStopsTable.removeRowsAtIndexes(NSIndexSet(index: 0))
+        }
     }
 
     @IBAction func refreshClick() {
