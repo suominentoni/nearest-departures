@@ -10,6 +10,9 @@
             <objects>
                 <controller identifier="NearestDeparture" id="AgC-eL-Hgc" customClass="NearestStopsInterfaceController" customModule="HSL_Nearest_Departures_WatchKit_Extension">
                     <items>
+                        <label width="1" height="20" alignment="left" text="." textAlignment="center" id="aCQ-QS-y1h">
+                            <fontDescription key="font" type="boldSystem" pointSize="18"/>
+                        </label>
                         <table alignment="left" id="ozD-8f-EWu">
                             <items>
                                 <tableRow identifier="nearestStopsRow" id="BHl-j5-Xp9" customClass="NearestStopsRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
@@ -55,17 +58,21 @@
                         </items>
                     </menu>
                     <connections>
+                        <outlet property="loadingIndicatorLabel" destination="aCQ-QS-y1h" id="cPO-Ik-mL0"/>
                         <outlet property="nearestStopsTable" destination="ozD-8f-EWu" id="HqA-dv-pen"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="349.25"/>
+            <point key="canvasLocation" x="220" y="349"/>
         </scene>
         <!--NextDeparturesInterfaceController-->
         <scene sceneID="Tj8-do-g3U">
             <objects>
                 <controller identifier="NextDeparturesInterfaceController" id="nCh-Ep-WhF" customClass="NextDeparturesInterfaceController" customModule="HSL_Nearest_Departures_WatchKit_Extension">
                     <items>
+                        <label width="1" height="20" alignment="left" text="." textAlignment="center" id="KGj-I0-paO">
+                            <fontDescription key="font" type="boldSystem" pointSize="18"/>
+                        </label>
                         <table alignment="left" id="0ff-cT-m2o">
                             <items>
                                 <tableRow identifier="nextDepartureRow" id="gtV-XY-C6Y" customClass="NextDeparturesRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
@@ -102,6 +109,7 @@
                         </table>
                     </items>
                     <connections>
+                        <outlet property="loadingIndicatorLabel" destination="KGj-I0-paO" id="Y4a-7I-DDs"/>
                         <outlet property="nextDeparturesTable" destination="0ff-cT-m2o" id="s0Y-ZO-3zF"/>
                     </connections>
                 </controller>

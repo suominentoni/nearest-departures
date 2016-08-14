@@ -5,6 +5,7 @@ import WatchConnectivity
 public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDelegate, CLLocationManagerDelegate {
 
     @IBOutlet var nearestStopsTable: WKInterfaceTable!
+    @IBOutlet var loadingIndicatorLabel: WKInterfaceLabel!
 
     var nearestStops = [Stop]()
 
@@ -20,6 +21,7 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
 
     override public func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+        self.initTimer()
 
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -38,6 +40,7 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
     }
 
     func requestLocation() {
+        showLoadingIndicator()
         if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Restricted || CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Denied) {
             NSLog("Requesting location")
             locationManager.requestLocation()
@@ -60,6 +63,8 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
     private func updateInterface(nearestStops: [Stop]) -> Void {
         NSLog("Updating Nearest Stops interface")
 
+        loadingIndicatorLabel.setHidden(true)
+        hideLoadingIndicator()
         self.nearestStops = nearestStops
         nearestStopsTable.setNumberOfRows(nearestStops.count, withRowType: "nearestStopsRow")
 
@@ -80,11 +85,47 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
         }
     }
 
+    override public func willDisappear() {
+        invalidateTimer()
+    }
+
     override public func willActivate() {
         requestLocation()
     }
 
+    private func showLoadingIndicator() {
+        initTimer()
+        self.loadingIndicatorLabel.setHidden(false)
+    }
+
+    private func hideLoadingIndicator() {
+        self.loadingIndicatorLabel.setHidden(true)
+    }
+
     @IBAction func refreshClick() {
         requestLocation()
+    }
+
+    var counter = 1
+    var timer: NSTimer? = NSTimer()
+
+    func initTimer() {
+        invalidateTimer()
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(NearestStopsInterfaceController.updateLoadingIndicatorText), userInfo: nil, repeats: true)
+        self.timer?.fire()
+    }
+
+    func invalidateTimer() {
+        self.timer?.invalidate()
+        self.timer = nil
+    }
+
+    @objc private func updateLoadingIndicatorText() {
+        self.counter == 4 ? (self.counter = 1) : (self.counter = self.counter + 1)
+        var dots = ""
+        for _ in 1...counter {
+            dots.append(Character("."))
+        }
+        self.loadingIndicatorLabel.setText(dots)
     }
 }

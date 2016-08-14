@@ -30,6 +30,10 @@ class FavoriteStopsTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
+        let x = self.tableView.center.x
+        let y = self.tableView.center.y
+        self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
+
         self.favoriteStops = FavoriteStops.all()
         if(self.favoriteStops.count == 0 ) {
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
