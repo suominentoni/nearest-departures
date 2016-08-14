@@ -10,7 +10,9 @@
             <objects>
                 <controller identifier="NearestDeparture" id="AgC-eL-Hgc" customClass="NearestStopsInterfaceController" customModule="HSL_Nearest_Departures_WatchKit_Extension">
                     <items>
-                        <label width="1" alignment="left" text="." textAlignment="center" id="aCQ-QS-y1h"/>
+                        <label width="1" height="20" alignment="left" text="." textAlignment="center" id="aCQ-QS-y1h">
+                            <fontDescription key="font" type="boldSystem" pointSize="18"/>
+                        </label>
                         <table alignment="left" id="ozD-8f-EWu">
                             <items>
                                 <tableRow identifier="nearestStopsRow" id="BHl-j5-Xp9" customClass="NearestStopsRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
@@ -68,7 +70,9 @@
             <objects>
                 <controller identifier="NextDeparturesInterfaceController" id="nCh-Ep-WhF" customClass="NextDeparturesInterfaceController" customModule="HSL_Nearest_Departures_WatchKit_Extension">
                     <items>
-                        <label width="1" alignment="left" text="." textAlignment="center" id="KGj-I0-paO"/>
+                        <label width="1" height="20" alignment="left" text="." textAlignment="center" id="KGj-I0-paO">
+                            <fontDescription key="font" type="boldSystem" pointSize="18"/>
+                        </label>
                         <table alignment="left" id="0ff-cT-m2o">
                             <items>
                                 <tableRow identifier="nextDepartureRow" id="gtV-XY-C6Y" customClass="NextDeparturesRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">

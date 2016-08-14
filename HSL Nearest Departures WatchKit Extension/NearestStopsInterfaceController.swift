@@ -121,7 +121,7 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
     }
 
     @objc private func updateLoadingIndicatorText() {
-        self.counter == 3 ? (self.counter = 1) : (self.counter = self.counter + 1)
+        self.counter == 4 ? (self.counter = 1) : (self.counter = self.counter + 1)
         var dots = ""
         for _ in 1...counter {
             dots.append(Character("."))
