@@ -83,6 +83,7 @@ class NextDeparturesTableViewController: UITableViewController {
             self.nextDepartures = self.stop.departures
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
+            self.tableView.backgroundView = nil
         } else {
             HSL.departuresForStop("HSL:" + self.stop.codeLong, callback: {(nextDepartures: [Departure]) -> Void in
                 self.nextDepartures = nextDepartures
