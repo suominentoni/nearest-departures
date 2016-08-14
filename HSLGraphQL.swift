@@ -74,7 +74,11 @@ public class HSL {
                         let code = stop["code"] as? String,
                         let gtfsId = stop["gtfsId"] as? String,
                         let nextDeparturesData = stop["stoptimesWithoutPatterns"] as? NSArray {
-                        stops.append(Stop(name: name, distance: String(distance), codeLong: trimAgency(gtfsId), codeShort: code, departures: parseDepartures(nextDeparturesData)))
+                        var stopName: String = name
+                        if let platformCode = stop["platformCode"] as? String {
+                            stopName = formatStopName(name, platformCode: platformCode)
+                        }
+                        stops.append(Stop(name: stopName , distance: String(distance), codeLong: trimAgency(gtfsId), codeShort: code, departures: parseDepartures(nextDeparturesData)))
                     }
                 }
             }
@@ -99,12 +103,20 @@ public class HSL {
                         let name = stop["name"] as? String,
                         let code = stop["code"] as? String,
                         let gtfsId = stop["gtfsId"] as? String {
-                        stops.append(Stop(name: name, distance: String(distance), codeLong: trimAgency(gtfsId), codeShort: code, departures: []))
+                        var stopName: String = name
+                        if let platformCode = stop["platformCode"] as? String {
+                            stopName = formatStopName(name, platformCode: platformCode)
+                        }
+                        stops.append(Stop(name: stopName, distance: String(distance), codeLong: trimAgency(gtfsId), codeShort: code, departures: []))
                     }
                 }
             }
             callback(stops: stops)
         })
+    }
+
+    private static func formatStopName(name: String, platformCode: String?) -> String {
+        return platformCode != nil ? "\(name), laituri \(platformCode!)" : name
     }
 
     private static func parseDepartures(departures: NSArray) -> [Departure] {
