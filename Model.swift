@@ -13,12 +13,14 @@ public class Stop: NSObject, NSCoding {
     var distance: String = ""
     var codeLong: String = ""
     var codeShort: String = ""
+    var departures: [Departure] = []
 
-    init(name: String, distance: String, codeLong: String, codeShort: String) {
+    init(name: String, distance: String, codeLong: String, codeShort: String, departures: [Departure]) {
         self.name = name
         self.distance = distance
         self.codeLong = codeLong
         self.codeShort = codeShort
+        self.departures = departures
     }
 
     public required init?(coder aDecoder: NSCoder) {
