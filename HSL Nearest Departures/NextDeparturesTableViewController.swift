@@ -3,7 +3,6 @@ import UIKit
 
 class NextDeparturesTableViewController: UITableViewController {
 
-    var nextDepartures: [Departure] = []
     var stop = Stop(name: "", distance: "", codeLong: "", codeShort: "", departures: [])
 
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -32,7 +31,7 @@ class NextDeparturesTableViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 200
 
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: #selector(NextDeparturesTableViewController.reloadTableData), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(NextDeparturesTableViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
 
         reloadTableData()
     }
@@ -75,35 +74,33 @@ class NextDeparturesTableViewController: UITableViewController {
         self.favoriteImageView.tintColor = UIColor.redColor()
     }
 
-    func reloadTableData() {
+    @objc private func refresh() {
+        reloadTableData()
+    }
+
+    private func reloadTableData() {
         let x = self.tableView.center.x
         let y = self.tableView.center.y
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
-        if(self.stop.departures.count > 0) {
-            self.nextDepartures = self.stop.departures
-            self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
-            self.tableView.backgroundView = nil
-        } else {
-            HSL.departuresForStop("HSL:" + self.stop.codeLong, callback: {(nextDepartures: [Departure]) -> Void in
-                self.nextDepartures = nextDepartures
-                dispatch_async(dispatch_get_main_queue(), {
-                    if(self.nextDepartures.count == 0) {
-                        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-                        messageLabel.textAlignment = NSTextAlignment.Center
-                        messageLabel.numberOfLines = 0
-                        messageLabel.text = Const.NO_DEPARTURES_MSG
-                        messageLabel.sizeToFit()
 
-                        self.tableView.backgroundView = messageLabel
-                    } else {
-                        self.tableView.backgroundView = nil
-                    }
-                    self.tableView.reloadData()
-                    self.refreshControl?.endRefreshing()
-                })
+        HSL.departuresForStop("HSL:" + self.stop.codeLong, callback: {(nextDepartures: [Departure]) -> Void in
+            self.stop.departures = nextDepartures
+            dispatch_async(dispatch_get_main_queue(), {
+                if(self.stop.departures.count == 0) {
+                    let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+                    messageLabel.textAlignment = NSTextAlignment.Center
+                    messageLabel.numberOfLines = 0
+                    messageLabel.text = Const.NO_DEPARTURES_MSG
+                    messageLabel.sizeToFit()
+
+                    self.tableView.backgroundView = messageLabel
+                } else {
+                    self.tableView.backgroundView = nil
+                }
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             })
-        }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -116,13 +113,13 @@ class NextDeparturesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.nextDepartures.count
+        return self.stop.departures.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NextDepartureCell", forIndexPath: indexPath) as! NextDepartureCell
 
-        let departure = self.nextDepartures[indexPath.row]
+        let departure = self.stop.departures[indexPath.row]
 
         dispatch_async(dispatch_get_main_queue(), {
             if let codeShort = departure.line.codeShort,
