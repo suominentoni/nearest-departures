@@ -22,6 +22,7 @@ public class HSL {
                 "realtime," +
                 "realtimeState," +
                 "serviceDay," +
+                "pickupType," +
                 "trip {" +
                     "tripHeadsign," +
                     "directionId," +
@@ -53,6 +54,7 @@ public class HSL {
                         "realtime," +
                         "realtimeState," +
                         "serviceDay," +
+                        "pickupType," +
                         "trip {" +
                             "tripHeadsign," +
                             "directionId," +
@@ -125,13 +127,16 @@ public class HSL {
             if let time = dep["scheduledDeparture"] as? Int,
                 let trip = dep["trip"] as AnyObject?,
                 let destination = trip["tripHeadsign"] as? String,
+                let pickupType = dep["pickupType"] as? String,
                 let route = trip["route"] as AnyObject?,
                 let codeShort = route["shortName"] as? String {
-                deps.append(
-                    Departure(
-                        line: Line(codeLong: codeShort, codeShort: codeShort, destination: destination),
-                        time: secondsFromMidnightToTime(time)
-                    ))
+                if(pickupType != "NONE") {
+                    deps.append(
+                        Departure(
+                            line: Line(codeLong: codeShort, codeShort: codeShort, destination: destination),
+                            time: secondsFromMidnightToTime(time)
+                        ))
+                }
             }
         }
         return deps
