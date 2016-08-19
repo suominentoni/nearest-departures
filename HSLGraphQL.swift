@@ -37,7 +37,6 @@ public class HSL {
                 let nextDeparturesData = stop["stoptimesWithoutPatterns"] as? NSArray {
                 callback(departures: parseDepartures(nextDeparturesData))
             }
-
         })
     }
 
@@ -80,7 +79,7 @@ public class HSL {
                         if let platformCode = stop["platformCode"] as? String {
                             stopName = formatStopName(name, platformCode: platformCode)
                         }
-                        stops.append(Stop(name: stopName , distance: String(distance), codeLong: trimAgency(gtfsId), codeShort: code, departures: parseDepartures(nextDeparturesData)))
+                        stops.append(Stop(name: stopName , distance: formatDistance(distance), codeLong: trimAgency(gtfsId), codeShort: code, departures: parseDepartures(nextDeparturesData)))
                     }
                 }
             }
@@ -94,27 +93,41 @@ public class HSL {
                 "gtfsId, code, platformCode, desc, name," +
             "}}}}}"
         HTTP.post(url, body: query, callback: {(obj: [String: AnyObject], error: String?) in
-            var stops: [Stop] = []
+            var stops: [Stop?] = []
             if let data = obj["data"] as? [String: AnyObject],
                 let stopsByRadius = data["stopsByRadius"] as? [String: AnyObject],
                 let edges = stopsByRadius["edges"] as? NSArray {
                 for edge in edges {
-                    if let stopAtDistance = edge["node"] as? [String: AnyObject],
-                        let distance = stopAtDistance["distance"] as? Int,
-                        let stop = stopAtDistance["stop"] as? [String: AnyObject],
-                        let name = stop["name"] as? String,
-                        let code = stop["code"] as? String,
-                        let gtfsId = stop["gtfsId"] as? String {
-                        var stopName: String = name
-                        if let platformCode = stop["platformCode"] as? String {
-                            stopName = formatStopName(name, platformCode: platformCode)
-                        }
-                        stops.append(Stop(name: stopName, distance: String(distance), codeLong: trimAgency(gtfsId), codeShort: code, departures: []))
-                    }
+                    stops.append(parseStopAtDistance(edge))
                 }
             }
-            callback(stops: stops)
+            callback(stops: unwrapAndStripNils(stops))
         })
+    }
+
+    private static func unwrapAndStripNils<T>(data: [T?]) -> [T] {
+        return data.filter({$0 != nil}).map({$0!})
+    }
+
+    private static func parseStopAtDistance(data: AnyObject) -> Stop? {
+        if let stopAtDistance = data["node"] as? [String: AnyObject],
+            let distance = stopAtDistance["distance"] as? Int,
+            let stop = stopAtDistance["stop"] as? [String: AnyObject],
+            let name = stop["name"] as? String,
+            let code = stop["code"] as? String,
+            let gtfsId = stop["gtfsId"] as? String {
+            var stopName: String = name
+            if let platformCode = stop["platformCode"] as? String {
+                stopName = formatStopName(name, platformCode: platformCode)
+            }
+            return Stop(name: stopName, distance: formatDistance(distance), codeLong: trimAgency(gtfsId), codeShort: code, departures: [])
+        } else {
+            return nil
+        }
+    }
+
+    private static func formatDistance(distance: Int) -> String {
+        return distance <= 50 ? "<50" : String(distance)
     }
 
     private static func formatStopName(name: String, platformCode: String?) -> String {
