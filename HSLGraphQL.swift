@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class HSL {
 
@@ -137,7 +138,8 @@ public class HSL {
     private static func parseDepartures(departures: NSArray) -> [Departure] {
         var deps: [Departure] = []
         for dep in departures {
-            if let time = dep["scheduledDeparture"] as? Int,
+            if let scheduledDepartureTime = dep["scheduledDeparture"] as? Int,
+                let realDepartureTime = dep["realtimeDeparture"] as? Int,
                 let trip = dep["trip"] as AnyObject?,
                 let destination = trip["tripHeadsign"] as? String,
                 let pickupType = dep["pickupType"] as? String,
@@ -147,20 +149,16 @@ public class HSL {
                     deps.append(
                         Departure(
                             line: Line(codeLong: codeShort, codeShort: codeShort, destination: destination),
-                            time: secondsFromMidnightToTime(time)
-                        ))
+                            scheduledDepartureTime: scheduledDepartureTime,
+                            realDepartureTime: realDepartureTime
+                        )
+                    )
                 }
             }
         }
         return deps
     }
 
-    private static func secondsFromMidnightToTime(seconds: Int) -> String {
-        let minutes = seconds / 60
-        let hours = String(format: "%02d", minutes/60)
-        let remainder = String(format: "%02d", minutes % 60)
-        return "\(hours):\(remainder)"
-    }
 
     private static func trimAgency(gtfsId: String) -> String {
         if let index = gtfsId.characters.indexOf(":") {

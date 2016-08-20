@@ -21,14 +21,14 @@ class NextDeparturesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.Top
 
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 250
+
         stopName.text = "\(stop.name) (\(stop.codeShort))"
 
         favoriteImageView.userInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(NextDeparturesTableViewController.favoriteTap))
         favoriteImageView.addGestureRecognizer(tapRecognizer)
-
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 200
 
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(NextDeparturesTableViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
@@ -129,7 +129,7 @@ class NextDeparturesTableViewController: UITableViewController {
             } else {
                 cell.code.text = departure.line.codeLong
             }
-            cell.time.text = departure.time
+            cell.time.attributedText = Tools.formatDepartureTime(departure.scheduledDepartureTime, real: departure.realDepartureTime)
         })
 
         return cell

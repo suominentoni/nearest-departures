@@ -33,7 +33,7 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
             for departure in nextDepartures {
                 let row: AnyObject? = nextDeparturesTable.rowControllerAtIndex(i)
                 let nextDepartureRow = row as! NextDeparturesRow
-                nextDepartureRow.time.setText(departure.time)
+                nextDepartureRow.time.setAttributedText(Tools.formatDepartureTime(departure.scheduledDepartureTime, real: departure.realDepartureTime))
                 nextDepartureRow.code.setText(departure.line.codeShort != nil ? departure.line.codeShort : departure.line.codeLong)
                 nextDepartureRow.destination.setText(departure.line.destination)
                 i += 1
