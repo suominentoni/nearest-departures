@@ -16,7 +16,7 @@ public class HSL {
     static func departuresForStop(gtfsId: String, callback: (departures: [Departure]) -> Void) -> Void {
         let query = "{stop(id: \"\(gtfsId)\" ) {" +
             "gtfsId, code, platformCode, desc, name," +
-            "stoptimesWithoutPatterns(numberOfDepartures: 20) {" +
+            "stoptimesWithoutPatterns(numberOfDepartures: 30) {" +
                 "scheduledDeparture," +
                 "realtimeDeparture," +
                 "departureDelay," +
@@ -47,7 +47,7 @@ public class HSL {
                 "{distance," +
                 "stop {" +
                     "gtfsId, code, platformCode, desc, name," +
-                    "stoptimesWithoutPatterns(numberOfDepartures: 20) {" +
+                    "stoptimesWithoutPatterns(numberOfDepartures: 30) {" +
                         "scheduledDeparture," +
                         "realtimeDeparture," +
                         "departureDelay," +
