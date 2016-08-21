@@ -39,4 +39,8 @@ public class Tools {
         let remainder = String(format: "%02d", minutes % 60)
         return "\(hours):\(remainder)"
     }
+
+    public static func unwrapAndStripNils<T>(data: [T?]) -> [T] {
+        return data.filter({$0 != nil}).map({$0!})
+    }
 }

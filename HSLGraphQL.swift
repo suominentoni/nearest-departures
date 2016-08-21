@@ -102,12 +102,8 @@ public class HSL {
                     stops.append(parseStopAtDistance(edge))
                 }
             }
-            callback(stops: unwrapAndStripNils(stops))
+            callback(stops: Tools.unwrapAndStripNils(stops))
         })
-    }
-
-    private static func unwrapAndStripNils<T>(data: [T?]) -> [T] {
-        return data.filter({$0 != nil}).map({$0!})
     }
 
     private static func parseStopAtDistance(data: AnyObject) -> Stop? {
