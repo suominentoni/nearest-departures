@@ -36,7 +36,7 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
         }
 
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: #selector(NearestStopsTableViewController.reloadData), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(NearestStopsTableViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
     }
 
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -53,11 +53,15 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
         reloadData()
     }
 
-    @objc private func reloadData() {
+    @objc private func refresh() {
+        reloadData()
+    }
+
+    private func reloadData() {
         let x = self.tableView.center.x
         let y = self.tableView.center.y
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
-        HSL.getNearestStops(lat, lon: lon, successCallback: {(stops: [Stop]) in
+        HSL.nearestStopsAndDepartures(lat, lon: lon, callback: {(stops: [Stop]) in
             self.nearestStops = stops
             dispatch_async(dispatch_get_main_queue(), {
                 if(self.nearestStops.count == 0 ) {

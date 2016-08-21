@@ -13,8 +13,12 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
 
         if let code = context!["stopCode"] as? String {
             showLoadingIndicator()
-            HSL.getNextDeparturesForStop(code, callback: updateInterface)
+            HSL.departuresForStop("HSL:" + code, callback: updateInterface)
         }
+//        if let departures = context!["departures"] as? [Departure] {
+//            showLoadingIndicator()
+//            updateInterface(departures)
+//        }
     }
 
     private func updateInterface(nextDepartures: [Departure]) -> Void {
@@ -29,7 +33,7 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
             for departure in nextDepartures {
                 let row: AnyObject? = nextDeparturesTable.rowControllerAtIndex(i)
                 let nextDepartureRow = row as! NextDeparturesRow
-                nextDepartureRow.time.setText(departure.time)
+                nextDepartureRow.time.setAttributedText(Tools.formatDepartureTime(departure.scheduledDepartureTime, real: departure.realDepartureTime))
                 nextDepartureRow.code.setText(departure.line.codeShort != nil ? departure.line.codeShort : departure.line.codeLong)
                 nextDepartureRow.destination.setText(departure.line.destination)
                 i += 1

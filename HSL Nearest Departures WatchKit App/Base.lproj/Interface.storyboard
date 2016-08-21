@@ -75,7 +75,7 @@
                         </label>
                         <table alignment="left" id="0ff-cT-m2o">
                             <items>
-                                <tableRow identifier="nextDepartureRow" id="gtV-XY-C6Y" customClass="NextDeparturesRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
+                                <tableRow identifier="nextDepartureRow" selectable="NO" id="gtV-XY-C6Y" customClass="NextDeparturesRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="EY1-Mj-J9e">
                                         <items>
                                             <group width="1" alignment="left" id="Bd6-Nv-eI5">
@@ -84,7 +84,7 @@
                                                         <color key="textColor" red="0.00040824659794813645" green="1" blue="0.016464297960415597" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="font" type="system" weight="semibold" pointSize="16"/>
                                                     </label>
-                                                    <label alignment="right" verticalAlignment="center" text="00:00" textAlignment="right" id="GXy-H5-Hpq">
+                                                    <label alignment="right" verticalAlignment="center" text="00:00" textAlignment="right" numberOfLines="0" id="GXy-H5-Hpq">
                                                         <fontDescription key="font" type="system" pointSize="14"/>
                                                     </label>
                                                 </items>

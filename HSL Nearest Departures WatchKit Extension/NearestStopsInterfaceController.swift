@@ -15,8 +15,9 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
 
     override public func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
         let row = table.rowControllerAtIndex(rowIndex) as! NearestStopsRow
-
         self.pushControllerWithName("NextDeparturesInterfaceController", context: ["stopCode": row.code])
+//        let foo = nearestStops[rowIndex].departures as! AnyObject
+//        self.pushControllerWithName("NextDeparturesInterfaceController", context: ["departures": foo])
     }
 
     override public func awakeWithContext(context: AnyObject?) {
@@ -57,7 +58,7 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
         let lat = locations.last!.coordinate.latitude
         let lon = locations.last!.coordinate.longitude
 
-        HSL.getNearestStops(lat, lon: lon, successCallback: updateInterface)
+        HSL.nearestStops(lat, lon: lon, callback: updateInterface)
     }
 
     private func updateInterface(nearestStops: [Stop]) -> Void {

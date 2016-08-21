@@ -13,12 +13,14 @@ public class Stop: NSObject, NSCoding {
     var distance: String = ""
     var codeLong: String = ""
     var codeShort: String = ""
+    var departures: [Departure] = []
 
-    init(name: String, distance: String, codeLong: String, codeShort: String) {
+    init(name: String, distance: String, codeLong: String, codeShort: String, departures: [Departure]) {
         self.name = name
         self.distance = distance
         self.codeLong = codeLong
         self.codeShort = codeShort
+        self.departures = departures
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -51,7 +53,8 @@ func != (lhs: Stop, rhs: Stop) -> Bool {
 
 public struct Departure {
     let line: Line
-    let time: String
+    let scheduledDepartureTime: Int // seconds from midnight
+    let realDepartureTime: Int // seconds from midnight
 }
 
 public struct Line {
@@ -70,5 +73,5 @@ public struct Const {
     static let UNLOCK_IPHONE_MSG = "iPhonen lukitus täytyy avata uudelleenkäynnistyksen jälkeen jotta Apple Watchin ja iPhonen välinen kommunikaatio on mahdollista."
 
     static let NO_DEPARTURES_TITLE = "Ei lähtöjä"
-    static let NO_DEPARTURES_MSG = "Ei lähtöjä seuraavan kuuden tunnin aikana."
+    static let NO_DEPARTURES_MSG = "Lähtöjä ei löytynyt."
 }
