@@ -183,6 +183,15 @@
                             <outlet property="delegate" destination="Eb7-bQ-n14" id="cMN-Er-0pE"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="KuD-7u-1UG">
+                        <barButtonItem key="rightBarButtonItem" title="Kartta" id="qnY-hR-g5L">
+                            <connections>
+                                <segue destination="0jV-mT-q6S" kind="show" id="6mx-KD-Xpd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="favoriteImageView" destination="l3e-UH-zHC" id="tKr-7G-dhR"/>
                         <outlet property="stopName" destination="PZm-A4-BJM" id="ZTh-l8-Xbt"/>
@@ -192,6 +201,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yL-Hn-Omh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2701" y="255"/>
+        </scene>
+        <!--Stop Map View Controller-->
+        <scene sceneID="CPt-JI-qzk">
+            <objects>
+                <viewController id="0jV-mT-q6S" customClass="StopMapViewController" customModule="Lähimmät_Lähdöt" customModuleProvider="target" sceneMemberID="viewController">
+                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Bg8-Ih-vYh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </mapView>
+                    <connections>
+                        <outlet property="stopMap" destination="Bg8-Ih-vYh" id="VMI-C5-NAO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LdY-JD-AbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3505" y="255"/>
         </scene>
         <!--Lähimmät-->
         <scene sceneID="5nY-NW-XXN">
@@ -337,6 +362,6 @@
         <image name="ic_place" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KMs-eh-nkd"/>
+        <segue reference="nOX-tg-TJh"/>
     </inferredMetricsTieBreakers>
 </document>

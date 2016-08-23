@@ -33,6 +33,16 @@ class FavoriteStops {
         return isFavorite
     }
 
+    static func tryUpdate(stop: Stop) {
+        NSLog("Trying to update stop: \(stop.name) \(stop.codeLong)")
+        if(self.isFavoriteStop(stop)) {
+            self.remove(stop)
+            var stops = FavoriteStops.all()
+            stops.append(stop)
+            saveToUserDefaults(stops)
+        }
+    }
+
     static func add(stop: Stop) {
         var stops = FavoriteStops.all()
 

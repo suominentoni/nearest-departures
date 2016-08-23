@@ -10,13 +10,21 @@ import Foundation
 
 public class Stop: NSObject, NSCoding {
     var name: String = ""
+    var lat: Double = 0.0
+    var lon: Double = 0.0
     var distance: String = ""
     var codeLong: String = ""
     var codeShort: String = ""
     var departures: [Departure] = []
 
-    init(name: String, distance: String, codeLong: String, codeShort: String, departures: [Departure]) {
+    override init() {
+       super.init()
+    }
+
+    init(name: String, lat: Double, lon: Double, distance: String, codeLong: String, codeShort: String, departures: [Departure]) {
         self.name = name
+        self.lat = lat
+        self.lon = lon
         self.distance = distance
         self.codeLong = codeLong
         self.codeShort = codeShort
@@ -27,7 +35,11 @@ public class Stop: NSObject, NSCoding {
         if let name = aDecoder.decodeObjectForKey("name") as? String,
             let distance = aDecoder.decodeObjectForKey("distance") as? String,
             let codeLong = aDecoder.decodeObjectForKey("codeLong") as? String,
-            let codeShort = aDecoder.decodeObjectForKey("codeShort") as? String {
+            let codeShort = aDecoder.decodeObjectForKey("codeShort") as? String,
+            let lat = Tools.decodedValueForKeyOrDefault(aDecoder, key: "lat", defaultValue: 0.0),
+            let lon = Tools.decodedValueForKeyOrDefault(aDecoder, key: "lon", defaultValue: 0.0) {
+            self.lat = lat
+            self.lon = lon
             self.name = name
             self.distance = distance
             self.codeLong = codeLong
@@ -37,9 +49,15 @@ public class Stop: NSObject, NSCoding {
 
     public func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.name, forKey: "name")
+        aCoder.encodeObject(self.lat, forKey: "lat")
+        aCoder.encodeObject(self.lon, forKey: "lon")
         aCoder.encodeObject(self.distance, forKey: "distance")
         aCoder.encodeObject(self.codeLong, forKey: "codeLong")
         aCoder.encodeObject(self.codeShort, forKey: "codeShort")
+    }
+
+    public func hasCoordinates() -> Bool {
+        return self.lat != 0.0 && self.lon != 0.0
     }
 }
 

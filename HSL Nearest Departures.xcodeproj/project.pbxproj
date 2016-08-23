@@ -17,6 +17,7 @@
 		533E1C511C527B42001EA50B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDC1C2C06EC002F0107 /* Interface.storyboard */; };
 		53536F951D66DE76004970E4 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53536F941D66DE76004970E4 /* Tools.swift */; };
 		53536F961D66DFFF004970E4 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53536F941D66DE76004970E4 /* Tools.swift */; };
+		53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */; };
 		535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */; };
 		536C435B1D42328700045CEF /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C435A1D42328700045CEF /* Util.swift */; };
 		53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */; };
@@ -107,6 +108,7 @@
 		5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDepartureCell.swift; sourceTree = "<group>"; };
 		533E1C4D1C512963001EA50B /* NearestStopsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsRow.swift; sourceTree = "<group>"; };
 		53536F941D66DE76004970E4 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopMapViewController.swift; sourceTree = "<group>"; };
 		535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsInterfaceController.swift; sourceTree = "<group>"; };
 		536C435A1D42328700045CEF /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				5329C5911C70D448000E24F9 /* NearestStopsCell.swift */,
 				5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */,
 				5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */,
+				53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */,
 			);
 			path = "HSL Nearest Departures";
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				53CC56941D57B8CD007828C8 /* FavoriteStopsTableViewController.swift in Sources */,
 				53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */,
 				53536F951D66DE76004970E4 /* Tools.swift in Sources */,
+				53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */,
 				53C57D821D605D83000F5BF1 /* HTTP.swift in Sources */,
 				5329C5961C70DFC9000E24F9 /* NextDepartureCell.swift in Sources */,
 				5329C5901C70CCCC000E24F9 /* NearestStopsTableViewController.swift in Sources */,

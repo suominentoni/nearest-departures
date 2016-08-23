@@ -15,7 +15,7 @@ public class HSL {
 
     static func departuresForStop(gtfsId: String, callback: (departures: [Departure]) -> Void) -> Void {
         let query = "{stop(id: \"\(gtfsId)\" ) {" +
-            "gtfsId, code, platformCode, desc, name," +
+            "gtfsId, lat, lon, code, platformCode, desc, name," +
             "stoptimesWithoutPatterns(numberOfDepartures: 30) {" +
                 "scheduledDeparture," +
                 "realtimeDeparture," +
@@ -41,12 +41,24 @@ public class HSL {
         })
     }
 
+    static func coordinatesForStop(stop: Stop, callback: (lat: Double, lon: Double) -> Void) -> Void {
+        let query = "{stop(id: \"HSL:\(stop.codeLong)\" ) {lat, lon}}"
+        HTTP.post(url, body: query, callback: {(obj: [String: AnyObject], error: String?) in
+            if let data = obj["data"] as? [String: AnyObject],
+                let stop = data["stop"] as? [String: AnyObject],
+                let lat = stop["lat"] as? Double,
+                let lon = stop["lon"] as? Double {
+                callback(lat: lat, lon: lon)
+            }
+        })
+    }
+
     static func nearestStopsAndDepartures(lat: Double, lon: Double, callback: (stops: [Stop]) -> Void) {
         let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), agency: \"HSL\", radius: 500)" +
             "{edges {node" +
                 "{distance," +
                 "stop {" +
-                    "gtfsId, code, platformCode, desc, name," +
+                    "gtfsId, lat, lon, code, platformCode, desc, name," +
                     "stoptimesWithoutPatterns(numberOfDepartures: 30) {" +
                         "scheduledDeparture," +
                         "realtimeDeparture," +
@@ -74,13 +86,15 @@ public class HSL {
                         let stop = stopAtDistance["stop"] as? [String: AnyObject],
                         let name = stop["name"] as? String,
                         let code = stop["code"] as? String,
+                        let lat = stop["lat"] as? Double,
+                        let lon = stop["lon"] as? Double,
                         let gtfsId = stop["gtfsId"] as? String,
                         let nextDeparturesData = stop["stoptimesWithoutPatterns"] as? NSArray {
                         var stopName: String = name
                         if let platformCode = stop["platformCode"] as? String {
                             stopName = formatStopName(name, platformCode: platformCode)
                         }
-                        stops.append(Stop(name: stopName , distance: formatDistance(distance), codeLong: trimAgency(gtfsId), codeShort: code, departures: parseDepartures(nextDeparturesData)))
+                        stops.append(Stop(name: stopName, lat: lat, lon: lon, distance: formatDistance(distance), codeLong: trimAgency(gtfsId), codeShort: code, departures: parseDepartures(nextDeparturesData)))
                     }
                 }
             }
@@ -91,7 +105,7 @@ public class HSL {
     static func nearestStops(lat: Double, lon: Double, callback: (stops: [Stop]) -> Void) {
         let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), agency: \"HSL\", radius: 500)" +
             "{edges {node {distance, stop {" +
-                "gtfsId, code, platformCode, desc, name," +
+                "gtfsId, lat, lon, code, platformCode, desc, name," +
             "}}}}}"
         HTTP.post(url, body: query, callback: {(obj: [String: AnyObject], error: String?) in
             var stops: [Stop?] = []
@@ -112,12 +126,14 @@ public class HSL {
             let stop = stopAtDistance["stop"] as? [String: AnyObject],
             let name = stop["name"] as? String,
             let code = stop["code"] as? String,
+            let lat = stop["lat"] as? Double,
+            let lon = stop["lon"] as? Double,
             let gtfsId = stop["gtfsId"] as? String {
             var stopName: String = name
             if let platformCode = stop["platformCode"] as? String {
                 stopName = formatStopName(name, platformCode: platformCode)
             }
-            return Stop(name: stopName, distance: formatDistance(distance), codeLong: trimAgency(gtfsId), codeShort: code, departures: [])
+            return Stop(name: stopName, lat: lat, lon: lon, distance: formatDistance(distance), codeLong: trimAgency(gtfsId), codeShort: code, departures: [])
         } else {
             return nil
         }
