@@ -11,28 +11,15 @@ import UIKit
 
 public class HSL {
 
-    static let url = "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql"
+    static let APIURL = "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql"
+
+    private static let stopFields = "gtfsId, lat, lon, code, platformCode, desc, name"
+    private static let departureFields = "scheduledDeparture, realtimeDeparture, departureDelay, realtime, realtimeState, serviceDay, pickupType, trip {tripHeadsign, directionId, route {shortName, longName, mode}}"
 
     static func departuresForStop(gtfsId: String, callback: (departures: [Departure]) -> Void) -> Void {
-        let query = "{stop(id: \"\(gtfsId)\" ) {" +
-            "gtfsId, lat, lon, code, platformCode, desc, name," +
-            "stoptimesWithoutPatterns(numberOfDepartures: 30) {" +
-                "scheduledDeparture," +
-                "realtimeDeparture," +
-                "departureDelay," +
-                "realtime," +
-                "realtimeState," +
-                "serviceDay," +
-                "pickupType," +
-                "trip {" +
-                    "tripHeadsign," +
-                    "directionId," +
-                    "route {" +
-                        "shortName," +
-                        "longName," +
-                        "mode" +
-                    "}}}}}"
-        HTTP.post(url, body: query, callback: {(obj: [String: AnyObject], error: String?) in
+        let query = "{stop(id: \"\(gtfsId)\" ) { \(stopFields)" +
+            ",stoptimesWithoutPatterns(numberOfDepartures: 30) {\(departureFields) }}}"
+        HTTP.post(APIURL, body: query, callback: {(obj: [String: AnyObject], error: String?) in
             if let data = obj["data"] as? [String: AnyObject],
                 let stop = data["stop"] as? [String: AnyObject],
                 let nextDeparturesData = stop["stoptimesWithoutPatterns"] as? NSArray {
@@ -43,7 +30,7 @@ public class HSL {
 
     static func coordinatesForStop(stop: Stop, callback: (lat: Double, lon: Double) -> Void) -> Void {
         let query = "{stop(id: \"HSL:\(stop.codeLong)\" ) {lat, lon}}"
-        HTTP.post(url, body: query, callback: {(obj: [String: AnyObject], error: String?) in
+        HTTP.post(APIURL, body: query, callback: {(obj: [String: AnyObject], error: String?) in
             if let data = obj["data"] as? [String: AnyObject],
                 let stop = data["stop"] as? [String: AnyObject],
                 let lat = stop["lat"] as? Double,
@@ -55,27 +42,11 @@ public class HSL {
 
     static func nearestStopsAndDepartures(lat: Double, lon: Double, callback: (stops: [Stop]) -> Void) {
         let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), agency: \"HSL\", radius: 500)" +
-            "{edges {node" +
-                "{distance," +
-                "stop {" +
-                    "gtfsId, lat, lon, code, platformCode, desc, name," +
-                    "stoptimesWithoutPatterns(numberOfDepartures: 30) {" +
-                        "scheduledDeparture," +
-                        "realtimeDeparture," +
-                        "departureDelay," +
-                        "realtime," +
-                        "realtimeState," +
-                        "serviceDay," +
-                        "pickupType," +
-                        "trip {" +
-                            "tripHeadsign," +
-                            "directionId," +
-                            "route {" +
-                                "shortName," +
-                                "longName," +
-                                "mode" +
-                            "}}}}}}}}"
-        HTTP.post(url, body: query, callback: {(obj: [String: AnyObject], error: String?) in
+            "{edges {node {distance, stop { \(stopFields)" +
+                    ",stoptimesWithoutPatterns(numberOfDepartures: 30) {" +
+                        departureFields +
+                    "}}}}}}"
+        HTTP.post(APIURL, body: query, callback: {(obj: [String: AnyObject], error: String?) in
             var stops: [Stop] = []
             if let data = obj["data"] as? [String: AnyObject],
                 let stopsByRadius = data["stopsByRadius"] as? [String: AnyObject],
@@ -104,10 +75,8 @@ public class HSL {
 
     static func nearestStops(lat: Double, lon: Double, callback: (stops: [Stop]) -> Void) {
         let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), agency: \"HSL\", radius: 500)" +
-            "{edges {node {distance, stop {" +
-                "gtfsId, lat, lon, code, platformCode, desc, name," +
-            "}}}}}"
-        HTTP.post(url, body: query, callback: {(obj: [String: AnyObject], error: String?) in
+            "{edges {node {distance, stop { \(stopFields) }}}}}"
+        HTTP.post(APIURL, body: query, callback: {(obj: [String: AnyObject], error: String?) in
             var stops: [Stop?] = []
             if let data = obj["data"] as? [String: AnyObject],
                 let stopsByRadius = data["stopsByRadius"] as? [String: AnyObject],
@@ -170,7 +139,6 @@ public class HSL {
         }
         return deps
     }
-
 
     private static func trimAgency(gtfsId: String) -> String {
         if let index = gtfsId.characters.indexOf(":") {
