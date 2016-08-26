@@ -16,6 +16,7 @@ class StopMapViewController: UIViewController {
     var stop: Stop = Stop()
 
     override func viewDidLoad() {
+        self.title = "\(stop.name) (\(stop.codeShort))"
         if(!stop.hasCoordinates()) {
             HSL.coordinatesForStop(stop, callback: {(lat: Double, lon: Double) -> Void in
                 // If stop had no coordinates set, it is most probably saved to favorite stops prior
