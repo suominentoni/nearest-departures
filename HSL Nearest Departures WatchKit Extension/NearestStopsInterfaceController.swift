@@ -1,8 +1,7 @@
 import WatchKit
 import Foundation
-import WatchConnectivity
 
-public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDelegate, CLLocationManagerDelegate {
+open class NearestStopsInterfaceController: WKInterfaceController, CLLocationManagerDelegate {
 
     @IBOutlet var nearestStopsTable: WKInterfaceTable!
     @IBOutlet var loadingIndicatorLabel: WKInterfaceLabel!
@@ -13,15 +12,15 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
     var lat: Double = 0
     var lon: Double = 0
 
-    override public func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        let row = table.rowControllerAtIndex(rowIndex) as! NearestStopsRow
-        self.pushControllerWithName("NextDeparturesInterfaceController", context: ["stopCode": row.code])
+    override open func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        let row = table.rowController(at: rowIndex) as! NearestStopsRow
+        self.pushController(withName: "NextDeparturesInterfaceController", context: ["stopCode": row.code])
 //        let foo = nearestStops[rowIndex].departures as! AnyObject
 //        self.pushControllerWithName("NextDeparturesInterfaceController", context: ["departures": foo])
     }
 
-    override public func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override open func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         self.initTimer()
 
         locationManager = CLLocationManager()
@@ -29,31 +28,31 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 5
 
-        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined) {
+        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.notDetermined) {
             locationManager.requestWhenInUseAuthorization()
         } else {
             requestLocation()
         }
     }
 
-    public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    open func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         requestLocation()
     }
 
     func requestLocation() {
         showLoadingIndicator()
-        if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Restricted || CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Denied) {
+        if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.restricted || CLLocationManager.authorizationStatus() != CLAuthorizationStatus.denied) {
             NSLog("Requesting location")
             locationManager.requestLocation()
         }
     }
 
-    public func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    open func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         NSLog("Location Manager error: " + error.localizedDescription)
         requestLocation()
     }
 
-    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    open func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         NSLog("New location data received")
         let lat = locations.last!.coordinate.latitude
         let lon = locations.last!.coordinate.longitude
@@ -61,7 +60,7 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
         HSL.nearestStopsAndDepartures(lat, lon: lon, callback: updateInterface)
     }
 
-    private func updateInterface(nearestStops: [Stop]) -> Void {
+    fileprivate func updateInterface(_ nearestStops: [Stop]) -> Void {
         NSLog("Updating Nearest Stops interface")
 
         loadingIndicatorLabel.setHidden(true)
@@ -74,8 +73,7 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
         } else {
             var i: Int = 0
             for stop in nearestStops {
-                let row: AnyObject? = nearestStopsTable.rowControllerAtIndex(i)
-                let nearestStopRow = row as! NearestStopsRow
+                let nearestStopRow = nearestStopsTable.rowController(at: i) as! NearestStopsRow
 
                 nearestStopRow.code = stop.codeLong
                 nearestStopRow.stopName.setText(stop.name)
@@ -86,20 +84,20 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
         }
     }
 
-    override public func willDisappear() {
+    override open func willDisappear() {
         invalidateTimer()
     }
 
-    override public func willActivate() {
+    override open func willActivate() {
         requestLocation()
     }
 
-    private func showLoadingIndicator() {
+    fileprivate func showLoadingIndicator() {
         initTimer()
         self.loadingIndicatorLabel.setHidden(false)
     }
 
-    private func hideLoadingIndicator() {
+    fileprivate func hideLoadingIndicator() {
         self.loadingIndicatorLabel.setHidden(true)
     }
 
@@ -108,11 +106,11 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
     }
 
     var counter = 1
-    var timer: NSTimer? = NSTimer()
+    var timer: Timer? = Timer()
 
     func initTimer() {
         invalidateTimer()
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(NearestStopsInterfaceController.updateLoadingIndicatorText), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(NearestStopsInterfaceController.updateLoadingIndicatorText), userInfo: nil, repeats: true)
         self.timer?.fire()
     }
 
@@ -121,7 +119,7 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
         self.timer = nil
     }
 
-    @objc private func updateLoadingIndicatorText() {
+    @objc fileprivate func updateLoadingIndicatorText() {
         self.counter == 4 ? (self.counter = 1) : (self.counter = self.counter + 1)
         var dots = ""
         for _ in 1...counter {

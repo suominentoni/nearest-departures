@@ -9,12 +9,12 @@
 import Foundation
 
 class FavoriteStops {
-    private static let FAVORITE_STOPS_KEY = "hsl_fav_stops"
+    fileprivate static let FAVORITE_STOPS_KEY = "hsl_fav_stops"
 
     static func all() -> [Stop] {
-        if let data = NSUserDefaults.standardUserDefaults().objectForKey(FAVORITE_STOPS_KEY) as? NSData,
-        let stops = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Stop] {
-            return stops.sort {$0.name < $1.name}
+        if let data = UserDefaults.standard.object(forKey: FAVORITE_STOPS_KEY) as? Data,
+        let stops = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Stop] {
+            return stops.sorted {$0.name < $1.name}
         }
         return []
     }
@@ -26,7 +26,7 @@ class FavoriteStops {
 
     private static func toAgencyPrefixedCodeFormat(stop: Stop) -> Stop {
         // If the long code contains only numbers, it was stored as a favorite before updating the app
-        // to work throughout the country, and therefore is an HSL code. Since that update the codes are 
+        // to work throughout the country, and therefore is an HSL code. Since that update the codes are
         // stored with their agency prefix in place ('HSL:' or 'MATKA:').
         //
         // If numbers-only HSL codes are encountered, let's update the favorite stop entry with the full,
@@ -38,7 +38,7 @@ class FavoriteStops {
         return stop
     }
 
-    static func isFavoriteStop(stop: Stop) -> Bool {
+    static func isFavoriteStop(_ stop: Stop) -> Bool {
         let stops = FavoriteStops.all()
 
         var isFavorite = false
@@ -52,7 +52,7 @@ class FavoriteStops {
         return isFavorite
     }
 
-    static func tryUpdate(stop: Stop) {
+    static func tryUpdate(_ stop: Stop) {
         NSLog("Trying to update stop: \(stop.name) \(stop.codeLong)")
         if(self.isFavoriteStop(stop)) {
             self.remove(stop)
@@ -62,25 +62,25 @@ class FavoriteStops {
         }
     }
 
-    static func add(stop: Stop) {
+    static func add(_ stop: Stop) {
         var stops = FavoriteStops.all()
 
         if(!self.isFavoriteStop(stop)) {
             NSLog("Saving favorite stop: \(stop.name) \(stop.codeLong)")
             stops.append(stop)
-            let data = NSKeyedArchiver.archivedDataWithRootObject(stops)
-            NSUserDefaults.standardUserDefaults().setObject(data, forKey: FAVORITE_STOPS_KEY)
+            let data = NSKeyedArchiver.archivedData(withRootObject: stops)
+            UserDefaults.standard.set(data, forKey: FAVORITE_STOPS_KEY)
         }
     }
 
-    static func remove(stop: Stop) {
+    static func remove(_ stop: Stop) {
         NSLog("Removing favorite stop: \(stop.name) \(stop.codeLong)")
         let stops = FavoriteStops.all().filter { $0 != stop }
         saveToUserDefaults(stops)
     }
 
-    private static func saveToUserDefaults(stops: [Stop]) {
-        let data = NSKeyedArchiver.archivedDataWithRootObject(stops)
-        NSUserDefaults.standardUserDefaults().setObject(data, forKey: FAVORITE_STOPS_KEY)
+    fileprivate static func saveToUserDefaults(_ stops: [Stop]) {
+        let data = NSKeyedArchiver.archivedData(withRootObject: stops)
+        UserDefaults.standard.set(data, forKey: FAVORITE_STOPS_KEY)
     }
 }

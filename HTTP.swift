@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class HTTP {
+open class HTTP {
     static func getJSONObject(
-        url: String,
-        callback: ([String: AnyObject], String?) -> Void) -> Void {
+        _ url: String,
+        callback: @escaping ([String: AnyObject], String?) -> Void) -> Void {
             NSLog("HTTP GET: " + url)
-            let request = NSMutableURLRequest(URL: NSURL(string: url.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!)!)
+            let request = NSMutableURLRequest(url: URL(string: url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             HTTPsendRequest(request) {
                 (data: String, error: String?) -> Void in
@@ -28,15 +28,15 @@ public class HTTP {
     }
 
     static func post(
-        url: String,
+        _ url: String,
         body: String,
-        callback: ([String: AnyObject], String?) -> Void) -> Void {
+        callback: @escaping ([String: AnyObject], String?) -> Void) -> Void {
             NSLog("HTTP POST: " + url)
-            let request = NSMutableURLRequest(URL: NSURL(string: url.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!)!)
+            let request = NSMutableURLRequest(url: URL(string: url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             request.setValue("application/graphql", forHTTPHeaderField: "Content-Type")
-            request.HTTPMethod = "POST"
-            request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding)
+            request.httpMethod = "POST"
+            request.httpBody = body.data(using: String.Encoding.utf8)
             HTTPsendRequest(request) {
                 (data: String, error: String?) -> Void in
                 if error != nil {
@@ -50,9 +50,9 @@ public class HTTP {
     }
 
     static func getJSONArray(
-        url: String,
-        callback: ([AnyObject], String?) -> Void) -> Void {
-            let request = NSMutableURLRequest(URL: NSURL(string: url.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!)!)
+        _ url: String,
+        callback: @escaping ([AnyObject], String?) -> Void) -> Void {
+            let request = NSMutableURLRequest(url: URL(string: url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             HTTPsendRequest(request) {
                 (data: String, error: String?) -> Void in
@@ -66,13 +66,13 @@ public class HTTP {
             }
     }
 
-    static private func JSONParseArray(jsonString:String) -> [AnyObject] {
-        if let data: NSData = jsonString.dataUsingEncoding(
-            NSUTF8StringEncoding){
+    static fileprivate func JSONParseArray(_ jsonString:String) -> [AnyObject] {
+        if let data: Data = jsonString.data(
+            using: String.Encoding.utf8){
                 do{
-                    if let jsonObj = try NSJSONSerialization.JSONObjectWithData(
-                        data,
-                        options: NSJSONReadingOptions(rawValue: 0)) as? [AnyObject]{
+                    if let jsonObj = try JSONSerialization.jsonObject(
+                        with: data,
+                        options: JSONSerialization.ReadingOptions(rawValue: 0)) as? [AnyObject]{
                             return jsonObj
                     }
                 }catch{
@@ -82,13 +82,13 @@ public class HTTP {
         return [AnyObject]()
     }
 
-    static private func JSONParseDict(jsonString:String) -> [String: AnyObject] {
-        if let data: NSData = jsonString.dataUsingEncoding(
-            NSUTF8StringEncoding){
+    static fileprivate func JSONParseDict(_ jsonString:String) -> [String: AnyObject] {
+        if let data: Data = jsonString.data(
+            using: String.Encoding.utf8){
                 do{
-                    if let jsonObj = try NSJSONSerialization.JSONObjectWithData(
-                        data,
-                        options: NSJSONReadingOptions(rawValue: 0)) as? [String: AnyObject]{
+                    if let jsonObj = try JSONSerialization.jsonObject(
+                        with: data,
+                        options: JSONSerialization.ReadingOptions(rawValue: 0)) as? [String: AnyObject]{
                             return jsonObj
                     }
                 }catch{
@@ -98,17 +98,17 @@ public class HTTP {
         return [String: AnyObject]()
     }
 
-    static private func HTTPsendRequest(request: NSMutableURLRequest,
-        callback: (String, String?) -> Void) -> Void {
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(
-                request, completionHandler :
+    static fileprivate func HTTPsendRequest(_ request: NSMutableURLRequest,
+        callback: @escaping (String, String?) -> Void) -> Void {
+            let task = URLSession.shared.dataTask(
+                with: request as URLRequest, completionHandler :
                 {
                     data, response, error in
                     if error != nil {
                         callback("", (error!.localizedDescription) as String)
                     } else {
                         callback(
-                            NSString(data: data!, encoding: NSUTF8StringEncoding) as! String,
+                            NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as! String,
                             nil
                         )
                     }

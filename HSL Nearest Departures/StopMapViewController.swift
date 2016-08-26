@@ -33,7 +33,7 @@ class StopMapViewController: UIViewController {
         }
     }
 
-    private func showStopPinAnnotation() {
+    fileprivate func showStopPinAnnotation() {
         let lat = CLLocationDegrees(floatLiteral: self.stop.lat)
         let lon = CLLocationDegrees(floatLiteral: self.stop.lon)
         let pin = MKPointAnnotation()

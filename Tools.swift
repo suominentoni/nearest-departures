@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-public class Tools {
+open class Tools {
 
-    public static func formatDepartureTime(scheduled: Int, real: Int) -> NSAttributedString {
+    open static func formatDepartureTime(_ scheduled: Int, real: Int) -> NSAttributedString {
         let scheduledTime = secondsFromMidnightToTime(scheduled)
         let realTime = secondsFromMidnightToTime(real)
 
@@ -22,16 +22,16 @@ public class Tools {
                 string: scheduledTime,
                 attributes: [
                     NSStrikethroughStyleAttributeName: 1,
-                    NSStrikethroughColorAttributeName: UIColor.lightGrayColor(),
-                    NSForegroundColorAttributeName: UIColor.grayColor()])
-            scheduledString.appendAttributedString(space)
-            scheduledString.appendAttributedString(realString)
+                    NSStrikethroughColorAttributeName: UIColor.lightGray,
+                    NSForegroundColorAttributeName: UIColor.gray])
+            scheduledString.append(space)
+            scheduledString.append(realString)
             return scheduledString
         }
         return NSAttributedString(string: secondsFromMidnightToTime(scheduled))
     }
 
-    public static func secondsFromMidnightToTime(seconds: Int) -> String {
+    open static func secondsFromMidnightToTime(_ seconds: Int) -> String {
         let minutes = seconds / 60
 
         let hoursInt = minutes/60
@@ -40,12 +40,12 @@ public class Tools {
         return "\(hours):\(remainder)"
     }
 
-    public static func unwrapAndStripNils<T>(data: [T?]) -> [T] {
+    open static func unwrapAndStripNils<T>(_ data: [T?]) -> [T] {
         return data.filter({$0 != nil}).map({$0!})
     }
 
-    public static func decodedValueForKeyOrDefault<T>(coder: NSCoder, key: String, defaultValue: T) -> T? {
-        if let value = coder.decodeObjectForKey(key) as? T {
+    open static func decodedValueForKeyOrDefault<T>(_ coder: NSCoder, key: String, defaultValue: T) -> T? {
+        if let value = coder.decodeObject(forKey: key) as? T {
             return value
         } else {
             return defaultValue
