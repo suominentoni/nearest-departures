@@ -3,7 +3,7 @@ import UIKit
 
 class NextDeparturesTableViewController: UITableViewController {
 
-    var stop = Stop(name: "", distance: "", codeLong: "", codeShort: "", departures: [])
+    var stop = Stop(name: "", lat: 0.0, lon: 0.0, distance: "", codeLong: "", codeShort: "", departures: [])
 
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var favoriteImageView: UIImageView!
@@ -137,5 +137,10 @@ class NextDeparturesTableViewController: UITableViewController {
 
     @IBAction func back(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let stopMapViewController = segue.destinationViewController as! StopMapViewController
+        stopMapViewController.stop = stop
     }
 }

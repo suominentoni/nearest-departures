@@ -43,4 +43,12 @@ public class Tools {
     public static func unwrapAndStripNils<T>(data: [T?]) -> [T] {
         return data.filter({$0 != nil}).map({$0!})
     }
+
+    public static func decodedValueForKeyOrDefault<T>(coder: NSCoder, key: String, defaultValue: T) -> T? {
+        if let value = coder.decodeObjectForKey(key) as? T {
+            return value
+        } else {
+            return defaultValue
+        }
+    }
 }
