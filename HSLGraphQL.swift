@@ -127,14 +127,14 @@ public class HSL {
                     let trip = dep["trip"] as AnyObject?,
                     let destination = trip["tripHeadsign"] as? String,
                     let pickupType = dep["pickupType"] as? String,
-                    let route = trip["route"] as AnyObject?,
-                    let codeShort = route["shortName"] as? String {
+                    let route = trip["route"] as? [String: AnyObject] {
                     if(pickupType != "NONE") {
+                        let code = shortCodeForRoute(route)
                         deps.append(
                             Departure(
                                 line: Line(
-                                    codeLong: codeShort,
-                                    codeShort: codeShort,
+                                    codeLong: code,
+                                    codeShort: code,
                                     destination: destination
                                 ),
                                 scheduledDepartureTime: scheduledDepartureTime,
@@ -146,5 +146,12 @@ public class HSL {
             }
         }
         return deps
+    }
+
+    private static func shortCodeForRoute(routeData: [String: AnyObject]) -> String {
+        if let mode = routeData["mode"] as? String where mode == "SUBWAY" {
+            return "Metro"
+        }
+        return routeData["shortName"] as? String ?? "-"
     }
 }
