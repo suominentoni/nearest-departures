@@ -11,7 +11,9 @@ import UIKit
 
 public class HSL {
 
-    static let APIURL = "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql"
+//    static let APIURL = "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql"
+    static let APIURL = "https://api.digitransit.fi/routing/v1/routers/finland/index/graphql"
+//    static let APIURL = "https://api.digitransit.fi/routing/v1/routers/waltti/index/graphql"
 
     private static let stopFields = "gtfsId, lat, lon, code, platformCode, desc, name"
     private static let departureFields = "scheduledDeparture, realtimeDeparture, departureDelay, realtime, realtimeState, serviceDay, pickupType, trip {tripHeadsign, directionId, route {shortName, longName, mode}}"
@@ -28,7 +30,7 @@ public class HSL {
     }
 
     static func coordinatesForStop(stop: Stop, callback: (lat: Double, lon: Double) -> Void) -> Void {
-        let query = "{stop(id: \"HSL:\(stop.codeLong)\" ) {lat, lon}}"
+        let query = "{stop(id: \"\(stop.codeLong)\" ) {lat, lon}}"
         HTTP.post(APIURL, body: query, callback: {(obj: [String: AnyObject], error: String?) in
             if let data = obj["data"] as? [String: AnyObject],
                 let stop = data["stop"] as? [String: AnyObject],
@@ -40,7 +42,8 @@ public class HSL {
     }
 
     static func nearestStopsAndDepartures(lat: Double, lon: Double, callback: (stops: [Stop]) -> Void) {
-        let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), agency: \"HSL\", radius: 500)" +
+//        let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), agency: \"HSL\", radius: 500)" +
+        let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), radius: 500)" +
             "{edges {node {distance, stop { \(stopFields)" +
                     ",stoptimesWithoutPatterns(numberOfDepartures: 30) {" +
                         departureFields +
@@ -60,7 +63,8 @@ public class HSL {
 
 
     static func nearestStops(lat: Double, lon: Double, callback: (stops: [Stop]) -> Void) {
-        let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), agency: \"HSL\", radius: 500)" +
+//        let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), agency: \"HSL\", radius: 500)" +
+        let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), radius: 500)" +
             "{edges {node {distance, stop { \(stopFields) }}}}}"
         HTTP.post(APIURL, body: query, callback: {(obj: [String: AnyObject], error: String?) in
             var stops: [Stop?] = []
@@ -80,7 +84,7 @@ public class HSL {
             let distance = stopAtDistance["distance"] as? Int,
             let stop = stopAtDistance["stop"] as? [String: AnyObject],
             let name = stop["name"] as? String,
-            let code = stop["code"] as? String,
+//            let code = stop["code"] as? String,
             let lat = stop["lat"] as? Double,
             let lon = stop["lon"] as? Double,
             let gtfsId = stop["gtfsId"] as? String {
@@ -93,12 +97,22 @@ public class HSL {
                 lat: lat,
                 lon: lon,
                 distance: formatDistance(distance),
-                codeLong: trimAgency(gtfsId),
-                codeShort: code,
+                codeLong: gtfsId,
+                codeShort: shortCodeForStop(stop),
                 departures: []
             )
         } else {
             return nil
+        }
+    }
+
+    private static func shortCodeForStop(stopData: [String: AnyObject]) -> String {
+        // Some public transit operators (e.g. the one in Jyväskylä)
+        // don't have a code field for their stops.
+        if let shortCode = stopData["code"] as? String {
+            return shortCode
+        } else {
+            return "-"
         }
     }
 

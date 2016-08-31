@@ -83,7 +83,7 @@ class NextDeparturesTableViewController: UITableViewController {
         let y = self.tableView.center.y
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
 
-        HSL.departuresForStop("HSL:" + self.stop.codeLong, callback: {(nextDepartures: [Departure]) -> Void in
+        HSL.departuresForStop(self.stop.codeLong, callback: {(nextDepartures: [Departure]) -> Void in
             self.stop.departures = nextDepartures
             dispatch_async(dispatch_get_main_queue(), {
                 if(self.stop.departures.count == 0) {
