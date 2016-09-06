@@ -9,6 +9,8 @@ class NextDeparturesTableViewController: UITableViewController {
     @IBOutlet weak var favoriteImageView: UIImageView!
     @IBOutlet weak var stopName: UILabel!
 
+    private var hasShortCodes: Bool = true
+
     override init(style: UITableViewStyle) {
         super.init(style: style)
     }
@@ -24,7 +26,7 @@ class NextDeparturesTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 250
 
-        stopName.text = "\(stop.name) (\(stop.codeShort))"
+        stopName.text = Tools.formatStopText(self.stop)
 
         favoriteImageView.userInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(NextDeparturesTableViewController.favoriteTap))
@@ -85,6 +87,7 @@ class NextDeparturesTableViewController: UITableViewController {
 
         HSL.departuresForStop(self.stop.codeLong, callback: {(nextDepartures: [Departure]) -> Void in
             self.stop.departures = nextDepartures
+            self.hasShortCodes = Tools.hasShortCodes(nextDepartures)
             dispatch_async(dispatch_get_main_queue(), {
                 if(self.stop.departures.count == 0) {
                     let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
@@ -124,7 +127,14 @@ class NextDeparturesTableViewController: UITableViewController {
         dispatch_async(dispatch_get_main_queue(), {
             if let codeShort = departure.line.codeShort,
                 let destination = departure.line.destination {
+
                 cell.code.text = codeShort
+                let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0)
+                self.hasShortCodes
+                    ? (codeWidthConstraint.constant = 50)
+                    : (codeWidthConstraint.constant = 0)
+                cell.code.addConstraint(codeWidthConstraint)
+
                 cell.destination.text = destination
             } else {
                 cell.code.text = departure.line.codeLong

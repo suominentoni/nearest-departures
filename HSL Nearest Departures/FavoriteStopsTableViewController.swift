@@ -11,6 +11,7 @@ import UIKit
 class FavoriteStopsTableViewController: UITableViewController {
 
     private var favoriteStops: [Stop] = []
+    private var hasShortCodes: Bool = false
 
     override func viewDidLoad() {
         self.navigationItem.title = "Suosikkipysäkkisi"
@@ -35,6 +36,7 @@ class FavoriteStopsTableViewController: UITableViewController {
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
 
         self.favoriteStops = FavoriteStops.all()
+        self.hasShortCodes = Tools.hasShortCodes(self.favoriteStops)
         if(self.favoriteStops.count == 0 ) {
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
             messageLabel.textAlignment = NSTextAlignment.Center
@@ -67,6 +69,12 @@ class FavoriteStopsTableViewController: UITableViewController {
         let stop = self.favoriteStops[indexPath.row]
 
         cell.code.text = stop.codeShort
+        let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0)
+        self.hasShortCodes
+            ? (codeWidthConstraint.constant = 50)
+            : (codeWidthConstraint.constant = 0)
+        cell.code.addConstraint(codeWidthConstraint)
+
         cell.name.text = stop.name
 
         return cell
