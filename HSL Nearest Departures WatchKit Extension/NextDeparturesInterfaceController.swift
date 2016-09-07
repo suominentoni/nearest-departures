@@ -13,7 +13,7 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
 
         if let code = context!["stopCode"] as? String {
             showLoadingIndicator()
-            HSL.departuresForStop("HSL:" + code, callback: updateInterface)
+            HSL.departuresForStop(code, callback: updateInterface)
         }
 //        if let departures = context!["departures"] as? [Departure] {
 //            showLoadingIndicator()
