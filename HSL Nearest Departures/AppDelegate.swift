@@ -7,6 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        FavoriteStops.migrateToAgencyPrefixedCodeFormat()
         return true
     }
 
