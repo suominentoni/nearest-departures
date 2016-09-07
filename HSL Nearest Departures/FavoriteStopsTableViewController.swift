@@ -69,9 +69,10 @@ class FavoriteStopsTableViewController: UITableViewController {
         let stop = self.favoriteStops[indexPath.row]
 
         cell.code.text = stop.codeShort
+
         let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0)
         self.hasShortCodes
-            ? (codeWidthConstraint.constant = 50)
+            ? (codeWidthConstraint.constant = 55)
             : (codeWidthConstraint.constant = 0)
         cell.code.addConstraint(codeWidthConstraint)
 
