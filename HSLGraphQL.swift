@@ -92,14 +92,18 @@ public class HSL {
             if let platformCode = stop["platformCode"] as? String {
                 stopName = formatStopName(name, platformCode: platformCode)
             }
-            return Stop(
-                name: stopName,
-                lat: lat,
-                lon: lon,
-                distance: formatDistance(distance),
-                codeLong: gtfsId,
-                codeShort: shortCodeForStop(stop),
-                departures: []
+            let departures = parseDepartures(stop)
+
+            return departures.count == 0
+                ? nil
+                : Stop(
+                    name: stopName,
+                    lat: lat,
+                    lon: lon,
+                    distance: formatDistance(distance),
+                    codeLong: gtfsId,
+                    codeShort: shortCodeForStop(stop),
+                    departures: departures
             )
         } else {
             return nil
