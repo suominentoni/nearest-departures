@@ -51,4 +51,18 @@ public class Tools {
             return defaultValue
         }
     }
+
+    public static func formatStopText(stop: Stop) -> String {
+        return stop.codeShort == "-"
+            ? "\(stop.name)"
+            : "\(stop.name) (\(stop.codeShort))"
+    }
+
+    public static func hasShortCodes(stops: [Stop]) -> Bool {
+        return stops.filter({ $0.codeShort != "-" }).count > 0
+    }
+
+    public static func hasShortCodes(stops: [Departure]) -> Bool {
+        return stops.filter({ $0.line.codeShort != "-" }).count > 0
+    }
 }

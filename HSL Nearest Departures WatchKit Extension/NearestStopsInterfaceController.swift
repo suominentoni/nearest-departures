@@ -58,7 +58,7 @@ public class NearestStopsInterfaceController: WKInterfaceController, WCSessionDe
         let lat = locations.last!.coordinate.latitude
         let lon = locations.last!.coordinate.longitude
 
-        HSL.nearestStops(lat, lon: lon, callback: updateInterface)
+        HSL.nearestStopsAndDepartures(lat, lon: lon, callback: updateInterface)
     }
 
     private func updateInterface(nearestStops: [Stop]) -> Void {
