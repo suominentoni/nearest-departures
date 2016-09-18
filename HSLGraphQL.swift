@@ -100,7 +100,7 @@ open class HSL {
                     lon: lon,
                     distance: formatDistance(distance),
                     codeLong: gtfsId,
-                    codeShort: shortCodeForStop(stop),
+                    codeShort: shortCodeForStop(stopData: stop),
                     departures: departures
             )
         } else {
@@ -145,7 +145,7 @@ open class HSL {
                     let pickupType = dep["pickupType"] as? String,
                     let route = trip["route"] as? [String: AnyObject] {
                     if(pickupType != "NONE") {
-                        let code = shortCodeForRoute(route)
+                        let code = shortCodeForRoute(routeData: route)
                         deps.append(
                             Departure(
                                 line: Line(
@@ -165,7 +165,7 @@ open class HSL {
     }
 
     private static func shortCodeForRoute(routeData: [String: AnyObject]) -> String {
-        if let mode = routeData["mode"] as? String where mode == "SUBWAY" {
+        if let mode = routeData["mode"] as? String , mode == "SUBWAY" {
             return "Metro"
         }
         return routeData["shortName"] as? String ?? "-"

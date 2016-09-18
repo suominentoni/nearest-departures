@@ -26,7 +26,7 @@ class NextDeparturesTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 250
 
-        stopName.text = Tools.formatStopText(self.stop)
+        stopName.text = Tools.formatStopText(stop: self.stop)
 
         favoriteImageView.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(NextDeparturesTableViewController.favoriteTap))
@@ -87,7 +87,7 @@ class NextDeparturesTableViewController: UITableViewController {
 
         HSL.departuresForStop(self.stop.codeLong, callback: {(nextDepartures: [Departure]) -> Void in
             self.stop.departures = nextDepartures
-            self.hasShortCodes = Tools.hasShortCodes(nextDepartures)
+            self.hasShortCodes = Tools.hasShortCodes(departures: nextDepartures)
             DispatchQueue.main.async(execute: {
                 if(self.stop.departures.count == 0) {
                     let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
@@ -133,7 +133,7 @@ class NextDeparturesTableViewController: UITableViewController {
                 if(cell.codeWidthConstraint != nil) {
                     cell.contentView.removeConstraint(cell.codeWidthConstraint!)
                 }
-                cell.codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: codeLabelWidth)
+                cell.codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: codeLabelWidth)
                 cell.contentView.addConstraint(cell.codeWidthConstraint!)
 
                 cell.destination.text = destination

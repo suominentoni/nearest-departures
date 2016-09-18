@@ -31,7 +31,7 @@ class FavoriteStops {
         //
         // If numbers-only HSL codes are encountered, let's update the favorite stop entry with the full,
         // agency-prefixed code.
-        if(stop.codeLong.rangeOfString("^[0-9]*$", options: .RegularExpressionSearch) != nil) {
+        if(stop.codeLong.range(of: "^[0-9]*$", options: .regularExpression) != nil) {
             NSLog("Favorite stops: Migrating numbers-only stop code: \(stop.codeLong) \(stop.name)")
             stop.codeLong = "HSL:\(stop.codeLong)"
         }

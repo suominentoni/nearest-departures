@@ -64,7 +64,7 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
         HSL.nearestStopsAndDepartures(lat, lon: lon, callback: {(stops: [Stop]) in
             self.nearestStops = stops
-            self.hasShortCodes = Tools.hasShortCodes(stops)
+            self.hasShortCodes = Tools.hasShortCodes(stops: stops)
             DispatchQueue.main.async(execute: {
                 if(self.nearestStops.count == 0 ) {
                     let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
@@ -106,7 +106,7 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
         let stop = self.nearestStops[(indexPath as NSIndexPath).row]
 
         cell.code.text = stop.codeShort
-        let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0)
+        let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
         self.hasShortCodes
             ? (codeWidthConstraint.constant = 55)
             : (codeWidthConstraint.constant = 0)

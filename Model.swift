@@ -35,11 +35,9 @@ open class Stop: NSObject, NSCoding {
         if let name = aDecoder.decodeObject(forKey: "name") as? String,
             let distance = aDecoder.decodeObject(forKey: "distance") as? String,
             let codeLong = aDecoder.decodeObject(forKey: "codeLong") as? String,
-            let codeShort = aDecoder.decodeObject(forKey: "codeShort") as? String,
-            let lat = Tools.decodedValueForKeyOrDefault(aDecoder, key: "lat", defaultValue: 0.0),
-            let lon = Tools.decodedValueForKeyOrDefault(aDecoder, key: "lon", defaultValue: 0.0) {
-            self.lat = lat
-            self.lon = lon
+            let codeShort = aDecoder.decodeObject(forKey: "codeShort") as? String {
+            self.lat = aDecoder.decodeDouble(forKey: "lat")
+            self.lon = aDecoder.decodeDouble(forKey: "lon")
             self.name = name
             self.distance = distance
             self.codeLong = codeLong
@@ -47,7 +45,7 @@ open class Stop: NSObject, NSCoding {
         }
     }
 
-    open func encode(with aCoder: NSCoder) {
+    public func encode(with aCoder: NSCoder) {
         aCoder.encode(self.name, forKey: "name")
         aCoder.encode(self.lat, forKey: "lat")
         aCoder.encode(self.lon, forKey: "lon")

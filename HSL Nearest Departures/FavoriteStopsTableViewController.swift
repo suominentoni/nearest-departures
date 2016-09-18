@@ -36,7 +36,7 @@ class FavoriteStopsTableViewController: UITableViewController {
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
 
         self.favoriteStops = FavoriteStops.all()
-        self.hasShortCodes = Tools.hasShortCodes(self.favoriteStops)
+        self.hasShortCodes = Tools.hasShortCodes(stops: self.favoriteStops)
         if(self.favoriteStops.count == 0 ) {
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
             messageLabel.textAlignment = NSTextAlignment.center
@@ -70,7 +70,7 @@ class FavoriteStopsTableViewController: UITableViewController {
 
         cell.code.text = stop.codeShort
 
-        let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0)
+        let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
         self.hasShortCodes
             ? (codeWidthConstraint.constant = 55)
             : (codeWidthConstraint.constant = 0)

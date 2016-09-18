@@ -16,7 +16,7 @@ class StopMapViewController: UIViewController {
     var stop: Stop = Stop()
 
     override func viewDidLoad() {
-        self.title = Tools.formatStopText(self.stop)
+        self.title = Tools.formatStopText(stop: self.stop)
         stopMap.showsUserLocation = true
         if(!stop.hasCoordinates()) {
             HSL.coordinatesForStop(stop, callback: {(lat: Double, lon: Double) -> Void in

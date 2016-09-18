@@ -44,25 +44,25 @@ open class Tools {
         return data.filter({$0 != nil}).map({$0!})
     }
 
-    open static func decodedValueForKeyOrDefault<T>(_ coder: NSCoder, key: String, defaultValue: T) -> T? {
-        if let value = coder.decodeObject(forKey: key) as? T {
+    open static func decodedValueForKeyOrDefault<T>(coder: NSCoder, key: String, defaultValue: T) -> T? {
+        if let value = coder.decodeDouble(forKey: key) as? T {
             return value
         } else {
             return defaultValue
         }
     }
 
-    public static func formatStopText(stop: Stop) -> String {
+    open static func formatStopText(stop: Stop) -> String {
         return stop.codeShort == "-"
             ? "\(stop.name)"
             : "\(stop.name) (\(stop.codeShort))"
     }
 
-    public static func hasShortCodes(stops: [Stop]) -> Bool {
+    open static func hasShortCodes(stops: [Stop]) -> Bool {
         return stops.filter({ $0.codeShort != "-" }).count > 0
     }
 
-    public static func hasShortCodes(stops: [Departure]) -> Bool {
-        return stops.filter({ $0.line.codeShort != "-" }).count > 0
+    open static func hasShortCodes(departures: [Departure]) -> Bool {
+        return departures.filter({ $0.line.codeShort != "-" }).count > 0
     }
 }
