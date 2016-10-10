@@ -42,7 +42,7 @@ open class HSL {
     }
 
     static func nearestStopsAndDepartures(_ lat: Double, lon: Double, callback: @escaping (_ stops: [Stop]) -> Void) {
-        let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), radius: 500)" +
+        let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), radius: 5000, first: 30)" +
             "{edges {node {distance, stop { \(stopFields)" +
                     ",stoptimesWithoutPatterns(numberOfDepartures: 30) {" +
                         departureFields +
@@ -62,7 +62,7 @@ open class HSL {
 
 
     static func nearestStops(_ lat: Double, lon: Double, callback: @escaping (_ stops: [Stop]) -> Void) {
-        let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), radius: 500)" +
+        let query = "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), radius: 5000, first: 30)" +
             "{edges {node {distance, stop { \(stopFields) }}}}}"
         HTTP.post(APIURL, body: query, callback: {(obj: [String: AnyObject], error: String?) in
             var stops: [Stop?] = []

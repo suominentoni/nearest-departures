@@ -20,9 +20,9 @@ class StopMapViewController: UIViewController {
         stopMap.showsUserLocation = true
         if(!stop.hasCoordinates()) {
             HSL.coordinatesForStop(stop, callback: {(lat: Double, lon: Double) -> Void in
-                // If stop had no coordinates set, it is most probably saved to favorite stops prior
-                // to version 2.0.0, which added coordinates to the Stop class. In such case, let's
-                // update the coordinates to the favorite stop entry.
+                // If stop had no coordinates set, it is most probably a favorite stop, and saved to
+                // favorite stops prior to version 2.0.0, which added coordinates to the Stop class.
+                // In such case, let's update the coordinates to the favorite stop entry.
                 self.stop.lat = lat
                 self.stop.lon = lon
                 self.showStopPinAnnotation()
