@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		530C49871DA4370500D44259 /* ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 530C49861DA4370500D44259 /* ObjC.m */; };
 		53123A3B1D3823DB00D9E646 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53123A3A1D3823DB00D9E646 /* Model.swift */; };
 		53123A3C1D38253000D9E646 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53123A3A1D3823DB00D9E646 /* Model.swift */; };
 		5329C5901C70CCCC000E24F9 /* NearestStopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C58F1C70CCCC000E24F9 /* NearestStopsTableViewController.swift */; };
@@ -20,6 +21,7 @@
 		53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */; };
 		535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */; };
 		536C435B1D42328700045CEF /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C435A1D42328700045CEF /* Util.swift */; };
+		53BA904E1DA53FB700AF8D01 /* ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 530C49861DA4370500D44259 /* ObjC.m */; };
 		53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */; };
 		53C57D821D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
 		53C57D831D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
@@ -101,6 +103,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		530C49851DA4370400D44259 /* HSL Nearest Departures-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures-Bridging-Header.h"; sourceTree = "<group>"; };
+		530C49861DA4370500D44259 /* ObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjC.m; sourceTree = "<group>"; };
+		530C49891DA4375B00D44259 /* ObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjC.h; sourceTree = "<group>"; };
 		53123A3A1D3823DB00D9E646 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5329C58F1C70CCCC000E24F9 /* NearestStopsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsTableViewController.swift; sourceTree = "<group>"; };
 		5329C5911C70D448000E24F9 /* NearestStopsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsCell.swift; sourceTree = "<group>"; };
@@ -175,6 +180,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		530C49881DA4374000D44259 /* ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				530C49851DA4370400D44259 /* HSL Nearest Departures-Bridging-Header.h */,
+				530C49861DA4370500D44259 /* ObjC.m */,
+				530C49891DA4375B00D44259 /* ObjC.h */,
+			);
+			name = ObjC;
+			sourceTree = "<group>";
+		};
 		53123A391D3823AB00D9E646 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +231,7 @@
 		53E4ECB11C2C06EC002F0107 /* HSL Nearest Departures */ = {
 			isa = PBXGroup;
 			children = (
+				530C49881DA4374000D44259 /* ObjC */,
 				53CC56931D57B8CD007828C8 /* FavoriteStopsTableViewController.swift */,
 				53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */,
 				53E4ECB61C2C06EC002F0107 /* Main.storyboard */,
@@ -489,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */,
+				530C49871DA4370500D44259 /* ObjC.m in Sources */,
 				53CC56941D57B8CD007828C8 /* FavoriteStopsTableViewController.swift in Sources */,
 				53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */,
 				53536F951D66DE76004970E4 /* Tools.swift in Sources */,
@@ -535,6 +552,7 @@
 				535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */,
 				53E4ECF01C2C06EC002F0107 /* ExtensionDelegate.swift in Sources */,
 				533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */,
+				53BA904E1DA53FB700AF8D01 /* ObjC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +651,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -673,6 +692,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -691,6 +711,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures WatchKit Extension/HSL Nearest Departures WatchKit App-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.1;
@@ -709,6 +730,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures WatchKit Extension/HSL Nearest Departures WatchKit App-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.1;
@@ -766,6 +788,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -775,6 +798,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.suominentoni.HSL-Nearest-Departures2";
 				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -783,6 +808,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -792,6 +818,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.suominentoni.HSL-Nearest-Departures2";
 				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

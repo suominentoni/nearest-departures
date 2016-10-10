@@ -32,12 +32,25 @@ open class Stop: NSObject, NSCoding {
     }
 
     public required init?(coder aDecoder: NSCoder) {
+
         if let name = aDecoder.decodeObject(forKey: "name") as? String,
             let distance = aDecoder.decodeObject(forKey: "distance") as? String,
             let codeLong = aDecoder.decodeObject(forKey: "codeLong") as? String,
             let codeShort = aDecoder.decodeObject(forKey: "codeShort") as? String {
-            self.lat = aDecoder.decodeDouble(forKey: "lat")
-            self.lon = aDecoder.decodeDouble(forKey: "lon")
+            var lat = 0.0
+            var lon = 0.0
+            do {
+                try ObjC.catchException {
+                    lat = aDecoder.decodeDouble(forKey: "lat")
+                    lon = aDecoder.decodeDouble(forKey: "lon")
+                }
+            }
+            catch let error {
+                NSLog("Unable to decode coordinates for stop: \(error)")
+            }
+
+            self.lat = lat
+            self.lon = lon
             self.name = name
             self.distance = distance
             self.codeLong = codeLong
