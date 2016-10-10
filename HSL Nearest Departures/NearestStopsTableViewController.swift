@@ -103,7 +103,7 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NearestStopCell", for: indexPath) as! NearestStopsCell
-        let stop = self.nearestStops[(indexPath as NSIndexPath).row]
+        let stop = stopForIndexPath(indexPath: indexPath)
 
         cell.code.text = stop.codeShort
         let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
@@ -116,6 +116,10 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
         cell.distance.text = String(stop.distance) + " m"
 
         return cell
+    }
+
+    private func stopForIndexPath(indexPath: IndexPath) -> Stop {
+        return indexPath.row >= self.nearestStops.count ? Stop() : self.nearestStops[(indexPath as NSIndexPath).row]
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
