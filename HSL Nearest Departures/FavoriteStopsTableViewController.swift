@@ -82,7 +82,8 @@ class FavoriteStopsTableViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextDeparturesViewController = segue.destination as! NextDeparturesTableViewController
-        nextDeparturesViewController.stop = self.favoriteStops[(self.tableView.indexPathForSelectedRow! as NSIndexPath).row]
+        if let nextDeparturesViewController = segue.destination as? NextDeparturesTableViewController {
+            nextDeparturesViewController.stop = self.favoriteStops[(self.tableView.indexPathForSelectedRow! as NSIndexPath).row]
+        }
     }
 }
