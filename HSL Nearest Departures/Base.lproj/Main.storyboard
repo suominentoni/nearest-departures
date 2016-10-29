@@ -279,8 +279,7 @@
                                             <color key="textColor" red="0.43278503419999997" green="0.43278503419999997" blue="0.43278503419999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hi3-u9-jIj">
-                                            <frame key="frameInset" minX="525" minY="11" width="60" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hi3-u9-jIj">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="SKV-c2-ncL"/>
                                             </constraints>
@@ -354,6 +353,6 @@
         <image name="ic_place" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nOX-tg-TJh"/>
+        <segue reference="KMs-eh-nkd"/>
     </inferredMetricsTieBreakers>
 </document>
