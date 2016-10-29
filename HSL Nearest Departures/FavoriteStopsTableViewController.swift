@@ -10,8 +10,8 @@ import UIKit
 
 class FavoriteStopsTableViewController: UITableViewController {
 
-    private var favoriteStops: [Stop] = []
-    private var hasShortCodes: Bool = false
+    fileprivate var favoriteStops: [Stop] = []
+    fileprivate var hasShortCodes: Bool = false
 
     override func viewDidLoad() {
         self.navigationItem.title = "Suosikkipysäkkisi"
@@ -21,25 +21,25 @@ class FavoriteStopsTableViewController: UITableViewController {
 
 
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: #selector(FavoriteStopsTableViewController.reloadData), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(FavoriteStopsTableViewController.reloadData), for: UIControlEvents.valueChanged)
     }
 
-    @objc private func reloadData() {
+    @objc fileprivate func reloadData() {
 
         self.refreshControl?.endRefreshing()
         self.tableView.reloadData()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         let x = self.tableView.center.x
         let y = self.tableView.center.y
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
 
         self.favoriteStops = FavoriteStops.all()
-        self.hasShortCodes = Tools.hasShortCodes(self.favoriteStops)
+        self.hasShortCodes = Tools.hasShortCodes(stops: self.favoriteStops)
         if(self.favoriteStops.count == 0 ) {
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-            messageLabel.textAlignment = NSTextAlignment.Center
+            messageLabel.textAlignment = NSTextAlignment.center
             messageLabel.numberOfLines = 0
             messageLabel.text = Const.NO_FAVORITE_STOPS_MSG
             messageLabel.sizeToFit()
@@ -56,21 +56,21 @@ class FavoriteStopsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.favoriteStops.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NearestStopCell", forIndexPath: indexPath) as! NearestStopsCell
-        let stop = self.favoriteStops[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NearestStopCell", for: indexPath) as! NearestStopsCell
+        let stop = self.favoriteStops[(indexPath as NSIndexPath).row]
 
         cell.code.text = stop.codeShort
 
-        let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0)
+        let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
         self.hasShortCodes
             ? (codeWidthConstraint.constant = 55)
             : (codeWidthConstraint.constant = 0)
@@ -81,8 +81,9 @@ class FavoriteStopsTableViewController: UITableViewController {
         return cell
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let nextDeparturesViewController = segue.destinationViewController as! NextDeparturesTableViewController
-        nextDeparturesViewController.stop = self.favoriteStops[self.tableView.indexPathForSelectedRow!.row]
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextDeparturesViewController = segue.destination as? NextDeparturesTableViewController {
+            nextDeparturesViewController.stop = self.favoriteStops[(self.tableView.indexPathForSelectedRow! as NSIndexPath).row]
+        }
     }
 }

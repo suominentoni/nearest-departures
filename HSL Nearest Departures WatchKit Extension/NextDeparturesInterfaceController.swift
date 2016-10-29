@@ -1,17 +1,17 @@
 import WatchKit
 import Foundation
-import WatchConnectivity
 
-class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegate {
+class NextDeparturesInterfaceController: WKInterfaceController {
 
     @IBOutlet var nextDeparturesTable: WKInterfaceTable!
     @IBOutlet var loadingIndicatorLabel: WKInterfaceLabel!
 
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         self.initLoadingIndicatorTimer()
 
-        if let code = context!["stopCode"] as? String {
+        if let contextDict = context as? [String: AnyObject],
+            let code = contextDict["stopCode"] as? String {
             showLoadingIndicator()
             HSL.departuresForStop(code, callback: updateInterface)
         }
@@ -21,7 +21,7 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
 //        }
     }
 
-    private func updateInterface(nextDepartures: [Departure]) -> Void {
+    fileprivate func updateInterface(_ nextDepartures: [Departure]) -> Void {
         NSLog("Updating Next Departures interface")
         hideLoadingIndicator()
         nextDeparturesTable.setNumberOfRows(nextDepartures.count, withRowType: "nextDepartureRow")
@@ -31,7 +31,7 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
         } else {
             var i: Int = 0
             for departure in nextDepartures {
-                let row: AnyObject? = nextDeparturesTable.rowControllerAtIndex(i)
+                let row = nextDeparturesTable.rowController(at: i)
                 let nextDepartureRow = row as! NextDeparturesRow
                 nextDepartureRow.time.setAttributedText(Tools.formatDepartureTime(departure.scheduledDepartureTime, real: departure.realDepartureTime))
                 nextDepartureRow.code.setText(departure.line.codeShort != nil ? departure.line.codeShort : departure.line.codeLong)
@@ -45,20 +45,20 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
         invalidateTimer()
     }
 
-    private func showLoadingIndicator() {
+    fileprivate func showLoadingIndicator() {
         loadingIndicatorLabel.setHidden(false)
     }
 
-    private func hideLoadingIndicator() {
+    fileprivate func hideLoadingIndicator() {
         self.loadingIndicatorLabel.setHidden(true)
     }
 
     var counter = 1
-    var timer: NSTimer? = NSTimer()
+    var timer: Timer? = Timer()
 
     func initLoadingIndicatorTimer() {
         invalidateTimer()
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(NextDeparturesInterfaceController.updateLoadingIndicatorText), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(NextDeparturesInterfaceController.updateLoadingIndicatorText), userInfo: nil, repeats: true)
         self.timer?.fire()
     }
 
@@ -67,7 +67,7 @@ class NextDeparturesInterfaceController: WKInterfaceController, WCSessionDelegat
         self.timer = nil
     }
 
-    @objc private func updateLoadingIndicatorText() {
+    @objc fileprivate func updateLoadingIndicatorText() {
         self.counter == 4 ? (self.counter = 1) : (self.counter = self.counter + 1)
         var dots = ""
         for _ in 1...counter {

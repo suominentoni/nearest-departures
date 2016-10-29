@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class LoadingIndicator: UIView {
+open class LoadingIndicator: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,14 +19,14 @@ public class LoadingIndicator: UIView {
         fatalError("Not coder compliant")
     }
 
-    private func animateLoadingCircle() {
+    fileprivate func animateLoadingCircle() {
         let rectShape = CAShapeLayer()
         rectShape.bounds = bounds
         rectShape.position = CGPoint(x: center.x, y: center.y)
-        rectShape.path = UIBezierPath(ovalInRect: rectShape.bounds).CGPath
+        rectShape.path = UIBezierPath(ovalIn: rectShape.bounds).cgPath
         rectShape.lineWidth = 4.0
-        rectShape.strokeColor = UIColor.lightGrayColor().CGColor
-        rectShape.fillColor = UIColor.clearColor().CGColor
+        rectShape.strokeColor = UIColor.lightGray.cgColor
+        rectShape.fillColor = UIColor.clear.cgColor
         rectShape.strokeStart = 0
         rectShape.strokeEnd = 0.0
 
@@ -48,7 +48,7 @@ public class LoadingIndicator: UIView {
         group.animations = [end, start]
         group.repeatCount = HUGE
 
-        rectShape.addAnimation(group, forKey: nil)
+        rectShape.add(group, forKey: nil)
         layer.addSublayer(rectShape)
     }
 }

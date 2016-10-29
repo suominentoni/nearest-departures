@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Stop: NSObject, NSCoding {
+open class Stop: NSObject, NSCoding {
     var name: String = ""
     var lat: Double = 0.0
     var lon: Double = 0.0
@@ -32,12 +32,23 @@ public class Stop: NSObject, NSCoding {
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        if let name = aDecoder.decodeObjectForKey("name") as? String,
-            let distance = aDecoder.decodeObjectForKey("distance") as? String,
-            let codeLong = aDecoder.decodeObjectForKey("codeLong") as? String,
-            let codeShort = aDecoder.decodeObjectForKey("codeShort") as? String,
-            let lat = Tools.decodedValueForKeyOrDefault(aDecoder, key: "lat", defaultValue: 0.0),
-            let lon = Tools.decodedValueForKeyOrDefault(aDecoder, key: "lon", defaultValue: 0.0) {
+
+        if let name = aDecoder.decodeObject(forKey: "name") as? String,
+            let distance = aDecoder.decodeObject(forKey: "distance") as? String,
+            let codeLong = aDecoder.decodeObject(forKey: "codeLong") as? String,
+            let codeShort = aDecoder.decodeObject(forKey: "codeShort") as? String {
+            var lat = 0.0
+            var lon = 0.0
+            do {
+                try ObjC.catchException {
+                    lat = aDecoder.decodeDouble(forKey: "lat")
+                    lon = aDecoder.decodeDouble(forKey: "lon")
+                }
+            }
+            catch let error {
+                NSLog("Unable to decode coordinates for stop: \(error)")
+            }
+
             self.lat = lat
             self.lon = lon
             self.name = name
@@ -47,16 +58,16 @@ public class Stop: NSObject, NSCoding {
         }
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.name, forKey: "name")
-        aCoder.encodeObject(self.lat, forKey: "lat")
-        aCoder.encodeObject(self.lon, forKey: "lon")
-        aCoder.encodeObject(self.distance, forKey: "distance")
-        aCoder.encodeObject(self.codeLong, forKey: "codeLong")
-        aCoder.encodeObject(self.codeShort, forKey: "codeShort")
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.lat, forKey: "lat")
+        aCoder.encode(self.lon, forKey: "lon")
+        aCoder.encode(self.distance, forKey: "distance")
+        aCoder.encode(self.codeLong, forKey: "codeLong")
+        aCoder.encode(self.codeShort, forKey: "codeShort")
     }
 
-    public func hasCoordinates() -> Bool {
+    open func hasCoordinates() -> Bool {
         return self.lat != 0.0 && self.lon != 0.0
     }
 }
@@ -83,7 +94,7 @@ public struct Line {
 
 public struct Const {
     static let NO_STOPS_TITLE = "Ei pysäkkejä"
-    static let NO_STOPS_MSG = "Lähistöltä ei löytynyt pysäkkejä. Sovellus etsii pysäkkejä noin 500 metrin säteellä."
+    static let NO_STOPS_MSG = "Lähistöltä ei löytynyt pysäkkejä. Sovellus etsii pysäkkejä maksimissaan 5000 metrin kävelymatkan päästä."
 
     static let NO_FAVORITE_STOPS_MSG = "Ei suosikkipysäkkejä valittuna. \n \n Valitse pysäkki suosikiksi painamalla sydäntä pysäkin seuraavien lähtöjen listassa."
 

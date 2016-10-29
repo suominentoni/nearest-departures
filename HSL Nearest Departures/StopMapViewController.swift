@@ -16,13 +16,13 @@ class StopMapViewController: UIViewController {
     var stop: Stop = Stop()
 
     override func viewDidLoad() {
-        self.title = Tools.formatStopText(self.stop)
+        self.title = Tools.formatStopText(stop: self.stop)
         stopMap.showsUserLocation = true
         if(!stop.hasCoordinates()) {
             HSL.coordinatesForStop(stop, callback: {(lat: Double, lon: Double) -> Void in
-                // If stop had no coordinates set, it is most probably saved to favorite stops prior
-                // to version 2.0.0, which added coordinates to the Stop class. In such case, let's
-                // update the coordinates to the favorite stop entry.
+                // If stop had no coordinates set, it is most probably a favorite stop, and saved to
+                // favorite stops prior to version 2.0.0, which added coordinates to the Stop class.
+                // In such case, let's update the coordinates to the favorite stop entry.
                 self.stop.lat = lat
                 self.stop.lon = lon
                 self.showStopPinAnnotation()
@@ -33,7 +33,7 @@ class StopMapViewController: UIViewController {
         }
     }
 
-    private func showStopPinAnnotation() {
+    fileprivate func showStopPinAnnotation() {
         let lat = CLLocationDegrees(floatLiteral: self.stop.lat)
         let lon = CLLocationDegrees(floatLiteral: self.stop.lon)
         let pin = MKPointAnnotation()
