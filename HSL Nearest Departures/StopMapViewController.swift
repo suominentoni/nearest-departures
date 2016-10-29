@@ -10,12 +10,13 @@ import Foundation
 import UIKit
 import MapKit
 
-class StopMapViewController: UIViewController {
+class StopMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet var stopMap: MKMapView!
     var stop: Stop = Stop()
 
     override func viewDidLoad() {
+        stopMap.delegate = self
         self.title = Tools.formatStopText(stop: self.stop)
         stopMap.showsUserLocation = true
         if(!stop.hasCoordinates()) {
@@ -31,6 +32,23 @@ class StopMapViewController: UIViewController {
         } else {
             showStopPinAnnotation()
         }
+    }
+
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        zoomToPinAndUser(userLocation: userLocation)
+    }
+
+    private func zoomToPinAndUser(userLocation: MKUserLocation) {
+        let stopPoint = MKMapPointForCoordinate(CLLocationCoordinate2D(latitude: self.stop.lat, longitude: self.stop.lon))
+        let userPoint = MKMapPointForCoordinate(userLocation.coordinate)
+
+        let stopRect = MKMapRectMake(stopPoint.x, stopPoint.y, 0, 0)
+        let userRect = MKMapRectMake(userPoint.x, userPoint.y, 0, 0)
+
+        let unionRect = MKMapRectUnion(stopRect, userRect)
+        let fitRect = stopMap.mapRectThatFits(unionRect)
+
+        stopMap.setVisibleMapRect(fitRect, animated: true)
     }
 
     fileprivate func showStopPinAnnotation() {
