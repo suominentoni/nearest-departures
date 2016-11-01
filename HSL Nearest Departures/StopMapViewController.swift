@@ -14,6 +14,7 @@ class StopMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet var stopMap: MKMapView!
     var stop: Stop = Stop()
+    var hasZoomedToUser = false
 
     override func viewDidLoad() {
         stopMap.delegate = self
@@ -35,20 +36,24 @@ class StopMapViewController: UIViewController, MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        zoomToPinAndUser(userLocation: userLocation)
+        zoomToPinAndUser(userCoordinate: userLocation.coordinate)
     }
 
-    private func zoomToPinAndUser(userLocation: MKUserLocation) {
-        let stopPoint = MKMapPointForCoordinate(CLLocationCoordinate2D(latitude: self.stop.lat, longitude: self.stop.lon))
-        let userPoint = MKMapPointForCoordinate(userLocation.coordinate)
+    private func zoomToPinAndUser(userCoordinate: CLLocationCoordinate2D) {
+        // Zoom to user only once, not after every subsequent user location update
+        if(!hasZoomedToUser) {
+            let stopPoint = MKMapPointForCoordinate(CLLocationCoordinate2D(latitude: self.stop.lat, longitude: self.stop.lon))
+            let userPoint = MKMapPointForCoordinate(userCoordinate)
 
-        let stopRect = MKMapRectMake(stopPoint.x, stopPoint.y, 0, 0)
-        let userRect = MKMapRectMake(userPoint.x, userPoint.y, 0, 0)
+            let stopRect = MKMapRectMake(stopPoint.x, stopPoint.y, 0, 0)
+            let userRect = MKMapRectMake(userPoint.x, userPoint.y, 0, 0)
 
-        let unionRect = MKMapRectUnion(stopRect, userRect)
-        let fitRect = stopMap.mapRectThatFits(unionRect)
+            let unionRect = MKMapRectUnion(stopRect, userRect)
+            let fitRect = stopMap.mapRectThatFits(unionRect)
 
-        stopMap.setVisibleMapRect(fitRect, animated: true)
+            stopMap.setVisibleMapRect(fitRect, animated: true)
+            hasZoomedToUser = true
+        }
     }
 
     fileprivate func showStopPinAnnotation() {
@@ -57,6 +62,10 @@ class StopMapViewController: UIViewController, MKMapViewDelegate {
         let pin = MKPointAnnotation()
         pin.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         stopMap.addAnnotation(pin)
-        stopMap.showAnnotations([pin], animated: true)
+        if let userCoordinate = stopMap.userLocation.location?.coordinate {
+            zoomToPinAndUser(userCoordinate: userCoordinate)
+        } else {
+            stopMap.showAnnotations([pin], animated: true)
+        }
     }
 }
