@@ -117,7 +117,7 @@
 		535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsInterfaceController.swift; sourceTree = "<group>"; };
 		536C435A1D42328700045CEF /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
-		53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingIndicator.swift; path = "HSL Nearest Departures/LoadingIndicator.swift"; sourceTree = "<group>"; };
+		53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		53C57D811D605D83000F5BF1 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSLGraphQL.swift; sourceTree = "<group>"; };
 		53CC56931D57B8CD007828C8 /* FavoriteStopsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStopsTableViewController.swift; sourceTree = "<group>"; };
@@ -193,14 +193,12 @@
 		53123A391D3823AB00D9E646 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */,
 				53123A3A1D3823DB00D9E646 /* Model.swift */,
-				53CC56951D590F45007828C8 /* FavoriteStops.swift */,
 				53C57D811D605D83000F5BF1 /* HTTP.swift */,
 				53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */,
 				53536F941D66DE76004970E4 /* Tools.swift */,
 			);
-			name = Shared;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		53E4ECA61C2C06EC002F0107 = {
@@ -231,7 +229,8 @@
 		53E4ECB11C2C06EC002F0107 /* HSL Nearest Departures */ = {
 			isa = PBXGroup;
 			children = (
-				530C49881DA4374000D44259 /* ObjC */,
+				53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */,
+				53CC56951D590F45007828C8 /* FavoriteStops.swift */,
 				53CC56931D57B8CD007828C8 /* FavoriteStopsTableViewController.swift */,
 				53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */,
 				53E4ECB61C2C06EC002F0107 /* Main.storyboard */,
@@ -243,6 +242,7 @@
 				5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */,
 				5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */,
 				53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */,
+				530C49881DA4374000D44259 /* ObjC */,
 			);
 			path = "HSL Nearest Departures";
 			sourceTree = "<group>";
