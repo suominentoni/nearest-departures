@@ -51,7 +51,7 @@ class StopMapViewController: UIViewController, MKMapViewDelegate {
             let unionRect = MKMapRectUnion(stopRect, userRect)
             let fitRect = stopMap.mapRectThatFits(unionRect)
 
-            stopMap.setVisibleMapRect(fitRect, animated: true)
+            stopMap.setVisibleMapRect(fitRect, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
             hasZoomedToUser = true
         }
     }
