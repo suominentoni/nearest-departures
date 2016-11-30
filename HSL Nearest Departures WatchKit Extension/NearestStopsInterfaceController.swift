@@ -106,25 +106,22 @@ open class NearestStopsInterfaceController: WKInterfaceController, CLLocationMan
     }
 
     var counter = 1
-    var timer: Timer? = Timer()
+    var timer: Timer = Timer()
 
     func initTimer() {
         invalidateTimer()
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(NearestStopsInterfaceController.updateLoadingIndicatorText), userInfo: nil, repeats: true)
-        self.timer?.fire()
+        self.timer.fire()
     }
 
     func invalidateTimer() {
-        self.timer?.invalidate()
-        self.timer = nil
+        self.timer.invalidate()
     }
 
     @objc fileprivate func updateLoadingIndicatorText() {
         self.counter == 4 ? (self.counter = 1) : (self.counter = self.counter + 1)
-        var dots = ""
-        for _ in 1...counter {
-            dots.append(Character("."))
-        }
+        let dots = (1...counter).map({_ in "."}).joined()
+
         self.loadingIndicatorLabel.setText(dots)
     }
 }
