@@ -39,17 +39,7 @@ class FavoriteStops {
     }
 
     static func isFavoriteStop(_ stop: Stop) -> Bool {
-        let stops = FavoriteStops.all()
-
-        var isFavorite = false
-
-        stops.forEach {favoriteStop in
-            if(stop == favoriteStop) {
-                isFavorite = true
-            }
-        }
-
-        return isFavorite
+        return FavoriteStops.all().filter({favStop in favStop == stop}).count > 0
     }
 
     static func tryUpdate(_ stop: Stop) {
