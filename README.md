@@ -11,3 +11,16 @@ Transit data provided by [Digitransit](https://digitransit.fi/en/developers/).
 
 Written in Swift 3. No third-party dependencies used.
 
+## Contribute
+
+Use [GitHub issues](https://github.com/suominentoni/nearest-departures/issues) and [Pull Requests](https://github.com/suominentoni/nearest-departures/pulls).
+
+### TODO
+
+#### High priority (requested by users)
+* Ability to give custom names to favorite stops
+* A map view of all stops (add a Map item to the tab bar)
+
+#### Nice to have
+* Favorite stops for Watch app
+* Map view for individual stop for Watch app
