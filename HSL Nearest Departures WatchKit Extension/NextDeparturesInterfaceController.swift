@@ -15,10 +15,6 @@ class NextDeparturesInterfaceController: WKInterfaceController {
             showLoadingIndicator()
             HSL.departuresForStop(code, callback: updateInterface)
         }
-//        if let departures = context!["departures"] as? [Departure] {
-//            showLoadingIndicator()
-//            updateInterface(departures)
-//        }
     }
 
     fileprivate func updateInterface(_ nextDepartures: [Departure]) -> Void {
