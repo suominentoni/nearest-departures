@@ -53,7 +53,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="–" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLC-eA-6Xp" userLabel="Departures">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="–" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLC-eA-6Xp" userLabel="Destinations">
                                             <rect key="frame" x="78" y="22" width="36" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -80,7 +80,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="code" destination="omk-5U-uEm" id="iQ8-bh-Tge"/>
-                                    <outlet property="departures" destination="HLC-eA-6Xp" id="gmI-NL-CuL"/>
+                                    <outlet property="destinations" destination="HLC-eA-6Xp" id="Ho8-ji-7io"/>
                                     <outlet property="distance" destination="QEP-ZU-DZc" id="ppn-rE-J5S"/>
                                     <outlet property="name" destination="yCx-JA-9ec" id="GIk-YV-yto"/>
                                     <segue destination="Eb7-bQ-n14" kind="show" id="nOX-tg-TJh"/>
