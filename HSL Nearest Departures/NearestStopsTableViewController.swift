@@ -114,8 +114,8 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
 
         cell.name.text = stop.name
         
-        cell.destinations.text = {
-            let destinations = stop.departures
+        cell.destinations.text =
+            stop.departures
                 .sorted(by: { (departureA, departureB) in
                     departureA.realDepartureTime < departureB.realDepartureTime
                 })
@@ -126,9 +126,8 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
                         return destinations
                     }
                 })
-            
-            return destinations.joined(separator: ", ")
-        }()
+               .joined(separator: ", ")
+
         cell.distance.text = String(stop.distance) + " m"
 
         return cell
