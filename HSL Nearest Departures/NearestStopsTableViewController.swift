@@ -113,10 +113,22 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
         cell.code.addConstraint(codeWidthConstraint)
 
         cell.name.text = stop.name
-        cell.departures.text = stop.departures
-            .map { $0.line.destination ?? "" }
-            .filter { $0.characters.count > 0 }
-            .joined(separator: ", ")
+        
+        cell.departures.text = {
+            let destinations = stop.departures
+                .sorted(by: { (departureA, departureB) in
+                    departureA.realDepartureTime < departureB.realDepartureTime
+                })
+                .reduce([String](), { (destinations, departure) in
+                    if let destination = departure.line.destination, destinations.contains(destination) == false {
+                        return destinations + [destination]
+                    } else {
+                        return destinations
+                    }
+                })
+            
+            return destinations.joined(separator: ", ")
+        }()
         cell.distance.text = String(stop.distance) + " m"
 
         return cell
