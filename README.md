@@ -22,5 +22,7 @@ Use [GitHub issues](https://github.com/suominentoni/nearest-departures/issues) a
 * A map view of all stops (add a Map item to the tab bar)
 
 #### Nice to have
+* Stop destinations to favorite stops view
+* Stop destinations to next departures list in Watch App
 * Favorite stops for Watch app
 * Map view for individual stop for Watch app
