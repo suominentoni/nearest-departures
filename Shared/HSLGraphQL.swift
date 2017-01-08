@@ -103,35 +103,15 @@ open class HSL {
 
     fileprivate static func parseStopAtDistance(_ data: AnyObject) -> Stop? {
         if let stopAtDistance = data["node"] as? [String: AnyObject],
-            let distance = stopAtDistance["distance"] as? Int,
-            let stop = stopAtDistance["stop"] as? [String: AnyObject],
-            let name = stop["name"] as? String,
-            let lat = stop["lat"] as? Double,
-            let lon = stop["lon"] as? Double,
-            let gtfsId = stop["gtfsId"] as? String {
-            var stopName: String = name
-            if let platformCode = stop["platformCode"] as? String {
-                stopName = formatStopName(name, platformCode: platformCode)
-            }
-            let departures = parseDepartures(stop)
-
-            return departures.count == 0
-                ? nil
-                : Stop(
-                    name: stopName,
-                    lat: lat,
-                    lon: lon,
-                    distance: formatDistance(distance),
-                    codeLong: gtfsId,
-                    codeShort: shortCodeForStop(stopData: stop),
-                    departures: departures
-            )
+        let distance = stopAtDistance["distance"] as? Int,
+        let stop = stopAtDistance["stop"] as? [String: AnyObject] {
+            return parseStop(stop, distance: distance)
         } else {
             return nil
         }
     }
 
-    fileprivate static func parseStop(_ stop: [String: AnyObject]) -> Stop? {
+    fileprivate static func parseStop(_ stop: [String: AnyObject], distance: Int = 0) -> Stop? {
         if let name = stop["name"] as? String,
         let lat = stop["lat"] as? Double,
         let lon = stop["lon"] as? Double,
@@ -148,7 +128,7 @@ open class HSL {
                     name: stopName,
                     lat: lat,
                     lon: lon,
-                    distance: "",
+                    distance: formatDistance(distance),
                     codeLong: gtfsId,
                     codeShort: shortCodeForStop(stopData: stop),
                     departures: departures
