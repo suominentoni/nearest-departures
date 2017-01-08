@@ -19,13 +19,11 @@ class FavoriteStopsTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 200
 
-
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(FavoriteStopsTableViewController.reloadData), for: UIControlEvents.valueChanged)
     }
 
     @objc fileprivate func reloadData() {
-
         self.refreshControl?.endRefreshing()
         self.tableView.reloadData()
     }
@@ -36,6 +34,14 @@ class FavoriteStopsTableViewController: UITableViewController {
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
 
         self.favoriteStops = FavoriteStops.all()
+
+        HSL.updateDeparturesForStops(self.favoriteStops, callback: {stops in
+            DispatchQueue.main.async {
+                self.favoriteStops = stops
+                self.tableView.reloadData()
+            }
+        })
+
         self.hasShortCodes = Tools.hasShortCodes(stops: self.favoriteStops)
         if(self.favoriteStops.count == 0 ) {
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
@@ -75,6 +81,10 @@ class FavoriteStopsTableViewController: UITableViewController {
             ? (codeWidthConstraint.constant = 55)
             : (codeWidthConstraint.constant = 0)
         cell.code.addConstraint(codeWidthConstraint)
+
+        cell.destinations.text = stop.departures.count > 0
+            ? Tools.destinationsFromDepartures(departures: stop.departures)
+            : "-"
 
         cell.name.text = stop.name
 
