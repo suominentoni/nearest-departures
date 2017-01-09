@@ -20,6 +20,13 @@ open class HSL {
         return "{stop(id: \"\(gtfsId)\" ) { \(stopFields), stoptimesWithoutPatterns(numberOfDepartures: 30) {\(departureFields) }}}"
     }
 
+    fileprivate static func getDeparturesForStopsQuery(stops: [Stop]) -> String {
+        let idsCommaSeparated = stops.reduce("", {(result, stop) in
+            return result + "\"" + stop.codeLong + "\","
+        })
+        return "{stops(ids: [\(idsCommaSeparated)] ) { \(stopFields), stoptimesWithoutPatterns(numberOfDepartures: 30) {\(departureFields) }}}"
+    }
+
     fileprivate static func getCoordinatesForStopQuery(stop: Stop) -> String {
         return "{stop(id: \"\(stop.codeLong)\" ) {lat, lon}}"
     }
@@ -34,6 +41,16 @@ open class HSL {
     fileprivate static func getNearestStopsQuery(lat: Double, lon: Double) -> String {
         return "{stopsByRadius(lat:\(String(lat)), lon: \(String(lon)), radius: 5000, first: 30)" +
         "{edges {node {distance, stop { \(stopFields) }}}}}"
+    }
+
+    static func updateDeparturesForStops(_ stops: [Stop], callback: @escaping (_ stopsWithDepartures: [Stop]) -> Void) -> Void {
+        HTTP.post(APIURL, body: getDeparturesForStopsQuery(stops: stops), callback: {(obj: [String: AnyObject], error: String?) in
+            if let data = obj["data"] as? [String: AnyObject],
+                let stopsData = data["stops"] as? [[String: AnyObject]] {
+                let stops = stopsData.map({stop in parseStop(stop)})
+                callback(Tools.unwrapAndStripNils(stops))
+            }
+        })
     }
 
     static func departuresForStop(_ gtfsId: String, callback: @escaping (_ departures: [Departure]) -> Void) -> Void {
@@ -86,12 +103,19 @@ open class HSL {
 
     fileprivate static func parseStopAtDistance(_ data: AnyObject) -> Stop? {
         if let stopAtDistance = data["node"] as? [String: AnyObject],
-            let distance = stopAtDistance["distance"] as? Int,
-            let stop = stopAtDistance["stop"] as? [String: AnyObject],
-            let name = stop["name"] as? String,
-            let lat = stop["lat"] as? Double,
-            let lon = stop["lon"] as? Double,
-            let gtfsId = stop["gtfsId"] as? String {
+        let distance = stopAtDistance["distance"] as? Int,
+        let stop = stopAtDistance["stop"] as? [String: AnyObject] {
+            return parseStop(stop, distance: distance)
+        } else {
+            return nil
+        }
+    }
+
+    fileprivate static func parseStop(_ stop: [String: AnyObject], distance: Int = 0) -> Stop? {
+        if let name = stop["name"] as? String,
+        let lat = stop["lat"] as? Double,
+        let lon = stop["lon"] as? Double,
+        let gtfsId = stop["gtfsId"] as? String {
             var stopName: String = name
             if let platformCode = stop["platformCode"] as? String {
                 stopName = formatStopName(name, platformCode: platformCode)
