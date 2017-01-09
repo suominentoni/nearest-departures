@@ -310,10 +310,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Eh-dR-wsu" userLabel="Destinations">
-                                            <rect key="frame" x="78" y="26" width="297" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="297" id="nk4-DD-LhM"/>
-                                            </constraints>
+                                            <rect key="frame" x="78" y="26" width="287" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -333,6 +330,7 @@
                                         <constraint firstAttribute="bottom" secondItem="7MN-F1-H85" secondAttribute="bottom" constant="11.5" id="dwj-js-vS8"/>
                                         <constraint firstAttribute="trailing" secondItem="Hi3-u9-jIj" secondAttribute="trailing" constant="15" id="fcl-KS-y8a"/>
                                         <constraint firstItem="6Eh-dR-wsu" firstAttribute="top" secondItem="fhg-ZI-L23" secondAttribute="topMargin" constant="18" id="ll6-Pz-WRm"/>
+                                        <constraint firstAttribute="trailing" secondItem="6Eh-dR-wsu" secondAttribute="trailing" constant="10" id="mC0-Re-IBD"/>
                                         <constraint firstItem="Hi3-u9-jIj" firstAttribute="top" secondItem="fhg-ZI-L23" secondAttribute="top" constant="11" id="nTK-LS-3Qp"/>
                                         <constraint firstItem="20E-6o-ANg" firstAttribute="leading" secondItem="7MN-F1-H85" secondAttribute="trailing" constant="8" id="xyp-tt-x6B"/>
                                         <constraint firstItem="Hi3-u9-jIj" firstAttribute="leading" secondItem="20E-6o-ANg" secondAttribute="trailing" constant="-217" id="y7A-ZR-Qtp"/>
