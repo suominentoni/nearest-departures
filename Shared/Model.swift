@@ -73,11 +73,11 @@ open class Stop: NSObject, NSCoding {
 }
 
 func == (lhs: Stop, rhs: Stop) -> Bool {
-    return lhs.codeLong == rhs.codeLong && lhs.codeShort == rhs.codeShort
+    return lhs.codeLong == rhs.codeLong
 }
 
 func != (lhs: Stop, rhs: Stop) -> Bool {
-    return lhs.codeLong != rhs.codeLong && lhs.codeShort != rhs.codeShort
+    return lhs.codeLong != rhs.codeLong
 }
 
 public struct Departure {
