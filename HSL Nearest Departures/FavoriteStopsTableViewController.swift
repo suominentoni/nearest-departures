@@ -76,11 +76,15 @@ class FavoriteStopsTableViewController: UITableViewController {
 
         cell.code.text = stop.codeShort
 
-        let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
+        if let constraint = cell.codeWidthConstraint {
+            cell.code.removeConstraint(constraint)
+        }
+
+        cell.codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
         self.hasShortCodes
-            ? (codeWidthConstraint.constant = 55)
-            : (codeWidthConstraint.constant = 0)
-        cell.code.addConstraint(codeWidthConstraint)
+            ? (cell.codeWidthConstraint?.constant = 55)
+            : (cell.codeWidthConstraint?.constant = 0)
+        cell.code.addConstraint(cell.codeWidthConstraint!)
 
         cell.destinations.text = stop.departures.count > 0
             ? Tools.destinationsFromDepartures(departures: stop.departures)

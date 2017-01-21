@@ -106,6 +106,11 @@ class NearestStopsTableViewController: UITableViewController, CLLocationManagerD
         let stop = stopForIndexPath(indexPath: indexPath)
 
         cell.code.text = stop.codeShort
+
+        if let constraint = cell.codeWidthConstraint {
+            cell.code.removeConstraint(constraint)
+        }
+
         let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
         self.hasShortCodes
             ? (codeWidthConstraint.constant = 55)
