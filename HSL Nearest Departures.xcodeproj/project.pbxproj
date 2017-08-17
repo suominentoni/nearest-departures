@@ -27,6 +27,7 @@
 		53C57D831D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
 		53C57D851D605E41000F5BF1 /* HSLGraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */; };
 		53C57D861D605E41000F5BF1 /* HSLGraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */; };
+		53CC472D1F459DEC00C1BE9A /* AllStopsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */; };
 		53CC56941D57B8CD007828C8 /* FavoriteStopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC56931D57B8CD007828C8 /* FavoriteStopsTableViewController.swift */; };
 		53CC56961D590F45007828C8 /* FavoriteStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC56951D590F45007828C8 /* FavoriteStops.swift */; };
 		53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */; };
@@ -120,6 +121,7 @@
 		53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		53C57D811D605D83000F5BF1 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSLGraphQL.swift; sourceTree = "<group>"; };
+		53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllStopsMapViewController.swift; sourceTree = "<group>"; };
 		53CC56931D57B8CD007828C8 /* FavoriteStopsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStopsTableViewController.swift; sourceTree = "<group>"; };
 		53CC56951D590F45007828C8 /* FavoriteStops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStops.swift; sourceTree = "<group>"; };
 		53E4ECAF1C2C06EC002F0107 /* Lähimmät Lähdöt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lähimmät Lähdöt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +244,7 @@
 				5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */,
 				5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */,
 				53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */,
+				53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */,
 				530C49881DA4374000D44259 /* ObjC */,
 			);
 			path = "HSL Nearest Departures";
@@ -515,6 +518,7 @@
 				5329C5901C70CCCC000E24F9 /* NearestStopsTableViewController.swift in Sources */,
 				5329C5921C70D448000E24F9 /* NearestStopsCell.swift in Sources */,
 				53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */,
+				53CC472D1F459DEC00C1BE9A /* AllStopsMapViewController.swift in Sources */,
 				53C57D851D605E41000F5BF1 /* HSLGraphQL.swift in Sources */,
 				53123A3B1D3823DB00D9E646 /* Model.swift in Sources */,
 				53CC56961D590F45007828C8 /* FavoriteStops.swift in Sources */,
