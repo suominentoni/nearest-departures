@@ -417,6 +417,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0K1-ir-DcH"/>
+                    <connections>
+                        <outlet property="allStopsMap" destination="3L6-Fw-WeR" id="GE4-Yj-8ly"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H56-R3-iXP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
