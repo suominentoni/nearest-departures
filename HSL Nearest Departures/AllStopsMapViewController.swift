@@ -37,7 +37,7 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
         let lat = self.allStopsMap.centerCoordinate.latitude
         let lon = self.allStopsMap.centerCoordinate.longitude
 
-        HSL.nearestStopsAndDepartures(lat, lon: lon, callback: {(stops: [Stop]) in
+        HSL.nearestStopsAndDepartures(lat, lon: lon, radius: getSearchRadius(), stopCount: 100, callback: {(stops: [Stop]) in
             let stopPins = stops.map({stop -> MKPointAnnotation in
                 let lat = CLLocationDegrees(floatLiteral: stop.lat)
                 let lon = CLLocationDegrees(floatLiteral: stop.lon)
@@ -52,6 +52,12 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
                 self.allStopsMap.addAnnotations(stopPins)
             }
         })
+    }
+
+    private func getSearchRadius() -> Int {
+        let heightMeters = abs(allStopsMap.region.span.latitudeDelta) * 111111
+
+        return Int(heightMeters)
     }
 
     let SHOW_NEXT_DEPARTURES_SEGUE = "showNextDepartures"
