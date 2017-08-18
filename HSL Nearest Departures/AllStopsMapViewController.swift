@@ -48,8 +48,10 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
             })
 
             DispatchQueue.main.async {
-                self.allStopsMap.removeAnnotations(self.allStopsMap.annotations)
-                self.allStopsMap.addAnnotations(stopPins)
+                if(stopPins.count > 0) {
+                    self.allStopsMap.removeAnnotations(self.allStopsMap.annotations)
+                    self.allStopsMap.addAnnotations(stopPins)
+                }
             }
         })
     }
