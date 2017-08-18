@@ -10,8 +10,12 @@ import Foundation
 import UIKit
 import MapKit
 
-class StopAnnotation: MKPointAnnotation {
-    var stop: Stop?
+private class StopAnnotation: MKPointAnnotation {
+    let stop: Stop
+
+    init(stop: Stop) {
+        self.stop = stop
+    }
 }
 
 class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
@@ -37,8 +41,7 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
             let stopPins = stops.map({stop -> MKPointAnnotation in
                 let lat = CLLocationDegrees(floatLiteral: stop.lat)
                 let lon = CLLocationDegrees(floatLiteral: stop.lon)
-                let pin = StopAnnotation()
-                pin.stop = stop
+                let pin = StopAnnotation(stop: stop)
                 pin.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
 
                 return pin
@@ -60,9 +63,8 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == SHOW_NEXT_DEPARTURES_SEGUE) {
             if let destination = segue.destination as? NextDeparturesTableViewController,
-                let stopPin = (sender as? MKAnnotationView)?.annotation as? StopAnnotation,
-                let stop = stopPin.stop {
-                destination.stop = stop
+                let stopPin = (sender as? MKAnnotationView)?.annotation as? StopAnnotation {
+                destination.stop = stopPin.stop
             }
         }
     }
