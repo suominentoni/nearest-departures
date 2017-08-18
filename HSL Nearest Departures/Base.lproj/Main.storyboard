@@ -103,7 +103,7 @@
         <scene sceneID="UtE-Aa-pwX">
             <objects>
                 <tableViewController id="Eb7-bQ-n14" customClass="NextDeparturesTableViewController" customModule="Lähimmät_Lähdöt" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="vV1-S9-bZG" customClass="AllStopsMa">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="vV1-S9-bZG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -209,7 +209,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yL-Hn-Omh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2701" y="255"/>
+            <point key="canvasLocation" x="2794" y="697"/>
         </scene>
         <!--Stop Map View Controller-->
         <scene sceneID="CPt-JI-qzk">
@@ -225,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LdY-JD-AbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3505" y="255"/>
+            <point key="canvasLocation" x="3703" y="697"/>
         </scene>
         <!--Lähimmät-->
         <scene sceneID="5nY-NW-XXN">
@@ -390,9 +390,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgo-CP-gzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="1388"/>
+            <point key="canvasLocation" x="1028" y="1463"/>
         </scene>
-        <!--All Stops Map View Controller-->
+        <!--Kaikki pysäkit-->
         <scene sceneID="qd0-o6-B8M">
             <objects>
                 <viewController id="1hj-jr-Blv" customClass="AllStopsMapViewController" customModule="Lähimmät_Lähdöt" customModuleProvider="target" sceneMemberID="viewController">
@@ -416,14 +416,15 @@
                             <constraint firstItem="3L6-Fw-WeR" firstAttribute="top" secondItem="0gb-ue-K5z" secondAttribute="bottom" id="s0j-La-y6b"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0K1-ir-DcH"/>
+                    <navigationItem key="navigationItem" title="Kaikki pysäkit" id="0K1-ir-DcH"/>
                     <connections>
                         <outlet property="allStopsMap" destination="3L6-Fw-WeR" id="GE4-Yj-8ly"/>
+                        <segue destination="Eb7-bQ-n14" kind="show" identifier="showNextDepartures" id="v0e-5e-tmf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H56-R3-iXP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1872.8" y="1387.5562218890557"/>
+            <point key="canvasLocation" x="1873" y="1462"/>
         </scene>
     </scenes>
     <resources>
@@ -432,6 +433,6 @@
         <image name="ic_place" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nOX-tg-TJh"/>
+        <segue reference="v0e-5e-tmf"/>
     </inferredMetricsTieBreakers>
 </document>
