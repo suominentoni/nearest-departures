@@ -19,11 +19,14 @@ private class StopAnnotation: MKPointAnnotation {
 }
 
 class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
-
     @IBOutlet weak var allStopsMap: MKMapView!
 
     override func viewDidLoad() {
         allStopsMap.delegate = self
+        allStopsMap.showsUserLocation = true
+        allStopsMap.showsScale = true
+        allStopsMap.showsCompass = true
+        allStopsMap.showsBuildings = true
         super.viewDidLoad()
 
         displayStopsForCurrentRegion()
