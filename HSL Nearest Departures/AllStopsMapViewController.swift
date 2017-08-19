@@ -20,6 +20,7 @@ private class StopAnnotation: MKPointAnnotation {
 
 class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var allStopsMap: MKMapView!
+    var hasZoomedToUser = false
 
     override func viewDidLoad() {
         allStopsMap.delegate = self
@@ -36,7 +37,24 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
         displayStopsForCurrentRegion()
     }
 
-    fileprivate func displayStopsForCurrentRegion() {
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        if(!hasZoomedToUser) {
+            zoomToUser(userCoordinate: userLocation.coordinate)
+            hasZoomedToUser = true
+        }
+
+    }
+
+    private func zoomToUser(userCoordinate: CLLocationCoordinate2D) {
+        let location = allStopsMap.userLocation
+
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+
+        allStopsMap.setRegion(region, animated: true)
+    }
+
+    private func displayStopsForCurrentRegion() {
         let lat = self.allStopsMap.centerCoordinate.latitude
         let lon = self.allStopsMap.centerCoordinate.longitude
 
