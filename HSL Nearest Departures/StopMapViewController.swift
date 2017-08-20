@@ -20,6 +20,10 @@ class StopMapViewController: UIViewController, MKMapViewDelegate {
         stopMap.delegate = self
         self.title = Tools.formatStopText(stop: self.stop)
         stopMap.showsUserLocation = true
+        stopMap.showsScale = true
+        stopMap.showsCompass = true
+        stopMap.showsBuildings = true
+
         if(!stop.hasCoordinates()) {
             HSL.coordinatesForStop(stop, callback: {(lat: Double, lon: Double) -> Void in
                 // If stop had no coordinates set, it is most probably a favorite stop, and saved to
