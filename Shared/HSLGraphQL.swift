@@ -116,6 +116,23 @@ open class HSL {
         })
     }
 
+    private static func getStopsForRectQuery(minLat: Double, minLon: Double, maxLat: Double, maxLon: Double) -> String {
+        return "{stopsByBbox(minLat:\(minLat), minLon:\(minLon), maxLat:\(maxLat), maxLon:\(maxLon)) { \(stopFields), stoptimesWithoutPatterns(numberOfDepartures: 1) { \(departureFields) }}}"
+    }
+
+    static func stopsForRect(minLat: Double, minLon: Double, maxLat: Double, maxLon: Double, callback: @escaping (_ stops: [Stop]) -> Void) {
+        HTTP.post(APIURL, body: getStopsForRectQuery(minLat: minLat, minLon: minLon, maxLat: maxLat, maxLon: maxLon), callback: {(obj: [String: AnyObject], error: String?) in
+            var stops: [Stop?] = []
+            if let data = obj["data"] as? [String: AnyObject],
+                let stopsByBox = data["stopsByBbox"] as? NSArray {
+                for stop in stopsByBox {
+                    stops.append(parseStop(stop as! [String : AnyObject]))
+                }
+            }
+            callback(Tools.unwrapAndStripNils(stops))
+        })
+    }
+
     fileprivate static func parseStopAtDistance(_ data: AnyObject) -> Stop? {
         if let stopAtDistance = data["node"] as? [String: AnyObject],
         let distance = stopAtDistance["distance"] as? Int,
@@ -148,6 +165,8 @@ open class HSL {
                     codeShort: shortCodeForStop(stopData: stop),
                     departures: departures
             )
+
+
         } else {
             return nil
         }

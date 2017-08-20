@@ -18,8 +18,28 @@ private class StopAnnotation: MKPointAnnotation {
     }
 }
 
+extension MKCoordinateRegion {
+    var northWestCorner: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: center.latitude + span.latitudeDelta  / 2,
+                                      longitude: center.longitude - span.longitudeDelta / 2)
+    }
+    var northEastCorner: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: center.latitude + span.latitudeDelta  / 2,
+                                      longitude: center.longitude + span.longitudeDelta / 2)
+    }
+    var southWestCorner: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: center.latitude - span.latitudeDelta  / 2,
+                                      longitude: center.longitude - span.longitudeDelta / 2)
+    }
+    var southEastCorner: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: center.latitude - span.latitudeDelta  / 2,
+                                      longitude: center.longitude + span.longitudeDelta / 2)
+    }
+}
+
 class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var allStopsMap: MKMapView!
+    @IBOutlet weak var infoLabel: UILabel!
     var hasZoomedToUser = false
 
     override func viewDidLoad() {
@@ -28,9 +48,15 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
         allStopsMap.showsScale = true
         allStopsMap.showsCompass = true
         allStopsMap.showsBuildings = true
+
         super.viewDidLoad()
 
         displayStopsForCurrentRegion()
+    }
+
+    override func viewDidLayoutSubviews() {
+        infoLabel.layer.borderWidth = 1
+        infoLabel.layer.borderColor = UIColor.lightGray.cgColor
     }
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -42,7 +68,6 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
             zoomToUser(userCoordinate: userLocation.coordinate)
             hasZoomedToUser = true
         }
-
     }
 
     private func zoomToUser(userCoordinate: CLLocationCoordinate2D) {
@@ -55,38 +80,58 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
     }
 
     private func displayStopsForCurrentRegion() {
-        let lat = self.allStopsMap.centerCoordinate.latitude
-        let lon = self.allStopsMap.centerCoordinate.longitude
+        let region = self.allStopsMap.region
+        let minLat = region.southWestCorner.latitude
+        let minLon = region.southWestCorner.longitude
+        let maxLat = region.northEastCorner.latitude
+        let Maxlon = region.northEastCorner.longitude
 
-        HSL.nearestStopsAndDepartures(lat, lon: lon, radius: getSearchRadius(), stopCount: 100, callback: {(stops: [Stop]) in
-            let stopPins = stops.map({stop -> MKPointAnnotation in
-                let lat = CLLocationDegrees(floatLiteral: stop.lat)
-                let lon = CLLocationDegrees(floatLiteral: stop.lon)
-                let pin = StopAnnotation(stop: stop)
-                pin.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        let rectSmallEnoughForFetchingStops = region.span.latitudeDelta < 0.03 || region.span.longitudeDelta < 0.03
 
-                return pin
-            })
-
-            DispatchQueue.main.async {
-                if(stopPins.count > 0) {
-                    self.allStopsMap.removeAnnotations(self.allStopsMap.annotations)
-                    self.allStopsMap.addAnnotations(stopPins)
-                }
+        if(rectSmallEnoughForFetchingStops) {
+            if(!infoLabel.isHidden) {
+                hideShowInfoLabel(hide: true)
             }
-        })
+
+            HSL.stopsForRect(minLat: minLat, minLon: minLon, maxLat: maxLat, maxLon: Maxlon, callback: {(stops: [Stop]) in
+                let stopPins = stops.map({stop -> MKPointAnnotation in
+                    let lat = CLLocationDegrees(floatLiteral: stop.lat)
+                    let lon = CLLocationDegrees(floatLiteral: stop.lon)
+                    let pin = StopAnnotation(stop: stop)
+                    pin.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+
+                    return pin
+                })
+
+                DispatchQueue.main.async {
+                    if(stopPins.count > 0) {
+                        self.allStopsMap.removeAnnotations(self.allStopsMap.annotations)
+                        self.allStopsMap.addAnnotations(stopPins)
+                    }
+                }
+            })
+        } else {
+            if(infoLabel.isHidden) {
+                hideShowInfoLabel(hide: false)
+            }
+        }
     }
 
-    private func getSearchRadius() -> Int {
-        let heightMeters = abs(allStopsMap.region.span.latitudeDelta) * 111111
-
-        return Int(heightMeters)
+    private func hideShowInfoLabel(hide: Bool) {
+        allStopsMap.showsScale = hide
+        UIView.transition(with: infoLabel,
+                          duration: 0.3,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                              self.infoLabel.isHidden = hide
+                          },
+                          completion: nil)
     }
 
     let SHOW_NEXT_DEPARTURES_SEGUE = "showNextDepartures"
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        self.performSegue(withIdentifier: SHOW_NEXT_DEPARTURES_SEGUE, sender: view)
+        self.performSegue(withIdentifier: self.SHOW_NEXT_DEPARTURES_SEGUE, sender: view)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
