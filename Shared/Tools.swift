@@ -23,7 +23,8 @@ open class Tools {
                 attributes: [
                     NSStrikethroughStyleAttributeName: 1,
                     NSStrikethroughColorAttributeName: UIColor.lightGray,
-                    NSForegroundColorAttributeName: UIColor.gray])
+                    NSForegroundColorAttributeName: UIColor.gray,
+                    NSBaselineOffsetAttributeName: 0])
             scheduledString.append(space)
             scheduledString.append(realString)
             return scheduledString
