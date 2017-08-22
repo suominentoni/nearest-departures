@@ -131,7 +131,25 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
     let SHOW_NEXT_DEPARTURES_SEGUE = "showNextDepartures"
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        self.performSegue(withIdentifier: self.SHOW_NEXT_DEPARTURES_SEGUE, sender: view)
+        UIView.transition(
+            with: view,
+            duration: 0.07,
+            options: .curveEaseIn,
+            animations: {
+                view.frame.origin.y -= 7
+            }, completion: { completed in
+                UIView.transition(
+                    with: view,
+                    duration: 0.07,
+                    options: .curveEaseIn,
+                    animations: {
+                        view.frame.origin.y += 7
+                }, completion: { completed in
+                    self.performSegue(withIdentifier: self.SHOW_NEXT_DEPARTURES_SEGUE, sender: view)
+                    self.allStopsMap.deselectAnnotation(view.annotation, animated: false)
+                })
+            })
+
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
