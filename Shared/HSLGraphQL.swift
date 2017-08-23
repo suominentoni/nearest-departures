@@ -13,7 +13,7 @@ open class HSL {
 
     static let APIURL = "https://api.digitransit.fi/routing/v1/routers/finland/index/graphql"
 
-    fileprivate static let stopFields = "gtfsId, lat, lon, code, platformCode, desc, name"
+    fileprivate static let stopFields = "gtfsId, lat, lon, code, platformCode, desc, name, url"
     fileprivate static let departureFields = "scheduledDeparture, realtimeDeparture, departureDelay, realtime, realtimeState, serviceDay, pickupType, trip {tripHeadsign, directionId, route {shortName, longName, mode}}"
 
     fileprivate static func getDeparturesForStopQuery(gtfsId: String) -> String {
@@ -137,6 +137,26 @@ open class HSL {
         })
     }
 
+    private static func getStopsQuery(stopCodes: [String]) -> String {
+        let idsCommaSeparated = stopCodes.reduce("", {(result, stopCode) in
+            return result + "\"" + stopCode + "\","
+        })
+        return "{stops(ids:[\(idsCommaSeparated)]) {\(stopFields),stoptimesWithoutPatterns(numberOfDepartures: 1) { \(departureFields) }}}"
+    }
+
+    static func stops(stopCodes: [String], callback: @escaping (_ stops: [Stop]) -> Void) {
+        HTTP.post(APIURL, body: getStopsQuery(stopCodes: stopCodes), callback: {(obj: [String: AnyObject], error: String?) in
+            var stops: [Stop?] = []
+            if let data = obj["data"] as? [String: AnyObject],
+                let stopsByBox = data["stops"] as? NSArray {
+                for stop in stopsByBox {
+                    stops.append(parseStop(stop as! [String : AnyObject]))
+                }
+            }
+            callback(Tools.unwrapAndStripNils(stops))
+        })
+    }
+
     fileprivate static func parseStopAtDistance(_ data: AnyObject) -> Stop? {
         if let stopAtDistance = data["node"] as? [String: AnyObject],
         let distance = stopAtDistance["distance"] as? Int,
@@ -156,6 +176,11 @@ open class HSL {
             if let platformCode = stop["platformCode"] as? String {
                 stopName = formatStopName(name, platformCode: platformCode)
             }
+            var scheduleUrl: String = ""
+            if let url: String = stop["url"] as? String {
+                scheduleUrl = url
+            }
+
             let departures = parseDepartures(stop)
 
             return departures.count == 0
@@ -167,6 +192,7 @@ open class HSL {
                     distance: formatDistance(distance),
                     codeLong: gtfsId,
                     codeShort: shortCodeForStop(stopData: stop),
+                    scheduleUrl: scheduleUrl,
                     departures: departures
             )
 

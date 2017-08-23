@@ -3,7 +3,7 @@ import UIKit
 
 class NextDeparturesTableViewController: UITableViewController {
 
-    var stop = Stop(name: "", lat: 0.0, lon: 0.0, distance: "", codeLong: "", codeShort: "", departures: [])
+    var stop = Stop(name: "", lat: 0.0, lon: 0.0, distance: "", codeLong: "", codeShort: "", scheduleUrl: "", departures: [])
 
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var favoriteImageView: UIImageView!

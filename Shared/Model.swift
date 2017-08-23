@@ -15,19 +15,29 @@ open class Stop: NSObject, NSCoding {
     var distance: String = ""
     var codeLong: String = ""
     var codeShort: String = ""
+    var scheduleUrl: String = ""
     var departures: [Departure] = []
 
     override init() {
        super.init()
     }
 
-    init(name: String, lat: Double, lon: Double, distance: String, codeLong: String, codeShort: String, departures: [Departure]) {
+    init(
+        name: String,
+        lat: Double,
+        lon: Double,
+        distance: String,
+        codeLong: String,
+        codeShort: String,
+        scheduleUrl: String,
+        departures: [Departure]) {
         self.name = name
         self.lat = lat
         self.lon = lon
         self.distance = distance
         self.codeLong = codeLong
         self.codeShort = codeShort
+        self.scheduleUrl = scheduleUrl
         self.departures = departures
     }
 
@@ -49,6 +59,14 @@ open class Stop: NSObject, NSCoding {
                 NSLog("Unable to decode coordinates for stop: \(error)")
             }
 
+            // When trying to decode favorite stops that were saved prior to version x.x.x, 
+            // the object will not have a value for scheduleUrl
+            if let scheduleUrl = aDecoder.decodeObject(forKey: "scheduleUrl") as? String {
+                self.scheduleUrl = scheduleUrl
+            } else {
+                self.scheduleUrl = ""
+            }
+
             self.lat = lat
             self.lon = lon
             self.name = name
@@ -65,6 +83,7 @@ open class Stop: NSObject, NSCoding {
         aCoder.encode(self.distance, forKey: "distance")
         aCoder.encode(self.codeLong, forKey: "codeLong")
         aCoder.encode(self.codeShort, forKey: "codeShort")
+        aCoder.encode(self.scheduleUrl, forKey: "scheduleUrl")
     }
 
     open func hasCoordinates() -> Bool {
