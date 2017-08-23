@@ -19,7 +19,6 @@ Use [GitHub issues](https://github.com/suominentoni/nearest-departures/issues) a
 
 #### High priority (requested by users)
 * Ability to give custom names to favorite stops
-* A map view of all stops (add a Map item to the tab bar)
 
 #### Nice to have
 * Stop destinations to next departures list in Watch App
