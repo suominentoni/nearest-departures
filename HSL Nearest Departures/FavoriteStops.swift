@@ -24,6 +24,14 @@ class FavoriteStops {
         self.saveToUserDefaults(FavoriteStops.all().map(self.toAgencyPrefixedCodeFormat))
     }
 
+    static func addScheduleUrls() {
+        let stopIds: [String] = FavoriteStops.all().map({$0.codeLong})
+
+        HSL.stops(stopCodes: stopIds, callback: {(stops: [Stop]) in
+            stops.forEach({(stop: Stop) in self.tryUpdate(stop)})
+        })
+    }
+
     private static func toAgencyPrefixedCodeFormat(stop: Stop) -> Stop {
         // If the long code contains only numbers, it was stored as a favorite before updating the app
         // to work throughout the country, and therefore is an HSL code. Since that update the codes are
