@@ -29,9 +29,8 @@ class NextDeparturesTableViewController: UITableViewController {
 
         stopName.attributedText = Tools.formatStopText(stop: self.stop)
 
-        favoriteImageView.isUserInteractionEnabled = true
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(NextDeparturesTableViewController.favoriteTap))
-        favoriteImageView.addGestureRecognizer(tapRecognizer)
+        tryAddStopNameGestureRecognizer()
+        addFavoriteImageGestureRecognizer()
 
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(NextDeparturesTableViewController.refresh), for: UIControlEvents.valueChanged)
@@ -39,8 +38,31 @@ class NextDeparturesTableViewController: UITableViewController {
         reloadTableData()
     }
 
+    private func tryAddStopNameGestureRecognizer() {
+        if(stop.scheduleUrl != "") {
+            stopName.isUserInteractionEnabled = true
+            let linkTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(NextDeparturesTableViewController.linkTap))
+            stopName.addGestureRecognizer(linkTapRecognizer)
+        }
+    }
+
+    private func addFavoriteImageGestureRecognizer() {
+        favoriteImageView.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(NextDeparturesTableViewController.favoriteTap))
+        favoriteImageView.addGestureRecognizer(tapRecognizer)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         setFavoriteImage(false)
+    }
+
+    @objc func linkTap() {
+        let url = URL(string: stop.scheduleUrl)!
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
 
     @objc func favoriteTap() {
