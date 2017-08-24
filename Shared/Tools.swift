@@ -53,10 +53,22 @@ open class Tools {
         }
     }
 
-    open static func formatStopText(stop: Stop) -> String {
-        return stop.codeShort == "-"
+    open static func formatStopText(stop: Stop) -> NSMutableAttributedString {
+        let stopName = stop.codeShort == "-"
             ? "\(stop.name)"
             : "\(stop.name) (\(stop.codeShort))"
+
+        if(stop.scheduleUrl == "") {
+            return NSMutableAttributedString(string: stopName)
+        } else {
+            return NSMutableAttributedString(
+                string: stopName,
+                attributes: [
+                    NSUnderlineStyleAttributeName: 1,
+                    NSUnderlineColorAttributeName: UIColor.blue,
+                    NSForegroundColorAttributeName: UIColor.blue,
+                    NSBaselineOffsetAttributeName: 0])
+        }
     }
 
     open static func hasShortCodes(stops: [Stop]) -> Bool {

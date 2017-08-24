@@ -27,7 +27,7 @@ class NextDeparturesTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 250
 
-        stopName.text = Tools.formatStopText(stop: self.stop)
+        stopName.attributedText = Tools.formatStopText(stop: self.stop)
 
         favoriteImageView.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(NextDeparturesTableViewController.favoriteTap))

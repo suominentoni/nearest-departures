@@ -18,7 +18,7 @@ class StopMapViewController: UIViewController, MKMapViewDelegate {
 
     override func viewDidLoad() {
         stopMap.delegate = self
-        self.title = Tools.formatStopText(stop: self.stop)
+        self.title = Tools.formatStopText(stop: self.stop).string
         stopMap.showsUserLocation = true
         stopMap.showsScale = true
         stopMap.showsCompass = true
