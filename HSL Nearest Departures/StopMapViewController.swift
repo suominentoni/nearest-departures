@@ -49,13 +49,13 @@ class StopMapViewController: UIViewController, MKMapViewDelegate {
             let stopPoint = MKMapPointForCoordinate(CLLocationCoordinate2D(latitude: self.stop.lat, longitude: self.stop.lon))
             let userPoint = MKMapPointForCoordinate(userCoordinate)
 
-            let stopRect = MKMapRectMake(stopPoint.x, stopPoint.y, 0, 0)
-            let userRect = MKMapRectMake(userPoint.x, userPoint.y, 0, 0)
+            let stopRect = MKMapRectMake(stopPoint.x, stopPoint.y, 20, 20)
+            let userRect = MKMapRectMake(userPoint.x, userPoint.y, 20, 20)
 
             let unionRect = MKMapRectUnion(stopRect, userRect)
             let fitRect = stopMap.mapRectThatFits(unionRect)
 
-            stopMap.setVisibleMapRect(fitRect, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
+            stopMap.setVisibleMapRect(fitRect, edgePadding: UIEdgeInsetsMake(60, 60, 60, 60), animated: true)
             hasZoomedToUser = true
         }
     }
