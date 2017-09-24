@@ -15,8 +15,6 @@ open class NearestStopsInterfaceController: WKInterfaceController, CLLocationMan
     override open func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         let row = table.rowController(at: rowIndex) as! NearestStopsRow
         self.pushController(withName: "NextDeparturesInterfaceController", context: ["stopCode": row.code])
-//        let foo = nearestStops[rowIndex].departures as! AnyObject
-//        self.pushControllerWithName("NextDeparturesInterfaceController", context: ["departures": foo])
     }
 
     override open func awake(withContext context: Any?) {
@@ -49,7 +47,12 @@ open class NearestStopsInterfaceController: WKInterfaceController, CLLocationMan
 
     open func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         NSLog("Location Manager error: " + error.localizedDescription)
-        requestLocation()
+        if(error._code ==  CLError.Code.denied.rawValue) {
+            self.presentAlert(Const.LOCATION_REQUEST_FAILED_TITLE, message: Const.LOCATION_REQUEST_FAILED_MSG, action: requestLocation)
+        } else {
+            requestLocation()
+        }
+
     }
 
     open func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
