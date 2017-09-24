@@ -103,4 +103,7 @@ public struct Const {
 
     static let NO_DEPARTURES_TITLE = "Ei lähtöjä"
     static let NO_DEPARTURES_MSG = "Lähtöjä ei löytynyt."
+
+    static let LOCATION_REQUEST_FAILED_TITLE = "Virhe"
+    static let LOCATION_REQUEST_FAILED_MSG = "Sijainnin selvittäminen epäonnistui. Varmista, että sijaintipalvelut on sallittu sovellukselle."
 }

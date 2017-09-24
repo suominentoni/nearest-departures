@@ -10,8 +10,8 @@ import Foundation
 import WatchKit
 
 extension WKInterfaceController {
-    func presentAlert(_ title: String, message: String) {
-        let alertAction = WKAlertAction(title: "OK", style: WKAlertActionStyle.default, handler: {() in })
+    func presentAlert(_ title: String, message: String, action: @escaping () -> Void = {() in }) {
+        let alertAction = WKAlertAction(title: "OK", style: WKAlertActionStyle.default, handler: action)
         self.presentAlert(withTitle: title, message: message, preferredStyle: WKAlertControllerStyle.alert, actions: [alertAction])
     }
 }
