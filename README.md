@@ -15,12 +15,3 @@ Written in Swift 3. No third-party dependencies used.
 
 Use [GitHub issues](https://github.com/suominentoni/nearest-departures/issues) and [Pull Requests](https://github.com/suominentoni/nearest-departures/pulls).
 
-### TODO
-
-#### High priority (requested by users)
-* Ability to give custom names to favorite stops
-
-#### Nice to have
-* Stop destinations to next departures list in Watch App
-* Favorite stops for Watch app
-* Map view for individual stop for Watch app
