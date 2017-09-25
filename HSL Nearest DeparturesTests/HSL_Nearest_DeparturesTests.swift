@@ -1,5 +1,5 @@
 import XCTest
-@testable import HSL_Nearest_Departures
+@testable import Lah_Lah
 
 class HSL_Nearest_DeparturesTests: XCTestCase {
     
@@ -23,7 +23,7 @@ class HSL_Nearest_DeparturesTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

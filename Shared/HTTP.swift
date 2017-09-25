@@ -108,7 +108,7 @@ open class HTTP {
                         callback("", (error!.localizedDescription) as String)
                     } else {
                         callback(
-                            NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as! String,
+                            String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!,
                             nil
                         )
                     }

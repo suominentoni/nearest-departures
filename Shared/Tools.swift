@@ -21,10 +21,10 @@ open class Tools {
             let scheduledString = NSMutableAttributedString(
                 string: scheduledTime,
                 attributes: [
-                    NSStrikethroughStyleAttributeName: 1,
-                    NSStrikethroughColorAttributeName: UIColor.lightGray,
-                    NSForegroundColorAttributeName: UIColor.gray,
-                    NSBaselineOffsetAttributeName: 0])
+                    NSAttributedStringKey.strikethroughStyle: 1,
+                    NSAttributedStringKey.strikethroughColor: UIColor.lightGray,
+                    NSAttributedStringKey.foregroundColor: UIColor.gray,
+                    NSAttributedStringKey.baselineOffset: 0])
             scheduledString.append(space)
             scheduledString.append(realString)
             return scheduledString
