@@ -190,14 +190,6 @@ open class HSL {
         return platformCode != nil ? "\(name), laituri \(platformCode!)" : name
     }
 
-    fileprivate static func trimAgency(_ gtfsId: String) -> String {
-        if let index = gtfsId.characters.index(of: ":") {
-            let idWithoutAgency = gtfsId.substring(from: gtfsId.index(after: index))
-            return idWithoutAgency
-        }
-        return gtfsId
-    }
-
     fileprivate static func parseDepartures(_ stopData: [String: AnyObject]) -> [Departure] {
         var deps: [Departure] = []
         if let nextDeparturesData = stopData["stoptimesWithoutPatterns"] as? [[String: AnyObject]] {

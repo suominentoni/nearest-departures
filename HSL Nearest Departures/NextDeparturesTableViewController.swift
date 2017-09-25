@@ -42,7 +42,7 @@ class NextDeparturesTableViewController: UITableViewController {
         setFavoriteImage(false)
     }
 
-    func favoriteTap() {
+    @objc func favoriteTap() {
         FavoriteStops.isFavoriteStop(self.stop) ? FavoriteStops.remove(stop) : FavoriteStops.add(stop)
         setFavoriteImage(true)
     }
