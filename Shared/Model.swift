@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc(Stop)
 open class Stop: NSObject, NSCoding {
     var name: String = ""
     var lat: Double = 0.0

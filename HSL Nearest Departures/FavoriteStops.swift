@@ -10,6 +10,7 @@ import Foundation
 
 class FavoriteStops {
     fileprivate static let FAVORITE_STOPS_KEY = "hsl_fav_stops"
+
     static func all() throws -> [Stop] {
         if let data = UserDefaults.standard.object(forKey: FAVORITE_STOPS_KEY) as? Data,
         let stops = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Stop] {
@@ -88,6 +89,7 @@ class FavoriteStops {
     }
 
     fileprivate static func saveToUserDefaults(_ stops: [Stop]) {
+        //NSKeyedArchiver.setClassName("Lähimmät_Lähdöt.Stop", for: Stop.self)
         let data = NSKeyedArchiver.archivedData(withRootObject: stops)
         UserDefaults.standard.set(data, forKey: FAVORITE_STOPS_KEY)
     }
