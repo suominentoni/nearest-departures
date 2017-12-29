@@ -345,6 +345,7 @@
                         <outlet property="allStopsMap" destination="3L6-Fw-WeR" id="GE4-Yj-8ly"/>
                         <outlet property="infoLabel" destination="3AH-6S-MAE" id="i1Q-Ed-Nhf"/>
                         <segue destination="Eb7-bQ-n14" kind="show" identifier="showNextDepartures" id="v0e-5e-tmf"/>
+                        <segue destination="LR4-Mp-m1r" kind="show" identifier="showClusterStops" id="NCg-h0-8pH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H56-R3-iXP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -358,7 +359,7 @@
         <image name="ic_place" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nOX-tg-TJh"/>
-        <segue reference="viF-Ke-NAY"/>
+        <segue reference="v0e-5e-tmf"/>
+        <segue reference="NCg-h0-8pH"/>
     </inferredMetricsTieBreakers>
 </document>

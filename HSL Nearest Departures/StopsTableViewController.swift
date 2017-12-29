@@ -15,16 +15,11 @@ class StopsTableViewController: UITableViewController, CLLocationManagerDelegate
     var lat: Double = 0
     var lon: Double = 0
 
-    fileprivate var stops: [Stop] = []
+    var stops: [Stop] = []
     fileprivate var hasShortCodes: Bool = false
 
     override func viewDidAppear(_ animated: Bool) {
         loadData()
-        if(self.isNearestStopsView()) {
-            NSLog("NEAREST SELECTED")
-        } else if(self.isFavoritesStopsView()) {
-            NSLog("FAVORITES SELECTED")
-        }
     }
 
     override func viewDidLoad() {
@@ -34,7 +29,7 @@ class StopsTableViewController: UITableViewController, CLLocationManagerDelegate
 
         setTitle()
 
-        if(self.isFavoritesStopsView()) {
+        if (self.isFavoritesStopsView()) {
             loadData()
         } else if(self.isNearestStopsView()) {
             setupLocationManager()
@@ -42,9 +37,15 @@ class StopsTableViewController: UITableViewController, CLLocationManagerDelegate
     }
 
     fileprivate func setTitle() {
-        self.navigationItem.title = self.isFavoritesStopsView()
-            ? "Suosikkipysäkkisi"
-            : "Lähimmät pysäkkisi"
+        var title = "Pysäkit"
+
+        if (self.isFavoritesStopsView()){
+            title = "Suosikkipysäkkisi"
+        } else if (self.isNearestStopsView()) {
+            title = "Lähimmät pysäkkisi"
+        }
+
+        self.navigationItem.title = title;
     }
 
     fileprivate func setupLocationManager() {
@@ -53,17 +54,17 @@ class StopsTableViewController: UITableViewController, CLLocationManagerDelegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 5
 
-        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.notDetermined) {
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.notDetermined) {
             locationManager.requestWhenInUseAuthorization()
         }
 
-        if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.restricted || CLLocationManager.authorizationStatus() != CLAuthorizationStatus.denied) {
+        if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.restricted || CLLocationManager.authorizationStatus() != CLAuthorizationStatus.denied) {
             locationManager.startUpdatingLocation()
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if(status != CLAuthorizationStatus.restricted || status != CLAuthorizationStatus.denied) {
+        if (status != CLAuthorizationStatus.restricted || status != CLAuthorizationStatus.denied) {
             locationManager.startUpdatingLocation()
         }
     }
@@ -81,7 +82,7 @@ class StopsTableViewController: UITableViewController, CLLocationManagerDelegate
         let y = self.tableView.center.y
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
 
-        if(self.isFavoritesStopsView()) {
+        if (self.isFavoritesStopsView()) {
             self.stops = FavoriteStops.all()
 
             HSL.updateDeparturesForStops(self.stops, callback: {stops in
@@ -92,7 +93,7 @@ class StopsTableViewController: UITableViewController, CLLocationManagerDelegate
             })
 
             self.hasShortCodes = Tools.hasShortCodes(stops: self.stops)
-            if(self.stops.count == 0 ) {
+            if (self.stops.count == 0 ) {
                 let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
                 messageLabel.textAlignment = NSTextAlignment.center
                 messageLabel.numberOfLines = 0
@@ -104,7 +105,7 @@ class StopsTableViewController: UITableViewController, CLLocationManagerDelegate
                 self.tableView.backgroundView = nil
             }
             self.tableView.reloadData()
-        } else if(self.isNearestStopsView()) {
+        } else if (self.isNearestStopsView()) {
             HSL.nearestStopsAndDepartures(lat, lon: lon, callback: {(stops: [Stop]) in
                 self.stops = stops
                 self.hasShortCodes = Tools.hasShortCodes(stops: stops)
@@ -127,6 +128,9 @@ class StopsTableViewController: UITableViewController, CLLocationManagerDelegate
                     self.tableView.reloadData()
                 })
             })
+        } else { // stops in MKClusterAnnotation in AllStopsMap
+            self.tableView.backgroundView = nil
+            self.hasShortCodes = Tools.hasShortCodes(stops: stops)
         }
     }
 
@@ -141,14 +145,17 @@ class StopsTableViewController: UITableViewController, CLLocationManagerDelegate
         }
 
         let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
-        self.hasShortCodes
+        self.hasShortCodes || self.isClusterStopsView()
             ? (codeWidthConstraint.constant = 55)
             : (codeWidthConstraint.constant = 0)
+
         cell.code.addConstraint(codeWidthConstraint)
 
         cell.name.text = stop.name
         cell.destinations.text = Tools.destinationsFromDepartures(departures: stop.departures)
-        cell.distance.text = String(stop.distance) + " m"
+        cell.distance.text = self.isNearestStopsView()
+            ? String(stop.distance) + " m"
+            : ""
 
         return cell
     }
@@ -192,5 +199,9 @@ extension StopsTableViewController {
 
     fileprivate func isFavoritesStopsView() -> Bool {
         return getSelectedStopView() == SelectedStopView.Favorites
+    }
+
+    fileprivate func isClusterStopsView() -> Bool {
+        return !self.isFavoritesStopsView() && !self.isNearestStopsView()
     }
 }
