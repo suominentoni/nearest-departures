@@ -54,6 +54,8 @@ open class HSL {
                 let stopsData = data["stops"] as? [[String: AnyObject]] {
                 let stops = stopsData.map({stop in parseStop(stop)})
                 callback(Tools.unwrapAndStripNils(stops))
+            } else {
+                callback([])
             }
         })
     }
@@ -63,6 +65,8 @@ open class HSL {
             if let data = obj["data"] as? [String: AnyObject],
                 let stop = data["stop"] as? [String: AnyObject] {
                 callback(parseDepartures(stop))
+            } else {
+                callback([])
             }
         })
     }
