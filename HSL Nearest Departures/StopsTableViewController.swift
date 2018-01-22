@@ -34,6 +34,11 @@ class StopsTableViewController: UITableViewController, CLLocationManagerDelegate
         } else if(self.isNearestStopsView()) {
             setupLocationManager()
         }
+
+        if (self.isNearestStopsView()) {
+            self.refreshControl = UIRefreshControl()
+            self.refreshControl?.addTarget(self, action: #selector(StopsTableViewController.loadData), for: UIControlEvents.valueChanged)
+        }
     }
 
     fileprivate func setTitle() {
@@ -77,7 +82,7 @@ class StopsTableViewController: UITableViewController, CLLocationManagerDelegate
         loadData()
     }
 
-    fileprivate func loadData() {
+    @objc fileprivate func loadData() {
         let x = self.tableView.center.x
         let y = self.tableView.center.y
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
