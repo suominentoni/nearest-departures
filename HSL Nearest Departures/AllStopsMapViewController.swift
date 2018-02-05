@@ -15,6 +15,8 @@ private class StopAnnotation: MKPointAnnotation {
 
     init(stop: Stop) {
         self.stop = stop
+        super.init()
+        self.title = stop.name
     }
 }
 
@@ -152,15 +154,46 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if #available(iOS 11.0, *) {
-            if(view.annotation is MKClusterAnnotation) {
+            if (view.annotation is MKClusterAnnotation) {
                 self.performSegue(withIdentifier: self.SHOW_CLUSTER_STOPS, sender: view)
                 self.allStopsMap.deselectAnnotation(view.annotation, animated: false)
-            } else if(view.annotation is StopAnnotation) {
+            } else if (view.annotation is StopAnnotation) {
                 showNextDepartures(view: view)
             }
-        } else if(view.annotation is StopAnnotation) {
+        } else if (view.annotation is StopAnnotation) {
             showNextDepartures(view: view)
         }
+    }
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if #available(iOS 11.0, *) {
+            if let a = annotation as? MKClusterAnnotation {
+                a.title = ""
+                a.subtitle = ""
+                if let firstStopAnnotation = a.memberAnnotations.first as? StopAnnotation {
+                    a.title = firstStopAnnotation.stop.name
+                    a.subtitle = clusterSubtitle(annotations: a.memberAnnotations)
+                }
+            } else {
+                return nil
+            }
+        }
+        return nil
+    }
+
+    fileprivate func clusterSubtitle(annotations: [MKAnnotation]) -> String {
+        let stopNames = annotations
+            .filter({$0 is StopAnnotation})
+            .map({($0 as! StopAnnotation).stop.name})
+        let stopNamesUnique = Array(Set(stopNames))
+        var subtitle = ""
+        if (stopNamesUnique.count > 1) {
+            subtitle = stopNamesUnique[1]
+        }
+        if (stopNamesUnique.count > 2) {
+            subtitle += "..."
+        }
+        return subtitle
     }
 
     fileprivate func showNextDepartures(view: MKAnnotationView) {
