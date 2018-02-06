@@ -80,7 +80,7 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        if(!hasZoomedToUser) {
+        if (!hasZoomedToUser) {
             zoomToUser(userCoordinate: userLocation.coordinate)
             hasZoomedToUser = true
         }
@@ -104,8 +104,8 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
 
         let rectSmallEnoughForFetchingStops = region.span.latitudeDelta < 0.03 || region.span.longitudeDelta < 0.03
 
-        if(rectSmallEnoughForFetchingStops) {
-            if(!infoLabel.isHidden) {
+        if (rectSmallEnoughForFetchingStops) {
+            if (!infoLabel.isHidden) {
                 hideShowInfoLabel(hide: true)
             }
 
@@ -131,7 +131,7 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
                 }
             })
         } else {
-            if(infoLabel.isHidden) {
+            if (infoLabel.isHidden) {
                 hideShowInfoLabel(hide: false)
             }
         }
@@ -191,7 +191,7 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
             subtitle = stopNamesUnique[1]
         }
         if (stopNamesUnique.count > 2) {
-            subtitle += "..."
+            subtitle += ", ..."
         }
         return subtitle
     }
@@ -218,7 +218,7 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == SHOW_NEXT_DEPARTURES_SEGUE) {
+        if (segue.identifier == SHOW_NEXT_DEPARTURES_SEGUE) {
             if let destination = segue.destination as? NextDeparturesTableViewController,
                 let stopPin = (sender as? MKAnnotationView)?.annotation as? StopAnnotation {
                 destination.stop = stopPin.stop

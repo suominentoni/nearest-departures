@@ -93,9 +93,11 @@ public struct Line {
 }
 
 public struct Const {
+    static let NEAREST_STOPS_TITLE = "Lähimmät pysäkkisi"
     static let NO_STOPS_TITLE = "Ei pysäkkejä"
     static let NO_STOPS_MSG = "Lähistöltä ei löytynyt pysäkkejä. Sovellus etsii pysäkkejä maksimissaan 5000 metrin kävelymatkan päästä."
 
+    static let FAVORITE_STOPS_TITLE = "Suosikkipysäkkisi"
     static let NO_FAVORITE_STOPS_MSG = "Ei suosikkipysäkkejä valittuna. \n \n Valitse pysäkki suosikiksi painamalla sydäntä pysäkin seuraavien lähtöjen listassa."
 
     static let UNLOCK_IPHONE_TITLE = "Avaa iPhonen lukitus"
@@ -106,4 +108,7 @@ public struct Const {
 
     static let LOCATION_REQUEST_FAILED_TITLE = "Virhe"
     static let LOCATION_REQUEST_FAILED_MSG = "Sijainnin selvittäminen epäonnistui. Varmista, että sijaintipalvelut on sallittu sovellukselle."
+
+    static let STOPS = "Pysäkit"
+    static let NO_STOPS = "Ei pysäkkejä"
 }

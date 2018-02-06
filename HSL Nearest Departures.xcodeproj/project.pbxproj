@@ -42,8 +42,12 @@
 		53E4ECF01C2C06EC002F0107 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECEF1C2C06EC002F0107 /* ExtensionDelegate.swift */; };
 		53E4ECF21C2C06EC002F0107 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECF11C2C06EC002F0107 /* NotificationController.swift */; };
 		53E4ECF41C2C06EC002F0107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECF31C2C06EC002F0107 /* Assets.xcassets */; };
+		53EBAFAD20296DE100241EDF /* StopsTableViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EBAFAC20296DE100241EDF /* StopsTableViewControllerDelegate.swift */; };
+		53EBAFAF20296F8000241EDF /* NearestStopsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EBAFAE20296F8000241EDF /* NearestStopsDataSource.swift */; };
 		53F198551C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F198541C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift */; };
 		53F536BB1C576A1C009C7039 /* NextDeparturesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F536BA1C576A1C009C7039 /* NextDeparturesRow.swift */; };
+		53F638D92029720C00EDC17E /* FavoriteStopsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F638D82029720C00EDC17E /* FavoriteStopsDataSource.swift */; };
+		53F638DB202972F200EDC17E /* ClusterStopsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F638DA202972F200EDC17E /* ClusterStopsDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,8 +148,12 @@
 		53E4ECF11C2C06EC002F0107 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		53E4ECF31C2C06EC002F0107 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53E4ECF51C2C06EC002F0107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53EBAFAC20296DE100241EDF /* StopsTableViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsTableViewControllerDelegate.swift; sourceTree = "<group>"; };
+		53EBAFAE20296F8000241EDF /* NearestStopsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestStopsDataSource.swift; sourceTree = "<group>"; };
 		53F198541C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDeparturesInterfaceController.swift; sourceTree = "<group>"; };
 		53F536BA1C576A1C009C7039 /* NextDeparturesRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDeparturesRow.swift; sourceTree = "<group>"; };
+		53F638D82029720C00EDC17E /* FavoriteStopsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStopsDataSource.swift; sourceTree = "<group>"; };
+		53F638DA202972F200EDC17E /* ClusterStopsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterStopsDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +237,7 @@
 		53E4ECB11C2C06EC002F0107 /* HSL Nearest Departures */ = {
 			isa = PBXGroup;
 			children = (
+				53EBAFAB20296D8500241EDF /* StopsTableView */,
 				53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */,
 				53CC56951D590F45007828C8 /* FavoriteStops.swift */,
 				53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */,
@@ -242,7 +251,6 @@
 				53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */,
 				53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */,
 				530C49881DA4374000D44259 /* ObjC */,
-				530D88281FF79E3E0054E501 /* StopsTableViewController.swift */,
 			);
 			path = "HSL Nearest Departures";
 			sourceTree = "<group>";
@@ -299,6 +307,18 @@
 				53E4ECEC1C2C06EC002F0107 /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		53EBAFAB20296D8500241EDF /* StopsTableView */ = {
+			isa = PBXGroup;
+			children = (
+				530D88281FF79E3E0054E501 /* StopsTableViewController.swift */,
+				53EBAFAC20296DE100241EDF /* StopsTableViewControllerDelegate.swift */,
+				53EBAFAE20296F8000241EDF /* NearestStopsDataSource.swift */,
+				53F638D82029720C00EDC17E /* FavoriteStopsDataSource.swift */,
+				53F638DA202972F200EDC17E /* ClusterStopsDataSource.swift */,
+			);
+			path = StopsTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,13 +529,17 @@
 				53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */,
 				53536F951D66DE76004970E4 /* Tools.swift in Sources */,
 				53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */,
+				53F638DB202972F200EDC17E /* ClusterStopsDataSource.swift in Sources */,
+				53F638D92029720C00EDC17E /* FavoriteStopsDataSource.swift in Sources */,
 				53C57D821D605D83000F5BF1 /* HTTP.swift in Sources */,
 				5329C5961C70DFC9000E24F9 /* NextDepartureCell.swift in Sources */,
+				53EBAFAD20296DE100241EDF /* StopsTableViewControllerDelegate.swift in Sources */,
 				530D88291FF79E3F0054E501 /* StopsTableViewController.swift in Sources */,
 				5329C5921C70D448000E24F9 /* NearestStopsCell.swift in Sources */,
 				53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */,
 				53CC472D1F459DEC00C1BE9A /* AllStopsMapViewController.swift in Sources */,
 				53C57D851D605E41000F5BF1 /* HSLGraphQL.swift in Sources */,
+				53EBAFAF20296F8000241EDF /* NearestStopsDataSource.swift in Sources */,
 				53123A3B1D3823DB00D9E646 /* Model.swift in Sources */,
 				53CC56961D590F45007828C8 /* FavoriteStops.swift in Sources */,
 			);
