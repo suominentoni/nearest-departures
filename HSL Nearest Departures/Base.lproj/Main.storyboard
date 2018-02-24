@@ -113,6 +113,9 @@
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l3e-UH-zHC">
                                     <rect key="frame" x="550" y="10" width="30" height="30"/>
+                                    <accessibility key="accessibilityConfiguration" label="favoriteImage">
+                                        <bool key="isElement" value="YES"/>
+                                    </accessibility>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="9pz-Z6-uav"/>
                                         <constraint firstAttribute="height" constant="30" id="jiO-j6-baX"/>

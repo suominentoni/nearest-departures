@@ -13,6 +13,7 @@ class NextDeparturesTableViewController: UITableViewController {
 
     override init(style: UITableViewStyle) {
         super.init(style: style)
+        favoriteImageView.accessibilityLabel = "favoriteImage"
     }
 
     required init?(coder aDecoder: NSCoder) {

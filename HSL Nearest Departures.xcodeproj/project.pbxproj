@@ -14,6 +14,7 @@
 		5329C5921C70D448000E24F9 /* NearestStopsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5911C70D448000E24F9 /* NearestStopsCell.swift */; };
 		5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */; };
 		5329C5961C70DFC9000E24F9 /* NextDepartureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */; };
+		5334BD72204159D90093CF36 /* Viiskulma.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 539790B220415675007A6067 /* Viiskulma.gpx */; };
 		533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E1C4D1C512963001EA50B /* NearestStopsRow.swift */; };
 		533E1C511C527B42001EA50B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDC1C2C06EC002F0107 /* Interface.storyboard */; };
 		53536F951D66DE76004970E4 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53536F941D66DE76004970E4 /* Tools.swift */; };
@@ -21,6 +22,7 @@
 		53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */; };
 		535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */; };
 		536C435B1D42328700045CEF /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C435A1D42328700045CEF /* Util.swift */; };
+		539790B320415675007A6067 /* Viiskulma.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 539790B220415675007A6067 /* Viiskulma.gpx */; };
 		53BA904E1DA53FB700AF8D01 /* ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 530C49861DA4370500D44259 /* ObjC.m */; };
 		53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */; };
 		53C57D821D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
@@ -120,6 +122,7 @@
 		53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopMapViewController.swift; sourceTree = "<group>"; };
 		535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsInterfaceController.swift; sourceTree = "<group>"; };
 		536C435A1D42328700045CEF /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		539790B220415675007A6067 /* Viiskulma.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Viiskulma.gpx; sourceTree = "<group>"; };
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
 		53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		53C57D811D605D83000F5BF1 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
@@ -269,6 +272,7 @@
 			children = (
 				53E4ECD21C2C06EC002F0107 /* HSL_Nearest_DeparturesUITests.swift */,
 				53E4ECD41C2C06EC002F0107 /* Info.plist */,
+				539790B220415675007A6067 /* Viiskulma.gpx */,
 			);
 			path = "HSL Nearest DeparturesUITests";
 			sourceTree = "<group>";
@@ -482,6 +486,7 @@
 				53E4ECBD1C2C06EC002F0107 /* LaunchScreen.storyboard in Resources */,
 				53E4ECBA1C2C06EC002F0107 /* Assets.xcassets in Resources */,
 				53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */,
+				5334BD72204159D90093CF36 /* Viiskulma.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				539790B320415675007A6067 /* Viiskulma.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,6 +842,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.suominentoni.HSL-Nearest-Departures2";
+				PRODUCT_MODULE_NAME = Lahimmat_Lahdot;
 				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";
@@ -857,6 +864,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.suominentoni.HSL-Nearest-Departures2";
+				PRODUCT_MODULE_NAME = Lahimmat_Lahdot;
 				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";
