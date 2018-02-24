@@ -23,7 +23,7 @@ class HSL_Nearest_DeparturesTests: XCTestCase {
     func test_stop_count() {
         let ex = self.expectation(description: "Returns correct amount of stops")
 
-        HSL.sharedInstance.nearestStops(0, lon: 0, callback: {stops in
+        HSL.sharedInstance.nearestStopsAndDepartures(0, lon: 0, callback: {stops in
             XCTAssertEqual(stops.count, 5)
             ex.fulfill()
         })
@@ -34,7 +34,7 @@ class HSL_Nearest_DeparturesTests: XCTestCase {
     func test_stop_name() {
         let ex = self.expectation(description: "Returns stop name")
 
-        HSL.sharedInstance.nearestStops(0, lon: 0, callback: {stops in
+        HSL.sharedInstance.nearestStopsAndDepartures(0, lon: 0, callback: {stops in
             XCTAssertEqual(stops[0].name, "Hovioikeus P")
             ex.fulfill()
         })
@@ -45,7 +45,7 @@ class HSL_Nearest_DeparturesTests: XCTestCase {
     func test_stop_platform() {
         let ex = self.expectation(description: "Adds platform to stop name if a platform code exists")
 
-        HSL.sharedInstance.nearestStops(0, lon: 0, callback: {stops in
+        HSL.sharedInstance.nearestStopsAndDepartures(0, lon: 0, callback: {stops in
             XCTAssertEqual(stops[1].name, "Hovioikeus, laituri 1")
             ex.fulfill()
         })
@@ -56,7 +56,7 @@ class HSL_Nearest_DeparturesTests: XCTestCase {
     func test_stop_distance() {
         let ex = self.expectation(description: "Returns stop distance")
 
-        HSL.sharedInstance.nearestStops(0, lon: 0, callback: {stops in
+        HSL.sharedInstance.nearestStopsAndDepartures(0, lon: 0, callback: {stops in
             XCTAssertEqual(stops[0].distance, "<50")
             XCTAssertEqual(stops[1].distance, "243")
             ex.fulfill()
@@ -68,7 +68,7 @@ class HSL_Nearest_DeparturesTests: XCTestCase {
     func test_stop_coordinates() {
         let ex = self.expectation(description: "Returns stop coordinates")
 
-        HSL.sharedInstance.nearestStops(0, lon: 0, callback: {stops in
+        HSL.sharedInstance.nearestStopsAndDepartures(0, lon: 0, callback: {stops in
             XCTAssertEqual(stops[0].lat, 62.890498)
             XCTAssertEqual(stops[0].lon, 27.672156)
             ex.fulfill()
@@ -80,7 +80,7 @@ class HSL_Nearest_DeparturesTests: XCTestCase {
     func test_stop_codes() {
         let ex = self.expectation(description: "Returns stop codes")
 
-        HSL.sharedInstance.nearestStops(0, lon: 0, callback: {stops in
+        HSL.sharedInstance.nearestStopsAndDepartures(0, lon: 0, callback: {stops in
             XCTAssertEqual(stops[0].codeLong, "MATKA:7_201312")
             XCTAssertEqual(stops[0].codeShort, "-")
             XCTAssertEqual(stops[1].codeShort, "10 161")
@@ -93,7 +93,7 @@ class HSL_Nearest_DeparturesTests: XCTestCase {
     func test_departure_count() {
         let ex = self.expectation(description: "Returns correct amount of departures")
 
-        HSL.sharedInstance.nearestStops(0, lon: 0, callback: {stops in
+        HSL.sharedInstance.nearestStopsAndDepartures(0, lon: 0, callback: {stops in
             XCTAssertEqual(stops[0].departures.count, 5)
             ex.fulfill()
         })
@@ -104,7 +104,7 @@ class HSL_Nearest_DeparturesTests: XCTestCase {
     func test_departure_time() {
         let ex = self.expectation(description: "Returns departure time")
 
-        HSL.sharedInstance.nearestStops(0, lon: 0, callback: {stops in
+        HSL.sharedInstance.nearestStopsAndDepartures(0, lon: 0, callback: {stops in
             XCTAssertEqual(stops[0].departures[0].realDepartureTime, 31320)
             ex.fulfill()
         })
