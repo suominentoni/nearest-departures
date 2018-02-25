@@ -6,8 +6,6 @@
 //  Copyright © 2017 Toni Suominen. All rights reserved.
 //
 
-import Foundation
-
 let testData = """
 {
     "data": {

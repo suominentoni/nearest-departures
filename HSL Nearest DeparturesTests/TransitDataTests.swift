@@ -9,9 +9,10 @@
 import XCTest
 @testable import Lahimmat_Lahdot
 
-class Nearest_Departures_API_Tests: XCTestCase {
+class TransitDataTests: XCTestCase {
     let lat = 62.914898
     let lon = 27.707004
+    let timeout = 10.0
 
     override func setUp() {
         super.setUp()
@@ -26,11 +27,11 @@ class Nearest_Departures_API_Tests: XCTestCase {
         let ex = self.expectation(description: "Returns correct amount of stops")
 
         HSL.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
-            XCTAssertEqual(stops.count, 24)
+            XCTAssertEqual(stops.count, 29) // Note: API sometimes seems to return 24 stops instead of 29
             ex.fulfill()
         })
 
-        self.wait(for: [ex], timeout: 2.0)
+        self.wait(for: [ex], timeout: timeout)
     }
 
     func test_stop_name() {
@@ -41,7 +42,7 @@ class Nearest_Departures_API_Tests: XCTestCase {
             ex.fulfill()
         })
 
-        self.wait(for: [ex], timeout: 2.0)
+        self.wait(for: [ex], timeout: timeout)
     }
 
     func test_stop_distance() {
@@ -53,7 +54,7 @@ class Nearest_Departures_API_Tests: XCTestCase {
             ex.fulfill()
         })
 
-        self.wait(for: [ex], timeout: 2.0)
+        self.wait(for: [ex], timeout: timeout)
     }
 
     func test_stop_coordinates() {
@@ -65,7 +66,7 @@ class Nearest_Departures_API_Tests: XCTestCase {
             ex.fulfill()
         })
 
-        self.wait(for: [ex], timeout: 2.0)
+        self.wait(for: [ex], timeout: timeout)
     }
 
     func test_stop_codes() {
@@ -77,7 +78,7 @@ class Nearest_Departures_API_Tests: XCTestCase {
             ex.fulfill()
         })
 
-        self.wait(for: [ex], timeout: 2.0)
+        self.wait(for: [ex], timeout: timeout)
     }
 
     func test_departure_count() {
@@ -88,7 +89,7 @@ class Nearest_Departures_API_Tests: XCTestCase {
             ex.fulfill()
         })
 
-        self.wait(for: [ex], timeout: 2.0)
+        self.wait(for: [ex], timeout: timeout)
     }
 
     func test_departure_time() {
@@ -100,6 +101,6 @@ class Nearest_Departures_API_Tests: XCTestCase {
             ex.fulfill()
         })
 
-        self.wait(for: [ex], timeout: 2.0)
+        self.wait(for: [ex], timeout: timeout)
     }
 }

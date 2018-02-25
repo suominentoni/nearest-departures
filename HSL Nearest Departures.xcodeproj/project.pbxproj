@@ -32,13 +32,13 @@
 		53CC472D1F459DEC00C1BE9A /* AllStopsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */; };
 		53CC56961D590F45007828C8 /* FavoriteStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC56951D590F45007828C8 /* FavoriteStops.swift */; };
 		53E0A6A81F5E9365003FC42A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53123A3A1D3823DB00D9E646 /* Model.swift */; };
-		53E496EB20417B17009159AA /* Nearest_Departures_API_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E496EA20417B17009159AA /* Nearest_Departures_API_Tests.swift */; };
+		53E496EB20417B17009159AA /* TransitDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E496EA20417B17009159AA /* TransitDataTests.swift */; };
 		53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */; };
 		53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB61C2C06EC002F0107 /* Main.storyboard */; settings = {ASSET_TAGS = (stopCode, ); }; };
 		53E4ECBA1C2C06EC002F0107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB91C2C06EC002F0107 /* Assets.xcassets */; };
 		53E4ECBD1C2C06EC002F0107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECBB1C2C06EC002F0107 /* LaunchScreen.storyboard */; };
-		53E4ECC81C2C06EC002F0107 /* Nearest_DeparturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECC71C2C06EC002F0107 /* Nearest_DeparturesTests.swift */; };
-		53E4ECD31C2C06EC002F0107 /* HSL_Nearest_DeparturesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECD21C2C06EC002F0107 /* HSL_Nearest_DeparturesUITests.swift */; };
+		53E4ECC81C2C06EC002F0107 /* TransitDataTestsMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECC71C2C06EC002F0107 /* TransitDataTestsMockData.swift */; };
+		53E4ECD31C2C06EC002F0107 /* NearestDeparturesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECD21C2C06EC002F0107 /* NearestDeparturesUITests.swift */; };
 		53E4ECD81C2C06EC002F0107 /* HSL Nearest Departures WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 53E4ECD71C2C06EC002F0107 /* HSL Nearest Departures WatchKit App.app */; };
 		53E4ECDE1C2C06EC002F0107 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDC1C2C06EC002F0107 /* Interface.storyboard */; };
 		53E4ECE01C2C06EC002F0107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDF1C2C06EC002F0107 /* Assets.xcassets */; };
@@ -132,7 +132,7 @@
 		53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSLGraphQL.swift; sourceTree = "<group>"; };
 		53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllStopsMapViewController.swift; sourceTree = "<group>"; };
 		53CC56951D590F45007828C8 /* FavoriteStops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStops.swift; sourceTree = "<group>"; };
-		53E496EA20417B17009159AA /* Nearest_Departures_API_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nearest_Departures_API_Tests.swift; sourceTree = "<group>"; };
+		53E496EA20417B17009159AA /* TransitDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitDataTests.swift; sourceTree = "<group>"; };
 		53E4ECAF1C2C06EC002F0107 /* Lähimmät Lähdöt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lähimmät Lähdöt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53E4ECB71C2C06EC002F0107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,10 +140,10 @@
 		53E4ECBC1C2C06EC002F0107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53E4ECBE1C2C06EC002F0107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53E4ECC31C2C06EC002F0107 /* HSL Nearest DeparturesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HSL Nearest DeparturesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		53E4ECC71C2C06EC002F0107 /* Nearest_DeparturesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nearest_DeparturesTests.swift; sourceTree = "<group>"; };
+		53E4ECC71C2C06EC002F0107 /* TransitDataTestsMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitDataTestsMockData.swift; sourceTree = "<group>"; };
 		53E4ECC91C2C06EC002F0107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53E4ECCE1C2C06EC002F0107 /* HSL Nearest DeparturesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HSL Nearest DeparturesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		53E4ECD21C2C06EC002F0107 /* HSL_Nearest_DeparturesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSL_Nearest_DeparturesUITests.swift; sourceTree = "<group>"; };
+		53E4ECD21C2C06EC002F0107 /* NearestDeparturesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestDeparturesUITests.swift; sourceTree = "<group>"; };
 		53E4ECD41C2C06EC002F0107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53E4ECD71C2C06EC002F0107 /* HSL Nearest Departures WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HSL Nearest Departures WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E4ECDD1C2C06EC002F0107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -265,10 +265,10 @@
 		53E4ECC61C2C06EC002F0107 /* HSL Nearest DeparturesTests */ = {
 			isa = PBXGroup;
 			children = (
-				53E4ECC71C2C06EC002F0107 /* Nearest_DeparturesTests.swift */,
-				53E4ECC91C2C06EC002F0107 /* Info.plist */,
+				53E496EA20417B17009159AA /* TransitDataTests.swift */,
+				53E4ECC71C2C06EC002F0107 /* TransitDataTestsMockData.swift */,
 				530D04B11F7A180500C23F2C /* TestData.swift */,
-				53E496EA20417B17009159AA /* Nearest_Departures_API_Tests.swift */,
+				53E4ECC91C2C06EC002F0107 /* Info.plist */,
 			);
 			path = "HSL Nearest DeparturesTests";
 			sourceTree = "<group>";
@@ -276,7 +276,7 @@
 		53E4ECD11C2C06EC002F0107 /* HSL Nearest DeparturesUITests */ = {
 			isa = PBXGroup;
 			children = (
-				53E4ECD21C2C06EC002F0107 /* HSL_Nearest_DeparturesUITests.swift */,
+				53E4ECD21C2C06EC002F0107 /* NearestDeparturesUITests.swift */,
 				53E4ECD41C2C06EC002F0107 /* Info.plist */,
 				539790B220415675007A6067 /* Viiskulma.gpx */,
 			);
@@ -563,8 +563,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				530D04B21F7A180500C23F2C /* TestData.swift in Sources */,
-				53E496EB20417B17009159AA /* Nearest_Departures_API_Tests.swift in Sources */,
-				53E4ECC81C2C06EC002F0107 /* Nearest_DeparturesTests.swift in Sources */,
+				53E496EB20417B17009159AA /* TransitDataTests.swift in Sources */,
+				53E4ECC81C2C06EC002F0107 /* TransitDataTestsMockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,7 +572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53E4ECD31C2C06EC002F0107 /* HSL_Nearest_DeparturesUITests.swift in Sources */,
+				53E4ECD31C2C06EC002F0107 /* NearestDeparturesUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

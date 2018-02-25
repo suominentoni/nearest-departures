@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 open class Tools {
-
     open static func formatDepartureTime(_ scheduled: Int, real: Int) -> NSAttributedString {
         let scheduledTime = secondsFromMidnightToTime(scheduled)
         let realTime = secondsFromMidnightToTime(real)
