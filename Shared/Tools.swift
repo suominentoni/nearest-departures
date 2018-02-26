@@ -10,36 +10,6 @@ import Foundation
 import UIKit
 
 open class Tools {
-    open static func formatDepartureTime(_ scheduled: Int, real: Int) -> NSAttributedString {
-        let scheduledTime = secondsFromMidnightToTime(scheduled)
-        let realTime = secondsFromMidnightToTime(real)
-
-        if(scheduledTime != realTime && abs(scheduled - real) >= 60) {
-            let realString = NSMutableAttributedString(string: realTime)
-            let space = NSAttributedString(string: " ")
-            let scheduledString = NSMutableAttributedString(
-                string: scheduledTime,
-                attributes: [
-                    NSAttributedStringKey.strikethroughStyle: 1,
-                    NSAttributedStringKey.strikethroughColor: UIColor.lightGray,
-                    NSAttributedStringKey.foregroundColor: UIColor.gray,
-                    NSAttributedStringKey.baselineOffset: 0])
-            scheduledString.append(space)
-            scheduledString.append(realString)
-            return scheduledString
-        }
-        return NSAttributedString(string: secondsFromMidnightToTime(scheduled))
-    }
-
-    open static func secondsFromMidnightToTime(_ seconds: Int) -> String {
-        let minutes = seconds / 60
-
-        let hoursInt = minutes/60
-        let hours = String(format: "%02d", hoursInt >= 24 ? hoursInt - 24 : hoursInt)
-        let remainder = String(format: "%02d", minutes % 60)
-        return "\(hours):\(remainder)"
-    }
-
     open static func unwrapAndStripNils<T>(_ data: [T?]) -> [T] {
         return data.filter({$0 != nil}).map({$0!})
     }

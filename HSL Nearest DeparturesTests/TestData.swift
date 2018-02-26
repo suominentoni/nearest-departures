@@ -24,7 +24,7 @@ let testData = """
     "name": "Hovioikeus P",
     "stoptimesWithoutPatterns": [
     {
-    "scheduledDeparture": 31320,
+    "scheduledDeparture": 31390,
     "realtimeDeparture": 31320,
     "departureDelay": 0,
     "realtime": false,

@@ -109,15 +109,15 @@ class TransitDataTestsMockData: XCTestCase {
     func test_departure_time_format() {
         let ex = self.expectation(description: "Formats departure time correctly")
 
-        let result1 = Tools.secondsFromMidnightToTime(60)
-        XCTAssertEqual(result1, "00:01")
+        let result1 = DepartureTime(60)
+        XCTAssertEqual(result1.toTime(), "00:01")
 
-        let result2 = Tools.secondsFromMidnightToTime(46860)
-        XCTAssertEqual(result2, "13:01")
+        let result2 = DepartureTime(46860)
+        XCTAssertEqual(result2.toTime(), "13:01")
 
         // 24h 1min
-        let result3 = Tools.secondsFromMidnightToTime(86460)
-        XCTAssertEqual(result3, "00:01")
+        let result3 = DepartureTime(86460)
+        XCTAssertEqual(result3.toTime(), "00:01")
 
         ex.fulfill()
 

@@ -92,7 +92,7 @@ class TransitDataTests: XCTestCase {
         self.wait(for: [ex], timeout: timeout)
     }
 
-    func test_departure_time() {
+    func test_departure_information() {
         let ex = self.expectation(description: "Returns departure information")
 
         HSL.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in

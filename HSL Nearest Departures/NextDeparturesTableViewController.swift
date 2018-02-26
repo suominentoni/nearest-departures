@@ -136,7 +136,7 @@ class NextDeparturesTableViewController: UITableViewController {
             } else {
                 cell.code.text = departure.line.codeLong
             }
-            cell.time.attributedText = Tools.formatDepartureTime(departure.scheduledDepartureTime, real: departure.realDepartureTime)
+            cell.time.attributedText = departure.formattedDepartureTime()
         })
 
         return cell
