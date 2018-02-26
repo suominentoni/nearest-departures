@@ -118,7 +118,7 @@ class StopsTableViewController: UITableViewController {
         cell.code.addConstraint(codeWidthConstraint)
 
         cell.name.text = stop.name
-        cell.destinations.text = Tools.destinationsFromDepartures(departures: stop.departures)
+        cell.destinations.text = stop.departures.destinations()
         cell.distance.text = self.isNearestStopsView()
             ? String(stop.distance) + " m"
             : ""

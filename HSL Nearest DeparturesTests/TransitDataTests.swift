@@ -98,6 +98,7 @@ class TransitDataTests: XCTestCase {
         HSL.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
             XCTAssertEqual(stops[0].departures[0].line.destination, "Neulamäki P")
             XCTAssertEqual(stops[0].departures[0].line.codeShort, "4")
+            XCTAssertEqual(stops[0].departures.destinations(), "Neulamäki P, Microteknia E")
             ex.fulfill()
         })
 

@@ -137,6 +137,18 @@ extension Array where Element == Departure {
     public func hasShortCodes() -> Bool {
         return self.filter({ $0.line.codeShort != "-" }).count > 0
     }
+
+    public func destinations() -> String {
+        return self
+            .reduce([String](), { (destinations, departure) in
+                if let destination = departure.line.destination, destinations.contains(destination) == false {
+                    return destinations + [destination]
+                } else {
+                    return destinations
+                }
+            })
+            .joined(separator: ", ")
+    }
 }
 
 public struct Line {

@@ -21,16 +21,4 @@ open class Tools {
             return defaultValue
         }
     }
-
-    open static func destinationsFromDepartures(departures: [Departure]) -> String {
-        return departures
-            .reduce([String](), { (destinations, departure) in
-                if let destination = departure.line.destination, destinations.contains(destination) == false {
-                    return destinations + [destination]
-                } else {
-                    return destinations
-                }
-            })
-            .joined(separator: ", ")
-    }
 }
