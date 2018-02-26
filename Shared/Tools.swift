@@ -22,20 +22,6 @@ open class Tools {
         }
     }
 
-    open static func formatStopText(stop: Stop) -> String {
-        return stop.codeShort == "-"
-            ? "\(stop.name)"
-            : "\(stop.name) (\(stop.codeShort))"
-    }
-
-    open static func hasShortCodes(stops: [Stop]) -> Bool {
-        return stops.filter({ $0.codeShort != "-" }).count > 0
-    }
-
-    open static func hasShortCodes(departures: [Departure]) -> Bool {
-        return departures.filter({ $0.line.codeShort != "-" }).count > 0
-    }
-
     open static func destinationsFromDepartures(departures: [Departure]) -> String {
         return departures
             .reduce([String](), { (destinations, departure) in

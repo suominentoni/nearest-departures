@@ -18,6 +18,13 @@ open class Stop: NSObject, NSCoding {
     var codeLong: String = ""
     var codeShort: String = ""
     var departures: [Departure] = []
+    var nameWithCode: String {
+        get {
+            return codeShort == "-"
+                ? "\(name)"
+                : "\(name) (\(codeShort))"
+        }
+    }
 
     override init() {
        super.init()
@@ -34,7 +41,6 @@ open class Stop: NSObject, NSCoding {
     }
 
     public required init?(coder aDecoder: NSCoder) {
-
         if let name = aDecoder.decodeObject(forKey: "name") as? String,
             let distance = aDecoder.decodeObject(forKey: "distance") as? String,
             let codeLong = aDecoder.decodeObject(forKey: "codeLong") as? String,
@@ -69,7 +75,7 @@ open class Stop: NSObject, NSCoding {
         aCoder.encode(self.codeShort, forKey: "codeShort")
     }
 
-    open func hasCoordinates() -> Bool {
+    public func hasCoordinates() -> Bool {
         return self.lat != 0.0 && self.lon != 0.0
     }
 }
@@ -80,6 +86,12 @@ func == (lhs: Stop, rhs: Stop) -> Bool {
 
 func != (lhs: Stop, rhs: Stop) -> Bool {
     return lhs.codeLong != rhs.codeLong
+}
+
+extension Array where Element:Stop {
+    public func hasShortCodes() -> Bool {
+        return self.filter({ $0.codeShort != "-" }).count > 0
+    }
 }
 
 typealias DepartureTime = Int
@@ -118,6 +130,12 @@ public struct Departure {
             return scheduledString
         }
         return NSAttributedString(string: scheduledDepartureTime.toTime())
+    }
+}
+
+extension Array where Element == Departure {
+    public func hasShortCodes() -> Bool {
+        return self.filter({ $0.line.codeShort != "-" }).count > 0
     }
 }
 
