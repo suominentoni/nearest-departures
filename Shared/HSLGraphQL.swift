@@ -81,7 +81,7 @@ open class HSL {
             } else if let data = obj["data"] as? [String: AnyObject],
                 let stopsData = data["stops"] as? [[String: AnyObject]] {
                 let stops = stopsData.map({stop in self.parseStop(stop)})
-                callback(Tools.unwrapAndStripNils(stops), nil)
+                callback(stops.unwrapAndStripNils(), nil)
             } else {
                 callback(stops, nil)
             }
@@ -130,7 +130,7 @@ open class HSL {
                     stops.append(self.parseStopAtDistance(edge as AnyObject))
                 }
             }
-            callback(Tools.unwrapAndStripNils(stops))
+            callback(stops.unwrapAndStripNils())
         })
     }
 
@@ -144,7 +144,7 @@ open class HSL {
                     stops.append(self.parseStopAtDistance(edge as AnyObject))
                 }
             }
-            callback(Tools.unwrapAndStripNils(stops))
+            callback(stops.unwrapAndStripNils())
         })
     }
 
@@ -161,7 +161,7 @@ open class HSL {
                     stops.append(self.parseStop(stop as! [String : AnyObject]))
                 }
             }
-            callback(Tools.unwrapAndStripNils(stops))
+            callback(stops.unwrapAndStripNils())
         })
     }
 

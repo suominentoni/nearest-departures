@@ -94,6 +94,12 @@ extension Array where Element:Stop {
     }
 }
 
+extension Array where Element == Optional<Stop> {
+    public func unwrapAndStripNils() -> [Stop] {
+        return self.filter({$0 != nil}).map({$0!})
+    }
+}
+
 typealias DepartureTime = Int
 
 extension DepartureTime {

@@ -104,4 +104,16 @@ class TransitDataTests: XCTestCase {
 
         self.wait(for: [ex], timeout: timeout)
     }
+
+    func test_foo() {
+        let ex = self.expectation(description: "Returns departure information")
+        let foo: Stop? = Stop(name: "foo", lat: 0, lon: 0, distance: "1", codeLong: "", codeShort: "", departures: [])
+        let bar: Stop? = Stop(name: "bar", lat: 0, lon: 0, distance: "1", codeLong: "", codeShort: "", departures: [])
+        let baz: Stop? = nil
+        let a = [foo, bar, baz]
+        let expected = [foo!, bar!]
+        XCTAssertEqual(a.unwrapAndStripNils(), expected)
+        ex.fulfill()
+        self.wait(for: [ex], timeout: timeout)
+    }
 }
