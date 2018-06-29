@@ -9,10 +9,13 @@
 import Foundation
 import UIKit
 
+enum DigitransitError: Error {
+    case dataFetchingError(id: String, stop: Stop?)
+    case unknownError
+}
+
 open class HSL {
-
     static let APIURL = "https://api.digitransit.fi/routing/v1/routers/finland/index/graphql"
-
     fileprivate static let stopFields = "gtfsId, lat, lon, code, platformCode, desc, name"
     fileprivate static let departureFields = "scheduledDeparture, realtimeDeparture, departureDelay, realtime, realtimeState, serviceDay, pickupType, trip {tripHeadsign, directionId, route {shortName, longName, mode}}"
 
@@ -48,14 +51,30 @@ open class HSL {
         "{edges {node {distance, stop { \(stopFields) }}}}}"
     }
 
-    static func updateDeparturesForStops(_ stops: [Stop], callback: @escaping (_ stopsWithDepartures: [Stop]) -> Void) -> Void {
+    static func updateDeparturesForStops(_ stops: [Stop], callback: @escaping (_ stopsWithDepartures: [Stop], _ error: DigitransitError?) -> Void) -> Void {
         HTTP.post(APIURL, body: getDeparturesForStopsQuery(stops: stops), callback: {(obj: [String: AnyObject], error: String?) in
-            if let data = obj["data"] as? [String: AnyObject],
+            if let errors = obj["errors"] as? NSArray {
+                if let dataFetchingException = errors.first(where: {e in
+                    if let errorType = (e as AnyObject)["errorType"] as? String {
+                        return errorType == "DataFetchingException"
+                    }
+                    return false
+                }) as? AnyObject,
+                let message = dataFetchingException["message"] as? String,
+                let range = message.range(of: "invalid agency-and-id: ") {
+                    let id = message[range.upperBound...]
+                    callback(stops, DigitransitError.dataFetchingError(id: String(id), stop: nil))
+                    NSLog(message)
+                } else {
+                    NSLog("Error updating departures for stops")
+                    callback(stops, DigitransitError.unknownError)
+                }
+            } else if let data = obj["data"] as? [String: AnyObject],
                 let stopsData = data["stops"] as? [[String: AnyObject]] {
                 let stops = stopsData.map({stop in parseStop(stop)})
-                callback(Tools.unwrapAndStripNils(stops))
+                callback(Tools.unwrapAndStripNils(stops), nil)
             } else {
-                callback([])
+                callback(stops, nil)
             }
         })
     }
@@ -224,7 +243,7 @@ open class HSL {
         return deps
     }
 
-    private static func shortCodeForRoute(routeData: [String: AnyObject]) -> String {
+    fileprivate static func shortCodeForRoute(routeData: [String: AnyObject]) -> String {
         if let mode = routeData["mode"] as? String , mode == "SUBWAY" {
             return "Metro"
         }

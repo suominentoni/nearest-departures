@@ -40,11 +40,39 @@ class StopsTableViewController: UITableViewController {
     @objc fileprivate func loadData() {
         let x = self.tableView.center.x
         let y = self.tableView.center.y
-        self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
+        self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70, height: 70))
 
-        self.delegate?.loadData(callback: {(stops: [Stop]?) in
-            self.updateUI(stops: stops)
+        self.delegate?.loadData(callback: {(stops: [Stop]?, error: DigitransitError?) in
+            if (error != nil) {
+                self.displayLoadDataFailedAlert(error: error!)
+            } else {
+                self.updateUI(stops: stops)
+            }
         })
+    }
+
+    fileprivate func displayLoadDataFailedAlert(error: DigitransitError) {
+        var alert: UIAlertController
+        switch error {
+        case DigitransitError.dataFetchingError(let data):
+            alert = UIAlertController(
+                title: Const.DATA_LOAD_FAILED_TITLE,
+                message: "\(Const.DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE)\(stopDescription(stop: data.stop)) \(data.id)",
+                preferredStyle: UIAlertControllerStyle.alert)
+        default:
+            alert = UIAlertController(
+                title: Const.DATA_LOAD_FAILED_TITLE,
+                message: Const.DATA_LOAD_FAILED_UNKOWN_MESSAGE,
+                preferredStyle: UIAlertControllerStyle.alert)
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    fileprivate func stopDescription(stop: Stop?) -> String {
+        return stop != nil
+            ? "\(stop!.name)  \(stop!.codeShort)"
+            : ""
     }
 
     fileprivate func updateUI(stops: [Stop]?) {

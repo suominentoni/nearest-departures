@@ -10,7 +10,6 @@ import Foundation
 
 class FavoriteStops {
     fileprivate static let FAVORITE_STOPS_KEY = "hsl_fav_stops"
-
     static func all() -> [Stop] {
         if let data = UserDefaults.standard.object(forKey: FAVORITE_STOPS_KEY) as? Data,
         let stops = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Stop] {
@@ -54,7 +53,6 @@ class FavoriteStops {
 
     static func add(_ stop: Stop) {
         var stops = FavoriteStops.all()
-
         if(!self.isFavoriteStop(stop)) {
             NSLog("Saving favorite stop: \(stop.name) \(stop.codeLong)")
             stops.append(stop)
@@ -67,6 +65,13 @@ class FavoriteStops {
         NSLog("Removing favorite stop: \(stop.name) \(stop.codeLong)")
         let stops = FavoriteStops.all().filter { $0 != stop }
         saveToUserDefaults(stops)
+    }
+
+    static func getBy(_ code: String) -> Stop? {
+        if let stop = FavoriteStops.all().first(where: {$0.codeLong == code || $0.codeShort == code}) {
+            return stop
+        }
+        return nil
     }
 
     fileprivate static func saveToUserDefaults(_ stops: [Stop]) {

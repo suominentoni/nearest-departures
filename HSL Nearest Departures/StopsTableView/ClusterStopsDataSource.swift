@@ -22,8 +22,8 @@ class ClusterStopsDataSource: NSObject, StopsTableViewControllerDelegate {
         self.updateUI(self.stops)
     }
 
-    func loadData(callback: @escaping ([Stop]?) -> Void) {
-        callback(self.stops)
+    func loadData(callback: @escaping ([Stop]?, DigitransitError?) -> Void) {
+        callback(self.stops, nil)
     }
 
     func getTitle() -> String {
