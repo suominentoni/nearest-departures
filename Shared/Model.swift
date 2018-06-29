@@ -111,4 +111,8 @@ public struct Const {
 
     static let STOPS = "Pysäkit"
     static let NO_STOPS = "Ei pysäkkejä"
+
+    static let DATA_LOAD_FAILED_TITLE = "Virhe"
+    static let DATA_LOAD_FAILED_UNKOWN_MESSAGE = "Virhe haettaessa pysäkkitietoja"
+    static let DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE = "Virhe haettaessa pysäkkitietoja. Pysäkkiä ei löytynyt: "
 }
