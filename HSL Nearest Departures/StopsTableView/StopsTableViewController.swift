@@ -42,7 +42,7 @@ class StopsTableViewController: UITableViewController {
         let y = self.tableView.center.y
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70, height: 70))
 
-        self.delegate?.loadData(callback: {(stops: [Stop]?, error: DigitransitError?) in
+        self.delegate?.loadData(callback: {(stops: [Stop]?, error: TransitDataError?) in
             if (error != nil) {
                 self.displayLoadDataFailedAlert(error: error!)
             } else {
@@ -51,13 +51,18 @@ class StopsTableViewController: UITableViewController {
         })
     }
 
-    fileprivate func displayLoadDataFailedAlert(error: DigitransitError) {
+    fileprivate func displayLoadDataFailedAlert(error: TransitDataError) {
         var alert: UIAlertController
         switch error {
-        case DigitransitError.dataFetchingError(let data):
+        case TransitDataError.dataFetchingError(let data):
             alert = UIAlertController(
                 title: Const.DATA_LOAD_FAILED_TITLE,
                 message: "\(Const.DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE)\(stopDescription(stop: data.stop)) \(data.id)",
+                preferredStyle: UIAlertControllerStyle.alert)
+        case TransitDataError.favouriteStopsFetchingError:
+            alert = UIAlertController(
+                title: Const.DATA_LOAD_FAILED_TITLE,
+                message: Const.DATA_LOAD_FAILED_FAVOURITE_STOPS_ERROR_MESSAGE,
                 preferredStyle: UIAlertControllerStyle.alert)
         default:
             alert = UIAlertController(
