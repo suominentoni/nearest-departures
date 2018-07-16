@@ -22,7 +22,7 @@ class ClusterStopsDataSource: NSObject, StopsTableViewControllerDelegate {
         self.updateUI(self.stops)
     }
 
-    func loadData(callback: @escaping ([Stop]?, DigitransitError?) -> Void) {
+    func loadData(callback: @escaping ([Stop]?, TransitDataError?) -> Void) {
         callback(self.stops, nil)
     }
 

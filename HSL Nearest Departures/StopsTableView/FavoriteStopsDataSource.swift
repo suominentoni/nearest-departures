@@ -17,19 +17,22 @@ class FavoriteStopsDataSource: NSObject, StopsTableViewControllerDelegate {
         self.loadData(callback: {(stops, error) in self.updateUI(stops)})
     }
     
-    func loadData(callback: @escaping ([Stop]?, DigitransitError?) -> Void) {
-        let stops = FavoriteStops.all()
-        HSL.updateDeparturesForStops(stops, callback: {(stops: [Stop], error: DigitransitError?) in
-            callback(stops, self.tryGetStopFor(error: error))
-        })
-        self.updateUI(stops)
+    func loadData(callback: @escaping ([Stop]?, TransitDataError?) -> Void) {
+        if let stops = try? FavoriteStops.all() {
+            HSL.updateDeparturesForStops(stops, callback: {(stops: [Stop], error: TransitDataError?) in
+                callback(stops, self.tryGetStopFor(error: error))
+            })
+            self.updateUI(stops)
+        } else {
+            callback([], TransitDataError.favouriteStopsFetchingError)
+        }
     }
 
-    fileprivate func tryGetStopFor(error: DigitransitError?) -> DigitransitError? {
+    fileprivate func tryGetStopFor(error: TransitDataError?) -> TransitDataError? {
         if error != nil {
             switch error! {
-            case DigitransitError.dataFetchingError(let data):
-                return DigitransitError.dataFetchingError(id: data.id, stop: FavoriteStops.getBy(data.id))
+            case TransitDataError.dataFetchingError(let data):
+                return TransitDataError.dataFetchingError(id: data.id, stop: FavoriteStops.getBy(data.id))
             default:
                 return error
             }

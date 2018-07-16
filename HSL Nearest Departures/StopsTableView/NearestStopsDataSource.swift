@@ -23,7 +23,7 @@ class NearestStopsDataSource: NSObject, StopsTableViewControllerDelegate, CLLoca
         setupLocationManager()
     }
 
-    func loadData(callback: @escaping ([Stop]?, DigitransitError?) -> Void) {
+    func loadData(callback: @escaping ([Stop]?, TransitDataError?) -> Void) {
         if (self.lat == 0.0 && self.lon == 0.0) {
             callback(nil, nil)
         } else {
@@ -67,7 +67,7 @@ class NearestStopsDataSource: NSObject, StopsTableViewControllerDelegate, CLLoca
         lon = locations.last!.coordinate.longitude
 
         NSLog("Got new location data")
-        loadData(callback: {(stops: [Stop]?, error: DigitransitError?) in
+        loadData(callback: {(stops: [Stop]?, error: TransitDataError?) in
             self.updateUI(stops)
         })
     }

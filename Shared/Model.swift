@@ -115,4 +115,5 @@ public struct Const {
     static let DATA_LOAD_FAILED_TITLE = "Virhe"
     static let DATA_LOAD_FAILED_UNKOWN_MESSAGE = "Virhe haettaessa pysäkkitietoja"
     static let DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE = "Virhe haettaessa pysäkkitietoja. Pysäkkiä ei löytynyt: "
+    static let DATA_LOAD_FAILED_FAVOURITE_STOPS_ERROR_MESSAGE = "Suosikkipysäkkien haku epäonnistui. Jos ongelma ei poistu, poista ja asenna Lähimmät Lähdöt -sovellus uudelleen. Pahoittelut vaivasta."
 }

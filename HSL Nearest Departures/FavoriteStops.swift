@@ -10,9 +10,9 @@ import Foundation
 
 class FavoriteStops {
     fileprivate static let FAVORITE_STOPS_KEY = "hsl_fav_stops"
-    static func all() -> [Stop] {
+    static func all() throws -> [Stop] {
         if let data = UserDefaults.standard.object(forKey: FAVORITE_STOPS_KEY) as? Data,
-        let stops = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Stop] {
+        let stops = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Stop] {
             return stops.sorted {$0.name < $1.name}
         }
         return []
@@ -20,7 +20,11 @@ class FavoriteStops {
 
     static func migrateToAgencyPrefixedCodeFormat() {
         NSLog("Favorite stops: Checking for entries with outdated code format")
-        self.saveToUserDefaults(FavoriteStops.all().map(self.toAgencyPrefixedCodeFormat))
+        if let mappedStops = try? FavoriteStops.all().map(self.toAgencyPrefixedCodeFormat) {
+            self.saveToUserDefaults(mappedStops)
+        } else {
+            NSLog("Error migrating favourite stops to agency prefixed code format. Failed to fetch current favourite stops.")
+        }
     }
 
     private static func toAgencyPrefixedCodeFormat(stop: Stop) -> Stop {
@@ -38,37 +42,46 @@ class FavoriteStops {
     }
 
     static func isFavoriteStop(_ stop: Stop) -> Bool {
-        return FavoriteStops.all().filter({favStop in favStop == stop}).count > 0
+        return (try? FavoriteStops.all().filter({favStop in favStop == stop}).count > 0) ?? false
     }
 
     static func tryUpdate(_ stop: Stop) {
         NSLog("Trying to update stop: \(stop.name) \(stop.codeLong)")
         if(self.isFavoriteStop(stop)) {
             self.remove(stop)
-            var stops = FavoriteStops.all()
-            stops.append(stop)
-            saveToUserDefaults(stops)
+            if var stops = try? FavoriteStops.all() {
+                stops.append(stop)
+                saveToUserDefaults(stops)
+            } else {
+                NSLog("Error updating favourite stop: \(stop.name) \(stop.codeLong). Failed to fetch current favourite stops.")
+            }
         }
     }
 
     static func add(_ stop: Stop) {
-        var stops = FavoriteStops.all()
         if(!self.isFavoriteStop(stop)) {
-            NSLog("Saving favorite stop: \(stop.name) \(stop.codeLong)")
-            stops.append(stop)
-            let data = NSKeyedArchiver.archivedData(withRootObject: stops)
-            UserDefaults.standard.set(data, forKey: FAVORITE_STOPS_KEY)
+            if var stops = try? FavoriteStops.all() {
+                NSLog("Saving favorite stop: \(stop.name) \(stop.codeLong)")
+                stops.append(stop)
+                let data = NSKeyedArchiver.archivedData(withRootObject: stops)
+                UserDefaults.standard.set(data, forKey: FAVORITE_STOPS_KEY)
+            } else {
+                NSLog("Error adding favourite stop: \(stop.name) \(stop.codeLong). Failed to fetch current favourite stops.")
+            }
         }
     }
 
     static func remove(_ stop: Stop) {
         NSLog("Removing favorite stop: \(stop.name) \(stop.codeLong)")
-        let stops = FavoriteStops.all().filter { $0 != stop }
-        saveToUserDefaults(stops)
+        if let stops = try? FavoriteStops.all().filter { $0 != stop } {
+            saveToUserDefaults(stops)
+        } else {
+            NSLog("Error removing favourite stop: \(stop.name) \(stop.codeLong). Failed to fetch current favourite stops.")
+        }
     }
 
     static func getBy(_ code: String) -> Stop? {
-        if let stop = FavoriteStops.all().first(where: {$0.codeLong == code || $0.codeShort == code}) {
+        if let stop = try? FavoriteStops.all().first(where: {$0.codeLong == code || $0.codeShort == code}) {
             return stop
         }
         return nil

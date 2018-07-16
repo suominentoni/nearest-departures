@@ -9,7 +9,7 @@
 protocol StopsTableViewControllerDelegate: class {
     var updateUI: (_ stops: [Stop]?) -> Void { get set }
     func viewDidLoad() -> Void
-    func loadData(callback: @escaping ([Stop]?, DigitransitError?) -> Void) -> Void
+    func loadData(callback: @escaping ([Stop]?, TransitDataError?) -> Void) -> Void
     func getTitle() -> String
     func getNoStopsMessage() -> String
 }

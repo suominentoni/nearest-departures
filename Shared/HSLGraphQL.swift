@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 
-enum DigitransitError: Error {
+enum TransitDataError: Error {
     case dataFetchingError(id: String, stop: Stop?)
+    case favouriteStopsFetchingError
     case unknownError
 }
 
@@ -51,7 +52,7 @@ open class HSL {
         "{edges {node {distance, stop { \(stopFields) }}}}}"
     }
 
-    static func updateDeparturesForStops(_ stops: [Stop], callback: @escaping (_ stopsWithDepartures: [Stop], _ error: DigitransitError?) -> Void) -> Void {
+    static func updateDeparturesForStops(_ stops: [Stop], callback: @escaping (_ stopsWithDepartures: [Stop], _ error: TransitDataError?) -> Void) -> Void {
         HTTP.post(APIURL, body: getDeparturesForStopsQuery(stops: stops), callback: {(obj: [String: AnyObject], error: String?) in
             if let errors = obj["errors"] as? NSArray {
                 if let dataFetchingException = errors.first(where: {e in
@@ -63,11 +64,11 @@ open class HSL {
                 let message = dataFetchingException["message"] as? String,
                 let range = message.range(of: "invalid agency-and-id: ") {
                     let id = message[range.upperBound...]
-                    callback(stops, DigitransitError.dataFetchingError(id: String(id), stop: nil))
+                    callback(stops, TransitDataError.dataFetchingError(id: String(id), stop: nil))
                     NSLog(message)
                 } else {
                     NSLog("Error updating departures for stops")
-                    callback(stops, DigitransitError.unknownError)
+                    callback(stops, TransitDataError.unknownError)
                 }
             } else if let data = obj["data"] as? [String: AnyObject],
                 let stopsData = data["stops"] as? [[String: AnyObject]] {
