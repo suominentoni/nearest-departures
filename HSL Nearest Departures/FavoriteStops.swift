@@ -89,7 +89,6 @@ class FavoriteStops {
     }
 
     fileprivate static func saveToUserDefaults(_ stops: [Stop]) {
-        //NSKeyedArchiver.setClassName("Lähimmät_Lähdöt.Stop", for: Stop.self)
         let data = NSKeyedArchiver.archivedData(withRootObject: stops)
         UserDefaults.standard.set(data, forKey: FAVORITE_STOPS_KEY)
     }
