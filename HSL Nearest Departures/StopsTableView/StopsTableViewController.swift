@@ -84,7 +84,7 @@ class StopsTableViewController: UITableViewController {
         if (stops != nil) {
             DispatchQueue.main.async(execute: {
                 self.stops = stops!
-                self.hasShortCodes = Tools.hasShortCodes(stops: stops!)
+                self.hasShortCodes = stops!.hasShortCodes()
                 self.tableView.backgroundView = nil
                 if (self.stops.count == 0) {
                     let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
@@ -118,7 +118,7 @@ class StopsTableViewController: UITableViewController {
         cell.code.addConstraint(codeWidthConstraint)
 
         cell.name.text = stop.name
-        cell.destinations.text = Tools.destinationsFromDepartures(departures: stop.departures)
+        cell.destinations.text = stop.departures.destinations()
         cell.distance.text = self.isNearestStopsView()
             ? String(stop.distance) + " m"
             : ""

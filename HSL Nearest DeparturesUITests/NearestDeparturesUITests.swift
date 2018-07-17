@@ -44,6 +44,12 @@ class HSL_Nearest_DeparturesUITests: XCTestCase {
         XCTAssert(app.staticTexts["<50 m"].waitForExistence(timeout: 1000))
     }
 
+    func test_AppStartup_ShowsNextDepartures() {
+        let app = XCUIApplication()
+        app.tables.cells.element(boundBy: 0).click()
+        XCTAssert(app.staticTexts["Meilahti"].waitForExistence(timeout: 1000))
+    }
+
     func test_StopMap_DisplaysStopPin() {
         let app = XCUIApplication()
         app.tables.cells.element(boundBy: 0).click()

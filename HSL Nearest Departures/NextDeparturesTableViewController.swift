@@ -27,7 +27,7 @@ class NextDeparturesTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 250
 
-        stopName.text = Tools.formatStopText(stop: self.stop)
+        stopName.text = stop.nameWithCode
 
         favoriteImageView.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(NextDeparturesTableViewController.favoriteTap))
@@ -86,9 +86,9 @@ class NextDeparturesTableViewController: UITableViewController {
         let y = self.tableView.center.y
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
 
-        HSL.departuresForStop(self.stop.codeLong, callback: {(nextDepartures: [Departure]) -> Void in
+        HSL.sharedInstance.departuresForStop(self.stop.codeLong, callback: {(nextDepartures: [Departure]) -> Void in
             self.stop.departures = nextDepartures
-            self.hasShortCodes = Tools.hasShortCodes(departures: nextDepartures)
+            self.hasShortCodes = nextDepartures.hasShortCodes()
             DispatchQueue.main.async(execute: {
                 if(self.stop.departures.count == 0) {
                     let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
@@ -136,7 +136,7 @@ class NextDeparturesTableViewController: UITableViewController {
             } else {
                 cell.code.text = departure.line.codeLong
             }
-            cell.time.attributedText = Tools.formatDepartureTime(departure.scheduledDepartureTime, real: departure.realDepartureTime)
+            cell.time.attributedText = departure.formattedDepartureTime()
         })
 
         return cell

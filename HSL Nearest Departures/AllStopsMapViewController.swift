@@ -109,8 +109,8 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
                 hideShowInfoLabel(hide: true)
             }
 
-            HSL.stopsForRect(minLat: minLat, minLon: minLon, maxLat: maxLat, maxLon: Maxlon, callback: {(stops: [Stop]) in
-                let stopPins = stops.map({stop -> StopAnnotation in
+            HSL.sharedInstance.stopsForRect(minLat: minLat, minLon: minLon, maxLat: maxLat, maxLon: Maxlon, callback: {(stops: [Stop]) in
+                let stopPins = stops.map({stop -> MKPointAnnotation in
                     let lat = CLLocationDegrees(floatLiteral: stop.lat)
                     let lon = CLLocationDegrees(floatLiteral: stop.lon)
                     let pin = StopAnnotation(stop: stop)

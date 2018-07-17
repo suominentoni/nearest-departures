@@ -18,14 +18,14 @@ class StopMapViewController: UIViewController, MKMapViewDelegate {
 
     override func viewDidLoad() {
         stopMap.delegate = self
-        self.title = Tools.formatStopText(stop: self.stop)
+        self.title = stop.nameWithCode
         stopMap.showsUserLocation = true
         stopMap.showsScale = true
         stopMap.showsCompass = true
         stopMap.showsBuildings = true
 
         if(!stop.hasCoordinates()) {
-            HSL.coordinatesForStop(stop, callback: {(lat: Double, lon: Double) -> Void in
+            HSL.sharedInstance.coordinatesForStop(stop, callback: {(lat: Double, lon: Double) -> Void in
                 // If stop had no coordinates set, it is most probably a favorite stop, and saved to
                 // favorite stops prior to version 2.0.0, which added coordinates to the Stop class.
                 // In such case, let's update the coordinates to the favorite stop entry.

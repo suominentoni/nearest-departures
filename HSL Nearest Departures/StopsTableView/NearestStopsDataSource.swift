@@ -27,7 +27,7 @@ class NearestStopsDataSource: NSObject, StopsTableViewControllerDelegate, CLLoca
         if (self.lat == 0.0 && self.lon == 0.0) {
             callback(nil, nil)
         } else {
-            HSL.nearestStopsAndDepartures(self.lat, lon: self.lon, callback: {(stops: [Stop]) in
+            HSL.sharedInstance.nearestStopsAndDepartures(self.lat, lon: self.lon, callback: {(stops: [Stop]) in
                 callback(stops, nil)
             })
         }

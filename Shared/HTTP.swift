@@ -9,7 +9,7 @@
 import Foundation
 
 open class HTTP {
-    static func getJSONObject(
+    private func getJSONObject(
         _ url: String,
         callback: @escaping ([String: AnyObject], String?) -> Void) -> Void {
             NSLog("HTTP GET: " + url)
@@ -27,7 +27,7 @@ open class HTTP {
             }
     }
 
-    static func post(
+    func post(
         _ url: String,
         body: String,
         callback: @escaping ([String: AnyObject], String?) -> Void) -> Void {
@@ -49,7 +49,7 @@ open class HTTP {
             }
     }
 
-    static func getJSONArray(
+    private func getJSONArray(
         _ url: String,
         callback: @escaping ([AnyObject], String?) -> Void) -> Void {
             let request = NSMutableURLRequest(url: URL(string: url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!)
@@ -66,7 +66,7 @@ open class HTTP {
             }
     }
 
-    static fileprivate func JSONParseArray(_ jsonString:String) -> [AnyObject] {
+    fileprivate func JSONParseArray(_ jsonString:String) -> [AnyObject] {
         if let data: Data = jsonString.data(
             using: String.Encoding.utf8){
                 do{
@@ -82,7 +82,7 @@ open class HTTP {
         return [AnyObject]()
     }
 
-    static fileprivate func JSONParseDict(_ jsonString:String) -> [String: AnyObject] {
+    fileprivate func JSONParseDict(_ jsonString:String) -> [String: AnyObject] {
         if let data: Data = jsonString.data(
             using: String.Encoding.utf8){
                 do{
@@ -98,7 +98,7 @@ open class HTTP {
         return [String: AnyObject]()
     }
 
-    static fileprivate func HTTPsendRequest(_ request: NSMutableURLRequest,
+    func HTTPsendRequest(_ request: NSMutableURLRequest,
         callback: @escaping (String, String?) -> Void) -> Void {
             let task = URLSession.shared.dataTask(
                 with: request as URLRequest, completionHandler :

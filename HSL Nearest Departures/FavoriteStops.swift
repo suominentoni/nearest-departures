@@ -10,6 +10,7 @@ import Foundation
 
 class FavoriteStops {
     fileprivate static let FAVORITE_STOPS_KEY = "hsl_fav_stops"
+
     static func all() throws -> [Stop] {
         if let data = UserDefaults.standard.object(forKey: FAVORITE_STOPS_KEY) as? Data,
         let stops = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Stop] {
