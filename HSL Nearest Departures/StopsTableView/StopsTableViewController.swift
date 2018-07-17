@@ -101,7 +101,7 @@ class StopsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NearestStopCell", for: indexPath) as! NearestStopsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StopsTableCell", for: indexPath) as! StopsTableCell
         let stop = stopForIndexPath(indexPath: indexPath)
 
         cell.code.text = stop.codeShort
