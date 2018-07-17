@@ -50,7 +50,7 @@ class TransitDataTests: XCTestCase {
 
         HSL.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
             XCTAssertEqual(stops[0].distance, "<50")
-            XCTAssertEqual(stops[1].distance, "61")
+            XCTAssertEqual(stops[1].distance, "60")
             ex.fulfill()
         })
 
@@ -74,7 +74,7 @@ class TransitDataTests: XCTestCase {
 
         HSL.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
             XCTAssertEqual(stops[0].codeLong, "MATKA:7_201269")
-            XCTAssertEqual(stops[0].codeShort, "-")
+            XCTAssertEqual(stops[0].codeShort, "1641")
             ex.fulfill()
         })
 
@@ -98,7 +98,7 @@ class TransitDataTests: XCTestCase {
         HSL.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
             XCTAssertEqual(stops[0].departures[0].line.destination, "Neulamäki P")
             XCTAssertEqual(stops[0].departures[0].line.codeShort, "4")
-            XCTAssertEqual(stops[0].departures.destinations(), "Neulamäki P, Microteknia E")
+            XCTAssertEqual(stops[0].departures.destinations(), "Neulamäki P")
             ex.fulfill()
         })
 
