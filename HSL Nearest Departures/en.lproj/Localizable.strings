@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  HSL Nearest Departures
+
+  Created by Toni Suominen on 17/07/2018.
+  Copyright © 2018 Toni Suominen. All rights reserved.
+*/
+
+"NEAREST_STOPS_TITLE" = "Nearest stops";
+"NO_STOPS_TITLE" = "No stops";
+"NO_STOPS_MSG" = "No stops found nearby. Stops are searched within a 5000 meter walking distance.";
+
+"FAVORITE_STOPS_TITLE" = "Favourite stops";
+"NO_FAVORITE_STOPS_MSG" = "No favourite stops saved. \n \n Save a favourite stop by clicking the heart icon in the next departures list of a stop.";
+
+"NO_DEPARTURES_TITLE" = "No departures";
+"NO_DEPARTURES_MSG" = "No departures found.";
+
+"LOCATION_REQUEST_FAILED_TITLE" = "Error";
+"LOCATION_REQUEST_FAILED_MSG" = "Could not determine location. Please make sure that Location Services are allowed for the application.";
+
+"STOPS" = "Stops";
+"NO_STOPS" = "No stops";
+
+"DATA_LOAD_FAILED_TITLE" = "Error";
+"DATA_LOAD_FAILED_UNKOWN_MESSAGE" = "Error fetching stop data";
+"DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE" = "Error fetching stop data. Stop not found: ";
+"DATA_LOAD_FAILED_FAVOURITE_STOPS_ERROR_MESSAGE" = "Error fetching favourite stops. If the error persists, please delete the Nearest Departures application and install it again. Apologies for the trouble!";

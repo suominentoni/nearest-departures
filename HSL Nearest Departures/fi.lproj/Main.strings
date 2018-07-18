@@ -1,0 +1,45 @@
+
+/* Class = "UINavigationItem"; title = "Kaikki pysäkit"; ObjectID = "0K1-ir-DcH"; */
+"0K1-ir-DcH.title" = "Kaikki pysäkit";
+
+/* Class = "UITabBarItem"; title = "Kartta"; ObjectID = "0Zi-3v-MDj"; */
+"0Zi-3v-MDj.title" = "Kartta";
+
+/* Class = "UILabel"; text = "Tarkenna lähemmäksi nähdäksesi kaikki pysäkit"; ObjectID = "3AH-6S-MAE"; */
+"3AH-6S-MAE.text" = "Tarkenna lähemmäksi nähdäksesi kaikki pysäkit";
+
+/* Class = "UILabel"; text = "00:00 33:33"; ObjectID = "Dz4-1M-djI"; */
+"Dz4-1M-djI.text" = "00:00 33:33";
+
+/* Class = "UILabel"; text = "–"; ObjectID = "HLC-eA-6Xp"; */
+"HLC-eA-6Xp.text" = "–";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "LOw-nK-Wua"; */
+"LOw-nK-Wua.text" = "-";
+
+/* Class = "UILabel"; text = "500 m"; ObjectID = "QEP-ZU-DZc"; */
+"QEP-ZU-DZc.text" = "500 m";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "dVQ-z0-gVB"; */
+"dVQ-z0-gVB.text" = "-";
+
+/* Class = "UITabBarItem"; title = "Suosikit"; ObjectID = "j8t-rR-QMs"; */
+"j8t-rR-QMs.title" = "Suosikit";
+
+/* Class = "UIImageView"; accessibilityLabel = "favoriteImage"; ObjectID = "l3e-UH-zHC"; */
+"l3e-UH-zHC.accessibilityLabel" = "favoriteImage";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "omk-5U-uEm"; */
+"omk-5U-uEm.text" = "-";
+
+/* Class = "UIBarButtonItem"; title = "Kartta"; ObjectID = "qnY-hR-g5L"; */
+"qnY-hR-g5L.title" = "Kartta";
+
+/* Class = "UITabBarItem"; title = "Lähimmät"; ObjectID = "v90-nd-Xfe"; */
+"v90-nd-Xfe.title" = "Lähimmät";
+
+/* Class = "UINavigationItem"; title = "Lähimmät pysäkkisi"; ObjectID = "vfK-TU-LfS"; */
+"vfK-TU-LfS.title" = "Lähimmät pysäkkisi";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "yCx-JA-9ec"; */
+"yCx-JA-9ec.text" = "-";

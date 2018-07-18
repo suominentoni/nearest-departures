@@ -161,29 +161,3 @@ public struct Line {
     let codeShort: String?
     let destination: String?
 }
-
-public struct Const {
-    static let NEAREST_STOPS_TITLE = "Lähimmät pysäkkisi"
-    static let NO_STOPS_TITLE = "Ei pysäkkejä"
-    static let NO_STOPS_MSG = "Lähistöltä ei löytynyt pysäkkejä. Sovellus etsii pysäkkejä maksimissaan 5000 metrin kävelymatkan päästä."
-
-    static let FAVORITE_STOPS_TITLE = "Suosikkipysäkkisi"
-    static let NO_FAVORITE_STOPS_MSG = "Ei suosikkipysäkkejä valittuna. \n \n Valitse pysäkki suosikiksi painamalla sydäntä pysäkin seuraavien lähtöjen listassa."
-
-    static let UNLOCK_IPHONE_TITLE = "Avaa iPhonen lukitus"
-    static let UNLOCK_IPHONE_MSG = "iPhonen lukitus täytyy avata uudelleenkäynnistyksen jälkeen jotta Apple Watchin ja iPhonen välinen kommunikaatio on mahdollista."
-
-    static let NO_DEPARTURES_TITLE = "Ei lähtöjä"
-    static let NO_DEPARTURES_MSG = "Lähtöjä ei löytynyt."
-
-    static let LOCATION_REQUEST_FAILED_TITLE = "Virhe"
-    static let LOCATION_REQUEST_FAILED_MSG = "Sijainnin selvittäminen epäonnistui. Varmista, että sijaintipalvelut on sallittu sovellukselle."
-
-    static let STOPS = "Pysäkit"
-    static let NO_STOPS = "Ei pysäkkejä"
-
-    static let DATA_LOAD_FAILED_TITLE = "Virhe"
-    static let DATA_LOAD_FAILED_UNKOWN_MESSAGE = "Virhe haettaessa pysäkkitietoja"
-    static let DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE = "Virhe haettaessa pysäkkitietoja. Pysäkkiä ei löytynyt: "
-    static let DATA_LOAD_FAILED_FAVOURITE_STOPS_ERROR_MESSAGE = "Suosikkipysäkkien haku epäonnistui. Jos ongelma ei poistu, poista ja asenna Lähimmät Lähdöt -sovellus uudelleen. Pahoittelut vaivasta."
-}

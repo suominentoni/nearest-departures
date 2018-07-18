@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  HSL Nearest Departures
+
+  Created by Toni Suominen on 17/07/2018.
+  Copyright © 2018 Toni Suominen. All rights reserved.
+*/
+
+"NEAREST_STOPS_TITLE" = "Lähimmät pysäkkisi";
+"NO_STOPS_TITLE" = "Ei pysäkkejä";
+"NO_STOPS_MSG" = "Lähistöltä ei löytynyt pysäkkejä. Sovellus etsii pysäkkejä maksimissaan 5000 metrin kävelymatkan päästä.";
+
+"FAVORITE_STOPS_TITLE" = "Suosikkipysäkkisi";
+"NO_FAVORITE_STOPS_MSG" = "Ei suosikkipysäkkejä valittuna. \n \n Valitse pysäkki suosikiksi painamalla sydäntä pysäkin seuraavien lähtöjen listassa.";
+
+"NO_DEPARTURES_TITLE" = "Ei lähtöjä";
+"NO_DEPARTURES_MSG" = "Lähtöjä ei löytynyt.";
+
+"LOCATION_REQUEST_FAILED_TITLE" = "Virhe";
+"LOCATION_REQUEST_FAILED_MSG" = "Sijainnin selvittäminen epäonnistui. Varmista, että sijaintipalvelut on sallittu sovellukselle.";
+
+"STOPS" = "Pysäkit";
+"NO_STOPS" = "Ei pysäkkejä";
+
+"DATA_LOAD_FAILED_TITLE" = "Virhe";
+"DATA_LOAD_FAILED_UNKOWN_MESSAGE" = "Virhe haettaessa pysäkkitietoja";
+"DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE" = "Virhe haettaessa pysäkkitietoja. Pysäkkiä ei löytynyt: ";
+"DATA_LOAD_FAILED_FAVOURITE_STOPS_ERROR_MESSAGE" = "Suosikkipysäkkien haku epäonnistui. Jos ongelma ei poistu, poista ja asenna Lähimmät Lähdöt -sovellus uudelleen. Pahoittelut vaivasta!";

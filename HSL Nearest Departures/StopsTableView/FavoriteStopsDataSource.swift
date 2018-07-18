@@ -41,10 +41,10 @@ class FavoriteStopsDataSource: NSObject, StopsTableViewControllerDelegate {
     }
 
     func getTitle() -> String {
-        return Const.FAVORITE_STOPS_TITLE
+        return NSLocalizedString("FAVORITE_STOPS_TITLE", comment: "")
     }
     
     func getNoStopsMessage() -> String {
-        return Const.NO_FAVORITE_STOPS_MSG
+        return NSLocalizedString("NO_FAVORITE_STOPS_MSG", comment: "")
     }
 }

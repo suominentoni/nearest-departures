@@ -56,18 +56,18 @@ class StopsTableViewController: UITableViewController {
         switch error {
         case TransitDataError.dataFetchingError(let data):
             alert = UIAlertController(
-                title: Const.DATA_LOAD_FAILED_TITLE,
-                message: "\(Const.DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE)\(stopDescription(stop: data.stop)) \(data.id)",
+                title: NSLocalizedString("DATA_LOAD_FAILED_TITLE", comment: ""),
+                message: "\(NSLocalizedString("DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE", comment: ""))\(stopDescription(stop: data.stop)) \(data.id)",
                 preferredStyle: UIAlertControllerStyle.alert)
         case TransitDataError.favouriteStopsFetchingError:
             alert = UIAlertController(
-                title: Const.DATA_LOAD_FAILED_TITLE,
-                message: Const.DATA_LOAD_FAILED_FAVOURITE_STOPS_ERROR_MESSAGE,
+                title: NSLocalizedString("DATA_LOAD_FAILED_TITLE", comment: ""),
+                message: NSLocalizedString("DATA_LOAD_FAILED_FAVOURITE_STOPS_ERROR_MESSAGE", comment: ""),
                 preferredStyle: UIAlertControllerStyle.alert)
         default:
             alert = UIAlertController(
-                title: Const.DATA_LOAD_FAILED_TITLE,
-                message: Const.DATA_LOAD_FAILED_UNKOWN_MESSAGE,
+                title: NSLocalizedString("DATA_LOAD_FAILED_TITLE", comment: ""),
+                message: NSLocalizedString("DATA_LOAD_FAILED_UNKOWN_MESSAGE", comment: ""),
                 preferredStyle: UIAlertControllerStyle.alert)
         }
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))

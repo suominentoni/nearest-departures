@@ -27,10 +27,10 @@ class ClusterStopsDataSource: NSObject, StopsTableViewControllerDelegate {
     }
 
     func getTitle() -> String {
-        return Const.STOPS
+        return NSLocalizedString("STOPS", comment: "")
     }
 
     func getNoStopsMessage() -> String {
-        return Const.NO_STOPS
+        return NSLocalizedString("NO_STOPS", comment: "")
     }
 }

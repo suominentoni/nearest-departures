@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lähimmät pysäkkisi-->
+        <!--Nearest stops-->
         <scene sceneID="2Py-lS-yZr">
             <objects>
                 <tableViewController id="LR4-Mp-m1r" customClass="StopsTableViewController" customModule="Lahimmat_Lahdot" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500 m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEP-ZU-DZc">
-                                            <rect key="frame" x="295" y="11" width="65" height="22"/>
+                                            <rect key="frame" x="520" y="11" width="65" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="oHW-sm-oCC"/>
                                             </constraints>
@@ -93,7 +93,7 @@
                             <outlet property="delegate" destination="LR4-Mp-m1r" id="PyK-Qt-OWJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Lähimmät pysäkkisi" id="vfK-TU-LfS"/>
+                    <navigationItem key="navigationItem" title="Nearest stops" id="vfK-TU-LfS"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYu-eE-bMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -201,7 +201,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="KuD-7u-1UG">
-                        <barButtonItem key="rightBarButtonItem" title="Kartta" id="qnY-hR-g5L">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="qnY-hR-g5L">
                             <connections>
                                 <segue destination="0jV-mT-q6S" kind="show" id="6mx-KD-Xpd"/>
                             </connections>
@@ -234,11 +234,11 @@
             </objects>
             <point key="canvasLocation" x="3703" y="697"/>
         </scene>
-        <!--Lähimmät-->
+        <!--Nearest-->
         <scene sceneID="5nY-NW-XXN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sLp-m5-hd1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lähimmät" image="ic_place" selectedImage="ic_place" id="v90-nd-Xfe"/>
+                    <tabBarItem key="tabBarItem" title="Nearest" image="ic_place" selectedImage="ic_place" id="v90-nd-Xfe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nTX-ww-j1c">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -273,11 +273,11 @@
             </objects>
             <point key="canvasLocation" x="15" y="697"/>
         </scene>
-        <!--Suosikit-->
+        <!--Favourites-->
         <scene sceneID="OP8-dJ-ySS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mS4-bc-wno" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Suosikit" image="ic_favorite" id="j8t-rR-QMs"/>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="ic_favorite" id="j8t-rR-QMs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="COc-oV-FvD">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -292,11 +292,11 @@
             </objects>
             <point key="canvasLocation" x="1029" y="697"/>
         </scene>
-        <!--Kartta-->
+        <!--Map-->
         <scene sceneID="x5d-6L-45a">
             <objects>
                 <navigationController id="wSo-WZ-YLV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kartta" image="ic_map" id="0Zi-3v-MDj"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="ic_map" id="0Zi-3v-MDj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hAX-4M-Ll0">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -309,7 +309,7 @@
             </objects>
             <point key="canvasLocation" x="1028" y="1463"/>
         </scene>
-        <!--Kaikki pysäkit-->
+        <!--All stops-->
         <scene sceneID="qd0-o6-B8M">
             <objects>
                 <viewController id="1hj-jr-Blv" customClass="AllStopsMapViewController" customModule="Lahimmat_Lahdot" customModuleProvider="target" sceneMemberID="viewController">
@@ -324,7 +324,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3L6-Fw-WeR">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tarkenna lähemmäksi nähdäksesi kaikki pysäkit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AH-6S-MAE">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zoom in to see all stops" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AH-6S-MAE">
                                 <rect key="frame" x="0.0" y="64" width="375" height="17"/>
                                 <color key="backgroundColor" red="0.84695434570000006" green="0.84695434570000006" blue="0.84695434570000006" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -343,7 +343,7 @@
                             <constraint firstItem="3L6-Fw-WeR" firstAttribute="leading" secondItem="TTd-Dl-uzX" secondAttribute="leading" id="qrE-5j-Iz9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Kaikki pysäkit" id="0K1-ir-DcH"/>
+                    <navigationItem key="navigationItem" title="All stops" id="0K1-ir-DcH"/>
                     <connections>
                         <outlet property="allStopsMap" destination="3L6-Fw-WeR" id="GE4-Yj-8ly"/>
                         <outlet property="infoLabel" destination="3AH-6S-MAE" id="i1Q-Ed-Nhf"/>
@@ -363,6 +363,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nOX-tg-TJh"/>
-        <segue reference="viF-Ke-NAY"/>
+        <segue reference="3US-4l-awv"/>
     </inferredMetricsTieBreakers>
 </document>
