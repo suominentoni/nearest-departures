@@ -111,8 +111,8 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l3e-UH-zHC">
-                                    <rect key="frame" x="550" y="10" width="30" height="30"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l3e-UH-zHC">
+                                    <rect key="frame" x="325" y="10" width="30" height="30"/>
                                     <accessibility key="accessibilityConfiguration" label="favoriteImage">
                                         <bool key="isElement" value="YES"/>
                                     </accessibility>
@@ -121,8 +121,8 @@
                                         <constraint firstAttribute="height" constant="30" id="jiO-j6-baX"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZm-A4-BJM">
-                                    <rect key="frame" x="20" y="11" width="510" height="29"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZm-A4-BJM">
+                                    <rect key="frame" x="20" y="11" width="285" height="29"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -362,7 +362,7 @@
         <image name="ic_place" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nOX-tg-TJh"/>
+        <segue reference="v0e-5e-tmf"/>
         <segue reference="3US-4l-awv"/>
     </inferredMetricsTieBreakers>
 </document>
