@@ -144,7 +144,7 @@ extension Array where Element == Departure {
     }
 
     public func destinations() -> String {
-        return self
+        let destinations = self
             .reduce([String](), { (destinations, departure) in
                 if let destination = departure.line.destination, destinations.contains(destination) == false {
                     return destinations + [destination]
@@ -153,6 +153,7 @@ extension Array where Element == Departure {
                 }
             })
             .joined(separator: ", ")
+        return destinations.count == 0 ? "-" : destinations
     }
 }
 
