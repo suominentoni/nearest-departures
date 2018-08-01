@@ -48,7 +48,10 @@ open class NearestStopsInterfaceController: WKInterfaceController, CLLocationMan
     open func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         NSLog("Location Manager error: " + error.localizedDescription)
         if(error._code ==  CLError.Code.denied.rawValue) {
-            self.presentAlert(Const.LOCATION_REQUEST_FAILED_TITLE, message: Const.LOCATION_REQUEST_FAILED_MSG, action: requestLocation)
+            self.presentAlert(
+                NSLocalizedString("LOCATION_REQUEST_FAILED_TITLE", comment: ""),
+                message: NSLocalizedString("LOCATION_REQUEST_FAILED_MSG", comment: ""),
+                action: requestLocation)
         } else {
             requestLocation()
         }
@@ -72,7 +75,7 @@ open class NearestStopsInterfaceController: WKInterfaceController, CLLocationMan
         nearestStopsTable.setNumberOfRows(nearestStops.count, withRowType: "nearestStopsRow")
 
         if(nearestStops.count == 0) {
-            self.presentAlert(Const.NO_STOPS_TITLE, message: Const.NO_STOPS_MSG)
+            self.presentAlert(NSLocalizedString("NO_STOPS_TITLE", comment: ""), message: NSLocalizedString("NO_STOPS_MSG", comment: ""))
         } else {
             var i: Int = 0
             for stop in nearestStops {

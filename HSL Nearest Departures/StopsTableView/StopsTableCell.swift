@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class NearestStopsCell: UITableViewCell {
+class StopsTableCell: UITableViewCell {
     @IBOutlet var code: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var destinations: UILabel!

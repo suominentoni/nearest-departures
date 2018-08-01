@@ -9,7 +9,7 @@
 import Foundation
 
 open class HTTP {
-    private func getJSONObject(
+    fileprivate func getJSONObject(
         _ url: String,
         callback: @escaping ([String: AnyObject], String?) -> Void) -> Void {
             NSLog("HTTP GET: " + url)
@@ -49,7 +49,7 @@ open class HTTP {
             }
     }
 
-    private func getJSONArray(
+    fileprivate func getJSONArray(
         _ url: String,
         callback: @escaping ([AnyObject], String?) -> Void) -> Void {
             let request = NSMutableURLRequest(url: URL(string: url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!)

@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5300420B20FE1AE600790623 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5300420D20FE1AE600790623 /* Localizable.strings */; };
+		5300421120FE8E1500790623 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5300420F20FE8E1500790623 /* InfoPlist.strings */; };
 		530C49871DA4370500D44259 /* ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 530C49861DA4370500D44259 /* ObjC.m */; };
 		530D04B21F7A180500C23F2C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530D04B11F7A180500C23F2C /* TestData.swift */; };
 		530D88291FF79E3F0054E501 /* StopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530D88281FF79E3E0054E501 /* StopsTableViewController.swift */; };
 		53123A3B1D3823DB00D9E646 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53123A3A1D3823DB00D9E646 /* Model.swift */; };
-		5329C5921C70D448000E24F9 /* NearestStopsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5911C70D448000E24F9 /* NearestStopsCell.swift */; };
+		5329C5921C70D448000E24F9 /* StopsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5911C70D448000E24F9 /* StopsTableCell.swift */; };
 		5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */; };
 		5329C5961C70DFC9000E24F9 /* NextDepartureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */; };
 		5334BD72204159D90093CF36 /* Viiskulma.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 539790B220415675007A6067 /* Viiskulma.gpx */; };
 		533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E1C4D1C512963001EA50B /* NearestStopsRow.swift */; };
 		533E1C511C527B42001EA50B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDC1C2C06EC002F0107 /* Interface.storyboard */; };
-		53536F951D66DE76004970E4 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53536F941D66DE76004970E4 /* Tools.swift */; };
-		53536F961D66DFFF004970E4 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53536F941D66DE76004970E4 /* Tools.swift */; };
 		53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */; };
 		535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */; };
 		536C435B1D42328700045CEF /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C435A1D42328700045CEF /* Util.swift */; };
@@ -111,17 +111,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5300420620FE181900790623 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Main.strings; sourceTree = "<group>"; };
+		5300420720FE181A00790623 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5300420820FE181A00790623 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Interface.strings; sourceTree = "<group>"; };
+		5300420C20FE1AE600790623 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5300420E20FE1AEC00790623 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5300421020FE8E1500790623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5300421320FE8E3800790623 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5300421420FE94EC00790623 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		530C49851DA4370400D44259 /* HSL Nearest Departures-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures-Bridging-Header.h"; sourceTree = "<group>"; };
 		530C49861DA4370500D44259 /* ObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjC.m; sourceTree = "<group>"; };
 		530C49891DA4375B00D44259 /* ObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjC.h; sourceTree = "<group>"; };
 		530D04B11F7A180500C23F2C /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		530D88281FF79E3E0054E501 /* StopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsTableViewController.swift; sourceTree = "<group>"; };
 		53123A3A1D3823DB00D9E646 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		5329C5911C70D448000E24F9 /* NearestStopsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsCell.swift; sourceTree = "<group>"; };
+		5329C5911C70D448000E24F9 /* StopsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsTableCell.swift; sourceTree = "<group>"; };
 		5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDeparturesTableViewController.swift; sourceTree = "<group>"; };
 		5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDepartureCell.swift; sourceTree = "<group>"; };
 		533E1C4D1C512963001EA50B /* NearestStopsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsRow.swift; sourceTree = "<group>"; };
-		53536F941D66DE76004970E4 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopMapViewController.swift; sourceTree = "<group>"; };
 		535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsInterfaceController.swift; sourceTree = "<group>"; };
 		536C435A1D42328700045CEF /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -211,7 +218,6 @@
 				53123A3A1D3823DB00D9E646 /* Model.swift */,
 				53C57D811D605D83000F5BF1 /* HTTP.swift */,
 				53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */,
-				53536F941D66DE76004970E4 /* Tools.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -252,12 +258,13 @@
 				53E4ECB91C2C06EC002F0107 /* Assets.xcassets */,
 				53E4ECBB1C2C06EC002F0107 /* LaunchScreen.storyboard */,
 				53E4ECBE1C2C06EC002F0107 /* Info.plist */,
-				5329C5911C70D448000E24F9 /* NearestStopsCell.swift */,
 				5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */,
 				5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */,
 				53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */,
 				53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */,
 				530C49881DA4374000D44259 /* ObjC */,
+				5300420D20FE1AE600790623 /* Localizable.strings */,
+				5300420F20FE8E1500790623 /* InfoPlist.strings */,
 			);
 			path = "HSL Nearest Departures";
 			sourceTree = "<group>";
@@ -322,6 +329,7 @@
 		53EBAFAB20296D8500241EDF /* StopsTableView */ = {
 			isa = PBXGroup;
 			children = (
+				5329C5911C70D448000E24F9 /* StopsTableCell.swift */,
 				530D88281FF79E3E0054E501 /* StopsTableViewController.swift */,
 				53EBAFAC20296DE100241EDF /* StopsTableViewControllerDelegate.swift */,
 				53EBAFAE20296F8000241EDF /* NearestStopsDataSource.swift */,
@@ -433,7 +441,7 @@
 					stopCode,
 				);
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Toni Suominen";
 				TargetAttributes = {
 					53E4ECAE1C2C06EC002F0107 = {
@@ -470,6 +478,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fi,
 			);
 			mainGroup = 53E4ECA61C2C06EC002F0107;
 			productRefGroup = 53E4ECB01C2C06EC002F0107 /* Products */;
@@ -490,6 +499,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5300420B20FE1AE600790623 /* Localizable.strings in Resources */,
+				5300421120FE8E1500790623 /* InfoPlist.strings in Resources */,
 				53E4ECBD1C2C06EC002F0107 /* LaunchScreen.storyboard in Resources */,
 				53E4ECBA1C2C06EC002F0107 /* Assets.xcassets in Resources */,
 				53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */,
@@ -540,7 +551,6 @@
 				5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */,
 				530C49871DA4370500D44259 /* ObjC.m in Sources */,
 				53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */,
-				53536F951D66DE76004970E4 /* Tools.swift in Sources */,
 				53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */,
 				53F638DB202972F200EDC17E /* ClusterStopsDataSource.swift in Sources */,
 				53F638D92029720C00EDC17E /* FavoriteStopsDataSource.swift in Sources */,
@@ -548,7 +558,7 @@
 				5329C5961C70DFC9000E24F9 /* NextDepartureCell.swift in Sources */,
 				53EBAFAD20296DE100241EDF /* StopsTableViewControllerDelegate.swift in Sources */,
 				530D88291FF79E3F0054E501 /* StopsTableViewController.swift in Sources */,
-				5329C5921C70D448000E24F9 /* NearestStopsCell.swift in Sources */,
+				5329C5921C70D448000E24F9 /* StopsTableCell.swift in Sources */,
 				53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */,
 				53CC472D1F459DEC00C1BE9A /* AllStopsMapViewController.swift in Sources */,
 				53C57D851D605E41000F5BF1 /* HSLGraphQL.swift in Sources */,
@@ -587,7 +597,6 @@
 				536C435B1D42328700045CEF /* Util.swift in Sources */,
 				53C57D831D605D83000F5BF1 /* HTTP.swift in Sources */,
 				53F198551C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift in Sources */,
-				53536F961D66DFFF004970E4 /* Tools.swift in Sources */,
 				535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */,
 				53E4ECF01C2C06EC002F0107 /* ExtensionDelegate.swift in Sources */,
 				533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */,
@@ -621,10 +630,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5300420D20FE1AE600790623 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5300420C20FE1AE600790623 /* fi */,
+				5300420E20FE1AEC00790623 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		5300420F20FE8E1500790623 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5300421020FE8E1500790623 /* Base */,
+				5300421320FE8E3800790623 /* fi */,
+				5300421420FE94EC00790623 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		53E4ECB61C2C06EC002F0107 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				53E4ECB71C2C06EC002F0107 /* Base */,
+				5300420620FE181900790623 /* fi */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -633,6 +662,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				53E4ECBC1C2C06EC002F0107 /* Base */,
+				5300420720FE181A00790623 /* fi */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -641,6 +671,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				53E4ECDD1C2C06EC002F0107 /* Base */,
+				5300420820FE181A00790623 /* fi */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -652,6 +683,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -660,12 +692,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -692,7 +726,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -707,6 +741,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -715,12 +750,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -741,7 +778,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";

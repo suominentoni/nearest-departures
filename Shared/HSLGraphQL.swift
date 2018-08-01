@@ -110,9 +110,9 @@ open class HSL {
         })
     }
 
-    private static let DEFAULT_RADIUS = 5000
-    private static let DEFAULT_STOP_COUNT = 30
-    private static let DEFAULT_DEPARTURE_COUNT = 30
+    fileprivate static let DEFAULT_RADIUS = 5000
+    fileprivate static let DEFAULT_STOP_COUNT = 30
+    fileprivate static let DEFAULT_DEPARTURE_COUNT = 30
 
     func nearestStopsAndDepartures(
         _ lat: Double,
@@ -148,7 +148,7 @@ open class HSL {
         })
     }
 
-    private func getStopsForRectQuery(minLat: Double, minLon: Double, maxLat: Double, maxLon: Double) -> String {
+    fileprivate func getStopsForRectQuery(minLat: Double, minLon: Double, maxLat: Double, maxLon: Double) -> String {
         return "{stopsByBbox(minLat:\(minLat), minLon:\(minLon), maxLat:\(maxLat), maxLon:\(maxLon)) { \(stopFields), stoptimesWithoutPatterns(numberOfDepartures: 1) { \(departureFields) }}}"
     }
 

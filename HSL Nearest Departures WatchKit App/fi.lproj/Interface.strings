@@ -1,0 +1,30 @@
+
+/* Class = "WKInterfaceMenuItem"; title = "Refresh"; ObjectID = "3MY-aO-z62"; */
+"3MY-aO-z62.title" = "Refresh";
+
+/* Class = "WKInterfaceLabel"; text = "00:00"; ObjectID = "GXy-H5-Hpq"; */
+"GXy-H5-Hpq.text" = "00:00";
+
+/* Class = "WKInterfaceLabel"; text = "Alert Label"; ObjectID = "IdU-wH-bcW"; */
+"IdU-wH-bcW.text" = "Alert Label";
+
+/* Class = "WKInterfaceLabel"; text = "."; ObjectID = "KGj-I0-paO"; */
+"KGj-I0-paO.text" = ".";
+
+/* Class = "WKInterfaceLabel"; text = "-"; ObjectID = "MqK-Dm-MjV"; */
+"MqK-Dm-MjV.text" = "-";
+
+/* Class = "WKInterfaceLabel"; text = "."; ObjectID = "aCQ-QS-y1h"; */
+"aCQ-QS-y1h.text" = ".";
+
+/* Class = "WKInterfaceLabel"; text = "-"; ObjectID = "jWL-FK-o7Q"; */
+"jWL-FK-o7Q.text" = "-";
+
+/* Class = "WKInterfaceLabel"; text = "-"; ObjectID = "lsO-Vo-R3V"; */
+"lsO-Vo-R3V.text" = "-";
+
+/* Class = "WKInterfaceLabel"; text = "0 m"; ObjectID = "v1g-ie-YRu"; */
+"v1g-ie-YRu.text" = "0 m";
+
+/* Class = "WKInterfaceLabel"; text = "-"; ObjectID = "vsB-Pc-TgV"; */
+"vsB-Pc-TgV.text" = "-";

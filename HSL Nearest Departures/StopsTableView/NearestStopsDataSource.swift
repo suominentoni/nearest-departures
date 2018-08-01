@@ -34,11 +34,11 @@ class NearestStopsDataSource: NSObject, StopsTableViewControllerDelegate, CLLoca
     }
 
     func getTitle() -> String {
-        return Const.NEAREST_STOPS_TITLE
+        return NSLocalizedString("NEAREST_STOPS_TITLE", comment: "")
     }
 
     func getNoStopsMessage() -> String {
-        return Const.NO_STOPS_MSG
+        return NSLocalizedString("NO_STOPS_MSG", comment: "")
     }
 
     fileprivate func setupLocationManager() {

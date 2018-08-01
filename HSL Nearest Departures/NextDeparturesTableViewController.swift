@@ -94,7 +94,7 @@ class NextDeparturesTableViewController: UITableViewController {
                     let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
                     messageLabel.textAlignment = NSTextAlignment.center
                     messageLabel.numberOfLines = 0
-                    messageLabel.text = Const.NO_DEPARTURES_MSG
+                    messageLabel.text = NSLocalizedString("NO_DEPARTURES_MSG", comment: "")
                     messageLabel.sizeToFit()
 
                     self.tableView.backgroundView = messageLabel

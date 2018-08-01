@@ -23,7 +23,7 @@ class NextDeparturesInterfaceController: WKInterfaceController {
         nextDeparturesTable.setNumberOfRows(nextDepartures.count, withRowType: "nextDepartureRow")
 
         if(nextDepartures.count == 0) {
-            self.presentAlert(Const.NO_DEPARTURES_TITLE, message: Const.NO_DEPARTURES_MSG)
+            self.presentAlert(NSLocalizedString("NO_DEPARTURES_TITLE", comment: ""), message: NSLocalizedString("NO_DEPARTURES_MSG", comment: ""))
         } else {
             var i: Int = 0
             for departure in nextDepartures {
