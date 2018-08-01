@@ -23,7 +23,13 @@ class ClusterStopsDataSource: NSObject, StopsTableViewControllerDelegate {
     }
 
     func loadData(callback: @escaping ([Stop]?, TransitDataError?) -> Void) {
-        callback(self.stops, nil)
+        HSL.sharedInstance.updateDeparturesForStops(self.stops, callback: {(stops, error) in
+            if (error == nil) {
+                callback(stops, nil)
+            } else {
+                callback(self.stops, nil)
+            }
+        })
     }
 
     func getTitle() -> String {
