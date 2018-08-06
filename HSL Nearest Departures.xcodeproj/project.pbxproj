@@ -31,6 +31,7 @@
 		533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E1C4D1C512963001EA50B /* NearestStopsRow.swift */; };
 		533E1C511C527B42001EA50B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDC1C2C06EC002F0107 /* Interface.storyboard */; };
 		5349574D218437C3006007EC /* NoStopsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5349574C218437C3006007EC /* NoStopsLabel.swift */; };
+		534665462117695500CFC8F4 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 534665452117695500CFC8F4 /* GoogleMobileAds.framework */; };
 		53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */; };
 		535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */; };
 		536C435B1D42328700045CEF /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C435A1D42328700045CEF /* Util.swift */; };
@@ -148,6 +149,7 @@
 		5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDepartureCell.swift; sourceTree = "<group>"; };
 		533E1C4D1C512963001EA50B /* NearestStopsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsRow.swift; sourceTree = "<group>"; };
 		5349574C218437C3006007EC /* NoStopsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoStopsLabel.swift; sourceTree = "<group>"; };
+		534665452117695500CFC8F4 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../../../Downloads/GoogleMobileAdsSdkiOS-7.31.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
 		53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopMapViewController.swift; sourceTree = "<group>"; };
 		535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsInterfaceController.swift; sourceTree = "<group>"; };
 		536C435A1D42328700045CEF /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				534665462117695500CFC8F4 /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +259,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		534665442117695500CFC8F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				534665452117695500CFC8F4 /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		53E4ECA61C2C06EC002F0107 = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +277,7 @@
 				53E4ECDB1C2C06EC002F0107 /* HSL Nearest Departures WatchKit App */,
 				53E4ECEA1C2C06EC002F0107 /* HSL Nearest Departures WatchKit Extension */,
 				53E4ECB01C2C06EC002F0107 /* Products */,
+				534665442117695500CFC8F4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -762,6 +774,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -820,6 +833,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
