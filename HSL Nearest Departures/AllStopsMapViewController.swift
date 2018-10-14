@@ -109,7 +109,7 @@ class AllStopsMapViewController: UIViewController, MKMapViewDelegate {
                 hideShowInfoLabel(hide: true)
             }
 
-            TransitData.sharedInstance.stopsForRect(minLat: minLat, minLon: minLon, maxLat: maxLat, maxLon: Maxlon, callback: {(stops: [Stop]) in
+            TransitData.stopsForRect(minLat: minLat, minLon: minLon, maxLat: maxLat, maxLon: Maxlon, callback: {(stops: [Stop]) in
                 let stopPins = stops.map({stop -> MKPointAnnotation in
                     let lat = CLLocationDegrees(floatLiteral: stop.lat)
                     let lon = CLLocationDegrees(floatLiteral: stop.lon)

@@ -16,7 +16,7 @@ class TransitDataTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        TransitData.httpClient = HTTP()
+        _TransitData.httpClient = HTTP()
     }
 
     override func tearDown() {
@@ -25,7 +25,7 @@ class TransitDataTests: XCTestCase {
 
     func test_stop_count() {
         let ex = self.expectation(description: "Returns correct amount of stops")
-        TransitData.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
+        TransitData.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
             XCTAssertEqual(stops.count, 29) // Note: API sometimes seems to return 24 stops instead of 29
             ex.fulfill()
         })
@@ -34,7 +34,7 @@ class TransitDataTests: XCTestCase {
 
     func test_stop_name() {
         let ex = self.expectation(description: "Returns stop name")
-        TransitData.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
+        TransitData.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
             XCTAssertEqual(stops[0].name, "Ankkuritie E")
             ex.fulfill()
         })
@@ -43,7 +43,7 @@ class TransitDataTests: XCTestCase {
 
     func test_stop_distance() {
         let ex = self.expectation(description: "Returns stop distance")
-        TransitData.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
+        TransitData.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
             XCTAssertEqual(stops[0].distance, "<50")
             XCTAssertEqual(stops[1].distance, "60")
             ex.fulfill()
@@ -53,7 +53,7 @@ class TransitDataTests: XCTestCase {
 
     func test_stop_coordinates() {
         let ex = self.expectation(description: "Returns stop coordinates")
-        TransitData.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
+        TransitData.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
             XCTAssertEqual(stops[0].lat, 62.914877)
             XCTAssertEqual(stops[0].lon, 27.706835)
             ex.fulfill()
@@ -63,7 +63,7 @@ class TransitDataTests: XCTestCase {
 
     func test_stop_codes() {
         let ex = self.expectation(description: "Returns stop codes")
-        TransitData.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
+        TransitData.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
             XCTAssertEqual(stops[0].codeLong, "MATKA:7_201269")
             XCTAssertEqual(stops[0].codeShort, "1641")
             ex.fulfill()
@@ -73,7 +73,7 @@ class TransitDataTests: XCTestCase {
 
     func test_departure_count() {
         let ex = self.expectation(description: "Returns correct amount of departures")
-        TransitData.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
+        TransitData.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
             XCTAssertEqual(stops[0].departures.count, 30)
             ex.fulfill()
         })
@@ -82,10 +82,18 @@ class TransitDataTests: XCTestCase {
 
     func test_departure_information() {
         let ex = self.expectation(description: "Returns departure information")
-        TransitData.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
-            XCTAssertEqual(stops[0].departures[0].line.destination, "Neulamäki P")
+        TransitData.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
+            // Destinations vary depending on the time of the day
+            XCTAssertTrue(
+                stops[0].departures[0].line.destination == "Neulamäki P" ||
+                stops[0].departures[0].line.destination == "Tukkipoika I"
+            )
             XCTAssertEqual(stops[0].departures[0].line.codeShort, "4")
-            XCTAssertTrue(stops[0].departures.destinations().contains("Neulamäki P"))
+            // Destinations vary depending on the time of the day
+            XCTAssertTrue(
+                stops[0].departures.destinations().contains("Neulamäki P") ||
+                stops[0].departures.destinations().contains("Tukkipoika I")
+            )
             ex.fulfill()
         })
         self.wait(for: [ex], timeout: timeout)
@@ -94,7 +102,7 @@ class TransitDataTests: XCTestCase {
     func test_error_on_invalid_departures_update() {
         let ex = self.expectation(description: "Returns departure information")
         let invalidStop = Stop(name: "invalid stop", lat: 0.0, lon: 0.0, distance: "0", codeLong: "invalid long code", codeShort: "invalid short code", departures: [])
-        TransitData.sharedInstance.updateDeparturesForStops([invalidStop], callback: {stops, error in
+        TransitData.updateDeparturesForStops([invalidStop], callback: {stops, error in
             XCTAssertEqual(stops, [Optional(invalidStop)])
             XCTAssertEqual(error!.localizedDescription, "The operation couldn’t be completed. (Lahimmat_Lahdot.TransitDataError error 0.)")
             ex.fulfill()
@@ -105,7 +113,7 @@ class TransitDataTests: XCTestCase {
     func test_coordinates_for_stop() {
         let ex = self.expectation(description: "Returns departure information")
         let stop = Stop(name: "Hovioikeus", lat: 0.0, lon: 0.0, distance: "", codeLong: "MATKA:201312", codeShort: "10 161", departures: [])
-        TransitData.sharedInstance.coordinatesForStop(stop, callback: {lat, lon in
+        TransitData.coordinatesForStop(stop, callback: {lat, lon in
             XCTAssertEqual(lat, 62.890472)
             XCTAssertEqual(lon, 27.672057)
             ex.fulfill()
@@ -115,7 +123,7 @@ class TransitDataTests: XCTestCase {
 
     func test_departures_for_stop() {
         let ex = self.expectation(description: "Returns departure information")
-        TransitData.sharedInstance.departuresForStop("MATKA:7_201834", callback: {departures in
+        TransitData.departuresForStop("MATKA:7_201834", callback: {departures in
             XCTAssertEqual(departures[0].line.destination!, "Touvitie")
             ex.fulfill()
         })
@@ -124,7 +132,7 @@ class TransitDataTests: XCTestCase {
 
     func test_stops_for_rect() {
         let ex = self.expectation(description: "Returns departure information")
-        TransitData.sharedInstance.stopsForRect(minLat: 62.913798, minLon: 27.703546, maxLat: 62.914209, maxLon: 27.704254, callback: {stops in
+        TransitData.stopsForRect(minLat: 62.913798, minLon: 27.703546, maxLat: 62.914209, maxLon: 27.704254, callback: {stops in
             XCTAssertEqual(stops.count, 2)
             XCTAssertEqual(stops[0].name, "Tuhtotie L")
             XCTAssertEqual(stops[1].name, "Tuhtotie I")

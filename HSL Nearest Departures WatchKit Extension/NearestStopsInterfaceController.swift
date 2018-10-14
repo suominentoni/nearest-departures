@@ -63,7 +63,7 @@ open class NearestStopsInterfaceController: WKInterfaceController, CLLocationMan
         let lat = locations.last!.coordinate.latitude
         let lon = locations.last!.coordinate.longitude
 
-        TransitData.sharedInstance.nearestStopsAndDepartures(lat, lon: lon, callback: updateInterface)
+        TransitData.nearestStopsAndDepartures(lat, lon: lon, callback: updateInterface)
     }
 
     fileprivate func updateInterface(_ nearestStops: [Stop]) -> Void {

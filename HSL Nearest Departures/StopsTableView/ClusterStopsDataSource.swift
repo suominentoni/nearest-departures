@@ -23,7 +23,7 @@ class ClusterStopsDataSource: NSObject, StopsTableViewControllerDelegate {
     }
 
     func loadData(callback: @escaping ([Stop]?, TransitDataError?) -> Void) {
-        TransitData.sharedInstance.updateDeparturesForStops(self.stops, callback: {(stops, error) in
+        TransitData.updateDeparturesForStops(self.stops, callback: {(stops, error) in
             if (error == nil) {
                 callback(stops, nil)
             } else {
