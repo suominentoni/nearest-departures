@@ -447,7 +447,7 @@
 					53E4ECAE1C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = JV8CWWLSL8;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 					};
 					53E4ECC21C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
@@ -467,7 +467,7 @@
 					53E4ECE51C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = JV8CWWLSL8;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -802,8 +802,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures WatchKit Extension/HSL Nearest Departures WatchKit App-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.1;
 			};
@@ -822,8 +821,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures WatchKit Extension/HSL Nearest Departures WatchKit App-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.1;
 			};
@@ -897,8 +895,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -920,8 +917,7 @@
 				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

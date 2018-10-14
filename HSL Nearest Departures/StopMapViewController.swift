@@ -46,16 +46,16 @@ class StopMapViewController: UIViewController, MKMapViewDelegate {
     private func zoomToPinAndUser(userCoordinate: CLLocationCoordinate2D) {
         // Zoom to user only once, not after every subsequent user location update
         if(!hasZoomedToUser) {
-            let stopPoint = MKMapPointForCoordinate(CLLocationCoordinate2D(latitude: self.stop.lat, longitude: self.stop.lon))
-            let userPoint = MKMapPointForCoordinate(userCoordinate)
+            let stopPoint = MKMapPoint.init(CLLocationCoordinate2D(latitude: self.stop.lat, longitude: self.stop.lon))
+            let userPoint = MKMapPoint.init(userCoordinate)
 
-            let stopRect = MKMapRectMake(stopPoint.x, stopPoint.y, 20, 20)
-            let userRect = MKMapRectMake(userPoint.x, userPoint.y, 20, 20)
+            let stopRect = MKMapRect.init(x: stopPoint.x, y: stopPoint.y, width: 20, height: 20)
+            let userRect = MKMapRect.init(x: userPoint.x, y: userPoint.y, width: 20, height: 20)
 
-            let unionRect = MKMapRectUnion(stopRect, userRect)
+            let unionRect = stopRect.union(userRect)
             let fitRect = stopMap.mapRectThatFits(unionRect)
 
-            stopMap.setVisibleMapRect(fitRect, edgePadding: UIEdgeInsetsMake(60, 60, 60, 60), animated: true)
+            stopMap.setVisibleMapRect(fitRect, edgePadding: UIEdgeInsets.init(top: 60, left: 60, bottom: 60, right: 60), animated: true)
             hasZoomedToUser = true
         }
     }

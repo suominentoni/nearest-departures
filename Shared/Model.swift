@@ -126,10 +126,10 @@ public struct Departure {
             let scheduledString = NSMutableAttributedString(
                 string: scheduledTime,
                 attributes: [
-                    NSAttributedStringKey.strikethroughStyle: 1,
-                    NSAttributedStringKey.strikethroughColor: UIColor.lightGray,
-                    NSAttributedStringKey.foregroundColor: UIColor.gray,
-                    NSAttributedStringKey.baselineOffset: 0])
+                    NSAttributedString.Key.strikethroughStyle: 1,
+                    NSAttributedString.Key.strikethroughColor: UIColor.lightGray,
+                    NSAttributedString.Key.foregroundColor: UIColor.gray,
+                    NSAttributedString.Key.baselineOffset: 0])
             scheduledString.append(space)
             scheduledString.append(realString)
             return scheduledString

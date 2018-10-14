@@ -11,7 +11,7 @@ class NextDeparturesTableViewController: UITableViewController {
 
     private var hasShortCodes: Bool = true
 
-    override init(style: UITableViewStyle) {
+    override init(style: UITableView.Style) {
         super.init(style: style)
         favoriteImageView.accessibilityLabel = "favoriteImage"
     }
@@ -24,7 +24,7 @@ class NextDeparturesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.top
 
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 250
 
         stopName.text = stop.nameWithCode
@@ -34,7 +34,7 @@ class NextDeparturesTableViewController: UITableViewController {
         favoriteImageView.addGestureRecognizer(tapRecognizer)
 
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: #selector(NextDeparturesTableViewController.refresh), for: UIControlEvents.valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(NextDeparturesTableViewController.refresh), for: UIControl.Event.valueChanged)
 
         reloadTableData()
     }
@@ -50,13 +50,13 @@ class NextDeparturesTableViewController: UITableViewController {
 
     fileprivate func setFavoriteImage(_ animated: Bool) {
         if(animated) {
-            UIView.transition(with: favoriteImageView, duration: 0.07, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            UIView.transition(with: favoriteImageView, duration: 0.07, options: UIView.AnimationOptions.curveEaseIn, animations: {
                 FavoriteStops.isFavoriteStop(self.stop) ? self.setIsFavoriteImage() : self.setNotFavoriteImage()
                 var f = self.favoriteImageView.frame;
                 f.origin.y -= 7;
                 self.favoriteImageView.frame = f;
             }, completion: { (finished: Bool) in
-                UIView.transition(with: self.favoriteImageView, duration: 0.1, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                UIView.transition(with: self.favoriteImageView, duration: 0.1, options: UIView.AnimationOptions.curveEaseIn, animations: {
                     var f = self.favoriteImageView.frame;
                     f.origin.y += 7;
                     self.favoriteImageView.frame = f;
@@ -68,12 +68,12 @@ class NextDeparturesTableViewController: UITableViewController {
     }
 
     fileprivate func setNotFavoriteImage() {
-        self.favoriteImageView.image = UIImage(named:"ic_favorite_border")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        self.favoriteImageView.image = UIImage(named:"ic_favorite_border")!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         self.favoriteImageView.tintColor = UIColor.black
     }
 
     fileprivate func setIsFavoriteImage() {
-        self.favoriteImageView.image = UIImage(named:"ic_favorite")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        self.favoriteImageView.image = UIImage(named:"ic_favorite")!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         self.favoriteImageView.tintColor = UIColor.red
     }
 

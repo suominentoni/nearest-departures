@@ -31,10 +31,10 @@ class StopsTableViewController: UITableViewController {
         self.delegate?.updateUI = updateUI
         self.delegate?.viewDidLoad()
         self.navigationItem.title = self.delegate?.getTitle();
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 200
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: #selector(StopsTableViewController.loadData), for: UIControlEvents.valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(StopsTableViewController.loadData), for: UIControl.Event.valueChanged)
     }
 
     @objc fileprivate func loadData() {
@@ -58,19 +58,19 @@ class StopsTableViewController: UITableViewController {
             alert = UIAlertController(
                 title: NSLocalizedString("DATA_LOAD_FAILED_TITLE", comment: ""),
                 message: "\(NSLocalizedString("DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE", comment: ""))\(stopDescription(stop: data.stop)) \(data.id)",
-                preferredStyle: UIAlertControllerStyle.alert)
+                preferredStyle: UIAlertController.Style.alert)
         case TransitDataError.favouriteStopsFetchingError:
             alert = UIAlertController(
                 title: NSLocalizedString("DATA_LOAD_FAILED_TITLE", comment: ""),
                 message: NSLocalizedString("DATA_LOAD_FAILED_FAVOURITE_STOPS_ERROR_MESSAGE", comment: ""),
-                preferredStyle: UIAlertControllerStyle.alert)
+                preferredStyle: UIAlertController.Style.alert)
         default:
             alert = UIAlertController(
                 title: NSLocalizedString("DATA_LOAD_FAILED_TITLE", comment: ""),
                 message: NSLocalizedString("DATA_LOAD_FAILED_UNKOWN_MESSAGE", comment: ""),
-                preferredStyle: UIAlertControllerStyle.alert)
+                preferredStyle: UIAlertController.Style.alert)
         }
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 

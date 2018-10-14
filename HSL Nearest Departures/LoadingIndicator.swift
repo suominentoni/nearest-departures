@@ -34,14 +34,14 @@ open class LoadingIndicator: UIView {
         end.duration = 2
         end.fromValue = 0
         end.toValue = 1.0
-        end.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        end.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 
         let start = CABasicAnimation(keyPath: "strokeStart")
         start.beginTime = 0.5
         start.duration = 1.5
         start.fromValue = 0
         start.toValue = 1.0
-        start.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        start.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 
         let group = CAAnimationGroup()
         group.duration = 2
