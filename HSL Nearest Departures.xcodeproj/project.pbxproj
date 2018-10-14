@@ -12,7 +12,16 @@
 		530C49871DA4370500D44259 /* ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 530C49861DA4370500D44259 /* ObjC.m */; };
 		530D04B21F7A180500C23F2C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530D04B11F7A180500C23F2C /* TestData.swift */; };
 		530D88291FF79E3F0054E501 /* StopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530D88281FF79E3E0054E501 /* StopsTableViewController.swift */; };
-		53123A3B1D3823DB00D9E646 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53123A3A1D3823DB00D9E646 /* Model.swift */; };
+		531CEC912173BC850008B91D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC902173BC850008B91D /* Stop.swift */; };
+		531CEC932173BCB10008B91D /* DepartureTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC922173BCB10008B91D /* DepartureTime.swift */; };
+		531CEC952173BCEF0008B91D /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC942173BCEF0008B91D /* Departure.swift */; };
+		531CEC972173BD1A0008B91D /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC962173BD1A0008B91D /* Line.swift */; };
+		531CEC982173BD450008B91D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC902173BC850008B91D /* Stop.swift */; };
+		531CEC992173BD480008B91D /* DepartureTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC922173BCB10008B91D /* DepartureTime.swift */; };
+		531CEC9A2173BD4B0008B91D /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC942173BCEF0008B91D /* Departure.swift */; };
+		531CEC9B2173BD4E0008B91D /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC962173BD1A0008B91D /* Line.swift */; };
+		531CEC9D2173C3420008B91D /* Digitransit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC9C2173C3420008B91D /* Digitransit.swift */; };
+		531CEC9E2173C3420008B91D /* Digitransit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC9C2173C3420008B91D /* Digitransit.swift */; };
 		5329C5921C70D448000E24F9 /* StopsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5911C70D448000E24F9 /* StopsTableCell.swift */; };
 		5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */; };
 		5329C5961C70DFC9000E24F9 /* NextDepartureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */; };
@@ -31,7 +40,6 @@
 		53C57D861D605E41000F5BF1 /* HSLGraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */; };
 		53CC472D1F459DEC00C1BE9A /* AllStopsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */; };
 		53CC56961D590F45007828C8 /* FavoriteStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC56951D590F45007828C8 /* FavoriteStops.swift */; };
-		53E0A6A81F5E9365003FC42A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53123A3A1D3823DB00D9E646 /* Model.swift */; };
 		53E496EB20417B17009159AA /* TransitDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E496EA20417B17009159AA /* TransitDataTests.swift */; };
 		53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */; };
 		53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB61C2C06EC002F0107 /* Main.storyboard */; settings = {ASSET_TAGS = (stopCode, ); }; };
@@ -124,7 +132,11 @@
 		530C49891DA4375B00D44259 /* ObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjC.h; sourceTree = "<group>"; };
 		530D04B11F7A180500C23F2C /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		530D88281FF79E3E0054E501 /* StopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsTableViewController.swift; sourceTree = "<group>"; };
-		53123A3A1D3823DB00D9E646 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		531CEC902173BC850008B91D /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		531CEC922173BCB10008B91D /* DepartureTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureTime.swift; sourceTree = "<group>"; };
+		531CEC942173BCEF0008B91D /* Departure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
+		531CEC962173BD1A0008B91D /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		531CEC9C2173C3420008B91D /* Digitransit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Digitransit.swift; sourceTree = "<group>"; };
 		5329C5911C70D448000E24F9 /* StopsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsTableCell.swift; sourceTree = "<group>"; };
 		5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDeparturesTableViewController.swift; sourceTree = "<group>"; };
 		5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDepartureCell.swift; sourceTree = "<group>"; };
@@ -215,11 +227,23 @@
 		53123A391D3823AB00D9E646 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				53123A3A1D3823DB00D9E646 /* Model.swift */,
+				531CEC8F2173BC430008B91D /* Model */,
 				53C57D811D605D83000F5BF1 /* HTTP.swift */,
 				53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */,
+				531CEC9C2173C3420008B91D /* Digitransit.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		531CEC8F2173BC430008B91D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				531CEC902173BC850008B91D /* Stop.swift */,
+				531CEC922173BCB10008B91D /* DepartureTime.swift */,
+				531CEC942173BCEF0008B91D /* Departure.swift */,
+				531CEC962173BD1A0008B91D /* Line.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		53E4ECA61C2C06EC002F0107 = {
@@ -549,9 +573,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */,
+				531CEC9D2173C3420008B91D /* Digitransit.swift in Sources */,
 				530C49871DA4370500D44259 /* ObjC.m in Sources */,
 				53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */,
 				53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */,
+				531CEC932173BCB10008B91D /* DepartureTime.swift in Sources */,
 				53F638DB202972F200EDC17E /* ClusterStopsDataSource.swift in Sources */,
 				53F638D92029720C00EDC17E /* FavoriteStopsDataSource.swift in Sources */,
 				53C57D821D605D83000F5BF1 /* HTTP.swift in Sources */,
@@ -559,11 +585,13 @@
 				53EBAFAD20296DE100241EDF /* StopsTableViewControllerDelegate.swift in Sources */,
 				530D88291FF79E3F0054E501 /* StopsTableViewController.swift in Sources */,
 				5329C5921C70D448000E24F9 /* StopsTableCell.swift in Sources */,
+				531CEC972173BD1A0008B91D /* Line.swift in Sources */,
+				531CEC912173BC850008B91D /* Stop.swift in Sources */,
 				53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */,
+				531CEC952173BCEF0008B91D /* Departure.swift in Sources */,
 				53CC472D1F459DEC00C1BE9A /* AllStopsMapViewController.swift in Sources */,
 				53C57D851D605E41000F5BF1 /* HSLGraphQL.swift in Sources */,
 				53EBAFAF20296F8000241EDF /* NearestStopsDataSource.swift in Sources */,
-				53123A3B1D3823DB00D9E646 /* Model.swift in Sources */,
 				53CC56961D590F45007828C8 /* FavoriteStops.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,13 +619,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				53C57D861D605E41000F5BF1 /* HSLGraphQL.swift in Sources */,
+				531CEC992173BD480008B91D /* DepartureTime.swift in Sources */,
 				53F536BB1C576A1C009C7039 /* NextDeparturesRow.swift in Sources */,
 				53E4ECF21C2C06EC002F0107 /* NotificationController.swift in Sources */,
-				53E0A6A81F5E9365003FC42A /* Model.swift in Sources */,
+				531CEC9A2173BD4B0008B91D /* Departure.swift in Sources */,
+				531CEC9B2173BD4E0008B91D /* Line.swift in Sources */,
 				536C435B1D42328700045CEF /* Util.swift in Sources */,
 				53C57D831D605D83000F5BF1 /* HTTP.swift in Sources */,
 				53F198551C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift in Sources */,
 				535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */,
+				531CEC9E2173C3420008B91D /* Digitransit.swift in Sources */,
+				531CEC982173BD450008B91D /* Stop.swift in Sources */,
 				53E4ECF01C2C06EC002F0107 /* ExtensionDelegate.swift in Sources */,
 				533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */,
 				53BA904E1DA53FB700AF8D01 /* ObjC.m in Sources */,
