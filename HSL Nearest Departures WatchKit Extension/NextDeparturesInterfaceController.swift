@@ -13,7 +13,7 @@ class NextDeparturesInterfaceController: WKInterfaceController {
         if let contextDict = context as? [String: AnyObject],
             let code = contextDict["stopCode"] as? String {
             showLoadingIndicator()
-            HSL.sharedInstance.departuresForStop(code, callback: updateInterface)
+            TransitData.sharedInstance.departuresForStop(code, callback: updateInterface)
         }
     }
 

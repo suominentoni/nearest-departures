@@ -19,7 +19,7 @@ class FavoriteStopsDataSource: NSObject, StopsTableViewControllerDelegate {
 
     func loadData(callback: @escaping ([Stop]?, TransitDataError?) -> Void) {
         if let stops = try? FavoriteStops.all() {
-            HSL.sharedInstance.updateDeparturesForStops(stops, callback: {(stops: [Stop], error: TransitDataError?) in
+            TransitData.sharedInstance.updateDeparturesForStops(stops, callback: {(stops: [Stop], error: TransitDataError?) in
                 callback(stops, self.tryGetStopFor(error: error))
             })
             self.updateUI(stops)

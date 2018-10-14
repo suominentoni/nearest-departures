@@ -25,7 +25,7 @@ class StopMapViewController: UIViewController, MKMapViewDelegate {
         stopMap.showsBuildings = true
 
         if(!stop.hasCoordinates()) {
-            HSL.sharedInstance.coordinatesForStop(stop, callback: {(lat: Double, lon: Double) -> Void in
+            TransitData.sharedInstance.coordinatesForStop(stop, callback: {(lat: Double, lon: Double) -> Void in
                 // If stop had no coordinates set, it is most probably a favorite stop, and saved to
                 // favorite stops prior to version 2.0.0, which added coordinates to the Stop class.
                 // In such case, let's update the coordinates to the favorite stop entry.

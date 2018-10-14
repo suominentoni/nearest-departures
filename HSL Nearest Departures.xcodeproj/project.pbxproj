@@ -36,8 +36,8 @@
 		53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */; };
 		53C57D821D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
 		53C57D831D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
-		53C57D851D605E41000F5BF1 /* HSLGraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */; };
-		53C57D861D605E41000F5BF1 /* HSLGraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */; };
+		53C57D851D605E41000F5BF1 /* TransitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D841D605E41000F5BF1 /* TransitData.swift */; };
+		53C57D861D605E41000F5BF1 /* TransitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D841D605E41000F5BF1 /* TransitData.swift */; };
 		53CC472D1F459DEC00C1BE9A /* AllStopsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */; };
 		53CC56961D590F45007828C8 /* FavoriteStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC56951D590F45007828C8 /* FavoriteStops.swift */; };
 		53E496EB20417B17009159AA /* TransitDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E496EA20417B17009159AA /* TransitDataTests.swift */; };
@@ -148,7 +148,7 @@
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
 		53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		53C57D811D605D83000F5BF1 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
-		53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSLGraphQL.swift; sourceTree = "<group>"; };
+		53C57D841D605E41000F5BF1 /* TransitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitData.swift; sourceTree = "<group>"; };
 		53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllStopsMapViewController.swift; sourceTree = "<group>"; };
 		53CC56951D590F45007828C8 /* FavoriteStops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStops.swift; sourceTree = "<group>"; };
 		53E496EA20417B17009159AA /* TransitDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitDataTests.swift; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 			children = (
 				531CEC8F2173BC430008B91D /* Model */,
 				53C57D811D605D83000F5BF1 /* HTTP.swift */,
-				53C57D841D605E41000F5BF1 /* HSLGraphQL.swift */,
+				53C57D841D605E41000F5BF1 /* TransitData.swift */,
 				531CEC9C2173C3420008B91D /* Digitransit.swift */,
 			);
 			path = Shared;
@@ -590,7 +590,7 @@
 				53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */,
 				531CEC952173BCEF0008B91D /* Departure.swift in Sources */,
 				53CC472D1F459DEC00C1BE9A /* AllStopsMapViewController.swift in Sources */,
-				53C57D851D605E41000F5BF1 /* HSLGraphQL.swift in Sources */,
+				53C57D851D605E41000F5BF1 /* TransitData.swift in Sources */,
 				53EBAFAF20296F8000241EDF /* NearestStopsDataSource.swift in Sources */,
 				53CC56961D590F45007828C8 /* FavoriteStops.swift in Sources */,
 			);
@@ -618,7 +618,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53C57D861D605E41000F5BF1 /* HSLGraphQL.swift in Sources */,
+				53C57D861D605E41000F5BF1 /* TransitData.swift in Sources */,
 				531CEC992173BD480008B91D /* DepartureTime.swift in Sources */,
 				53F536BB1C576A1C009C7039 /* NextDeparturesRow.swift in Sources */,
 				53E4ECF21C2C06EC002F0107 /* NotificationController.swift in Sources */,

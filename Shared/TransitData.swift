@@ -14,16 +14,16 @@ enum TransitDataError: Error {
     case unknownError
 }
 
-open class HSL {
-    static let sharedInstance = HSL(httpClient: HSL.httpClient)
+open class TransitData {
+    static let sharedInstance = TransitData(httpClient: TransitData.httpClient)
     static var httpClient: HTTP = HTTP()
 
     fileprivate init(httpClient: HTTP) {
-        HSL.httpClient = httpClient
+        TransitData.httpClient = httpClient
     }
 
     func updateDeparturesForStops(_ stops: [Stop], callback: @escaping (_ stopsWithDepartures: [Stop], _ error: TransitDataError?) -> Void) -> Void {
-        HSL.httpClient.post(Digitransit.apiUrl, body: Digitransit.Query.departuresForStops(stops: stops), callback: {(obj: [String: AnyObject], error: String?) in
+        TransitData.httpClient.post(Digitransit.apiUrl, body: Digitransit.Query.departuresForStops(stops: stops), callback: {(obj: [String: AnyObject], error: String?) in
             if let errors = obj["errors"] as? NSArray {
                 if let dataFetchingException = errors.first(where: {e in
                     if let errorType = (e as AnyObject)["errorType"] as? String {
@@ -51,7 +51,7 @@ open class HSL {
     }
 
     func departuresForStop(_ gtfsId: String, callback: @escaping (_ departures: [Departure]) -> Void) -> Void {
-        HSL.httpClient.post(Digitransit.apiUrl, body: Digitransit.Query.departuresForStop(gtfsId: gtfsId), callback: {(obj: [String: AnyObject], error: String?) in
+        TransitData.httpClient.post(Digitransit.apiUrl, body: Digitransit.Query.departuresForStop(gtfsId: gtfsId), callback: {(obj: [String: AnyObject], error: String?) in
             if let data = obj["data"] as? [String: AnyObject],
                 let stop = data["stop"] as? [String: AnyObject] {
                 callback(self.parseDepartures(stop))
@@ -62,7 +62,7 @@ open class HSL {
     }
 
     func coordinatesForStop(_ stop: Stop, callback: @escaping (_ lat: Double, _ lon: Double) -> Void) -> Void {
-        HSL.httpClient.post(Digitransit.apiUrl, body: Digitransit.Query.coordinatesForStop(stop: stop), callback: {(obj: [String: AnyObject], error: String?) in
+        TransitData.httpClient.post(Digitransit.apiUrl, body: Digitransit.Query.coordinatesForStop(stop: stop), callback: {(obj: [String: AnyObject], error: String?) in
             if let data = obj["data"] as? [String: AnyObject],
                 let stop = data["stop"] as? [String: AnyObject],
                 let lat = stop["lat"] as? Double,
@@ -83,7 +83,7 @@ open class HSL {
         stopCount: Int = DEFAULT_STOP_COUNT,
         departureCount: Int = DEFAULT_DEPARTURE_COUNT,
         callback: @escaping (_ stops: [Stop]) -> Void) {
-        HSL.httpClient.post(Digitransit.apiUrl, body: Digitransit.Query.nearestStopsAndDepartures(lat: lat, lon: lon, radius: radius, stopCount: stopCount, departureCount: departureCount), callback: {(obj: [String: AnyObject], error: String?) in
+        TransitData.httpClient.post(Digitransit.apiUrl, body: Digitransit.Query.nearestStopsAndDepartures(lat: lat, lon: lon, radius: radius, stopCount: stopCount, departureCount: departureCount), callback: {(obj: [String: AnyObject], error: String?) in
             var stops: [Stop?] = []
             if let data = obj["data"] as? [String: AnyObject],
                 let stopsByRadius = data["stopsByRadius"] as? [String: AnyObject],
@@ -97,7 +97,7 @@ open class HSL {
     }
 
     func nearestStops(_ lat: Double, lon: Double, callback: @escaping (_ stops: [Stop]) -> Void) {
-        HSL.httpClient.post(Digitransit.apiUrl, body: Digitransit.Query.nearestStops(lat: lat, lon: lon), callback: {(obj: [String: AnyObject], error: String?) in
+        TransitData.httpClient.post(Digitransit.apiUrl, body: Digitransit.Query.nearestStops(lat: lat, lon: lon), callback: {(obj: [String: AnyObject], error: String?) in
             var stops: [Stop?] = []
             if let data = obj["data"] as? [String: AnyObject],
                 let stopsByRadius = data["stopsByRadius"] as? [String: AnyObject],
@@ -111,7 +111,7 @@ open class HSL {
     }
 
     func stopsForRect(minLat: Double, minLon: Double, maxLat: Double, maxLon: Double, callback: @escaping (_ stops: [Stop]) -> Void) {
-        HSL.httpClient.post(Digitransit.apiUrl, body: Digitransit.Query.stopsForRect(minLat: minLat, minLon: minLon, maxLat: maxLat, maxLon: maxLon), callback: {(obj: [String: AnyObject], error: String?) in
+        TransitData.httpClient.post(Digitransit.apiUrl, body: Digitransit.Query.stopsForRect(minLat: minLat, minLon: minLon, maxLat: maxLat, maxLon: maxLon), callback: {(obj: [String: AnyObject], error: String?) in
             var stops: [Stop?] = []
             if let data = obj["data"] as? [String: AnyObject],
                 let stopsByBox = data["stopsByBbox"] as? NSArray {
