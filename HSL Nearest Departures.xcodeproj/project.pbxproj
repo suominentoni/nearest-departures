@@ -35,6 +35,7 @@
 		536C435B1D42328700045CEF /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C435A1D42328700045CEF /* Util.swift */; };
 		539790B320415675007A6067 /* Viiskulma.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 539790B220415675007A6067 /* Viiskulma.gpx */; };
 		53A698EA217CC4300027AF5C /* FavoriteStopsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A698E9217CC4300027AF5C /* FavoriteStopsTests.swift */; };
+		53A698F1217CD2E20027AF5C /* DataFetchErrorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A698F0217CD2E20027AF5C /* DataFetchErrorUITests.swift */; };
 		53BA904E1DA53FB700AF8D01 /* ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 530C49861DA4370500D44259 /* ObjC.m */; };
 		53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */; };
 		53C57D821D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
@@ -150,6 +151,7 @@
 		536C435A1D42328700045CEF /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		539790B220415675007A6067 /* Viiskulma.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Viiskulma.gpx; sourceTree = "<group>"; };
 		53A698E9217CC4300027AF5C /* FavoriteStopsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStopsTests.swift; sourceTree = "<group>"; };
+		53A698F0217CD2E20027AF5C /* DataFetchErrorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetchErrorUITests.swift; sourceTree = "<group>"; };
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
 		53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		53C57D811D605D83000F5BF1 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				53E4ECD21C2C06EC002F0107 /* NearestDeparturesUITests.swift */,
 				53E4ECD41C2C06EC002F0107 /* Info.plist */,
 				539790B220415675007A6067 /* Viiskulma.gpx */,
+				53A698F0217CD2E20027AF5C /* DataFetchErrorUITests.swift */,
 			);
 			path = "HSL Nearest DeparturesUITests";
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E4ECD31C2C06EC002F0107 /* NearestDeparturesUITests.swift in Sources */,
+				53A698F1217CD2E20027AF5C /* DataFetchErrorUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

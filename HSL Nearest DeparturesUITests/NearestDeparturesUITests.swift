@@ -1,7 +1,6 @@
 import XCTest
 
 class HSL_Nearest_DeparturesUITests: XCTestCase {
-        
     override func setUp() {
         super.setUp()
         continueAfterFailure = false

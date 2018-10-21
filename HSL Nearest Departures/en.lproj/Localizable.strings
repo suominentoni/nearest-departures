@@ -22,7 +22,7 @@
 "STOPS" = "Stops";
 "NO_STOPS" = "No stops";
 
-"DATA_LOAD_FAILED_TITLE" = "Error";
+"DATA_LOAD_FAILED_TITLE" = "Data fetch error";
 "DATA_LOAD_FAILED_UNKOWN_MESSAGE" = "Error fetching stop data";
 "DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE" = "Error fetching stop data. Stop not found: ";
 "DATA_LOAD_FAILED_FAVOURITE_STOPS_ERROR_MESSAGE" = "Error fetching favourite stops. If the error persists, please delete the Nearest Departures application and install it again. Apologies for the trouble!";
