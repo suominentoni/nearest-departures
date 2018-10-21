@@ -86,7 +86,7 @@ class NextDeparturesTableViewController: UITableViewController {
         let y = self.tableView.center.y
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70 , height: 70))
 
-        HSL.sharedInstance.departuresForStop(self.stop.codeLong, callback: {(nextDepartures: [Departure]) -> Void in
+        TransitData.departuresForStop(self.stop.codeLong, callback: {(nextDepartures: [Departure]) -> Void in
             self.stop.departures = nextDepartures
             self.hasShortCodes = nextDepartures.hasShortCodes()
             DispatchQueue.main.async(execute: {
