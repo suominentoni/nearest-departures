@@ -105,6 +105,7 @@ open class HTTP {
                 {
                     data, response, error in
                     if error != nil {
+                        NSLog("Error sending http request: \(error!)")
                         callback("", (error!.localizedDescription) as String)
                     } else {
                         callback(

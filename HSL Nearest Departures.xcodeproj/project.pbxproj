@@ -22,6 +22,8 @@
 		531CEC9B2173BD4E0008B91D /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC962173BD1A0008B91D /* Line.swift */; };
 		531CEC9D2173C3420008B91D /* Digitransit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC9C2173C3420008B91D /* Digitransit.swift */; };
 		531CEC9E2173C3420008B91D /* Digitransit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC9C2173C3420008B91D /* Digitransit.swift */; };
+		531CECA02173D81E0008B91D /* DigitransitResposeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC9F2173D81E0008B91D /* DigitransitResposeParser.swift */; };
+		531CECA12173D81E0008B91D /* DigitransitResposeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC9F2173D81E0008B91D /* DigitransitResposeParser.swift */; };
 		5329C5921C70D448000E24F9 /* StopsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5911C70D448000E24F9 /* StopsTableCell.swift */; };
 		5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */; };
 		5329C5961C70DFC9000E24F9 /* NextDepartureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */; };
@@ -137,6 +139,7 @@
 		531CEC942173BCEF0008B91D /* Departure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
 		531CEC962173BD1A0008B91D /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		531CEC9C2173C3420008B91D /* Digitransit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Digitransit.swift; sourceTree = "<group>"; };
+		531CEC9F2173D81E0008B91D /* DigitransitResposeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitransitResposeParser.swift; sourceTree = "<group>"; };
 		5329C5911C70D448000E24F9 /* StopsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsTableCell.swift; sourceTree = "<group>"; };
 		5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDeparturesTableViewController.swift; sourceTree = "<group>"; };
 		5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDepartureCell.swift; sourceTree = "<group>"; };
@@ -231,6 +234,7 @@
 				53C57D811D605D83000F5BF1 /* HTTP.swift */,
 				53C57D841D605E41000F5BF1 /* TransitData.swift */,
 				531CEC9C2173C3420008B91D /* Digitransit.swift */,
+				531CEC9F2173D81E0008B91D /* DigitransitResposeParser.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -573,6 +577,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */,
+				531CECA02173D81E0008B91D /* DigitransitResposeParser.swift in Sources */,
 				531CEC9D2173C3420008B91D /* Digitransit.swift in Sources */,
 				530C49871DA4370500D44259 /* ObjC.m in Sources */,
 				53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */,
@@ -627,6 +632,7 @@
 				536C435B1D42328700045CEF /* Util.swift in Sources */,
 				53C57D831D605D83000F5BF1 /* HTTP.swift in Sources */,
 				53F198551C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift in Sources */,
+				531CECA12173D81E0008B91D /* DigitransitResposeParser.swift in Sources */,
 				535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */,
 				531CEC9E2173C3420008B91D /* Digitransit.swift in Sources */,
 				531CEC982173BD450008B91D /* Stop.swift in Sources */,
