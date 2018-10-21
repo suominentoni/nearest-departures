@@ -134,8 +134,8 @@ class TransitDataTests: XCTestCase {
         let ex = self.expectation(description: "Returns departure information")
         TransitData.stopsForRect(minLat: 62.913798, minLon: 27.703546, maxLat: 62.914209, maxLon: 27.704254, callback: {stops in
             XCTAssertEqual(stops.count, 2)
-            XCTAssertEqual(stops[0].name, "Tuhtotie L")
-            XCTAssertEqual(stops[1].name, "Tuhtotie I")
+            XCTAssertTrue(stops.contains(where: {$0.name == "Tuhtotie I"}))
+            XCTAssertTrue(stops.contains(where: {$0.name == "Tuhtotie L"}))
             ex.fulfill()
         })
         self.wait(for: [ex], timeout: timeout)
