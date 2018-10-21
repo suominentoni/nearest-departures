@@ -19,29 +19,6 @@ class FavoriteStops {
         return []
     }
 
-    static func migrateToAgencyPrefixedCodeFormat() {
-        NSLog("Favorite stops: Checking for entries with outdated code format")
-        if let mappedStops = try? FavoriteStops.all().map(self.toAgencyPrefixedCodeFormat) {
-            self.saveToUserDefaults(mappedStops)
-        } else {
-            NSLog("Error migrating favourite stops to agency prefixed code format. Failed to fetch current favourite stops.")
-        }
-    }
-
-    private static func toAgencyPrefixedCodeFormat(stop: Stop) -> Stop {
-        // If the long code contains only numbers, it was stored as a favorite before updating the app
-        // to work throughout the country, and therefore is an HSL code. Since that update the codes are
-        // stored with their agency prefix in place ('HSL:' or 'MATKA:').
-        //
-        // If numbers-only HSL codes are encountered, let's update the favorite stop entry with the full,
-        // agency-prefixed code.
-        if(stop.codeLong.range(of: "^[0-9]*$", options: .regularExpression) != nil) {
-            NSLog("Favorite stops: Migrating numbers-only stop code: \(stop.codeLong) \(stop.name)")
-            stop.codeLong = "HSL:\(stop.codeLong)"
-        }
-        return stop
-    }
-
     static func isFavoriteStop(_ stop: Stop) -> Bool {
         return (try? FavoriteStops.all().filter({favStop in favStop == stop}).count > 0) ?? false
     }

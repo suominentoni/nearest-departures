@@ -69,11 +69,4 @@ class FavoriteStopsTests: XCTestCase {
         let stops = try! FavoriteStops.all()
         XCTAssertEqual(stops[0].name, "New stop name")
     }
-
-    func test_favourite_stop_migrateToAgencyPrefixedCodeFormat() {
-        FavoriteStops.add(stop1)
-        FavoriteStops.migrateToAgencyPrefixedCodeFormat()
-        let stops = try! FavoriteStops.all()
-        XCTAssertEqual(stops[0].codeLong, "HSL:12345")
-    }
 }
