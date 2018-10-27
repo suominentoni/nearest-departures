@@ -15,7 +15,7 @@ open class LoadingIndicator: UIView {
         animateLoadingCircle()
     }
 
-    required  public init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("Not coder compliant")
     }
 

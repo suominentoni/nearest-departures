@@ -48,13 +48,10 @@ class StopMapViewController: UIViewController, MKMapViewDelegate {
         if(!hasZoomedToUser) {
             let stopPoint = MKMapPoint.init(CLLocationCoordinate2D(latitude: self.stop.lat, longitude: self.stop.lon))
             let userPoint = MKMapPoint.init(userCoordinate)
-
             let stopRect = MKMapRect.init(x: stopPoint.x, y: stopPoint.y, width: 20, height: 20)
             let userRect = MKMapRect.init(x: userPoint.x, y: userPoint.y, width: 20, height: 20)
-
             let unionRect = stopRect.union(userRect)
             let fitRect = stopMap.mapRectThatFits(unionRect)
-
             stopMap.setVisibleMapRect(fitRect, edgePadding: UIEdgeInsets.init(top: 60, left: 60, bottom: 60, right: 60), animated: true)
             hasZoomedToUser = true
         }

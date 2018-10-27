@@ -26,7 +26,7 @@ class TransitDataTests: XCTestCase {
     func test_stop_count() {
         let ex = self.expectation(description: "Returns correct amount of stops")
         TransitData.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
-            XCTAssertEqual(stops.count, 29) // Note: API sometimes seems to return 24 stops instead of 29
+            XCTAssert(stops.count == 24 || stops.count == 29) // Note: API randomly returns 24 or 29 stops
             ex.fulfill()
         })
         self.wait(for: [ex], timeout: timeout)

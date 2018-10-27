@@ -15,6 +15,7 @@ class StopsTableViewController: UITableViewController {
     fileprivate var hasShortCodes: Bool = false
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         loadData()
     }
 
@@ -82,9 +83,9 @@ class StopsTableViewController: UITableViewController {
 
     fileprivate func updateUI(stops: [Stop]?) {
         if (stops != nil) {
+            self.stops = stops!
+            self.hasShortCodes = stops!.hasShortCodes()
             DispatchQueue.main.async(execute: {
-                self.stops = stops!
-                self.hasShortCodes = stops!.hasShortCodes()
                 self.tableView.backgroundView = nil
                 if (self.stops.count == 0) {
                     let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
@@ -103,26 +104,8 @@ class StopsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StopsTableCell", for: indexPath) as! StopsTableCell
         let stop = stopForIndexPath(indexPath: indexPath)
-
-        cell.code.text = stop.codeShort
-
-        if let constraint = cell.codeWidthConstraint {
-            cell.code.removeConstraint(constraint)
-        }
-
-        let codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
-        self.hasShortCodes || self.isClusterStopsView()
-            ? (codeWidthConstraint.constant = 55)
-            : (codeWidthConstraint.constant = 0)
-
-        cell.code.addConstraint(codeWidthConstraint)
-
-        cell.name.text = stop.name
-        cell.destinations.text = stop.departures.destinations()
-        cell.distance.text = self.isNearestStopsView()
-            ? String(stop.distance) + " m"
-            : ""
-
+        let codeWidth: CGFloat = self.hasShortCodes || self.isClusterStopsView() ? 55 : 0
+        cell.displayStopData(stop: stop, codeWidth: codeWidth, displayDistance: self.isNearestStopsView())
         return cell
     }
 
@@ -155,7 +138,6 @@ extension StopsTableViewController {
             let selectedStopView = SelectedStopView(rawValue: selectedIndex) {
             return selectedStopView
         }
-
         return nil
     }
 

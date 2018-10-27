@@ -15,19 +15,13 @@ class HSL_Nearest_DeparturesUITests: XCTestCase {
     
     func test_ClickingFavoriteButton_AddsOrRemovesStopFromFavoriteList() {
         let app = XCUIApplication()
-        let tabBarsQuery = app.tabBars
-        let favoritesTab = tabBarsQuery.buttons["Favourites"]
-        let nearestTab = tabBarsQuery.buttons["Nearest"]
-
-        favoritesTab.tap()
+        app.tabBars.buttons["Favourites"].tap()
         XCTAssert(app.tables.children(matching: .cell).count == 0)
-
-        nearestTab.tap()
+        app.tabBars.buttons["Nearest"].tap()
         app.tables.cells.element(boundBy: 0).click()
         app.images["favoriteImage"].click()
-        favoritesTab.tap()
+        app.tabBars.buttons["Favourites"].tap()
         XCTAssert(app.tables.children(matching: .cell).count == 1)
-
         app.tables.cells.element(boundBy: 0).click()
         app.images["favoriteImage"].click()
         app.navigationBars.buttons["Favourite stops"].tap()
