@@ -9,6 +9,7 @@
 "NEAREST_STOPS_TITLE" = "Nearest stops";
 "NO_STOPS_TITLE" = "No stops";
 "NO_STOPS_MSG" = "No stops found nearby. Stops are searched within a 5000 meter walking distance.";
+"NO_STOPS_GENERIC" = "No stops found.";
 
 "FAVORITE_STOPS_TITLE" = "Favourite stops";
 "NO_FAVORITE_STOPS_MSG" = "No favourite stops saved. \n \n Save a favourite stop by clicking the heart icon in the next departures list of a stop.";

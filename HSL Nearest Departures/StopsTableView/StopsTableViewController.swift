@@ -88,12 +88,8 @@ class StopsTableViewController: UITableViewController {
             DispatchQueue.main.async(execute: {
                 self.tableView.backgroundView = nil
                 if (self.stops.count == 0) {
-                    let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-                    messageLabel.textAlignment = NSTextAlignment.center
-                    messageLabel.numberOfLines = 0
-                    messageLabel.text = self.delegate?.getNoStopsMessage()
-                    messageLabel.sizeToFit()
-                    self.tableView.backgroundView = messageLabel
+                    let message = self.delegate?.getNoStopsMessage() ?? NSLocalizedString("NO_STOPS_GENERIC", comment: "")
+                    self.tableView.backgroundView = NoStopsLabel(parentView: self.view, message: message)
                 }
                 self.refreshControl?.endRefreshing()
                 self.tableView.reloadData()

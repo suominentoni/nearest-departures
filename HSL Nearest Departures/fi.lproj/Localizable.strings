@@ -9,6 +9,7 @@
 "NEAREST_STOPS_TITLE" = "Lähimmät pysäkkisi";
 "NO_STOPS_TITLE" = "Ei pysäkkejä";
 "NO_STOPS_MSG" = "Lähistöltä ei löytynyt pysäkkejä. Sovellus etsii pysäkkejä maksimissaan 5000 metrin kävelymatkan päästä.";
+"NO_STOPS_GENERIC" = "Pysäkkejä ei löytynyt.";
 
 "FAVORITE_STOPS_TITLE" = "Suosikkipysäkkisi";
 "NO_FAVORITE_STOPS_MSG" = "Ei suosikkipysäkkejä valittuna. \n \n Valitse pysäkki suosikiksi painamalla sydäntä pysäkin seuraavien lähtöjen listassa.";
