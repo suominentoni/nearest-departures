@@ -9,7 +9,7 @@ Transit data provided by [Digitransit](https://digitransit.fi/en/developers/).
 
 ## Tech
 
-Written in Swift 3. No third-party dependencies used.
+Written in Swift 4. No third-party dependencies used.
 
 ## Contribute
 
