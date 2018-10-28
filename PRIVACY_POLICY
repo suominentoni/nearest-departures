@@ -1,0 +1,12 @@
+ENG:
+
+The application uses the location of the device. The location is passed on to
+Digitransit API (https://digitransit.fi/en/developers/) to get the transit
+information. The app itself does not store the location or any other data.
+
+FIN:
+
+Sovellus käyttää laitteen sijaintitietoa. Laitteen sijainti lähetetään
+Digitransit-rajapintaan (https://digitransit.fi/en/developers/)
+aikataulutietojen noutamista varten. Sovellus ei talleta sijaintidataa tai
+mitään muutakaan dataa.
