@@ -132,10 +132,10 @@ class TransitDataTests: XCTestCase {
 
     func test_stops_for_rect() {
         let ex = self.expectation(description: "Returns departure information")
-        TransitData.stopsForRect(minLat: 62.913798, minLon: 27.703546, maxLat: 62.914209, maxLon: 27.704254, callback: {stops in
+        TransitData.stopsForRect(minLat: 62.914700, minLon: 27.706297, maxLat: 62.915477, maxLon: 27.707981, callback: {stops in
             XCTAssertEqual(stops.count, 2)
-            XCTAssertTrue(stops.contains(where: {$0.name == "Tuhtotie I"}))
-            XCTAssertTrue(stops.contains(where: {$0.name == "Tuhtotie L"}))
+            XCTAssertTrue(stops.contains(where: {$0.name == "Ankkuritie P"}))
+            XCTAssertTrue(stops.contains(where: {$0.name == "Ankkuritie E"}))
             ex.fulfill()
         })
         self.wait(for: [ex], timeout: timeout)
