@@ -1,0 +1,6 @@
+framework module Pods_HSL_Nearest_Departures {
+  umbrella header "Pods-HSL Nearest Departures-umbrella.h"
+
+  export *
+  module * { export * }
+}

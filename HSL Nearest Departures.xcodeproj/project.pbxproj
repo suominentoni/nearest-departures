@@ -31,7 +31,6 @@
 		533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E1C4D1C512963001EA50B /* NearestStopsRow.swift */; };
 		533E1C511C527B42001EA50B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDC1C2C06EC002F0107 /* Interface.storyboard */; };
 		5349574D218437C3006007EC /* NoStopsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5349574C218437C3006007EC /* NoStopsLabel.swift */; };
-		534665462117695500CFC8F4 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 534665452117695500CFC8F4 /* GoogleMobileAds.framework */; };
 		53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */; };
 		535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */; };
 		536C435B1D42328700045CEF /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C435A1D42328700045CEF /* Util.swift */; };
@@ -66,6 +65,7 @@
 		53F536BB1C576A1C009C7039 /* NextDeparturesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F536BA1C576A1C009C7039 /* NextDeparturesRow.swift */; };
 		53F638D92029720C00EDC17E /* FavoriteStopsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F638D82029720C00EDC17E /* FavoriteStopsDataSource.swift */; };
 		53F638DB202972F200EDC17E /* ClusterStopsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F638DA202972F200EDC17E /* ClusterStopsDataSource.swift */; };
+		D60C736E47643FF236864264 /* Pods_HSL_Nearest_Departures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39C375264DA22D48077CD70 /* Pods_HSL_Nearest_Departures.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,7 +149,6 @@
 		5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDepartureCell.swift; sourceTree = "<group>"; };
 		533E1C4D1C512963001EA50B /* NearestStopsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsRow.swift; sourceTree = "<group>"; };
 		5349574C218437C3006007EC /* NoStopsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoStopsLabel.swift; sourceTree = "<group>"; };
-		534665452117695500CFC8F4 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../../../Downloads/GoogleMobileAdsSdkiOS-7.31.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
 		53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopMapViewController.swift; sourceTree = "<group>"; };
 		535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestStopsInterfaceController.swift; sourceTree = "<group>"; };
 		536C435A1D42328700045CEF /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -191,6 +190,9 @@
 		53F536BA1C576A1C009C7039 /* NextDeparturesRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDeparturesRow.swift; sourceTree = "<group>"; };
 		53F638D82029720C00EDC17E /* FavoriteStopsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStopsDataSource.swift; sourceTree = "<group>"; };
 		53F638DA202972F200EDC17E /* ClusterStopsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterStopsDataSource.swift; sourceTree = "<group>"; };
+		AAB59B41D98889A20931D620 /* Pods-HSL Nearest Departures.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSL Nearest Departures.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HSL Nearest Departures/Pods-HSL Nearest Departures.debug.xcconfig"; sourceTree = "<group>"; };
+		F39C375264DA22D48077CD70 /* Pods_HSL_Nearest_Departures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HSL_Nearest_Departures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA9FD9B80104D409429114F4 /* Pods-HSL Nearest Departures.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSL Nearest Departures.release.xcconfig"; path = "Pods/Target Support Files/Pods-HSL Nearest Departures/Pods-HSL Nearest Departures.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				534665462117695500CFC8F4 /* GoogleMobileAds.framework in Frameworks */,
+				D60C736E47643FF236864264 /* Pods_HSL_Nearest_Departures.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +219,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		53E4ECE31C2C06EC002F0107 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F1550C4D95FBE56E2771AD2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -262,7 +271,7 @@
 		534665442117695500CFC8F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				534665452117695500CFC8F4 /* GoogleMobileAds.framework */,
+				F39C375264DA22D48077CD70 /* Pods_HSL_Nearest_Departures.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -278,6 +287,7 @@
 				53E4ECEA1C2C06EC002F0107 /* HSL Nearest Departures WatchKit Extension */,
 				53E4ECB01C2C06EC002F0107 /* Products */,
 				534665442117695500CFC8F4 /* Frameworks */,
+				586839DC2D2905343C6B70D3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -388,6 +398,15 @@
 			path = StopsTableView;
 			sourceTree = "<group>";
 		};
+		586839DC2D2905343C6B70D3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AAB59B41D98889A20931D620 /* Pods-HSL Nearest Departures.debug.xcconfig */,
+				FA9FD9B80104D409429114F4 /* Pods-HSL Nearest Departures.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -395,6 +414,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 53E4ED001C2C06EC002F0107 /* Build configuration list for PBXNativeTarget "HSL Nearest Departures" */;
 			buildPhases = (
+				050830ACFE47432E32EEDF9D /* [CP] Check Pods Manifest.lock */,
 				53E4ECAB1C2C06EC002F0107 /* Sources */,
 				53E4ECAC1C2C06EC002F0107 /* Frameworks */,
 				53E4ECAD1C2C06EC002F0107 /* Resources */,
@@ -452,6 +472,7 @@
 			buildPhases = (
 				53E4ECD51C2C06EC002F0107 /* Resources */,
 				53E4ECFB1C2C06EC002F0107 /* Embed App Extensions */,
+				9F1550C4D95FBE56E2771AD2 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -591,6 +612,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		050830ACFE47432E32EEDF9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HSL Nearest Departures-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		53E4ECAB1C2C06EC002F0107 /* Sources */ = {
@@ -942,6 +988,7 @@
 		};
 		53E4ED011C2C06EC002F0107 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAB59B41D98889A20931D620 /* Pods-HSL Nearest Departures.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -965,6 +1012,7 @@
 		};
 		53E4ED021C2C06EC002F0107 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA9FD9B80104D409429114F4 /* Pods-HSL Nearest Departures.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
