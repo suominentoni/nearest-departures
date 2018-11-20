@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zN9-6Z-DMc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zN9-6Z-DMc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -260,10 +260,10 @@
             </objects>
             <point key="canvasLocation" x="1029" y="-113"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--App Tab Bar Controller-->
         <scene sceneID="KGY-mR-AMU">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zN9-6Z-DMc" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zN9-6Z-DMc" customClass="AppTabBarController" customModule="Lahimmat_Lahdot" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="uOf-Gi-XrP">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -274,11 +274,72 @@
                         <segue destination="sLp-m5-hd1" kind="relationship" relationship="viewControllers" id="xyF-mL-KdT"/>
                         <segue destination="mS4-bc-wno" kind="relationship" relationship="viewControllers" id="IS6-g4-pue"/>
                         <segue destination="wSo-WZ-YLV" kind="relationship" relationship="viewControllers" id="kF6-u4-m6v"/>
+                        <segue destination="6ap-3I-RR7" kind="relationship" relationship="viewControllers" id="kF6-u4-m6w"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ApI-sU-0zs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="15" y="697"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="LsW-d8-bIn">
+            <objects>
+                <viewController storyboardIdentifier="Premium" id="6ap-3I-RR7" customClass="PremiumViewController" customModule="Lahimmat_Lahdot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OO0-VO-Tj8"/>
+                        <viewControllerLayoutGuide type="bottom" id="OEx-Wp-AuK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v9h-Ty-pzd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="center" axis="vertical" distribution="fillEqually" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="cjS-y4-J3k">
+                                <rect key="frame" x="16" y="120" width="343" height="131"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wl3-Nt-1Yy">
+                                        <rect key="frame" x="150.5" y="0.0" width="42" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlY-wK-JYb">
+                                        <rect key="frame" x="71.5" y="83" width="200" height="48"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="73p-Yu-ggs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Buy"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buttonClicked:" destination="6ap-3I-RR7" eventType="touchUpInside" id="Vng-NF-U1P"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="cjS-y4-J3k" secondAttribute="trailing" id="DgN-6l-jET"/>
+                            <constraint firstItem="cjS-y4-J3k" firstAttribute="leading" secondItem="v9h-Ty-pzd" secondAttribute="leadingMargin" id="L9h-gK-r1v"/>
+                            <constraint firstItem="cjS-y4-J3k" firstAttribute="top" secondItem="OO0-VO-Tj8" secondAttribute="bottom" constant="100" id="lyy-HY-xz0"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="ic_favorite" id="Af4-ub-Mno"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="PremiumTextLabel" destination="Wl3-Nt-1Yy" id="T7R-gn-uSl"/>
+                        <outlet property="buyButton" destination="LlY-wK-JYb" id="7g1-W0-MPg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pzq-Be-VWL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1028" y="-1028"/>
         </scene>
         <!--Favourites-->
         <scene sceneID="OP8-dJ-ySS">
@@ -364,12 +425,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_favorite" width="24" height="24"/>
-        <image name="ic_map" width="24" height="24"/>
-        <image name="ic_place" width="24" height="24"/>
+        <image name="ic_favorite" width="48" height="48"/>
+        <image name="ic_map" width="48" height="48"/>
+        <image name="ic_place" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nOX-tg-TJh"/>
-        <segue reference="viF-Ke-NAY"/>
+        <segue reference="3US-4l-awv"/>
     </inferredMetricsTieBreakers>
 </document>
