@@ -12,13 +12,37 @@ import UIKit
 class AppTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        var vc4: UIViewController? = nil
         if let viewControllers = self.viewControllers {
-        if viewControllers.count >= 3 {
-            let vc1 = viewControllers[0]
-            let vc2 = viewControllers[1]
-            let vc3 = viewControllers[2]
-            let vc4 = viewControllers[3]
-            self.setViewControllers([vc1, vc2, vc3, vc4], animated: false)
+            if viewControllers.count >= 3 {
+                let vc1 = viewControllers[0]
+                let vc2 = viewControllers[1]
+                let vc3 = viewControllers[2]
+                vc4 = viewControllers[3]
+                self.setViewControllers([vc1, vc2, vc3], animated: false)
+            }
+        }
+        if (!Products.hasPurchasedPremiumVersion()) {
+            if let viewControllers = self.viewControllers {
+                if viewControllers.count >= 3 {
+                    let vc1 = viewControllers[0]
+                    let vc2 = viewControllers[1]
+                    let vc3 = viewControllers[2]
+                    if(vc4 != nil) {
+                        self.setViewControllers([vc1, vc2, vc3, vc4!], animated: false)
+                    }
+                }
+            }
+        }
+    }
+
+    public func hidePremiumTab() {
+        if let viewControllers = self.viewControllers {
+            if viewControllers.count >= 3 {
+                let vc1 = viewControllers[0]
+                let vc2 = viewControllers[1]
+                let vc3 = viewControllers[2]
+                self.setViewControllers([vc1, vc2, vc3], animated: false)
             }
         }
     }

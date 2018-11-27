@@ -281,7 +281,7 @@
             </objects>
             <point key="canvasLocation" x="15" y="697"/>
         </scene>
-        <!--Item-->
+        <!--Premium-->
         <scene sceneID="LsW-d8-bIn">
             <objects>
                 <viewController storyboardIdentifier="Premium" id="6ap-3I-RR7" customClass="PremiumViewController" customModule="Lahimmat_Lahdot" customModuleProvider="target" sceneMemberID="viewController">
@@ -294,16 +294,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="center" axis="vertical" distribution="fillEqually" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="cjS-y4-J3k">
-                                <rect key="frame" x="16" y="120" width="343" height="131"/>
+                                <rect key="frame" x="16" y="70" width="343" height="221.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wl3-Nt-1Yy">
-                                        <rect key="frame" x="150.5" y="0.0" width="42" height="48"/>
+                                        <rect key="frame" x="150.5" y="0.0" width="42" height="50.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlY-wK-JYb">
-                                        <rect key="frame" x="71.5" y="83" width="200" height="48"/>
+                                        <rect key="frame" x="71.5" y="85.5" width="200" height="50.5"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="73p-Yu-ggs"/>
@@ -320,6 +320,24 @@
                                             <action selector="buttonClicked:" destination="6ap-3I-RR7" eventType="touchUpInside" id="Vng-NF-U1P"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DS3-IH-a7g">
+                                        <rect key="frame" x="148.5" y="171" width="46" height="50.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcP-bM-WNJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="46" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCa-mI-gQB">
+                                                <rect key="frame" x="0.0" y="20.5" width="46" height="30"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="restoreButtonClicked:" destination="6ap-3I-RR7" eventType="touchUpInside" id="yId-wd-HTr"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -327,14 +345,16 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="cjS-y4-J3k" secondAttribute="trailing" id="DgN-6l-jET"/>
                             <constraint firstItem="cjS-y4-J3k" firstAttribute="leading" secondItem="v9h-Ty-pzd" secondAttribute="leadingMargin" id="L9h-gK-r1v"/>
-                            <constraint firstItem="cjS-y4-J3k" firstAttribute="top" secondItem="OO0-VO-Tj8" secondAttribute="bottom" constant="100" id="lyy-HY-xz0"/>
+                            <constraint firstItem="cjS-y4-J3k" firstAttribute="top" secondItem="OO0-VO-Tj8" secondAttribute="bottom" constant="50" id="lyy-HY-xz0"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="ic_favorite" id="Af4-ub-Mno"/>
+                    <tabBarItem key="tabBarItem" title="Premium" image="ic_premium" id="Af4-ub-Mno"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="PremiumTextLabel" destination="Wl3-Nt-1Yy" id="T7R-gn-uSl"/>
+                        <outlet property="RestoreTextLabel" destination="lcP-bM-WNJ" id="3jI-Z1-6B5"/>
                         <outlet property="buyButton" destination="LlY-wK-JYb" id="7g1-W0-MPg"/>
+                        <outlet property="restoreButton" destination="hCa-mI-gQB" id="1Ww-eE-nhW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pzq-Be-VWL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -428,6 +448,7 @@
         <image name="ic_favorite" width="48" height="48"/>
         <image name="ic_map" width="48" height="48"/>
         <image name="ic_place" width="48" height="48"/>
+        <image name="ic_premium" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nOX-tg-TJh"/>

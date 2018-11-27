@@ -39,7 +39,7 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
 
         self.refreshControl?.addTarget(self, action: #selector(StopsTableViewController.loadData), for: UIControl.Event.valueChanged)
 
-        if (self.isNearestStopsView()) {
+        if (self.shouldShowAddBanner()) {
             banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
             banner?.delegate = self
             banner?.adUnitID = "ca-app-pub-3940256099942544/2934735716" // SAMPLE
@@ -52,11 +52,17 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.isNearestStopsView() ? banner : nil
+        return self.shouldShowAddBanner() ? banner : nil
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.isNearestStopsView() && banner != nil ? banner!.frame.height : 0
+        return self.shouldShowAddBanner() && banner != nil
+            ? banner!.frame.height
+            : 0
+    }
+
+    private func shouldShowAddBanner() -> Bool {
+        return self.isNearestStopsView() && !Products.hasPurchasedPremiumVersion()
     }
 
     @objc fileprivate func loadData() {

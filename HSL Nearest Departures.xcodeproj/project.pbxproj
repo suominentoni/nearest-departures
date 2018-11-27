@@ -40,6 +40,9 @@
 		53A698EA217CC4300027AF5C /* FavoriteStopsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A698E9217CC4300027AF5C /* FavoriteStopsTests.swift */; };
 		53A698F1217CD2E20027AF5C /* DataFetchErrorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A698F0217CD2E20027AF5C /* DataFetchErrorUITests.swift */; };
 		53BA904E1DA53FB700AF8D01 /* ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 530C49861DA4370500D44259 /* ObjC.m */; };
+		53C0F9CF21A58AD40026D981 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C0F9CE21A58AD40026D981 /* StoreKit.framework */; };
+		53C0F9D121A708DA0026D981 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C0F9D021A708DA0026D981 /* Products.swift */; };
+		53C0F9D321A709750026D981 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C0F9D221A709750026D981 /* IAPHelper.swift */; };
 		53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */; };
 		53C57D821D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
 		53C57D831D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
@@ -160,6 +163,9 @@
 		53A698E9217CC4300027AF5C /* FavoriteStopsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStopsTests.swift; sourceTree = "<group>"; };
 		53A698F0217CD2E20027AF5C /* DataFetchErrorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetchErrorUITests.swift; sourceTree = "<group>"; };
 		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
+		53C0F9CE21A58AD40026D981 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		53C0F9D021A708DA0026D981 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		53C0F9D221A709750026D981 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		53C57D811D605D83000F5BF1 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		53C57D841D605E41000F5BF1 /* TransitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitData.swift; sourceTree = "<group>"; };
@@ -205,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D60C736E47643FF236864264 /* Pods_HSL_Nearest_Departures.framework in Frameworks */,
+				53C0F9CF21A58AD40026D981 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +282,7 @@
 		534665442117695500CFC8F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				53C0F9CE21A58AD40026D981 /* StoreKit.framework */,
 				F39C375264DA22D48077CD70 /* Pods_HSL_Nearest_Departures.framework */,
 			);
 			name = Frameworks;
@@ -327,6 +335,8 @@
 				5300420F20FE8E1500790623 /* InfoPlist.strings */,
 				5329E697219B247B00CF66B2 /* PremiumViewController.swift */,
 				539F1292219DBA5700D4CE6B /* AppTabBarController.swift */,
+				53C0F9D021A708DA0026D981 /* Products.swift */,
+				53C0F9D221A709750026D981 /* IAPHelper.swift */,
 			);
 			path = "HSL Nearest Departures";
 			sourceTree = "<group>";
@@ -524,6 +534,11 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = JV8CWWLSL8;
 						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					53E4ECC21C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
@@ -656,6 +671,7 @@
 				53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */,
 				53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */,
 				531CEC932173BCB10008B91D /* DepartureTime.swift in Sources */,
+				53C0F9D121A708DA0026D981 /* Products.swift in Sources */,
 				53F638DB202972F200EDC17E /* ClusterStopsDataSource.swift in Sources */,
 				53F638D92029720C00EDC17E /* FavoriteStopsDataSource.swift in Sources */,
 				53C57D821D605D83000F5BF1 /* HTTP.swift in Sources */,
@@ -670,6 +686,7 @@
 				539F1293219DBA5700D4CE6B /* AppTabBarController.swift in Sources */,
 				53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */,
 				531CEC952173BCEF0008B91D /* Departure.swift in Sources */,
+				53C0F9D321A709750026D981 /* IAPHelper.swift in Sources */,
 				53CC472D1F459DEC00C1BE9A /* AllStopsMapViewController.swift in Sources */,
 				53C57D851D605E41000F5BF1 /* TransitData.swift in Sources */,
 				53EBAFAF20296F8000241EDF /* NearestStopsDataSource.swift in Sources */,
