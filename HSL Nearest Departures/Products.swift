@@ -19,10 +19,10 @@ public struct Products {
     }
 
     public static func buyPremiumVersion(completionHandler: @escaping PurchaseCompletionHandler) {
-        if (product != nil) {
+        if (product != nil && IAPHelper.canMakePayments()) {
             store.buyProduct(product!, completionHandler: completionHandler)
         } else {
-            print("No product found")
+            print("Cannot buy found")
         }
     }
 
