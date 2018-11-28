@@ -448,7 +448,7 @@
         <image name="ic_favorite" width="48" height="48"/>
         <image name="ic_map" width="48" height="48"/>
         <image name="ic_place" width="48" height="48"/>
-        <image name="ic_premium" width="36" height="36"/>
+        <image name="ic_premium" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nOX-tg-TJh"/>

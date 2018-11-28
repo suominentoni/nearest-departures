@@ -43,6 +43,7 @@
 		53C0F9CF21A58AD40026D981 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C0F9CE21A58AD40026D981 /* StoreKit.framework */; };
 		53C0F9D121A708DA0026D981 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C0F9D021A708DA0026D981 /* Products.swift */; };
 		53C0F9D321A709750026D981 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C0F9D221A709750026D981 /* IAPHelper.swift */; };
+		53C0F9D521AD85370026D981 /* PremiumTabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C0F9D421AD85370026D981 /* PremiumTabTests.swift */; };
 		53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */; };
 		53C57D821D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
 		53C57D831D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
@@ -166,6 +167,7 @@
 		53C0F9CE21A58AD40026D981 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		53C0F9D021A708DA0026D981 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		53C0F9D221A709750026D981 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		53C0F9D421AD85370026D981 /* PremiumTabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTabTests.swift; sourceTree = "<group>"; };
 		53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		53C57D811D605D83000F5BF1 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		53C57D841D605E41000F5BF1 /* TransitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitData.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				53E4ECD41C2C06EC002F0107 /* Info.plist */,
 				539790B220415675007A6067 /* Viiskulma.gpx */,
 				53A698F0217CD2E20027AF5C /* DataFetchErrorUITests.swift */,
+				53C0F9D421AD85370026D981 /* PremiumTabTests.swift */,
 			);
 			path = "HSL Nearest DeparturesUITests";
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 			files = (
 				53E4ECD31C2C06EC002F0107 /* NearestDeparturesUITests.swift in Sources */,
 				53A698F1217CD2E20027AF5C /* DataFetchErrorUITests.swift in Sources */,
+				53C0F9D521AD85370026D981 /* PremiumTabTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
