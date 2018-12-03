@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class StopsTableViewController: UITableViewController {
+class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
     var delegate: StopsTableViewControllerDelegate?
-
     var stops: [Stop] = []
     fileprivate var hasShortCodes: Bool = false
+    var banner: GADBannerView?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -35,7 +36,33 @@ class StopsTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 200
         self.refreshControl = UIRefreshControl()
+
         self.refreshControl?.addTarget(self, action: #selector(StopsTableViewController.loadData), for: UIControl.Event.valueChanged)
+
+        if (self.shouldShowAddBanner()) {
+            banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+            banner?.delegate = self
+            banner?.adUnitID = "ca-app-pub-3940256099942544/2934735716" // SAMPLE
+            banner?.rootViewController = self
+            banner?.backgroundColor = UIColor.gray
+            let request = GADRequest()
+            request.testDevices = [ kGADSimulatorID ];
+            banner?.load(request)
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return self.shouldShowAddBanner() ? banner : nil
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.shouldShowAddBanner() && banner != nil
+            ? banner!.frame.height
+            : 0
+    }
+
+    private func shouldShowAddBanner() -> Bool {
+        return self.isNearestStopsView() && !Products.hasPurchasedPremiumVersion()
     }
 
     @objc fileprivate func loadData() {
