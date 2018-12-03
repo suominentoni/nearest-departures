@@ -11,7 +11,7 @@ import StoreKit
 
 public typealias ProductIdentifier = String
 public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products: [SKProduct]?) -> Void
-public typealias PurchaseCompletionHandler = (_ success: Bool) -> Void
+public typealias PurchaseCompletionHandler = (_ success: Bool, _ errorMessage: String?) -> Void
 
 open class IAPHelper: NSObject  {
     private var purchasedProductIdentifiers: Set<ProductIdentifier> = []
@@ -103,8 +103,10 @@ extension IAPHelper: SKPaymentTransactionObserver {
                 restore(transaction: transaction)
                 break
             case .deferred:
+                print("deferred")
                 break
             case .purchasing:
+                print("purchasing")
                 break
             }
         }
@@ -113,7 +115,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     private func complete(transaction: SKPaymentTransaction) {
         print("complete...")
         setProductPurchased(identifier: transaction.payment.productIdentifier)
-        purchaseCompletionHandler?(true)
+        purchaseCompletionHandler?(true, nil)
         purchaseCompletionHandler = nil
         SKPaymentQueue.default().finishTransaction(transaction)
     }
@@ -122,7 +124,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
         guard let productIdentifier = transaction.original?.payment.productIdentifier else { return }
         print("restore... \(productIdentifier)")
         setProductPurchased(identifier: productIdentifier)
-        purchaseCompletionHandler?(true)
+        purchaseCompletionHandler?(true, nil)
         purchaseCompletionHandler = nil
         SKPaymentQueue.default().finishTransaction(transaction)
     }
@@ -133,7 +135,11 @@ extension IAPHelper: SKPaymentTransactionObserver {
             let localizedDescription = transaction.error?.localizedDescription,
             transactionError.code != SKError.paymentCancelled.rawValue {
             print("Transaction Error: \(localizedDescription)")
+            purchaseCompletionHandler?(false, localizedDescription)
+        } else {
+            purchaseCompletionHandler?(false, nil)
         }
+        purchaseCompletionHandler = nil
         SKPaymentQueue.default().finishTransaction(transaction)
     }
 

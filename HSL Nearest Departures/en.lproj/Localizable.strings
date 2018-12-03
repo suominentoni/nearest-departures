@@ -33,3 +33,8 @@
 
 "RESTORE_LABEL_TEXT" = "Already bought?";
 "RESTORE_BUTTON_TEXT" = "Restore Premium version";
+
+"PURCHASE_FAILED_TITLE" = "Error";
+"PURCHASE_FAILED_MESSAGE" = "Transaction failed";
+"CANNOT_BUY_MESSAGE" = "Purchase failed. Please try again later.";
+"CANNOT_RESTORE_MESSAGE" = "Restore failed. Please try again later.";

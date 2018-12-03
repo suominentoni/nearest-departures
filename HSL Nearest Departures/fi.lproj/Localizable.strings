@@ -33,3 +33,8 @@
 
 "RESTORE_LABEL_TEXT" = "Ostitko Premium-version jo aiemmin?";
 "RESTORE_BUTTON_TEXT" = "Palauta osto";
+
+"PURCHASE_FAILED_TITLE" = "Virhe";
+"PURCHASE_FAILED_MESSAGE" = "Tapahtuma epäonnistui";
+"CANNOT_BUY_MESSAGE" = "Osto epäonnistui. Yritä myöhemmin uudestaan.";
+"CANNOT_RESTORE_MESSAGE" = "Palautus epäonnistui. Yritä myöhemmin uudestaan.";

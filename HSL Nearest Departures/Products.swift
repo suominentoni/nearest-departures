@@ -22,7 +22,8 @@ public struct Products {
         if (product != nil && IAPHelper.canMakePayments()) {
             store.buyProduct(product!, completionHandler: completionHandler)
         } else {
-            print("Cannot buy found")
+            print("Cannot buy Premium version. Can make payments: \(IAPHelper.canMakePayments()). Product: \(String(describing: product))")
+            completionHandler(false, NSLocalizedString("CANNOT_BUY_MESSAGE", comment: ""))
         }
     }
 
@@ -30,7 +31,8 @@ public struct Products {
         if (product != nil) {
             store.restorePurchases(completionHandler: completionHandler)
         } else {
-            print("No product found")
+            print("Cannot restore Premium version. No product found.")
+            completionHandler(false, NSLocalizedString("CANNOT_RESTORE_MESSAGE", comment: ""))
         }
     }
 

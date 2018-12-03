@@ -16,19 +16,34 @@ class PremiumViewController: UIViewController {
     @IBOutlet weak var restoreButton: UIButton!
 
     @IBAction func buttonClicked(_ sender: Any) {
-        Products.buyPremiumVersion(completionHandler: {ok in
+        Products.buyPremiumVersion(completionHandler: {(ok, errorMessage) in
             if (ok) {
                 self.switchToNearestStopsTab()
+            } else {
+                self.displayPurchaseFailedAlert(message: errorMessage)
             }
         })
     }
 
     @IBAction func restoreButtonClicked(_ sender: Any) {
-        Products.restorePremiumVersion(completionHandler: {ok in
+        Products.restorePremiumVersion(completionHandler: {(ok, errorMessage) in
             if (ok) {
                 self.switchToNearestStopsTab()
+            } else {
+                self.displayPurchaseFailedAlert(message: errorMessage)
             }
         })
+    }
+
+    private func displayPurchaseFailedAlert(message: String?) {
+        let alert = UIAlertController(
+            title: NSLocalizedString("PURCHASE_FAILED_TITLE", comment: ""),
+            message: message == nil
+                ? NSLocalizedString("PURCHASE_FAILED_MESSAGE", comment: "")
+                : message,
+            preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
     private func switchToNearestStopsTab() {
@@ -39,7 +54,6 @@ class PremiumViewController: UIViewController {
                 let navController = viewControllers.first as? UINavigationController,
                 let stopsTableViewController = navController.children.first as? StopsTableViewController {
                 stopsTableViewController.tableView.setNeedsDisplay()
-                //stopsTableViewController.tableView.headerView(forSection: 0)?.setNeedsDisplay()
             }
         }
     }
