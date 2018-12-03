@@ -32,4 +32,15 @@ class PremiumTabTests: XCTestCase {
         app.launch()
         XCTAssertEqual(app.tabBars.buttons.count, 4)
     }
+
+    func test_AttemptToBuyPremium_DisplaysErrorInSimulation() {
+        let app = XCUIApplication()
+        app.launchArguments = ["UITEST"]
+        app.launch()
+        app.tabBars.buttons["Premium"].tap()
+        app.buttons["1.09€"].tap()
+        // In-app purchases are not possible in simulation
+        // Todo: mock the IAP API
+        XCTAssert(app.staticTexts["Cannot connect to iTunes Store"].waitForExistence(timeout: 10))
+    }
 }
