@@ -13,6 +13,7 @@ public typealias ProductIdentifier = String
 public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products: [SKProduct]?) -> Void
 public typealias PurchaseCompletionHandler = (_ success: Bool, _ errorMessage: String?) -> Void
 
+@objc
 open class IAPHelper: NSObject  {
     private var purchasedProductIdentifiers: Set<ProductIdentifier> = []
     private var productsRequest: SKProductsRequest?
@@ -32,6 +33,7 @@ open class IAPHelper: NSObject  {
     }
 }
 
+@objc
 extension IAPHelper {
 
     public func requestProducts(productId: ProductIdentifier, _ completionHandler: @escaping ProductsRequestCompletionHandler) {

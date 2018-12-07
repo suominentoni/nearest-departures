@@ -47,6 +47,7 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
             banner?.backgroundColor = UIColor.gray
             let request = GADRequest()
             request.testDevices = [ kGADSimulatorID ];
+            banner?.accessibilityIdentifier = "nearest stops ad banner"
             banner?.load(request)
         }
     }
