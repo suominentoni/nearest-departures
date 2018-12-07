@@ -15,6 +15,7 @@ class PremiumViewController: UIViewController {
     @IBOutlet weak var RestoreTextLabel: UILabel!
     @IBOutlet weak var restoreButton: UIButton!
     @IBOutlet weak var purchaseStatusIndicator: UIView!
+    private var loadingIndicator: LoadingIndicator?
 
     @IBAction func buttonClicked(_ sender: Any) {
         transactionStarted()
@@ -41,11 +42,11 @@ class PremiumViewController: UIViewController {
     }
 
     private func transactionStarted() {
-        purchaseStatusIndicator.alpha = 1.0
+        loadingIndicator?.isHidden = false
     }
 
     private func transactionEnded() {
-        purchaseStatusIndicator.alpha = 0.0
+        loadingIndicator?.isHidden = true
     }
 
     private func displayPurchaseFailedAlert(message: String?) {
@@ -72,8 +73,12 @@ class PremiumViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        purchaseStatusIndicator.addSubview(LoadingIndicator(frame: CGRect(x: 0, y: 0, width: 40, height: 40)))
-        purchaseStatusIndicator.alpha = 0.0
+        loadingIndicator = LoadingIndicator(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        loadingIndicator?.accessibilityIdentifier = "premium loading indicator"
+        if (loadingIndicator != nil) {
+            purchaseStatusIndicator.addSubview(loadingIndicator!)
+        }
+        loadingIndicator?.isHidden = true
         buyButton.setTitle(NSLocalizedString("PREMIUM_BUTTON_TEXT", comment: ""), for: .normal)
         PremiumTextLabel.text = NSLocalizedString("PREMIUM_LABEL_TEXT", comment: "")
         restoreButton.setTitle(NSLocalizedString("RESTORE_BUTTON_TEXT", comment: ""), for: .normal)
