@@ -112,6 +112,11 @@ extension IAPHelper: SKPaymentTransactionObserver {
         }
     }
 
+    public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        print("Restore failed: \(error.localizedDescription)")
+        purchaseCompletionHandler?(false, error.localizedDescription)
+    }
+
     private func complete(transaction: SKPaymentTransaction) {
         print("complete...")
         setProductPurchased(identifier: transaction.payment.productIdentifier)

@@ -28,7 +28,7 @@
 "DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE" = "Error fetching stop data. Stop not found: ";
 "DATA_LOAD_FAILED_FAVOURITE_STOPS_ERROR_MESSAGE" = "Error fetching favourite stops. If the error persists, please delete the Nearest Departures application and install it again. Apologies for the trouble!";
 
-"PREMIUM_LABEL_TEXT" = "Want to enjoy Nearest Departures without advertisement? Get the ad-free Premium version and support the developemnt of the app.";
+"PREMIUM_LABEL_TEXT" = "Want to enjoy Nearest Departures without advertisement? Get the ad-free Premium version and support the development of the app.";
 "PREMIUM_BUTTON_TEXT" = "1.09€";
 
 "RESTORE_LABEL_TEXT" = "Already bought?";
