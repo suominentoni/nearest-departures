@@ -14,9 +14,13 @@ class PremiumViewController: UIViewController {
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var RestoreTextLabel: UILabel!
     @IBOutlet weak var restoreButton: UIButton!
+    @IBOutlet weak var purchaseStatusIndicator: UIView!
+    private var loadingIndicator: LoadingIndicator?
 
     @IBAction func buttonClicked(_ sender: Any) {
+        transactionStarted()
         Products.buyPremiumVersion(completionHandler: {(ok, errorMessage) in
+            self.transactionEnded()
             if (ok) {
                 self.switchToNearestStopsTab()
             } else {
@@ -26,13 +30,23 @@ class PremiumViewController: UIViewController {
     }
 
     @IBAction func restoreButtonClicked(_ sender: Any) {
+        transactionStarted()
         Products.restorePremiumVersion(completionHandler: {(ok, errorMessage) in
+            self.transactionEnded()
             if (ok) {
                 self.switchToNearestStopsTab()
             } else {
                 self.displayPurchaseFailedAlert(message: errorMessage)
             }
         })
+    }
+
+    private func transactionStarted() {
+        loadingIndicator?.isHidden = false
+    }
+
+    private func transactionEnded() {
+        loadingIndicator?.isHidden = true
     }
 
     private func displayPurchaseFailedAlert(message: String?) {
@@ -57,8 +71,14 @@ class PremiumViewController: UIViewController {
             }
         }
     }
-    
+
     override func viewDidLoad() {
+        loadingIndicator = LoadingIndicator(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        loadingIndicator?.accessibilityIdentifier = "premium loading indicator"
+        if (loadingIndicator != nil) {
+            purchaseStatusIndicator.addSubview(loadingIndicator!)
+        }
+        loadingIndicator?.isHidden = true
         buyButton.setTitle(NSLocalizedString("PREMIUM_BUTTON_TEXT", comment: ""), for: .normal)
         PremiumTextLabel.text = NSLocalizedString("PREMIUM_LABEL_TEXT", comment: "")
         restoreButton.setTitle(NSLocalizedString("RESTORE_BUTTON_TEXT", comment: ""), for: .normal)

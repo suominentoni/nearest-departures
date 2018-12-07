@@ -14,7 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             FavoriteStops.add(Stop(name: "Foo", lat: 0, lon: 0, distance: "0", codeLong: "invalid", codeShort: "invalid", departures: []))
         }
         if (ProcessInfo.processInfo.arguments.contains("HAS_BOUGHT_PREMIUM")) {
-            UserDefaults.standard.set(true, forKey: Products.productId)
+            UserDefaults.standard.set(true, forKey: _Products.productId)
+        }
+        if (ProcessInfo.processInfo.arguments.contains("MOCKIAP")) {
+            _Products.store = MockIAPHelper()
+        }
+        if (ProcessInfo.processInfo.arguments.contains("MOCKIAP_TRANSACTION_FAILS")) {
+            _Products.store = MockIAPHelper(transactionFails: true)
+        }
+        if (ProcessInfo.processInfo.arguments.contains("MOCKIAP_PRODUCT_REQUEST_FAILS")) {
+            _Products.store = MockIAPHelper(productsRequestFails: true)
         }
         if (!Products.hasPurchasedPremiumVersion()) {
             Products.loadProducts()
