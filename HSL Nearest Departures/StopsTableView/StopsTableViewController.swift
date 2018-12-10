@@ -53,13 +53,11 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.shouldShowAddBanner() ? banner : nil
+        return banner
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.shouldShowAddBanner() && banner != nil
-            ? banner!.frame.height
-            : 0
+        return banner?.frame.height ?? 0
     }
 
     private func shouldShowAddBanner() -> Bool {
