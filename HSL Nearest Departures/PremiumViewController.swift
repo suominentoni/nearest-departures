@@ -22,7 +22,7 @@ class PremiumViewController: UIViewController {
         Products.buyPremiumVersion(completionHandler: {(ok, errorMessage) in
             self.transactionEnded()
             if (ok) {
-                self.switchToNearestStopsTab()
+                self.setPremiumUI()
             } else {
                 self.displayPurchaseFailedAlert(message: errorMessage)
             }
@@ -34,7 +34,7 @@ class PremiumViewController: UIViewController {
         Products.restorePremiumVersion(completionHandler: {(ok, errorMessage) in
             self.transactionEnded()
             if (ok) {
-                self.switchToNearestStopsTab()
+                self.setPremiumUI()
             } else {
                 self.displayPurchaseFailedAlert(message: errorMessage)
             }
@@ -60,15 +60,33 @@ class PremiumViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
+    private func setPremiumUI() {
+        self.switchToNearestStopsTab()
+        self.hideNearestStopsAdBanner()
+        self.hidePremiumTab()
+    }
+
     private func switchToNearestStopsTab() {
         self.tabBarController?.selectedIndex = 0
+    }
+
+    private func hidePremiumTab() {
         if let appTabBarController = self.tabBarController as? AppTabBarController {
             appTabBarController.hidePremiumTab()
-            if let viewControllers = appTabBarController.viewControllers,
-                let navController = viewControllers.first as? UINavigationController,
-                let stopsTableViewController = navController.children.first as? StopsTableViewController {
-                stopsTableViewController.tableView.setNeedsDisplay()
-            }
+        }
+    }
+
+    private func hideNearestStopsAdBanner() {
+        if let appTabBarController = self.tabBarController as? AppTabBarController,
+        let navController = appTabBarController.viewControllers?.first as? UINavigationController,
+        let stopsTableViewController = navController.children.first as? StopsTableViewController {
+            stopsTableViewController.view.layoutIfNeeded()
+            UIView.animate(withDuration: 0.3, animations: {
+                let width = stopsTableViewController.tableView.frame.width
+                stopsTableViewController.banner?.frame = CGRect(x: 0, y: 0, width: width, height: 0)
+                stopsTableViewController.view.layoutIfNeeded()
+            })
+            stopsTableViewController.banner = nil
         }
     }
 
