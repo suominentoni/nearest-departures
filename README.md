@@ -7,10 +7,6 @@ The application shows your nearest public transportation stops and next departur
 
 Transit data provided by [Digitransit](https://digitransit.fi/en/developers/).
 
-## Tech
-
-Written in Swift 4. No third-party dependencies used.
-
 ## Contribute
 
 Use [GitHub issues](https://github.com/suominentoni/nearest-departures/issues) and [Pull Requests](https://github.com/suominentoni/nearest-departures/pulls).
