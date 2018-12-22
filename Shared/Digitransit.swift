@@ -50,5 +50,13 @@ struct Digitransit {
         static func stopsForRect(minLat: Double, minLon: Double, maxLat: Double, maxLon: Double) -> String {
             return "{stopsByBbox(minLat:\(minLat), minLon:\(minLon), maxLat:\(maxLat), maxLon:\(maxLon)) { \(stopFields), stoptimesWithoutPatterns(numberOfDepartures: 1) { \(departureFields) }}}"
         }
+
+        static func stopsByCodes(codes: [String]) -> String {
+            return "{stops(ids: \(codes)){" +
+                    "gtfsId, lat, lon, code, platformCode, desc, name," +
+                    "stoptimesWithoutPatterns(numberOfDepartures: 30) {" +
+                        "scheduledDeparture, realtimeDeparture, departureDelay, realtime, realtimeState, serviceDay, pickupType," +
+                "trip {tripHeadsign, directionId, route {shortName, longName, mode}}}}}"
+        }
     }
 }

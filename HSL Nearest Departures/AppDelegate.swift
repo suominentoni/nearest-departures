@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Products.loadProducts()
             GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544/2934735716") // SAMPLE
         }
+        WatchSessionManager.sharedManager.startSession()
         return true
     }
 }
