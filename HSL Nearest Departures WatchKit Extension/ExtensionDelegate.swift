@@ -3,6 +3,7 @@ import WatchKit
 class ExtensionDelegate: NSObject, WKExtensionDelegate, CLLocationManagerDelegate{
 
     func applicationDidFinishLaunching() {
+        WatchSessionManager.sharedManager.startSession()
     }
 
     func applicationDidBecomeActive() {

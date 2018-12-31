@@ -74,7 +74,7 @@ class TransitDataTests: XCTestCase {
     func test_departure_count() {
         let ex = self.expectation(description: "Returns correct amount of departures")
         TransitData.nearestStopsAndDepartures(lat, lon: lon, callback: {stops in
-            XCTAssertEqual(stops[0].departures.count, 30)
+            XCTAssertEqual(stops.first?.departures.count ?? 0, 30)
             ex.fulfill()
         })
         self.wait(for: [ex], timeout: timeout)
@@ -124,7 +124,7 @@ class TransitDataTests: XCTestCase {
     func test_departures_for_stop() {
         let ex = self.expectation(description: "Returns departure information")
         TransitData.departuresForStop("MATKA:7_201834", callback: {departures in
-            XCTAssertEqual(departures[0].line.destination!, "Touvitie")
+            XCTAssertEqual(departures.first?.line.destination ?? "", "Touvitie")
             ex.fulfill()
         })
         self.wait(for: [ex], timeout: timeout)
@@ -133,6 +133,17 @@ class TransitDataTests: XCTestCase {
     func test_stops_for_rect() {
         let ex = self.expectation(description: "Returns departure information")
         TransitData.stopsForRect(minLat: 62.914700, minLon: 27.706297, maxLat: 62.915477, maxLon: 27.707981, callback: {stops in
+            XCTAssertEqual(stops.count, 2)
+            XCTAssertTrue(stops.contains(where: {$0.name == "Ankkuritie P"}))
+            XCTAssertTrue(stops.contains(where: {$0.name == "Ankkuritie E"}))
+            ex.fulfill()
+        })
+        self.wait(for: [ex], timeout: timeout)
+    }
+
+    func test_stops_by_codes() {
+        let ex = self.expectation(description: "Returns departure information")
+        TransitData.stopsByCodes(codes: ["MATKA:7_201270", "MATKA:7_201269"], callback: {stops, error  in
             XCTAssertEqual(stops.count, 2)
             XCTAssertTrue(stops.contains(where: {$0.name == "Ankkuritie P"}))
             XCTAssertTrue(stops.contains(where: {$0.name == "Ankkuritie E"}))

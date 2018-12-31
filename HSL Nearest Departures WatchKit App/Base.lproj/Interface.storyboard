@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="10032"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
     <scenes>
         <!--NearestDeparture-->
@@ -28,7 +31,7 @@
                                             <group width="1" alignment="left" id="2pM-Yu-2N9">
                                                 <items>
                                                     <label alignment="left" verticalAlignment="bottom" text="-" textAlignment="left" id="vsB-Pc-TgV">
-                                                        <color key="textColor" red="0.687042236328125" green="0.687042236328125" blue="0.687042236328125" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.687042236328125" green="0.687042236328125" blue="0.687042236328125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="font" type="system" pointSize="14"/>
                                                     </label>
                                                     <label alignment="right" text="0 m" id="v1g-ie-YRu">
@@ -43,6 +46,7 @@
                                         <outlet property="distance" destination="v1g-ie-YRu" id="PJI-cR-9iS"/>
                                         <outlet property="stopCode" destination="vsB-Pc-TgV" id="Q6N-3K-9Tr"/>
                                         <outlet property="stopName" destination="MqK-Dm-MjV" id="pLz-56-doz"/>
+                                        <segue destination="nCh-Ep-WhF" kind="modal" id="um6-A0-uhp"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -60,10 +64,63 @@
                     <connections>
                         <outlet property="loadingIndicatorLabel" destination="aCQ-QS-y1h" id="cPO-Ik-mL0"/>
                         <outlet property="nearestStopsTable" destination="ozD-8f-EWu" id="HqA-dv-pen"/>
+                        <segue destination="QWf-zF-WpB" kind="relationship" relationship="nextPage" id="kqj-33-tpm"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="349"/>
+            <point key="canvasLocation" x="220" y="323"/>
+        </scene>
+        <!--Stops Interface Controller-->
+        <scene sceneID="c70-fR-sQM">
+            <objects>
+                <controller id="QWf-zF-WpB" customClass="StopsInterfaceController" customModule="HSL_Nearest_Departures_WatchKit_Extension">
+                    <items>
+                        <label width="1" height="20" alignment="left" text="." textAlignment="center" id="Tvn-Hh-KF9" userLabel="FavoriteLoadingIndicator">
+                            <fontDescription key="font" type="boldSystem" pointSize="18"/>
+                        </label>
+                        <table alignment="left" id="VSZ-go-tVw" userLabel="FavoriteStopsTable">
+                            <items>
+                                <tableRow identifier="nearestStopsRow" id="mx1-PB-akI" customClass="NearestStopsRow" customModule="HSL_Nearest_Departures_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="QpS-0O-VTG">
+                                        <items>
+                                            <group width="1" height="25" alignment="left" id="829-Dj-4LC">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="-" textAlignment="left" numberOfLines="2" id="c0V-kF-bfb">
+                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <group width="1" alignment="left" id="hF5-RI-hG0">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="bottom" text="-" textAlignment="left" id="IYe-jt-zst">
+                                                        <color key="textColor" red="0.68704223630000005" green="0.68704223630000005" blue="0.68704223630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="font" type="system" pointSize="14"/>
+                                                    </label>
+                                                    <label alignment="right" id="cSV-kP-U04">
+                                                        <fontDescription key="font" type="system" pointSize="14"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <edgeInsets key="margins" left="3" right="3" top="3" bottom="3"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="distance" destination="cSV-kP-U04" id="eGP-Vz-Ykt"/>
+                                        <outlet property="stopCode" destination="IYe-jt-zst" id="gw1-Ua-Mho"/>
+                                        <outlet property="stopName" destination="c0V-kF-bfb" id="obQ-gb-VhQ"/>
+                                        <segue destination="nCh-Ep-WhF" kind="modal" id="42B-k8-uRv"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="FavoriteLoadingIndicator" destination="Tvn-Hh-KF9" id="8JT-d1-lLg"/>
+                        <outlet property="FavoriteStopsTable" destination="VSZ-go-tVw" id="Teb-77-TKk"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="502" y="-27"/>
         </scene>
         <!--NextDeparturesInterfaceController-->
         <scene sceneID="Tj8-do-g3U">
@@ -81,7 +138,7 @@
                                             <group width="1" alignment="left" id="Bd6-Nv-eI5">
                                                 <items>
                                                     <label alignment="left" verticalAlignment="center" text="-" id="jWL-FK-o7Q">
-                                                        <color key="textColor" red="0.00040824659794813645" green="1" blue="0.016464297960415597" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.00040824659794813645" green="1" blue="0.016464297960415597" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="font" type="system" weight="semibold" pointSize="16"/>
                                                     </label>
                                                     <label alignment="right" verticalAlignment="center" text="00:00" textAlignment="right" numberOfLines="0" id="GXy-H5-Hpq">
@@ -140,4 +197,7 @@
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="42B-k8-uRv"/>
+    </inferredMetricsTieBreakers>
 </document>

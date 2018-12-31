@@ -83,4 +83,28 @@ class _TransitData {
             callback(DigitransitResponseParser.parseRectStopsFromData(obj: obj))
         })
     }
+
+    func stopsByCodes(codes: [String], callback: @escaping (_ stops: [Stop], _ error: TransitDataError?) -> Void) {
+        let q = Digitransit.Query.stopsByCodes(codes: codes)
+        print("FAV: query \(q)")
+        _TransitData.httpClient.post(
+            Digitransit.apiUrl,
+            body: q,
+            callback: {(obj: [String: AnyObject], httpError: String?) in
+                print("FAV: response \(obj.debugDescription)")
+                print("FAV: response error \(String(describing: httpError))")
+                do {
+                    let stops = try DigitransitResponseParser.parseStopsFromData(obj: obj)
+                    print("FAV: parsed stops \(stops.debugDescription)")
+                    callback(stops, nil)
+                } catch {
+                    print("FAV: failed parsing stops \(error.localizedDescription)")
+                    if let transitDataError = error as? TransitDataError {
+                        callback([], transitDataError)
+                    } else {
+                        callback([], nil)
+                    }
+                }
+        })
+    }
 }

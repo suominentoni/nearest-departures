@@ -2,23 +2,27 @@ import WatchKit
 import Foundation
 
 open class NearestStopsInterfaceController: WKInterfaceController, CLLocationManagerDelegate {
-
     @IBOutlet var nearestStopsTable: WKInterfaceTable!
     @IBOutlet var loadingIndicatorLabel: WKInterfaceLabel!
-
-    var nearestStops = [Stop]()
-
+    var nearestStops: [Stop] = []
     var locationManager: CLLocationManager!
     var lat: Double = 0
     var lon: Double = 0
 
     override open func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        let row = table.rowController(at: rowIndex) as! NearestStopsRow
-        self.pushController(withName: "NextDeparturesInterfaceController", context: ["stopCode": row.code])
+        nearestStopsTable.performSegue(forRow: rowIndex)
+    }
+
+    open override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
+        if let row = table.rowController(at: rowIndex) as? NearestStopsRow {
+            return ["stopCode": row.code]
+        }
+        return nil
     }
 
     override open func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        self.setTitle(NSLocalizedString("NEAREST", comment: ""))
         self.initTimer()
 
         locationManager = CLLocationManager()

@@ -43,6 +43,7 @@ class FavoriteStops {
                 stops.append(stop)
                 let data = NSKeyedArchiver.archivedData(withRootObject: stops)
                 UserDefaults.standard.set(data, forKey: FAVORITE_STOPS_KEY)
+                WatchSessionManager.sharedManager.transferFavoriteStops()
             } else {
                 NSLog("Error adding favourite stop: \(stop.name) \(stop.codeLong). Failed to fetch current favourite stops.")
             }
@@ -53,6 +54,7 @@ class FavoriteStops {
         NSLog("Removing favorite stop: \(stop.name) \(stop.codeLong)")
         if let stops = try? FavoriteStops.all().filter { $0 != stop } {
             saveToUserDefaults(stops)
+            WatchSessionManager.sharedManager.transferFavoriteStops()
         } else {
             NSLog("Error removing favourite stop: \(stop.name) \(stop.codeLong). Failed to fetch current favourite stops.")
         }
