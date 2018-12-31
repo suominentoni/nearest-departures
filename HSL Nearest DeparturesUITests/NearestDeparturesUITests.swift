@@ -33,7 +33,7 @@ class HSL_Nearest_DeparturesUITests: XCTestCase {
         XCTAssert(app.otherElements["Nearest stops"].waitForExistence(timeout: 1000))
         XCTAssert(app.staticTexts["0815"].waitForExistence(timeout: 1000))
         XCTAssert(app.staticTexts["Viiskulma"].waitForExistence(timeout: 1000))
-        XCTAssert(app.tables.cells.containing(.staticText, identifier:"Viiskulma").count == 4)
+        XCTAssertEqual(app.tables.cells.containing(.staticText, identifier:"Viiskulma").count, 5)
         XCTAssert(app.staticTexts["<50 m"].waitForExistence(timeout: 1000))
     }
 
