@@ -101,13 +101,9 @@ class TransitDataTestsMockData: XCTestCase {
         let result1 = DepartureTime(60)
         let result2 = DepartureTime(46860)
         let result3 = DepartureTime(86460) // 24h 1min
-        let result4 = DepartureTime(86460 * 2)
-        let result5 = DepartureTime(86460 * 3)
         XCTAssertEqual(result1.toTime(), "00:01")
         XCTAssertEqual(result2.toTime(), "13:01")
-        XCTAssertEqual(result3.toTime(), "(+1) 00:01")
-        XCTAssertEqual(result4.toTime(), "(+2) 00:02")
-        XCTAssertEqual(result5.toTime(), "(+3) 00:03")
+        XCTAssertEqual(result3.toTime(), "00:01")
         ex.fulfill()
         self.wait(for: [ex], timeout: 2.0)
     }
