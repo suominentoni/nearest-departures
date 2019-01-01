@@ -1,15 +1,14 @@
 
 import UIKit
+import GoogleMobileAds
 
-class NextDeparturesTableViewController: UITableViewController {
-
+class NextDeparturesTableViewController: UITableViewController, GADBannerViewDelegate {
     var stop = Stop(name: "", lat: 0.0, lon: 0.0, distance: "", codeLong: "", codeShort: "", departures: [])
-
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var favoriteImageView: UIImageView!
     @IBOutlet weak var stopName: UILabel!
-
     private var hasShortCodes: Bool = true
+    var banner: GADBannerView?
 
     override init(style: UITableView.Style) {
         super.init(style: style)
@@ -37,6 +36,30 @@ class NextDeparturesTableViewController: UITableViewController {
         self.refreshControl?.addTarget(self, action: #selector(NextDeparturesTableViewController.refresh), for: UIControl.Event.valueChanged)
 
         reloadTableData()
+
+        if (self.shouldShowAddBanner()) {
+            banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+            banner?.delegate = self
+            banner?.adUnitID = "ca-app-pub-3940256099942544/2934735716" // SAMPLE
+            banner?.rootViewController = self
+            banner?.backgroundColor = UIColor.gray
+            let request = GADRequest()
+            request.testDevices = [ kGADSimulatorID ];
+            banner?.accessibilityIdentifier = "next departures ad banner"
+            banner?.load(request)
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return banner
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return banner?.frame.height ?? 0
+    }
+
+    private func shouldShowAddBanner() -> Bool {
+        return !Products.hasPurchasedPremiumVersion()
     }
 
     override func viewWillAppear(_ animated: Bool) {
