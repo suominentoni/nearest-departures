@@ -1,7 +1,7 @@
 import XCTest
 
 class HSL_Nearest_DeparturesUITests: XCTestCase {
-    let TIMEOUT = 3.0
+    let TIMEOUT = 4.0
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
@@ -34,7 +34,7 @@ class HSL_Nearest_DeparturesUITests: XCTestCase {
         XCTAssert(app.otherElements["Nearest stops"].waitForExistence(timeout: TIMEOUT))
         XCTAssert(app.staticTexts["0815"].waitForExistence(timeout: TIMEOUT))
         XCTAssert(app.staticTexts["Viiskulma"].waitForExistence(timeout: TIMEOUT))
-        XCTAssertEqual(app.tables.cells.containing(.staticText, identifier:"Viiskulma").count, 5)
+        XCTAssertEqual(app.tables.cells.containing(.staticText, identifier:"Viiskulma").count, 4)
         XCTAssert(app.staticTexts["<50 m"].waitForExistence(timeout: 1000))
     }
 

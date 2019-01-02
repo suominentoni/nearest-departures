@@ -9,7 +9,7 @@
 import XCTest
 
 class PremiumTabTests: XCTestCase {
-    let TIMEOUT = 2.0
+    let TIMEOUT = 3.0
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
