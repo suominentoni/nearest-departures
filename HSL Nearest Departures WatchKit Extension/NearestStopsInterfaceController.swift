@@ -1,5 +1,6 @@
 import WatchKit
 import Foundation
+import NearestDeparturesDigitransit
 
 open class NearestStopsInterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     @IBOutlet var nearestStopsTable: WKInterfaceTable!

@@ -7,6 +7,7 @@
 //
 
 import CoreLocation
+import NearestDeparturesDigitransit
 
 class NearestStopsDataSource: NSObject, StopsTableViewControllerDelegate, CLLocationManagerDelegate {
     var locationManager: CLLocationManager!

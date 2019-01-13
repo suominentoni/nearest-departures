@@ -7,19 +7,12 @@
 //
 
 import XCTest
+import NearestDeparturesDigitransit
 @testable import Lahimmat_Lahdot
-
-fileprivate class MockHttp: HTTP {
-    override func HTTPsendRequest(_ request: NSMutableURLRequest,
-                                  callback: @escaping (String, String?) -> Void) -> Void {
-        callback(testData, nil)
-    }
-}
 
 class FavoriteStopsTests: XCTestCase {
     override func setUp() {
         super.setUp()
-        _TransitData.httpClient = MockHttp()
         emptyUserDefaults()
     }
 

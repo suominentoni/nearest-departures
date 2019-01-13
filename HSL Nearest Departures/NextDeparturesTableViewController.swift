@@ -1,6 +1,7 @@
 
 import UIKit
 import GoogleMobileAds
+import NearestDeparturesDigitransit
 
 class NextDeparturesTableViewController: UITableViewController, GADBannerViewDelegate {
     var stop = Stop(name: "", lat: 0.0, lon: 0.0, distance: "", codeLong: "", codeShort: "", departures: [])

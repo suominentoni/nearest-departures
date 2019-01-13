@@ -1,5 +1,6 @@
 import WatchKit
 import Foundation
+import NearestDeparturesDigitransit
 
 class NextDeparturesInterfaceController: WKInterfaceController {
 

@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import NearestDeparturesDigitransit
 
 class StopsTableCell: UITableViewCell {
     @IBOutlet var code: UILabel!

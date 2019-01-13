@@ -1,5 +1,6 @@
 import UIKit
 import GoogleMobileAds
+import NearestDeparturesDigitransit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.removePersistentDomain(forName: appDomain!)
         }
         if (ProcessInfo.processInfo.arguments.contains("UITEST_ERRONEOUSDATA")) {
-            FavoriteStops.add(Stop(name: "Foo", lat: 0, lon: 0, distance: "0", codeLong: "invalid", codeShort: "invalid", departures: []))
+            FavoriteStops.add(Stop(name: "Foo", lat: 0.0, lon: 0.0, distance: "0", codeLong: "invalid", codeShort: "invalid", departures: [Departure]()))
         }
         if (ProcessInfo.processInfo.arguments.contains("HAS_BOUGHT_PREMIUM")) {
             UserDefaults.standard.set(true, forKey: _Products.productId)

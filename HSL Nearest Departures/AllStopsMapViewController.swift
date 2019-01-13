@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import NearestDeparturesDigitransit
 
 private class StopAnnotation: MKPointAnnotation {
     let stop: Stop

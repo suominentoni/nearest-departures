@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import NearestDeparturesDigitransit
 
 class FavoriteStops {
     fileprivate static let FAVORITE_STOPS_KEY = "hsl_fav_stops"

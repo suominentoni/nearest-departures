@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMobileAds
+import NearestDeparturesDigitransit
 
 class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
     var delegate: StopsTableViewControllerDelegate?

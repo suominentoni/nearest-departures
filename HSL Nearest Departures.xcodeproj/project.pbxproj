@@ -10,20 +10,7 @@
 		5300420B20FE1AE600790623 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5300420D20FE1AE600790623 /* Localizable.strings */; };
 		5300421120FE8E1500790623 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5300420F20FE8E1500790623 /* InfoPlist.strings */; };
 		530C49871DA4370500D44259 /* ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 530C49861DA4370500D44259 /* ObjC.m */; };
-		530D04B21F7A180500C23F2C /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530D04B11F7A180500C23F2C /* TestData.swift */; };
 		530D88291FF79E3F0054E501 /* StopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530D88281FF79E3E0054E501 /* StopsTableViewController.swift */; };
-		531CEC912173BC850008B91D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC902173BC850008B91D /* Stop.swift */; };
-		531CEC932173BCB10008B91D /* DepartureTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC922173BCB10008B91D /* DepartureTime.swift */; };
-		531CEC952173BCEF0008B91D /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC942173BCEF0008B91D /* Departure.swift */; };
-		531CEC972173BD1A0008B91D /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC962173BD1A0008B91D /* Line.swift */; };
-		531CEC982173BD450008B91D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC902173BC850008B91D /* Stop.swift */; };
-		531CEC992173BD480008B91D /* DepartureTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC922173BCB10008B91D /* DepartureTime.swift */; };
-		531CEC9A2173BD4B0008B91D /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC942173BCEF0008B91D /* Departure.swift */; };
-		531CEC9B2173BD4E0008B91D /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC962173BD1A0008B91D /* Line.swift */; };
-		531CEC9D2173C3420008B91D /* Digitransit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC9C2173C3420008B91D /* Digitransit.swift */; };
-		531CEC9E2173C3420008B91D /* Digitransit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC9C2173C3420008B91D /* Digitransit.swift */; };
-		531CECA02173D81E0008B91D /* DigitransitResposeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC9F2173D81E0008B91D /* DigitransitResposeParser.swift */; };
-		531CECA12173D81E0008B91D /* DigitransitResposeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CEC9F2173D81E0008B91D /* DigitransitResposeParser.swift */; };
 		5322A51A21C5736300158292 /* StopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5322A51921C5736300158292 /* StopsInterfaceController.swift */; };
 		5329C5921C70D448000E24F9 /* StopsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5911C70D448000E24F9 /* StopsTableCell.swift */; };
 		5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */; };
@@ -49,19 +36,13 @@
 		53C0F9D321A709750026D981 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C0F9D221A709750026D981 /* IAPHelper.swift */; };
 		53C0F9D521AD85370026D981 /* PremiumTabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C0F9D421AD85370026D981 /* PremiumTabTests.swift */; };
 		53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */; };
-		53C57D821D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
-		53C57D831D605D83000F5BF1 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D811D605D83000F5BF1 /* HTTP.swift */; };
-		53C57D851D605E41000F5BF1 /* TransitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D841D605E41000F5BF1 /* TransitData.swift */; };
-		53C57D861D605E41000F5BF1 /* TransitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C57D841D605E41000F5BF1 /* TransitData.swift */; };
 		53C8AB6321CE06E600ED3BDB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5300420D20FE1AE600790623 /* Localizable.strings */; };
 		53CC472D1F459DEC00C1BE9A /* AllStopsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */; };
 		53CC56961D590F45007828C8 /* FavoriteStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CC56951D590F45007828C8 /* FavoriteStops.swift */; };
-		53E496EB20417B17009159AA /* TransitDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E496EA20417B17009159AA /* TransitDataTests.swift */; };
 		53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */; };
 		53E4ECB81C2C06EC002F0107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB61C2C06EC002F0107 /* Main.storyboard */; settings = {ASSET_TAGS = (stopCode, ); }; };
 		53E4ECBA1C2C06EC002F0107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECB91C2C06EC002F0107 /* Assets.xcassets */; };
 		53E4ECBD1C2C06EC002F0107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECBB1C2C06EC002F0107 /* LaunchScreen.storyboard */; };
-		53E4ECC81C2C06EC002F0107 /* TransitDataTestsMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECC71C2C06EC002F0107 /* TransitDataTestsMockData.swift */; };
 		53E4ECD31C2C06EC002F0107 /* NearestDeparturesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4ECD21C2C06EC002F0107 /* NearestDeparturesUITests.swift */; };
 		53E4ECD81C2C06EC002F0107 /* HSL Nearest Departures WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 53E4ECD71C2C06EC002F0107 /* HSL Nearest Departures WatchKit App.app */; };
 		53E4ECDE1C2C06EC002F0107 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E4ECDC1C2C06EC002F0107 /* Interface.storyboard */; };
@@ -76,7 +57,9 @@
 		53F536BB1C576A1C009C7039 /* NextDeparturesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F536BA1C576A1C009C7039 /* NextDeparturesRow.swift */; };
 		53F638D92029720C00EDC17E /* FavoriteStopsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F638D82029720C00EDC17E /* FavoriteStopsDataSource.swift */; };
 		53F638DB202972F200EDC17E /* ClusterStopsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F638DA202972F200EDC17E /* ClusterStopsDataSource.swift */; };
-		D60C736E47643FF236864264 /* Pods_HSL_Nearest_Departures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39C375264DA22D48077CD70 /* Pods_HSL_Nearest_Departures.framework */; };
+		8EEDEF5A712C3264EED273A8 /* Pods_HSL_Nearest_Departures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF3D3B05385BD2BBD105510 /* Pods_HSL_Nearest_Departures.framework */; };
+		A7874EAE7832CE30FEE6427C /* Pods_HSL_Nearest_DeparturesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08144E0E6DB38C1ABD902CB7 /* Pods_HSL_Nearest_DeparturesTests.framework */; };
+		BC8157B15301915501D7588F /* Pods_HSL_Nearest_Departures_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 832789CD655D1A3910B6EAAA /* Pods_HSL_Nearest_Departures_WatchKit_Extension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +119,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		08144E0E6DB38C1ABD902CB7 /* Pods_HSL_Nearest_DeparturesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HSL_Nearest_DeparturesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C1545592905D5383A007D58 /* Pods-HSL Nearest Departures WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSL Nearest Departures WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-HSL Nearest Departures WatchKit Extension/Pods-HSL Nearest Departures WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		20AC0637C9C3AAA4A5393498 /* Pods-HSL Nearest Departures WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSL Nearest Departures WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HSL Nearest Departures WatchKit Extension/Pods-HSL Nearest Departures WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		5300420620FE181900790623 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Main.strings; sourceTree = "<group>"; };
 		5300420720FE181A00790623 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5300420820FE181A00790623 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Interface.strings; sourceTree = "<group>"; };
@@ -147,14 +133,7 @@
 		530C49851DA4370400D44259 /* HSL Nearest Departures-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures-Bridging-Header.h"; sourceTree = "<group>"; };
 		530C49861DA4370500D44259 /* ObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjC.m; sourceTree = "<group>"; };
 		530C49891DA4375B00D44259 /* ObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjC.h; sourceTree = "<group>"; };
-		530D04B11F7A180500C23F2C /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		530D88281FF79E3E0054E501 /* StopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsTableViewController.swift; sourceTree = "<group>"; };
-		531CEC902173BC850008B91D /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
-		531CEC922173BCB10008B91D /* DepartureTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureTime.swift; sourceTree = "<group>"; };
-		531CEC942173BCEF0008B91D /* Departure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
-		531CEC962173BD1A0008B91D /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		531CEC9C2173C3420008B91D /* Digitransit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Digitransit.swift; sourceTree = "<group>"; };
-		531CEC9F2173D81E0008B91D /* DigitransitResposeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitransitResposeParser.swift; sourceTree = "<group>"; };
 		5322A51921C5736300158292 /* StopsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsInterfaceController.swift; sourceTree = "<group>"; };
 		5329C5911C70D448000E24F9 /* StopsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsTableCell.swift; sourceTree = "<group>"; };
 		5329C5931C70DF91000E24F9 /* NextDeparturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDeparturesTableViewController.swift; sourceTree = "<group>"; };
@@ -178,11 +157,8 @@
 		53C0F9D221A709750026D981 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		53C0F9D421AD85370026D981 /* PremiumTabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTabTests.swift; sourceTree = "<group>"; };
 		53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
-		53C57D811D605D83000F5BF1 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
-		53C57D841D605E41000F5BF1 /* TransitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitData.swift; sourceTree = "<group>"; };
 		53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllStopsMapViewController.swift; sourceTree = "<group>"; };
 		53CC56951D590F45007828C8 /* FavoriteStops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStops.swift; sourceTree = "<group>"; };
-		53E496EA20417B17009159AA /* TransitDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitDataTests.swift; sourceTree = "<group>"; };
 		53E4ECAF1C2C06EC002F0107 /* Lähimmät Lähdöt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lähimmät Lähdöt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E4ECB21C2C06EC002F0107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53E4ECB71C2C06EC002F0107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -190,7 +166,6 @@
 		53E4ECBC1C2C06EC002F0107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53E4ECBE1C2C06EC002F0107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53E4ECC31C2C06EC002F0107 /* HSL Nearest DeparturesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HSL Nearest DeparturesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		53E4ECC71C2C06EC002F0107 /* TransitDataTestsMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitDataTestsMockData.swift; sourceTree = "<group>"; };
 		53E4ECC91C2C06EC002F0107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53E4ECCE1C2C06EC002F0107 /* HSL Nearest DeparturesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HSL Nearest DeparturesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E4ECD21C2C06EC002F0107 /* NearestDeparturesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestDeparturesUITests.swift; sourceTree = "<group>"; };
@@ -211,8 +186,11 @@
 		53F536BA1C576A1C009C7039 /* NextDeparturesRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextDeparturesRow.swift; sourceTree = "<group>"; };
 		53F638D82029720C00EDC17E /* FavoriteStopsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStopsDataSource.swift; sourceTree = "<group>"; };
 		53F638DA202972F200EDC17E /* ClusterStopsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterStopsDataSource.swift; sourceTree = "<group>"; };
+		7EF3D3B05385BD2BBD105510 /* Pods_HSL_Nearest_Departures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HSL_Nearest_Departures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		832789CD655D1A3910B6EAAA /* Pods_HSL_Nearest_Departures_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HSL_Nearest_Departures_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A374D493A934579B1E266CE6 /* Pods-HSL Nearest DeparturesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSL Nearest DeparturesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HSL Nearest DeparturesTests/Pods-HSL Nearest DeparturesTests.release.xcconfig"; sourceTree = "<group>"; };
 		AAB59B41D98889A20931D620 /* Pods-HSL Nearest Departures.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSL Nearest Departures.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HSL Nearest Departures/Pods-HSL Nearest Departures.debug.xcconfig"; sourceTree = "<group>"; };
-		F39C375264DA22D48077CD70 /* Pods_HSL_Nearest_Departures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HSL_Nearest_Departures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA23433F43AEC5F83668722F /* Pods-HSL Nearest DeparturesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSL Nearest DeparturesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HSL Nearest DeparturesTests/Pods-HSL Nearest DeparturesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA9FD9B80104D409429114F4 /* Pods-HSL Nearest Departures.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSL Nearest Departures.release.xcconfig"; path = "Pods/Target Support Files/Pods-HSL Nearest Departures/Pods-HSL Nearest Departures.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,8 +199,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D60C736E47643FF236864264 /* Pods_HSL_Nearest_Departures.framework in Frameworks */,
 				53C0F9CF21A58AD40026D981 /* StoreKit.framework in Frameworks */,
+				8EEDEF5A712C3264EED273A8 /* Pods_HSL_Nearest_Departures.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +208,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7874EAE7832CE30FEE6427C /* Pods_HSL_Nearest_DeparturesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC8157B15301915501D7588F /* Pods_HSL_Nearest_Departures_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,34 +247,13 @@
 			name = ObjC;
 			sourceTree = "<group>";
 		};
-		53123A391D3823AB00D9E646 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				531CEC8F2173BC430008B91D /* Model */,
-				53C57D811D605D83000F5BF1 /* HTTP.swift */,
-				53C57D841D605E41000F5BF1 /* TransitData.swift */,
-				531CEC9C2173C3420008B91D /* Digitransit.swift */,
-				531CEC9F2173D81E0008B91D /* DigitransitResposeParser.swift */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		531CEC8F2173BC430008B91D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				531CEC902173BC850008B91D /* Stop.swift */,
-				531CEC922173BCB10008B91D /* DepartureTime.swift */,
-				531CEC942173BCEF0008B91D /* Departure.swift */,
-				531CEC962173BD1A0008B91D /* Line.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		534665442117695500CFC8F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				53C0F9CE21A58AD40026D981 /* StoreKit.framework */,
-				F39C375264DA22D48077CD70 /* Pods_HSL_Nearest_Departures.framework */,
+				7EF3D3B05385BD2BBD105510 /* Pods_HSL_Nearest_Departures.framework */,
+				832789CD655D1A3910B6EAAA /* Pods_HSL_Nearest_Departures_WatchKit_Extension.framework */,
+				08144E0E6DB38C1ABD902CB7 /* Pods_HSL_Nearest_DeparturesTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -310,7 +269,6 @@
 		53E4ECA61C2C06EC002F0107 = {
 			isa = PBXGroup;
 			children = (
-				53123A391D3823AB00D9E646 /* Shared */,
 				53E4ECB11C2C06EC002F0107 /* HSL Nearest Departures */,
 				53E4ECC61C2C06EC002F0107 /* HSL Nearest DeparturesTests */,
 				53E4ECD11C2C06EC002F0107 /* HSL Nearest DeparturesUITests */,
@@ -365,9 +323,6 @@
 		53E4ECC61C2C06EC002F0107 /* HSL Nearest DeparturesTests */ = {
 			isa = PBXGroup;
 			children = (
-				53E496EA20417B17009159AA /* TransitDataTests.swift */,
-				53E4ECC71C2C06EC002F0107 /* TransitDataTestsMockData.swift */,
-				530D04B11F7A180500C23F2C /* TestData.swift */,
 				53E4ECC91C2C06EC002F0107 /* Info.plist */,
 				53A698E9217CC4300027AF5C /* FavoriteStopsTests.swift */,
 			);
@@ -443,6 +398,10 @@
 			children = (
 				AAB59B41D98889A20931D620 /* Pods-HSL Nearest Departures.debug.xcconfig */,
 				FA9FD9B80104D409429114F4 /* Pods-HSL Nearest Departures.release.xcconfig */,
+				20AC0637C9C3AAA4A5393498 /* Pods-HSL Nearest Departures WatchKit Extension.debug.xcconfig */,
+				1C1545592905D5383A007D58 /* Pods-HSL Nearest Departures WatchKit Extension.release.xcconfig */,
+				BA23433F43AEC5F83668722F /* Pods-HSL Nearest DeparturesTests.debug.xcconfig */,
+				A374D493A934579B1E266CE6 /* Pods-HSL Nearest DeparturesTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -459,6 +418,7 @@
 				53E4ECAC1C2C06EC002F0107 /* Frameworks */,
 				53E4ECAD1C2C06EC002F0107 /* Resources */,
 				53E4ECFF1C2C06EC002F0107 /* Embed Watch Content */,
+				05B5D30C5CE84E8721F0E275 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -474,9 +434,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 53E4ED031C2C06EC002F0107 /* Build configuration list for PBXNativeTarget "HSL Nearest DeparturesTests" */;
 			buildPhases = (
+				40E80B8019E77C493E1AE258 /* [CP] Check Pods Manifest.lock */,
 				53E4ECBF1C2C06EC002F0107 /* Sources */,
 				53E4ECC01C2C06EC002F0107 /* Frameworks */,
 				53E4ECC11C2C06EC002F0107 /* Resources */,
+				45DA3A3503D5E88604130CC4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -528,9 +490,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 53E4ECF81C2C06EC002F0107 /* Build configuration list for PBXNativeTarget "HSL Nearest Departures WatchKit Extension" */;
 			buildPhases = (
+				7E20D3FC335C5C6A017C98BA /* [CP] Check Pods Manifest.lock */,
 				53E4ECE21C2C06EC002F0107 /* Sources */,
 				53E4ECE31C2C06EC002F0107 /* Frameworks */,
 				53E4ECE41C2C06EC002F0107 /* Resources */,
+				9C172E2C0D2C1D143C75B617 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -682,6 +646,116 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		05B5D30C5CE84E8721F0E275 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HSL Nearest Departures/Pods-HSL Nearest Departures-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/NearestDeparturesDigitransit-iOS9.3/NearestDeparturesDigitransit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NearestDeparturesDigitransit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HSL Nearest Departures/Pods-HSL Nearest Departures-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40E80B8019E77C493E1AE258 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HSL Nearest DeparturesTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45DA3A3503D5E88604130CC4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HSL Nearest DeparturesTests/Pods-HSL Nearest DeparturesTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/NearestDeparturesDigitransit-iOS10.0/NearestDeparturesDigitransit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NearestDeparturesDigitransit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HSL Nearest DeparturesTests/Pods-HSL Nearest DeparturesTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E20D3FC335C5C6A017C98BA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HSL Nearest Departures WatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C172E2C0D2C1D143C75B617 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HSL Nearest Departures WatchKit Extension/Pods-HSL Nearest Departures WatchKit Extension-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/NearestDeparturesDigitransit-watchOS3.0/NearestDeparturesDigitransit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NearestDeparturesDigitransit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HSL Nearest Departures WatchKit Extension/Pods-HSL Nearest Departures WatchKit Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -690,17 +764,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */,
-				531CECA02173D81E0008B91D /* DigitransitResposeParser.swift in Sources */,
-				531CEC9D2173C3420008B91D /* Digitransit.swift in Sources */,
 				530C49871DA4370500D44259 /* ObjC.m in Sources */,
 				53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */,
 				53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */,
-				531CEC932173BCB10008B91D /* DepartureTime.swift in Sources */,
 				537E54FA21C3C61C00DAE4E0 /* WatchSession.swift in Sources */,
 				53C0F9D121A708DA0026D981 /* Products.swift in Sources */,
 				53F638DB202972F200EDC17E /* ClusterStopsDataSource.swift in Sources */,
 				53F638D92029720C00EDC17E /* FavoriteStopsDataSource.swift in Sources */,
-				53C57D821D605D83000F5BF1 /* HTTP.swift in Sources */,
 				5349574D218437C3006007EC /* NoStopsLabel.swift in Sources */,
 				5329C5961C70DFC9000E24F9 /* NextDepartureCell.swift in Sources */,
 				5329E698219B247B00CF66B2 /* PremiumViewController.swift in Sources */,
@@ -708,14 +778,10 @@
 				53EBAFAD20296DE100241EDF /* StopsTableViewControllerDelegate.swift in Sources */,
 				530D88291FF79E3F0054E501 /* StopsTableViewController.swift in Sources */,
 				5329C5921C70D448000E24F9 /* StopsTableCell.swift in Sources */,
-				531CEC972173BD1A0008B91D /* Line.swift in Sources */,
-				531CEC912173BC850008B91D /* Stop.swift in Sources */,
 				539F1293219DBA5700D4CE6B /* AppTabBarController.swift in Sources */,
 				53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */,
-				531CEC952173BCEF0008B91D /* Departure.swift in Sources */,
 				53C0F9D321A709750026D981 /* IAPHelper.swift in Sources */,
 				53CC472D1F459DEC00C1BE9A /* AllStopsMapViewController.swift in Sources */,
-				53C57D851D605E41000F5BF1 /* TransitData.swift in Sources */,
 				53EBAFAF20296F8000241EDF /* NearestStopsDataSource.swift in Sources */,
 				53CC56961D590F45007828C8 /* FavoriteStops.swift in Sources */,
 			);
@@ -725,9 +791,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				530D04B21F7A180500C23F2C /* TestData.swift in Sources */,
-				53E496EB20417B17009159AA /* TransitDataTests.swift in Sources */,
-				53E4ECC81C2C06EC002F0107 /* TransitDataTestsMockData.swift in Sources */,
 				53A698EA217CC4300027AF5C /* FavoriteStopsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -746,21 +809,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53C57D861D605E41000F5BF1 /* TransitData.swift in Sources */,
 				5322A51A21C5736300158292 /* StopsInterfaceController.swift in Sources */,
-				531CEC992173BD480008B91D /* DepartureTime.swift in Sources */,
 				53F536BB1C576A1C009C7039 /* NextDeparturesRow.swift in Sources */,
 				53E4ECF21C2C06EC002F0107 /* NotificationController.swift in Sources */,
-				531CEC9A2173BD4B0008B91D /* Departure.swift in Sources */,
-				531CEC9B2173BD4E0008B91D /* Line.swift in Sources */,
 				536C435B1D42328700045CEF /* Util.swift in Sources */,
-				53C57D831D605D83000F5BF1 /* HTTP.swift in Sources */,
 				53F198551C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift in Sources */,
-				531CECA12173D81E0008B91D /* DigitransitResposeParser.swift in Sources */,
 				537E54FC21C3C72F00DAE4E0 /* WatchSession.swift in Sources */,
 				535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */,
-				531CEC9E2173C3420008B91D /* Digitransit.swift in Sources */,
-				531CEC982173BD450008B91D /* Stop.swift in Sources */,
 				53E4ECF01C2C06EC002F0107 /* ExtensionDelegate.swift in Sources */,
 				533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */,
 				53BA904E1DA53FB700AF8D01 /* ObjC.m in Sources */,
@@ -956,6 +1011,7 @@
 		};
 		53E4ECF91C2C06EC002F0107 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20AC0637C9C3AAA4A5393498 /* Pods-HSL Nearest Departures WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
@@ -975,6 +1031,7 @@
 		};
 		53E4ECFA1C2C06EC002F0107 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C1545592905D5383A007D58 /* Pods-HSL Nearest Departures WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
@@ -1090,6 +1147,7 @@
 		};
 		53E4ED041C2C06EC002F0107 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA23433F43AEC5F83668722F /* Pods-HSL Nearest DeparturesTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "HSL Nearest DeparturesTests/Info.plist";
@@ -1103,6 +1161,7 @@
 		};
 		53E4ED051C2C06EC002F0107 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A374D493A934579B1E266CE6 /* Pods-HSL Nearest DeparturesTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "HSL Nearest DeparturesTests/Info.plist";

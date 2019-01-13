@@ -6,6 +6,8 @@
 //  Copyright © 2018 Toni Suominen. All rights reserved.
 //
 
+import NearestDeparturesDigitransit
+
 class FavoriteStopsDataSource: NSObject, StopsTableViewControllerDelegate {
     var updateUI: ([Stop]?) -> Void
     override init() {

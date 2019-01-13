@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import NearestDeparturesDigitransit
 
 class ClusterStopsDataSource: NSObject, StopsTableViewControllerDelegate {
     var updateUI: ([Stop]?) -> Void
@@ -17,7 +18,7 @@ class ClusterStopsDataSource: NSObject, StopsTableViewControllerDelegate {
         self.stops = stops
         super.init()
     }
-    
+
     func viewDidLoad() {
         self.updateUI(self.stops)
     }

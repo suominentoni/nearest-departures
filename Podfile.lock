@@ -1,16 +1,29 @@
 PODS:
-  - Google-Mobile-Ads-SDK (7.35.1)
+  - Google-Mobile-Ads-SDK (7.37.0)
+  - NearestDeparturesDigitransit (1.0.0)
 
 DEPENDENCIES:
   - Google-Mobile-Ads-SDK
+  - NearestDeparturesDigitransit (from `https://github.com/suominentoni/nearest-departures-digitransit.git`, tag `1.0.0`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Google-Mobile-Ads-SDK
 
-SPEC CHECKSUMS:
-  Google-Mobile-Ads-SDK: 151d5e87b4a0ae6d7d07e2cd8d55d1b41ea2e61e
+EXTERNAL SOURCES:
+  NearestDeparturesDigitransit:
+    :git: https://github.com/suominentoni/nearest-departures-digitransit.git
+    :tag: 1.0.0
 
-PODFILE CHECKSUM: dd44d05c805b76393afa5df785dacbff6a086bb4
+CHECKOUT OPTIONS:
+  NearestDeparturesDigitransit:
+    :git: https://github.com/suominentoni/nearest-departures-digitransit.git
+    :tag: 1.0.0
+
+SPEC CHECKSUMS:
+  Google-Mobile-Ads-SDK: d028682d7450749a1955679da050eaf70d997b3e
+  NearestDeparturesDigitransit: 85999ae9998a357dbc94db8914970f15f2b95355
+
+PODFILE CHECKSUM: e62f9a871aff57527d4c58fb536a7afd483c9054
 
 COCOAPODS: 1.5.3

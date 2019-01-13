@@ -8,6 +8,7 @@
 
 import Foundation
 import WatchKit
+import NearestDeparturesDigitransit
 
 open class StopsInterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     var stops: [Stop] = []
