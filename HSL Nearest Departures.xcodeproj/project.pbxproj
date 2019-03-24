@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5300420B20FE1AE600790623 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5300420D20FE1AE600790623 /* Localizable.strings */; };
 		5300421120FE8E1500790623 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5300420F20FE8E1500790623 /* InfoPlist.strings */; };
-		530C49871DA4370500D44259 /* ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 530C49861DA4370500D44259 /* ObjC.m */; };
 		530D88291FF79E3F0054E501 /* StopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530D88281FF79E3E0054E501 /* StopsTableViewController.swift */; };
 		5322A51A21C5736300158292 /* StopsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5322A51921C5736300158292 /* StopsInterfaceController.swift */; };
 		5329C5921C70D448000E24F9 /* StopsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329C5911C70D448000E24F9 /* StopsTableCell.swift */; };
@@ -30,7 +29,6 @@
 		53A698EA217CC4300027AF5C /* FavoriteStopsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A698E9217CC4300027AF5C /* FavoriteStopsTests.swift */; };
 		53A698F1217CD2E20027AF5C /* DataFetchErrorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A698F0217CD2E20027AF5C /* DataFetchErrorUITests.swift */; };
 		53AB83B021BA9E46007342CE /* MockIAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB83AF21BA9E46007342CE /* MockIAPHelper.swift */; };
-		53BA904E1DA53FB700AF8D01 /* ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 530C49861DA4370500D44259 /* ObjC.m */; };
 		53C0F9CF21A58AD40026D981 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C0F9CE21A58AD40026D981 /* StoreKit.framework */; };
 		53C0F9D121A708DA0026D981 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C0F9D021A708DA0026D981 /* Products.swift */; };
 		53C0F9D321A709750026D981 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C0F9D221A709750026D981 /* IAPHelper.swift */; };
@@ -130,9 +128,6 @@
 		5300421020FE8E1500790623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5300421320FE8E3800790623 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5300421420FE94EC00790623 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		530C49851DA4370400D44259 /* HSL Nearest Departures-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures-Bridging-Header.h"; sourceTree = "<group>"; };
-		530C49861DA4370500D44259 /* ObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjC.m; sourceTree = "<group>"; };
-		530C49891DA4375B00D44259 /* ObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjC.h; sourceTree = "<group>"; };
 		530D88281FF79E3E0054E501 /* StopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsTableViewController.swift; sourceTree = "<group>"; };
 		5322A51921C5736300158292 /* StopsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsInterfaceController.swift; sourceTree = "<group>"; };
 		5329C5911C70D448000E24F9 /* StopsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsTableCell.swift; sourceTree = "<group>"; };
@@ -151,7 +146,6 @@
 		53A698E9217CC4300027AF5C /* FavoriteStopsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStopsTests.swift; sourceTree = "<group>"; };
 		53A698F0217CD2E20027AF5C /* DataFetchErrorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetchErrorUITests.swift; sourceTree = "<group>"; };
 		53AB83AF21BA9E46007342CE /* MockIAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockIAPHelper.swift; sourceTree = "<group>"; };
-		53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSL Nearest Departures WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
 		53C0F9CE21A58AD40026D981 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		53C0F9D021A708DA0026D981 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		53C0F9D221A709750026D981 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
@@ -237,16 +231,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		530C49881DA4374000D44259 /* ObjC */ = {
-			isa = PBXGroup;
-			children = (
-				530C49851DA4370400D44259 /* HSL Nearest Departures-Bridging-Header.h */,
-				530C49861DA4370500D44259 /* ObjC.m */,
-				530C49891DA4375B00D44259 /* ObjC.h */,
-			);
-			name = ObjC;
-			sourceTree = "<group>";
-		};
 		534665442117695500CFC8F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,7 +292,6 @@
 				5329C5951C70DFC9000E24F9 /* NextDepartureCell.swift */,
 				53536FB21D6A4EAE004970E4 /* StopMapViewController.swift */,
 				53CC472C1F459DEC00C1BE9A /* AllStopsMapViewController.swift */,
-				530C49881DA4374000D44259 /* ObjC */,
 				5300420D20FE1AE600790623 /* Localizable.strings */,
 				5300420F20FE8E1500790623 /* InfoPlist.strings */,
 				5329E697219B247B00CF66B2 /* PremiumViewController.swift */,
@@ -359,7 +342,6 @@
 				53E4ECF31C2C06EC002F0107 /* Assets.xcassets */,
 				53E4ECF51C2C06EC002F0107 /* Info.plist */,
 				53E4ECEB1C2C06EC002F0107 /* Supporting Files */,
-				53B284B21C315E01003C8877 /* HSL Nearest Departures WatchKit App-Bridging-Header.h */,
 				535D39731C38140E008D59C3 /* NearestStopsInterfaceController.swift */,
 				533E1C4D1C512963001EA50B /* NearestStopsRow.swift */,
 				53F198541C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift */,
@@ -764,7 +746,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5329C5941C70DF91000E24F9 /* NextDeparturesTableViewController.swift in Sources */,
-				530C49871DA4370500D44259 /* ObjC.m in Sources */,
 				53C57D7E1D5F4EC1000F5BF1 /* LoadingIndicator.swift in Sources */,
 				53536FB31D6A4EAE004970E4 /* StopMapViewController.swift in Sources */,
 				537E54FA21C3C61C00DAE4E0 /* WatchSession.swift in Sources */,
@@ -818,7 +799,6 @@
 				535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */,
 				53E4ECF01C2C06EC002F0107 /* ExtensionDelegate.swift in Sources */,
 				533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */,
-				53BA904E1DA53FB700AF8D01 /* ObjC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,7 +929,6 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1001,7 +980,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1022,7 +1000,6 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures WatchKit Extension/HSL Nearest Departures WatchKit App-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
@@ -1042,7 +1019,6 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures WatchKit Extension/HSL Nearest Departures WatchKit App-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
@@ -1116,7 +1092,6 @@
 				PRODUCT_MODULE_NAME = Lahimmat_Lahdot;
 				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 			};
@@ -1140,7 +1115,6 @@
 				PRODUCT_MODULE_NAME = Lahimmat_Lahdot;
 				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "HSL Nearest Departures/HSL Nearest Departures-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
