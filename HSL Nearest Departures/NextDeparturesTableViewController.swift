@@ -60,7 +60,12 @@ class NextDeparturesTableViewController: UITableViewController, GADBannerViewDel
     }
 
     private func shouldShowAddBanner() -> Bool {
-        return !Products.hasPurchasedPremiumVersion()
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            appDelegate.enableAds {
+            return !Products.hasPurchasedPremiumVersion()
+        } else {
+            return false
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
