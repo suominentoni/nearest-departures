@@ -85,12 +85,7 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
         case TransitDataError.dataFetchingError(let data):
             alert = UIAlertController(
                 title: NSLocalizedString("DATA_LOAD_FAILED_TITLE", comment: ""),
-                message: "\(NSLocalizedString("DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE", comment: ""))\(stopDescription(stop: data.stop)) \(data.id)",
-                preferredStyle: UIAlertController.Style.alert)
-        case TransitDataError.favouriteStopsFetchingError:
-            alert = UIAlertController(
-                title: NSLocalizedString("DATA_LOAD_FAILED_TITLE", comment: ""),
-                message: NSLocalizedString("DATA_LOAD_FAILED_FAVOURITE_STOPS_ERROR_MESSAGE", comment: ""),
+                message: getLoadDataFailedMessage(data: data),
                 preferredStyle: UIAlertController.Style.alert)
         default:
             alert = UIAlertController(
@@ -100,6 +95,16 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
         }
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+
+    fileprivate func getLoadDataFailedMessage(data: (id: String, stop: Stop?)) -> String {
+        if (isNearestStopsView()) {
+            return "\(NSLocalizedString("DATA_LOAD_FAILED_DATA_FETCH_ERROR_MESSAGE", comment: ""))\(stopDescription(stop: data.stop)) \(data.id)"
+        } else if (isFavoritesStopsView()) {
+            return NSLocalizedString("DATA_LOAD_FAILED_FAVOURITE_STOPS_ERROR_MESSAGE", comment: "")
+        } else {
+            return NSLocalizedString("DATA_LOAD_FAILED_UNKOWN_MESSAGE", comment: "")
+        }
     }
 
     fileprivate func stopDescription(stop: Stop?) -> String {

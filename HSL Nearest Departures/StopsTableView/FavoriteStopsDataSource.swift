@@ -26,7 +26,7 @@ class FavoriteStopsDataSource: NSObject, StopsTableViewControllerDelegate {
             })
             self.updateUI(stops)
         } else {
-            callback([], TransitDataError.favouriteStopsFetchingError)
+            callback([], TransitDataError.dataFetchingError(id: "", stop: nil))
         }
     }
 
