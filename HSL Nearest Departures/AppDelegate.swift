@@ -13,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.removePersistentDomain(forName: appDomain!)
             enableAds = true // Test ads for now, despite them being removed from production version
         }
+        if (ProcessInfo.processInfo.arguments.contains("UITEST_DISABLE_ADS")) {
+            enableAds = false
+        }
         if (ProcessInfo.processInfo.arguments.contains("UITEST_ERRONEOUSDATA")) {
             FavoriteStops.add(Stop(name: "Foo", lat: 0.0, lon: 0.0, distance: "0", codeLong: "invalid", codeShort: "invalid", departures: [Departure]()))
         }

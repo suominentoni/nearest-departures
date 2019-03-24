@@ -67,18 +67,6 @@ class PremiumTabTests: XCTestCase {
         checkAdsAreHidden(app: app)
     }
 
-    fileprivate func checkAdsAreHidden(app: XCUIApplication) {
-        XCTAssert(app.otherElements["Nearest stops"].waitForExistence(timeout: TIMEOUT))
-        XCTAssertEqual(app.tabBars.buttons.count, 3)
-        XCTAssertFalse(app.otherElements["nearest stops ad banner"].waitForExistence(timeout: TIMEOUT))
-        app.tables.cells.element(boundBy: 0).click()
-        XCTAssertFalse(app.otherElements["next departures ad banner"].waitForExistence(timeout: TIMEOUT))
-        app.images["favoriteImage"].click()
-        app.tabBars.buttons["Favourites"].tap()
-        app.tables.cells.element(boundBy: 0).click()
-        XCTAssertFalse(app.otherElements["next departures ad banner"].waitForExistence(timeout: TIMEOUT))
-    }
-
     func test_PremiumVersionPurchaseFails_DisplaysErrorAlert() {
         let app = XCUIApplication()
         app.launchArguments = ["UITEST", "MOCKIAP_TRANSACTION_FAILS"]
@@ -130,5 +118,24 @@ class PremiumTabTests: XCTestCase {
         XCTAssert(app.staticTexts["Restore failed. Please try again later."].waitForExistence(timeout: TIMEOUT))
         app.buttons["OK"].tap()
         XCTAssertEqual(app.tabBars.buttons.count, 4)
+    }
+
+    func test_AdsDisabled_HidesPremiumTabAndAds() {
+        let app = XCUIApplication()
+        app.launchArguments = ["UITEST", "UITEST_DISABLE_ADS"]
+        app.launch()
+        checkAdsAreHidden(app: app)
+    }
+
+    fileprivate func checkAdsAreHidden(app: XCUIApplication) {
+        XCTAssert(app.otherElements["Nearest stops"].waitForExistence(timeout: TIMEOUT))
+        XCTAssertEqual(app.tabBars.buttons.count, 3)
+        XCTAssertFalse(app.otherElements["nearest stops ad banner"].waitForExistence(timeout: TIMEOUT))
+        app.tables.cells.element(boundBy: 0).click()
+        XCTAssertFalse(app.otherElements["next departures ad banner"].waitForExistence(timeout: TIMEOUT))
+        app.images["favoriteImage"].click()
+        app.tabBars.buttons["Favourites"].tap()
+        app.tables.cells.element(boundBy: 0).click()
+        XCTAssertFalse(app.otherElements["next departures ad banner"].waitForExistence(timeout: TIMEOUT))
     }
 }
