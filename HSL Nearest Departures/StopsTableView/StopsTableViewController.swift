@@ -62,7 +62,12 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
     }
 
     private func shouldShowAddBanner() -> Bool {
-        return self.isNearestStopsView() && !Products.hasPurchasedPremiumVersion()
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            appDelegate.enableAds {
+            return self.isNearestStopsView() && !Products.hasPurchasedPremiumVersion()
+        } else {
+            return false
+        }
     }
 
     @objc fileprivate func loadData() {

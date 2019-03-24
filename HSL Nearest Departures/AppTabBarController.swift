@@ -22,7 +22,11 @@ class AppTabBarController: UITabBarController {
                 self.setViewControllers([vc1, vc2, vc3], animated: false)
             }
         }
-        if (!Products.hasPurchasedPremiumVersion()) {
+        var enableAds = false
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            enableAds = appDelegate.enableAds
+        }
+        if (enableAds && !Products.hasPurchasedPremiumVersion()) {
             if let viewControllers = self.viewControllers {
                 if viewControllers.count >= 3 {
                     let vc1 = viewControllers[0]
