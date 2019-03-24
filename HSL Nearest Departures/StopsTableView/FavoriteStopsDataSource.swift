@@ -20,6 +20,7 @@ class FavoriteStopsDataSource: NSObject, StopsTableViewControllerDelegate {
     }
 
     func loadData(callback: @escaping ([Stop]?, TransitDataError?) -> Void) {
+        NSKeyedUnarchiver.setClass(Stop.self, forClassName: "Lahimmat_Lahdot.Stop")
         if let stops = try? FavoriteStops.all() {
             TransitData.updateDeparturesForStops(stops, callback: {(stops: [Stop], error: TransitDataError?) in
                 callback(stops, self.tryGetStopFor(error: error))
