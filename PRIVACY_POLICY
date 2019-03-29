@@ -5,7 +5,7 @@ Digitransit API (https://digitransit.fi/en/developers/) to get the transit
 information. The app itself does not save the location data anywhere. The
 favorite stops data is stored on the device.
 
-From version 8.0.0 onwards:
+From version 8.0.0 to 8.2.0:
 
 The app uses Google AdMob (https://admob.google.com/home/) to display
 advertisement. The location of the user's device may be sent to AdMob to target
@@ -18,7 +18,7 @@ Digitransit-rajapintaan (https://digitransit.fi/en/developers/)
 aikataulutietojen noutamista varten. Sovellus ei talleta sijaintidataa.
 Suosikkipysäkkidata talletetaan laitteelle.
 
-Versiosta 8.0.0 eteenpäin:
+Versiosta 8.0.0 versioon 8.2.0:
 
 Sovellus käyttää Googlen AdMob-palvelua (https://admob.google.com/home/)
 mainosten näyttämiseen. Käyttäjän laitteen sijainti voidaan lähettää AdMobille
