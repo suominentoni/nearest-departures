@@ -5,7 +5,7 @@
 
 The application shows your nearest public transportation stops and next departures all over Finland. Displays both local and long distance traffic, trains included.
 
-Transit data provided by [Digitransit](https://digitransit.fi/en/developers/).
+Data fetching done with the [Nearest Departures Digitransit framework](https://github.com/suominentoni/nearest-departures-digitransit).
 
 ## Contribute
 
