@@ -73,17 +73,17 @@ open class NearestStopsInterfaceController: WKInterfaceController, CLLocationMan
 
     fileprivate func updateInterface(_ nearestStops: [Stop]) -> Void {
         NSLog("Updating Nearest Stops interface")
-
+        let nearestStopsWithDepartures = nearestStops.filter({ $0.departures.count > 0 })
         loadingIndicatorLabel.setHidden(true)
         hideLoadingIndicator()
-        self.nearestStops = nearestStops
-        nearestStopsTable.setNumberOfRows(nearestStops.count, withRowType: "nearestStopsRow")
+        self.nearestStops = nearestStopsWithDepartures
+        nearestStopsTable.setNumberOfRows(nearestStopsWithDepartures.count, withRowType: "nearestStopsRow")
 
-        if(nearestStops.count == 0) {
+        if(nearestStopsWithDepartures.count == 0) {
             self.presentAlert(NSLocalizedString("NO_STOPS_TITLE", comment: ""), message: NSLocalizedString("NO_STOPS_MSG", comment: ""))
         } else {
             var i: Int = 0
-            for stop in nearestStops {
+            for stop in nearestStopsWithDepartures {
                 let nearestStopRow = nearestStopsTable.rowController(at: i) as! NearestStopsRow
 
                 nearestStopRow.code = stop.codeLong

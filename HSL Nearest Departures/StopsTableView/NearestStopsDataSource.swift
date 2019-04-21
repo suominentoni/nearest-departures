@@ -29,7 +29,8 @@ class NearestStopsDataSource: NSObject, StopsTableViewControllerDelegate, CLLoca
             callback(nil, nil)
         } else {
             TransitData.nearestStopsAndDepartures(self.lat, lon: self.lon, callback: {(stops: [Stop]) in
-                callback(stops, nil)
+                let stopsWithDepartures = stops.filter({ $0.departures.count > 0 })
+                callback(stopsWithDepartures, nil)
             })
         }
     }
