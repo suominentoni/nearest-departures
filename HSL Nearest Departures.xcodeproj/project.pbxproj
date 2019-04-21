@@ -25,6 +25,8 @@
 		537E54FA21C3C61C00DAE4E0 /* WatchSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537E54F921C3C61C00DAE4E0 /* WatchSession.swift */; };
 		537E54FC21C3C72F00DAE4E0 /* WatchSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537E54FB21C3C72F00DAE4E0 /* WatchSession.swift */; };
 		539790B320415675007A6067 /* Viiskulma.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 539790B220415675007A6067 /* Viiskulma.gpx */; };
+		539B43E12269BF4100AE223E /* Departure+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539B43E02269BF4000AE223E /* Departure+Extensions.swift */; };
+		539B43E32269C01400AE223E /* Departure+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539B43E02269BF4000AE223E /* Departure+Extensions.swift */; };
 		539F1293219DBA5700D4CE6B /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539F1292219DBA5700D4CE6B /* AppTabBarController.swift */; };
 		53A698EA217CC4300027AF5C /* FavoriteStopsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A698E9217CC4300027AF5C /* FavoriteStopsTests.swift */; };
 		53A698F1217CD2E20027AF5C /* DataFetchErrorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A698F0217CD2E20027AF5C /* DataFetchErrorUITests.swift */; };
@@ -142,6 +144,7 @@
 		537E54F921C3C61C00DAE4E0 /* WatchSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSession.swift; sourceTree = "<group>"; };
 		537E54FB21C3C72F00DAE4E0 /* WatchSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSession.swift; sourceTree = "<group>"; };
 		539790B220415675007A6067 /* Viiskulma.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Viiskulma.gpx; sourceTree = "<group>"; };
+		539B43E02269BF4000AE223E /* Departure+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Departure+Extensions.swift"; sourceTree = "<group>"; };
 		539F1292219DBA5700D4CE6B /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
 		53A698E9217CC4300027AF5C /* FavoriteStopsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStopsTests.swift; sourceTree = "<group>"; };
 		53A698F0217CD2E20027AF5C /* DataFetchErrorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetchErrorUITests.swift; sourceTree = "<group>"; };
@@ -279,6 +282,7 @@
 		53E4ECB11C2C06EC002F0107 /* HSL Nearest Departures */ = {
 			isa = PBXGroup;
 			children = (
+				539B43E02269BF4000AE223E /* Departure+Extensions.swift */,
 				53AB83AE21BA9AE4007342CE /* test */,
 				53EBAFAB20296D8500241EDF /* StopsTableView */,
 				53C57D7D1D5F4EC1000F5BF1 /* LoadingIndicator.swift */,
@@ -537,6 +541,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				fi,
@@ -759,6 +764,7 @@
 				53EBAFAD20296DE100241EDF /* StopsTableViewControllerDelegate.swift in Sources */,
 				530D88291FF79E3F0054E501 /* StopsTableViewController.swift in Sources */,
 				5329C5921C70D448000E24F9 /* StopsTableCell.swift in Sources */,
+				539B43E12269BF4100AE223E /* Departure+Extensions.swift in Sources */,
 				539F1293219DBA5700D4CE6B /* AppTabBarController.swift in Sources */,
 				53E4ECB31C2C06EC002F0107 /* AppDelegate.swift in Sources */,
 				53C0F9D321A709750026D981 /* IAPHelper.swift in Sources */,
@@ -796,6 +802,7 @@
 				536C435B1D42328700045CEF /* Util.swift in Sources */,
 				53F198551C52DA3A0044D3A4 /* NextDeparturesInterfaceController.swift in Sources */,
 				537E54FC21C3C72F00DAE4E0 /* WatchSession.swift in Sources */,
+				539B43E32269C01400AE223E /* Departure+Extensions.swift in Sources */,
 				535D39741C38140E008D59C3 /* NearestStopsInterfaceController.swift in Sources */,
 				53E4ECF01C2C06EC002F0107 /* ExtensionDelegate.swift in Sources */,
 				533E1C4E1C512963001EA50B /* NearestStopsRow.swift in Sources */,
