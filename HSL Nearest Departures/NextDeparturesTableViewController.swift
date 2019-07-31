@@ -98,12 +98,12 @@ class NextDeparturesTableViewController: UITableViewController, GADBannerViewDel
 
     fileprivate func setNotFavoriteImage() {
         self.favoriteImageView.image = UIImage(named:"ic_favorite_border")!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        self.favoriteImageView.tintColor = UIColor.black
+        self.favoriteImageView.tintColor = UIColor.systemGray
     }
 
     fileprivate func setIsFavoriteImage() {
         self.favoriteImageView.image = UIImage(named:"ic_favorite")!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        self.favoriteImageView.tintColor = UIColor.red
+        self.favoriteImageView.tintColor = UIColor.systemRed
     }
 
     @objc fileprivate func refresh() {

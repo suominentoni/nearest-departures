@@ -638,21 +638,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HSL Nearest Departures/Pods-HSL Nearest Departures-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-HSL Nearest Departures/Pods-HSL Nearest Departures-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/NearestDeparturesDigitransit-iOS9.3/NearestDeparturesDigitransit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NearestDeparturesDigitransit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HSL Nearest Departures/Pods-HSL Nearest Departures-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HSL Nearest Departures/Pods-HSL Nearest Departures-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		40E80B8019E77C493E1AE258 /* [CP] Check Pods Manifest.lock */ = {
@@ -682,21 +678,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HSL Nearest DeparturesTests/Pods-HSL Nearest DeparturesTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-HSL Nearest DeparturesTests/Pods-HSL Nearest DeparturesTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/NearestDeparturesDigitransit-iOS10.0/NearestDeparturesDigitransit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NearestDeparturesDigitransit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HSL Nearest DeparturesTests/Pods-HSL Nearest DeparturesTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HSL Nearest DeparturesTests/Pods-HSL Nearest DeparturesTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7E20D3FC335C5C6A017C98BA /* [CP] Check Pods Manifest.lock */ = {
@@ -726,21 +718,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HSL Nearest Departures WatchKit Extension/Pods-HSL Nearest Departures WatchKit Extension-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-HSL Nearest Departures WatchKit Extension/Pods-HSL Nearest Departures WatchKit Extension-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/NearestDeparturesDigitransit-watchOS3.0/NearestDeparturesDigitransit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NearestDeparturesDigitransit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HSL Nearest Departures WatchKit Extension/Pods-HSL Nearest Departures WatchKit Extension-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HSL Nearest Departures WatchKit Extension/Pods-HSL Nearest Departures WatchKit Extension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1053,7 +1041,7 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -1077,7 +1065,7 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
