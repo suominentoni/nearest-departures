@@ -24,19 +24,6 @@ class FavoriteStops {
         return (try? FavoriteStops.all().filter({favStop in favStop == stop}).count > 0) ?? false
     }
 
-    static func tryUpdate(_ stop: Stop) {
-        NSLog("Trying to update stop: \(stop.name) \(stop.codeLong)")
-        if(self.isFavoriteStop(stop)) {
-            self.remove(stop)
-            if var stops = try? FavoriteStops.all() {
-                stops.append(stop)
-                saveToUserDefaults(stops)
-            } else {
-                NSLog("Error updating favourite stop: \(stop.name) \(stop.codeLong). Failed to fetch current favourite stops.")
-            }
-        }
-    }
-
     static func add(_ stop: Stop) {
         if(!self.isFavoriteStop(stop)) {
             if var stops = try? FavoriteStops.all() {
