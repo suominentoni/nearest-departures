@@ -507,7 +507,7 @@
 					53E4ECAE1C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = JV8CWWLSL8;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1100;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -516,12 +516,12 @@
 					};
 					53E4ECC21C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1100;
 						TestTargetID = 53E4ECAE1C2C06EC002F0107;
 					};
 					53E4ECCD1C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1100;
 						TestTargetID = 53E4ECAE1C2C06EC002F0107;
 					};
 					53E4ECD61C2C06EC002F0107 = {
@@ -532,7 +532,7 @@
 					53E4ECE51C2C06EC002F0107 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = JV8CWWLSL8;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1100;
 					};
 				};
 			};
@@ -995,7 +995,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -1014,7 +1014,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -1088,7 +1088,7 @@
 				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1110,7 +1110,7 @@
 				PRODUCT_MODULE_NAME = Lahimmat_Lahdot;
 				PRODUCT_NAME = "Lähimmät Lähdöt";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1123,7 +1123,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-DeparturesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lähimmät Lähdöt.app/Lähimmät Lähdöt";
 			};
 			name = Debug;
@@ -1137,7 +1137,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-DeparturesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lähimmät Lähdöt.app/Lähimmät Lähdöt";
 			};
 			name = Release;
@@ -1149,7 +1149,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-DeparturesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = "HSL Nearest Departures";
 				USES_XCTRUNNER = YES;
 			};
@@ -1162,7 +1162,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "suominentoni.HSL-Nearest-DeparturesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = "HSL Nearest Departures";
 				USES_XCTRUNNER = YES;
 			};
