@@ -22,7 +22,7 @@ class StopsTableCell: UITableViewCell {
             self.code.removeConstraint(constraint)
             self.codeWidthConstraint = nil
         }
-        let codeWidthConstraint = NSLayoutConstraint(item: self.code, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: codeWidth)
+        let codeWidthConstraint = self.code.widthAnchor.constraint(equalToConstant: codeWidth)
         self.codeWidthConstraint = codeWidthConstraint
         self.code.addConstraint(codeWidthConstraint)
     }

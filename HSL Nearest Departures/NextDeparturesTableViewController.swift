@@ -152,15 +152,13 @@ class NextDeparturesTableViewController: UITableViewController, GADBannerViewDel
         DispatchQueue.main.async(execute: {
             if let codeShort = departure.line.codeShort,
                 let destination = departure.line.destination {
-
                 cell.code.text = codeShort
                 let codeLabelWidth: CGFloat = self.hasShortCodes ? 55 : 0
                 if(cell.codeWidthConstraint != nil) {
                     cell.contentView.removeConstraint(cell.codeWidthConstraint!)
                 }
-                cell.codeWidthConstraint = NSLayoutConstraint(item: cell.code, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: codeLabelWidth)
+                cell.codeWidthConstraint = cell.code.widthAnchor.constraint(equalToConstant: codeLabelWidth)
                 cell.contentView.addConstraint(cell.codeWidthConstraint!)
-
                 cell.destination.text = destination
             } else {
                 cell.code.text = departure.line.codeLong
