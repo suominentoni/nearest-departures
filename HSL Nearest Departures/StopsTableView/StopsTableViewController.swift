@@ -83,7 +83,6 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
         let x = self.tableView.center.x
         let y = self.tableView.center.y
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70, height: 70))
-
         self.delegate?.loadData(callback: {(stops: [Stop]?, error: TransitDataError?) in
             if (error != nil) {
                 self.displayLoadDataFailedAlert(error: error!)
@@ -98,7 +97,7 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
         switch error {
         case TransitDataError.dataFetchingError(let data):
             alert = UIAlertController(
-                title: NSLocalizedString("DATA_LOAD_FAILED_TITLE", comment: ""),
+                title: getLoadDataFailedTitle(),
                 message: getLoadDataFailedMessage(data: data),
                 preferredStyle: UIAlertController.Style.alert)
         default:
@@ -108,7 +107,17 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
                 preferredStyle: UIAlertController.Style.alert)
         }
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    fileprivate func getLoadDataFailedTitle() -> String {
+        if(isFavoritesStopsView()) {
+            return NSLocalizedString("DATA_LOAD_FAILED_TITLE_FAVORITE", comment: "")
+        } else {
+            return NSLocalizedString("DATA_LOAD_FAILED_TITLE", comment: "")
+        }
     }
 
     fileprivate func getLoadDataFailedMessage(data: (id: String, stop: Stop?)) -> String {
