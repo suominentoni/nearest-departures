@@ -23,23 +23,17 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (self.isNearestStopsView()) {
-            self.delegate = NearestStopsDataSource()
-        } else if (self.isFavoritesStopsView()) {
-            self.delegate = FavoriteStopsDataSource()
-        } else if (self.isClusterStopsView()) {
-            self.delegate = ClusterStopsDataSource(stops: self.stops)
-        }
-
-        self.delegate?.updateUI = updateUI
-        self.delegate?.viewDidLoad()
-        self.navigationItem.title = self.delegate?.getTitle();
+        self.getDataSource(callback: {(dataSource: StopsTableViewControllerDelegate) in
+            self.delegate = dataSource
+            self.delegate?.updateUI = self.updateUI
+            self.navigationItem.title = self.delegate?.getTitle();
+            self.delegate?.viewDidLoad()
+            self.loadData()
+        })
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 200
         self.refreshControl = UIRefreshControl()
-
         self.refreshControl?.addTarget(self, action: #selector(StopsTableViewController.loadData), for: UIControl.Event.valueChanged)
-
         if (self.shouldShowAddBanner()) {
             banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
             banner?.delegate = self
@@ -50,6 +44,21 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
             request.testDevices = [ kGADSimulatorID ];
             banner?.accessibilityIdentifier = "nearest stops ad banner"
             banner?.load(request)
+        }
+    }
+
+    func getDataSource(callback: @escaping (StopsTableViewControllerDelegate) -> Void) -> Void {
+        DispatchQueue.main.async {
+            if let selectedIndex = self.tabBarController?.selectedIndex,
+                let selectedStopView = SelectedStopView(rawValue: selectedIndex) {
+                if selectedStopView == SelectedStopView.Nearest {
+                    callback(NearestStopsDataSource())
+                } else if (selectedStopView == SelectedStopView.Favorites) {
+                    callback(FavoriteStopsDataSource())
+                } else {
+                    callback(ClusterStopsDataSource(stops: self.stops))
+                }
+            }
         }
     }
 
@@ -74,7 +83,6 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
         let x = self.tableView.center.x
         let y = self.tableView.center.y
         self.tableView.backgroundView = LoadingIndicator(frame: CGRect(x: x-35, y: y-35, width: 70, height: 70))
-
         self.delegate?.loadData(callback: {(stops: [Stop]?, error: TransitDataError?) in
             if (error != nil) {
                 self.displayLoadDataFailedAlert(error: error!)
@@ -89,7 +97,7 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
         switch error {
         case TransitDataError.dataFetchingError(let data):
             alert = UIAlertController(
-                title: NSLocalizedString("DATA_LOAD_FAILED_TITLE", comment: ""),
+                title: getLoadDataFailedTitle(),
                 message: getLoadDataFailedMessage(data: data),
                 preferredStyle: UIAlertController.Style.alert)
         default:
@@ -99,7 +107,17 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
                 preferredStyle: UIAlertController.Style.alert)
         }
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    fileprivate func getLoadDataFailedTitle() -> String {
+        if(isFavoritesStopsView()) {
+            return NSLocalizedString("DATA_LOAD_FAILED_TITLE_FAVORITE", comment: "")
+        } else {
+            return NSLocalizedString("DATA_LOAD_FAILED_TITLE", comment: "")
+        }
     }
 
     fileprivate func getLoadDataFailedMessage(data: (id: String, stop: Stop?)) -> String {
@@ -166,20 +184,12 @@ fileprivate enum SelectedStopView: Int {
 }
 
 extension StopsTableViewController {
-    fileprivate func getSelectedStopView() -> SelectedStopView? {
-        if let selectedIndex = self.tabBarController?.selectedIndex,
-            let selectedStopView = SelectedStopView(rawValue: selectedIndex) {
-            return selectedStopView
-        }
-        return nil
-    }
-
     fileprivate func isNearestStopsView() -> Bool {
-        return getSelectedStopView() == SelectedStopView.Nearest
+        return self.delegate is NearestStopsDataSource
     }
 
     fileprivate func isFavoritesStopsView() -> Bool {
-        return getSelectedStopView() == SelectedStopView.Favorites
+        return self.delegate is FavoriteStopsDataSource
     }
 
     fileprivate func isClusterStopsView() -> Bool {

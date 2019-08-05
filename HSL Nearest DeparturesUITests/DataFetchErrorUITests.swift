@@ -27,6 +27,6 @@ class DataFetchErrorUITests: XCTestCase {
         let tabBarsQuery = app.tabBars
         let favoritesTab = tabBarsQuery.buttons["Favourites"]
         favoritesTab.tap()
-        XCTAssert(app.alerts["Data fetch error"].waitForExistence(timeout: 1000))
+        XCTAssert(app.alerts["Favorite stops fetch error"].waitForExistence(timeout: 10))
     }
 }

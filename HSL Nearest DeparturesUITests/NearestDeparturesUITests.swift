@@ -31,7 +31,7 @@ class HSL_Nearest_DeparturesUITests: XCTestCase {
 
     func test_AppStartup_ShowsNearestStops() {
         let app = XCUIApplication()
-        XCTAssert(app.otherElements["Nearest stops"].waitForExistence(timeout: TIMEOUT))
+        XCTAssert(app.staticTexts["Nearest stops"].waitForExistence(timeout: TIMEOUT))
         XCTAssert(app.staticTexts["0815"].waitForExistence(timeout: TIMEOUT))
         XCTAssert(app.staticTexts["Viiskulma"].waitForExistence(timeout: TIMEOUT))
         XCTAssertEqual(app.tables.cells.containing(.staticText, identifier:"Viiskulma").count, 4)

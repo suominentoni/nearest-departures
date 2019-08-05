@@ -43,7 +43,7 @@ extension WatchSessionManager {
     func transferFavoriteStops() {
         do {
             let codes: [String] = try FavoriteStops.all().map({stop in stop.codeLong})
-            WatchSessionManager.sharedManager.transferUserInfo(userInfo: ["foo" : codes as AnyObject])
+            let _ = WatchSessionManager.sharedManager.transferUserInfo(userInfo: ["foo" : codes as AnyObject])
         } catch {
             print("Failed transfering user info")
         }

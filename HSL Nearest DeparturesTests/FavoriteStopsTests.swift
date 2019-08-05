@@ -54,12 +54,4 @@ class FavoriteStopsTests: XCTestCase {
         XCTAssertTrue(FavoriteStops.isFavoriteStop(stop1))
         XCTAssertFalse(FavoriteStops.isFavoriteStop(stop2))
     }
-
-    func test_favourite_stop_try_update() {
-        FavoriteStops.add(stop1)
-        stop1.name = "New stop name"
-        FavoriteStops.tryUpdate(stop1)
-        let stops = try! FavoriteStops.all()
-        XCTAssertEqual(stops[0].name, "New stop name")
-    }
 }

@@ -24,20 +24,7 @@ class StopMapViewController: UIViewController, MKMapViewDelegate {
         stopMap.showsScale = true
         stopMap.showsCompass = true
         stopMap.showsBuildings = true
-
-        if(!stop.hasCoordinates()) {
-            TransitData.coordinatesForStop(stop, callback: {(lat: Double, lon: Double) -> Void in
-                // If stop had no coordinates set, it is most probably a favorite stop, and saved to
-                // favorite stops prior to version 2.0.0, which added coordinates to the Stop class.
-                // In such case, let's update the coordinates to the favorite stop entry.
-                self.stop.lat = lat
-                self.stop.lon = lon
-                self.showStopPinAnnotation()
-                FavoriteStops.tryUpdate(self.stop)
-            })
-        } else {
-            showStopPinAnnotation()
-        }
+        showStopPinAnnotation()
     }
 
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {

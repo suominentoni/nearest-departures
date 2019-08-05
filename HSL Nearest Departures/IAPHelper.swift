@@ -110,6 +110,8 @@ extension IAPHelper: SKPaymentTransactionObserver {
             case .purchasing:
                 print("purchasing")
                 break
+            @unknown default:
+                break
             }
         }
     }
