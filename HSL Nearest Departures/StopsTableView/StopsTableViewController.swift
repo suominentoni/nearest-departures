@@ -23,23 +23,17 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (self.isNearestStopsView()) {
-            self.delegate = NearestStopsDataSource()
-        } else if (self.isFavoritesStopsView()) {
-            self.delegate = FavoriteStopsDataSource()
-        } else if (self.isClusterStopsView()) {
-            self.delegate = ClusterStopsDataSource(stops: self.stops)
-        }
-
-        self.delegate?.updateUI = updateUI
-        self.delegate?.viewDidLoad()
-        self.navigationItem.title = self.delegate?.getTitle();
+        self.getDataSource(callback: {(dataSource: StopsTableViewControllerDelegate) in
+            self.delegate = dataSource
+            self.delegate?.updateUI = self.updateUI
+            self.navigationItem.title = self.delegate?.getTitle();
+            self.delegate?.viewDidLoad()
+            self.loadData()
+        })
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 200
         self.refreshControl = UIRefreshControl()
-
         self.refreshControl?.addTarget(self, action: #selector(StopsTableViewController.loadData), for: UIControl.Event.valueChanged)
-
         if (self.shouldShowAddBanner()) {
             banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
             banner?.delegate = self
@@ -50,6 +44,21 @@ class StopsTableViewController: UITableViewController, GADBannerViewDelegate {
             request.testDevices = [ kGADSimulatorID ];
             banner?.accessibilityIdentifier = "nearest stops ad banner"
             banner?.load(request)
+        }
+    }
+
+    func getDataSource(callback: @escaping (StopsTableViewControllerDelegate) -> Void) -> Void {
+        DispatchQueue.main.async {
+            if let selectedIndex = self.tabBarController?.selectedIndex,
+                let selectedStopView = SelectedStopView(rawValue: selectedIndex) {
+                if selectedStopView == SelectedStopView.Nearest {
+                    callback(NearestStopsDataSource())
+                } else if (selectedStopView == SelectedStopView.Favorites) {
+                    callback(FavoriteStopsDataSource())
+                } else {
+                    callback(ClusterStopsDataSource(stops: self.stops))
+                }
+            }
         }
     }
 
@@ -166,20 +175,12 @@ fileprivate enum SelectedStopView: Int {
 }
 
 extension StopsTableViewController {
-    fileprivate func getSelectedStopView() -> SelectedStopView? {
-        if let selectedIndex = self.tabBarController?.selectedIndex,
-            let selectedStopView = SelectedStopView(rawValue: selectedIndex) {
-            return selectedStopView
-        }
-        return nil
-    }
-
     fileprivate func isNearestStopsView() -> Bool {
-        return getSelectedStopView() == SelectedStopView.Nearest
+        return self.delegate is NearestStopsDataSource
     }
 
     fileprivate func isFavoritesStopsView() -> Bool {
-        return getSelectedStopView() == SelectedStopView.Favorites
+        return self.delegate is FavoriteStopsDataSource
     }
 
     fileprivate func isClusterStopsView() -> Bool {

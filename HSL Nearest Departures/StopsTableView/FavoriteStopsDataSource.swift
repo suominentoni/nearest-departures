@@ -15,9 +15,7 @@ class FavoriteStopsDataSource: NSObject, StopsTableViewControllerDelegate {
         super.init()
     }
     
-    func viewDidLoad() {
-        self.loadData(callback: {(stops, error) in self.updateUI(stops)})
-    }
+    func viewDidLoad() {}
 
     func loadData(callback: @escaping ([Stop]?, TransitDataError?) -> Void) {
         NSKeyedUnarchiver.setClass(Stop.self, forClassName: "Lahimmat_Lahdot.Stop")
