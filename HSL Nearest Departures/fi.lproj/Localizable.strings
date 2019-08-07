@@ -45,3 +45,6 @@
 
 "STOP_CODE" = "Pysäkkikoodi";
 "DESTINATIONS" = "Määränpäät";
+
+"REMOVE_FROM_FAVORITE_STOPS" = "Poista suosikkipysäkeistä";
+"ADD_TO_FAVORITE_STOPS" = "Lisää suosikkipysäkkeihin";

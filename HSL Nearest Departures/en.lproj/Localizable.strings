@@ -46,3 +46,6 @@
 "STOP_CODE" = "Stop code";
 "DESTINATIONS" = "Destinations";
 
+
+"REMOVE_FROM_FAVORITE_STOPS" = "Remove from favorite stops";
+"ADD_TO_FAVORITE_STOPS" = "Add to favorite stops";
