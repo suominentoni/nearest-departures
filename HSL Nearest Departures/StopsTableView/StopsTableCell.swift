@@ -14,7 +14,9 @@ class StopsTableCell: UITableViewCell {
         self.code.text = stop.codeShort
         self.name.text = stop.name
         self.destinations.text = stop.departures.destinations()
-        self.distance.text = displayDistance ? String(stop.distance) + " m" : ""
+        let distance = displayDistance ? String(stop.distance) + " m" : ""
+        self.distance.text = distance
+        self.accessibilityLabel = "\(stop.name), \(NSLocalizedString("STOP_CODE", comment: ""))  \(stop.codeShort), \(distance), \(NSLocalizedString("DESTINATIONS", comment: "")) \(stop.departures.destinations()) "
     }
 
     fileprivate func updateCodeWidthConstraint(codeWidth: CGFloat) {

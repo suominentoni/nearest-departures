@@ -42,3 +42,6 @@
 
 "NEAREST" = "Lähimmät";
 "FAVORITES" = "Suosikit";
+
+"STOP_CODE" = "Pysäkkikoodi";
+"DESTINATIONS" = "Määränpäät";

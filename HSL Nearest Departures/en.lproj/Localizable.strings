@@ -42,3 +42,7 @@
 
 "NEAREST" = "Nearest";
 "FAVORITES" = "Favorites";
+
+"STOP_CODE" = "Stop code";
+"DESTINATIONS" = "Destinations";
+
