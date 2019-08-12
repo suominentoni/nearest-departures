@@ -99,11 +99,13 @@ class NextDeparturesTableViewController: UITableViewController, GADBannerViewDel
     fileprivate func setNotFavoriteImage() {
         self.favoriteImageView.image = UIImage(named:"ic_favorite_border")!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         self.favoriteImageView.tintColor = UIColor.systemGray
+        self.favoriteImageView.accessibilityLabel = NSLocalizedString("ADD_TO_FAVORITE_STOPS", comment: "")
     }
 
     fileprivate func setIsFavoriteImage() {
         self.favoriteImageView.image = UIImage(named:"ic_favorite")!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         self.favoriteImageView.tintColor = UIColor.systemRed
+        self.favoriteImageView.accessibilityLabel = NSLocalizedString("REMOVE_FROM_FAVORITE_STOPS", comment: "")
     }
 
     @objc fileprivate func refresh() {
@@ -150,20 +152,7 @@ class NextDeparturesTableViewController: UITableViewController, GADBannerViewDel
         let departure = self.stop.departures[(indexPath as NSIndexPath).row]
 
         DispatchQueue.main.async(execute: {
-            if let codeShort = departure.line.codeShort,
-                let destination = departure.line.destination {
-                cell.code.text = codeShort
-                let codeLabelWidth: CGFloat = self.hasShortCodes ? 55 : 0
-                if(cell.codeWidthConstraint != nil) {
-                    cell.contentView.removeConstraint(cell.codeWidthConstraint!)
-                }
-                cell.codeWidthConstraint = cell.code.widthAnchor.constraint(equalToConstant: codeLabelWidth)
-                cell.contentView.addConstraint(cell.codeWidthConstraint!)
-                cell.destination.text = destination
-            } else {
-                cell.code.text = departure.line.codeLong
-            }
-            cell.time.attributedText = departure.formattedDepartureTime()
+            cell.setDepartureData(departure: departure, codeLabelWidth: self.hasShortCodes ? 55 : 0)
         })
 
         return cell

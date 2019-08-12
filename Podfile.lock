@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   NearestDeparturesDigitransit:
-    :commit: c2809d04dfdc96a9530ee0168e57eb675f576b59
+    :commit: 788a623f013df45d79396a34fa43560ef0fcfecd
     :git: https://github.com/suominentoni/nearest-departures-digitransit.git
 
 SPEC CHECKSUMS:
