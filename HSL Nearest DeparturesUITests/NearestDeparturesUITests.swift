@@ -20,11 +20,14 @@ class HSL_Nearest_DeparturesUITests: XCTestCase {
         XCTAssert(app.tables.children(matching: .cell).count == 0)
         app.tabBars.buttons["Nearest"].tap()
         app.tables.cells.element(boundBy: 0).click()
-        app.images["favoriteImage"].click()
+//        app.buttons["favoriteImage"].click()
+        app.buttons["Add to favorite stops"].click()
+
         app.tabBars.buttons["Favourites"].tap()
         XCTAssert(app.tables.children(matching: .cell).count == 1)
         app.tables.cells.element(boundBy: 0).click()
-        app.images["favoriteImage"].click()
+//        app.buttons["favoriteImage"].click()
+        app.buttons["Remove from favorite stops"].click()
         app.navigationBars.buttons["Favourite stops"].tap()
         XCTAssert(app.tables.children(matching: .cell).count == 0)
     }

@@ -13,7 +13,7 @@ class NextDeparturesTableViewController: UITableViewController, GADBannerViewDel
 
     override init(style: UITableView.Style) {
         super.init(style: style)
-        favoriteImageView.accessibilityLabel = "favoriteImage"
+        favoriteImageView.accessibilityIdentifier = "favoriteImage"
     }
 
     required init?(coder aDecoder: NSCoder) {

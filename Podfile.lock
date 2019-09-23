@@ -1,6 +1,6 @@
 PODS:
-  - Google-Mobile-Ads-SDK (7.37.0)
-  - NearestDeparturesDigitransit (4.0.0)
+  - Google-Mobile-Ads-SDK (7.39.0)
+  - NearestDeparturesDigitransit (4.0.1)
 
 DEPENDENCIES:
   - Google-Mobile-Ads-SDK
@@ -16,12 +16,12 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   NearestDeparturesDigitransit:
-    :commit: 788a623f013df45d79396a34fa43560ef0fcfecd
+    :commit: 69805b4a2131c55dc40057510ee7b58c9762f951
     :git: https://github.com/suominentoni/nearest-departures-digitransit.git
 
 SPEC CHECKSUMS:
-  Google-Mobile-Ads-SDK: d028682d7450749a1955679da050eaf70d997b3e
-  NearestDeparturesDigitransit: 21dd44df57316412dc40e419f502517a2d207212
+  Google-Mobile-Ads-SDK: d0f10a7c4d7015db23075ff316602350d12049db
+  NearestDeparturesDigitransit: a760d895ef01c14a31a4568ca4e893a5ecefd0d3
 
 PODFILE CHECKSUM: aac57c020cb6d5c01817445ac2f90f0a3f04321e
 
